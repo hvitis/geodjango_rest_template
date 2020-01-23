@@ -1,9 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
+import uuid
+
 # Create your models here.
 
 class userProfile(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name="profiles")
     description=models.TextField(blank=True,null=True)
     date_joined=models.DateTimeField(auto_now_add=True)
@@ -43,7 +46,7 @@ class address(models.Model):
 
 class location(models.Model):
     profile = models.OneToOneField(userProfile,on_delete=models.CASCADE,related_name="location")
-    latitude=models.FloatField(blank=False)
-    longitude=models.FloatField(blank=False)
+    latitude=models.FloatField(null=True, blank=False, default=None)
+    longitude=models.FloatField(null=True, blank=False, default=None)
     def __str__(self):
-        return '%d' % (self.id)
+        return '%d' % (self.profile)

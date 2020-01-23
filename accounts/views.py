@@ -28,10 +28,6 @@ class UserProfileListCreateView(ListCreateAPIView):
     serializer_class=UserProfileListCreateSerializer
     # permission_classes=[IsOwnerProfileOrReadOnly,IsAuthenticated]
     permission_classes=[]
-    def get_queryset(self):
-        queryset = Choice.objects.filter(user_id=self.kwargs["pk"])
-        return queryset
-        serializer_class = UserProfileSerializer
 
     # This is how we indicate how we want to create the serializer. In this case, we wanted to 
     # populate the read_only user field with the requesting user then populate the serializer with this value.

@@ -36,7 +36,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
     location=LocationSerializer()
     class Meta:
         model=userProfile
-        fields=['id', 'description', 'latitude', 'longitude', 'printers', 'addresses', 'location']
+        fields=['id', 'description', 'printers', 'addresses', 'location']
 
 class UserProfileListCreateSerializer(serializers.ModelSerializer):
     user=serializers.StringRelatedField(read_only=True)
