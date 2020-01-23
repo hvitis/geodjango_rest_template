@@ -26,7 +26,8 @@ class UserProfileDetailedDetailView(ListAPIView):
 class UserProfileListCreateView(ListCreateAPIView):
     queryset=userProfile.objects.all()
     serializer_class=UserProfileListCreateSerializer
-    permission_classes=[IsOwnerProfileOrReadOnly,IsAuthenticated]
+    # permission_classes=[IsOwnerProfileOrReadOnly,IsAuthenticated]
+    permission_classes=[]
     def get_queryset(self):
         queryset = Choice.objects.filter(user_id=self.kwargs["pk"])
         return queryset
@@ -41,7 +42,8 @@ class UserProfileListCreateView(ListCreateAPIView):
 class UserProfileDetailCreateView(ListCreateAPIView):
     queryset=userProfile.objects.all()
     serializer_class=UserProfileListCreateSerializer
-    permission_classes=[IsOwnerProfileOrReadOnly,IsAuthenticated]
+    # permission_classes=[IsOwnerProfileOrReadOnly,IsAuthenticated]
+    permission_classes=[]
     def get_queryset(self):
         queryset = userProfile.objects.filter(user_id=self.kwargs["pk"])
         return queryset
