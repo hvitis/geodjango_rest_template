@@ -30,7 +30,7 @@ class PrinterSerializer(serializers.ModelSerializer):
         model = printer
         fields = ['picture', 'name', 'printed_objects']
 
-class UserProfileSerializer(serializers.ModelSerializer):
+class UserProfileDetailedSerializer(serializers.ModelSerializer):
     printers=PrinterSerializer(many=True)
     addresses=AddressSerializer()
     location=LocationSerializer()
