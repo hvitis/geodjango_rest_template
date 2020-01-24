@@ -6,7 +6,6 @@ import uuid
 # Create your models here.
 
 class userProfile(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name="profiles")
     description=models.TextField(blank=True,null=True)
     date_joined=models.DateTimeField(auto_now_add=True)
@@ -18,9 +17,13 @@ class userProfile(models.Model):
 
 class printer(models.Model):
     profile=models.ForeignKey( userProfile, on_delete=models.CASCADE ,related_name="printers")
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=False)
     picture = models.URLField()
+    # TODO: Make a selectable Model list with optional name of the printer
+    # model
+
     class Meta:
+        # This means that I cant have 2 printers called the same with the same owner
         unique_together = ['profile', 'name']
         ordering = ['name']
     def __str__(self):
@@ -38,9 +41,9 @@ class printed_object(models.Model):
 
 class address(models.Model):
     profile = models.OneToOneField(userProfile,on_delete=models.CASCADE,related_name="addresses")
-    street = models.CharField(max_length=255)
-    city = models.CharField(max_length=255)
-    country = CountryField()
+    street = models.CharField(max_length=255, blank=True,null=True)
+    city = models.CharField(max_length=255, blank=True,null=True)
+    country_code = CountryField(blank=True,null=True)
   
 
 class location(models.Model):
