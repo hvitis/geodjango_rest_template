@@ -34,19 +34,18 @@ class printed_object(models.Model):
         unique_together = ['printer', 'name']
         ordering = ['name']
     def __str__(self):
-        return '%d' % (self.id)
+        return self.name
 
 class address(models.Model):
     profile = models.OneToOneField(userProfile,on_delete=models.CASCADE,related_name="addresses")
     street = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     country = CountryField()
-    def __str__(self):
-        return '%d' % (self.id)    
+  
 
 class location(models.Model):
     profile = models.OneToOneField(userProfile,on_delete=models.CASCADE,related_name="location")
     latitude=models.FloatField(null=True, blank=False, default=None)
     longitude=models.FloatField(null=True, blank=False, default=None)
     def __str__(self):
-        return '%d' % (self.profile)
+        return 'Lat: %d, Lng: %d' % (self.latitude, self.longitude)
