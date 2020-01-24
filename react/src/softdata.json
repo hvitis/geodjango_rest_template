@@ -1,0 +1,359 @@
+[{
+    "category": [
+        {
+            "img" : "./assets/img/cat1.jpg",
+            "id" : "1",
+            "category" : "Restaurants",
+            "icon" : "la-cutlery",
+            "list" : "10"
+        },
+        {
+            "img" : "./assets/img/cat2.jpg",
+            "id" : "2",
+            "category" : "Places & Destination",
+            "icon" : "la-map-marker",
+            "list" : "20"
+        },
+        {
+            "img" : "./assets/img/cat3.jpg",
+            "id" : "3",
+            "category" : "Shopping & Store",
+            "icon" : "la-shopping-cart",
+            "list" : "30"
+        },
+        {
+            "img" : "./assets/img/cat4.jpg",
+            "id" : "4",
+            "category" : "Art & History",
+            "icon" : "la-bank",
+            "list" : "20"
+        },
+        {
+            "img" : "./assets/img/cat5.jpg",
+            "id" : "5",
+            "category" : "Hotel & Travel",
+            "icon" : "la-bed",
+            "list" : "100"
+        },
+        {
+            "img" : "./assets/img/cat6.jpg",
+            "id" : "6",
+            "category" : "Food & Drink",
+            "icon" : "la-glass",
+            "list" : "50"
+        }
+    ],
+    "listing": [
+        {
+            "img" : "./assets/img/p1.jpg",
+            "id" : "1",
+            "opCl" : "open",
+            "badge" : "featured",
+            "title" : "Flanders Heat & Air Systems",
+            "rating" : "4.5",
+            "price" : "55",
+            "location" : "Los Angeles, United States",
+            "phone" : "(415) 796-3633",
+            "category" : "Restaurant",
+            "icon" : "la-glass"
+        },        
+        {
+            "img" : "./assets/img/p2.jpg",
+            "id" : "2",
+            "opCl" : "open",
+            "badge" : "popular",
+            "title" : "Sydney Restaurant Towers",
+            "rating" : "4.3",
+            "price" : "78",
+            "location" : "Los Angeles, United States",
+            "phone" : "(415) 796-3633",
+            "category" : "Places & Destination",
+            "icon" : "la-map-marker"            
+        },
+        {
+            "img" : "./assets/img/p3.jpg",
+            "id" : "3",
+            "badge" : "new",
+            "opCl" : "close",
+            "title" : "Kung Food & Drinks",
+            "rating" : "4.3",
+            "price" : "55",
+            "location" : "Los Angeles, United States",
+            "phone" : "(415) 796-3633",
+            "category" : "Shopping & Store",
+            "icon" : "la-shopping-cart"
+        },
+        {
+            "img" : "./assets/img/p4.jpg",
+            "id" : "4",
+            "badge" : "new",
+            "opCl" : "open",
+            "title" : "Favorite Place Fog Bank",
+            "rating" : "4.0",
+            "price" : "45",
+            "location" : "Los Angeles, United States",
+            "phone" : "(415) 796-3633",
+            "category" : "Art & History",
+            "icon" : "la-bank"
+        },
+        {
+            "img" : "./assets/img/p6.jpg",
+            "id" : "5",           
+            "badge" : "new",
+            "title" : "Flanders Heat & Air Systems",
+            "rating" : "4.0",
+            "opCl" : "close",
+            "price" : "45",
+            "location" : "Los Angeles, United States",
+            "phone" : "(415) 796-3633",
+            "category" : "Hotel & Travel",
+            "icon" : "la-bed"
+        },
+        {
+            "img" : "./assets/img/p6.jpg",
+            "id" : "6",
+            "badge" : "new",
+            "opCl" : "open",
+            "title" : "Store Clothing Shopping Mall",
+            "rating" : "4.0",
+            "price" : "45",
+            "location" : "Los Angeles, United States",
+            "phone" : "(415) 796-3633",
+            "category" : "Food & Drink",
+            "icon" : "la-glass"
+        }
+    ],
+    "place": [
+        {
+            "img" : "./assets/img/place1.jpg",
+            "id" : "1",
+            "list" : "20",
+            "location" : "London, UK"
+
+        },
+        {
+            "img" : "./assets/img/place2.png",
+            "id" : "2",
+            "list" : "20",
+            "location" : "New York"
+        },
+        {
+            "img" : "./assets/img/place3.png",
+            "id" : "3",
+            "list" : "20",
+            "location" : "Sydney"
+        },
+        {
+            "img" : "./assets/img/place4.png",
+            "id" : "4",
+            "list" : "20",
+            "location" : "Paris, France"
+        }
+    ],
+    "testimonial": [
+        {
+            "img" : "./assets/img/tthumb1.jpg",
+            "id" : "1",
+            "title" : "Francis Burton",
+            "location" : "Toronto, Canada"
+        },
+        {
+            "img" : "./assets/img/tthumb1.jpg",
+            "id" : "2",
+            "title" : "Francis Burton",
+            "location" : "Toronto, Canada"
+        }
+    ],
+    "client": [
+        {
+            "img" : "./assets/img/cl1.png",
+            "id" : "1"            
+        },
+        {
+            "img" : "./assets/img/cl2.png",
+            "id" : "2"            
+        },
+        {
+            "img" : "./assets/img/cl3.png",
+            "id" : "3"            
+        },
+        {
+            "img" : "./assets/img/cl4.png",
+            "id" : "4"            
+        },
+        {
+            "img" : "./assets/img/cl5.png",
+            "id" : "5"            
+        }
+    ],
+    "gallery": [
+        {
+            "img" : "./assets/img/g1.jpg",
+            "id" : "1"            
+        },
+        {
+            "img" : "./assets/img/g1.jpg",
+            "id" : "2"            
+        },
+        {
+            "img" : "./assets/img/g1.jpg",
+            "id" : "3"            
+        },
+        {
+            "img" : "./assets/img/g1.jpg",
+            "id" : "4"            
+        },
+        {
+            "img" : "./assets/img/g1.jpg",
+            "id" : "5"            
+        }
+    ],
+    "gallery2": [
+        {
+            "img" : "./assets/img/gt1.jpg",
+            "id" : "1"            
+        },
+        {
+            "img" : "./assets/img/gt2.jpg",
+            "id" : "2"            
+        },
+        {
+            "img" : "./assets/img/gt3.jpg",
+            "id" : "3"            
+        },
+        {
+            "img" : "./assets/img/gt4.jpg",
+            "id" : "4"            
+        },
+        {
+            "img" : "./assets/img/gt5.jpg",
+            "id" : "5"            
+        },
+        {
+            "img" : "./assets/img/gt3.jpg",
+            "id" : "6"            
+        }
+    ],
+    "blog": [
+        {
+            "imgSrc": "./assets/img/b1.jpg",
+            "id": "1",
+            "title": "How to Run a Successful Business Meeting",
+            "date": "12 Jun 2019",
+            "content": "Investig ationes demons trave runt lec tores legere liusry quod ii legunt saepius claritas Investig ationes.",
+            "industry": "Industry"
+        },
+        {
+            "imgSrc": "./assets/img/b2.jpg",
+            "id": "2",
+            "title": "Gold Prices Soar, but Many People don’t Believe it",
+            "date": "12 Jun 2019",
+            "content": "Investig ationes demons trave runt lec tores legere liusry quod ii legunt saepius claritas Investig ationes.",
+            "industry": "Industry"
+        },
+        {
+            "imgSrc": "./assets/img/b3.jpg",
+            "id": "3",
+            "title": "Global Automative Market Grows to $600 Billion",
+            "date": "12 Jun 2019",
+            "content": "Investig ationes demons trave runt lec tores legere liusry quod ii legunt saepius claritas Investig ationes.",
+            "industry": "Industry"
+        },
+        {
+            "imgSrc": "./assets/img/b4.jpg",
+            "id": "4",
+            "title": "Global Automative Market Grows to $600 Billion",
+            "date": "12 Jun 2019",
+            "content": "Investig ationes demons trave runt lec tores legere liusry quod ii legunt saepius claritas Investig ationes.",
+            "industry": "Industry"
+        },
+        {
+            "imgSrc": "./assets/img/c4.jpg",
+            "id": "5",
+            "title": "Global Automative Market Grows to $600 Billion",
+            "date": "12 Jun 2019",
+            "content": "Investig ationes demons trave runt lec tores legere liusry quod ii legunt saepius claritas Investig ationes.",
+            "industry": "Industry"
+        },
+        {
+            "imgSrc": "./assets/img/c5.jpg",
+            "id": "6",
+            "title": "Global Automative Market Grows to $600 Billion",
+            "date": "12 Jun 2019",
+            "content": "Investig ationes demons trave runt lec tores legere liusry quod ii legunt saepius claritas Investig ationes.",
+            "industry": "Industry"
+        },
+        {
+            "imgSrc": "./assets/img/c6.jpg",
+            "id": "7",
+            "title": "Gold Prices Soar, but Many People don’t Believe it",
+            "date": "12 Jun 2019",
+            "content": "Investig ationes demons trave runt lec tores legere liusry quod ii legunt saepius claritas Investig ationes.",
+            "industry": "Industry"
+        },
+        {
+            "imgSrc": "./assets/img/c4.jpg",
+            "id": "8",
+            "title": "Global Automative Market Grows to $600 Billion",
+            "date": "12 Jun 2019",
+            "content": "Investig ationes demons trave runt lec tores legere liusry quod ii legunt saepius claritas Investig ationes.",
+            "industry": "Industry"
+        },
+        {
+            "imgSrc": "./assets/img/c5.jpg",
+            "id": "9",
+            "title": "Global Automative Market Grows to $600 Billion",
+            "date": "12 Jun 2019",
+            "content": "Investig ationes demons trave runt lec tores legere liusry quod ii legunt saepius claritas Investig ationes.",
+            "industry": "Industry"
+        },
+        {
+            "imgSrc": "./assets/img/c6.jpg",
+            "id": "10",
+            "title": "Global Automative Market Grows to $600 Billion",
+            "date": "12 Jun 2019",
+            "content": "Investig ationes demons trave runt lec tores legere liusry quod ii legunt saepius claritas Investig ationes.",
+            "industry": "Industry"
+        },
+        {
+            "imgSrc": "./assets/img/b1.jpg",
+            "id": "11",
+            "title": "Gold Prices Soar, but Many People don’t Believe it",
+            "date": "12 Jun 2019",
+            "content": "Investig ationes demons trave runt lec tores legere liusry quod ii legunt saepius claritas Investig ationes.",
+            "industry": "Industry"
+        },
+        {
+            "imgSrc": "./assets/img/b2.jpg",
+            "id": "12",
+            "title": "Global Automative Market Grows to $600 Billion",
+            "date": "12 Jun 2019",
+            "content": "Investig ationes demons trave runt lec tores legere liusry quod ii legunt saepius claritas Investig ationes.",
+            "industry": "Industry"
+        },
+        {
+            "imgSrc": "./assets/img/b3.jpg",
+            "id": "13",
+            "title": "Global Automative Market Grows to $600 Billion",
+            "date": "12 Jun 2019",
+            "content": "Investig ationes demons trave runt lec tores legere liusry quod ii legunt saepius claritas Investig ationes.",
+            "industry": "Industry"
+        },
+        {
+            "imgSrc": "./assets/img/b4.jpg",
+            "id": "14",
+            "title": "Global Automative Market Grows to $600 Billion",
+            "date": "12 Jun 2019",
+            "content": "Investig ationes demons trave runt lec tores legere liusry quod ii legunt saepius claritas Investig ationes.",
+            "industry": "Industry"
+        }
+    ],
+
+    "logo": [
+        {
+            "light": "./assets/img/logo-white.png",            
+            "dark": "./assets/img/logo.png"
+        }
+    ]
+
+}]

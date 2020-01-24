@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Direo - React Directory & Listing Template</title>
+<link href="img/favicon/favicon.png" rel="icon">
+<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/prism.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrapper">
+<nav>
+
+    <div class="pull-right">
+    	<a href="http://aazztech.com/support/" target="_blank" class="btn btn-download"><img src="img/support.png" width="25" alt="Download Free Documentation Template" />Support</a>
+    </div>
+
+</nav>
+<header>
+  <div class="container">
+    <h2 class="lone-header"><strong>Direo Documentation</strong></h2>
+  </div>
+</header>
+
+    <section>
+      <div class="container">
+        <ul class="docs-nav">
+          <li><strong>Getting Started</strong></li>
+          <li><a href="#welcome" class="cc-active">Welcome</a></li>
+          <li><a href="#filesAndDirecotries">Folder Structure</a></li>
+          <li><a href="#html">Html Structure</a></li>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#node">Install Node</a></li>
+          <li><a href="#server-setup">Upload to Server</a></li>
+          <li><a href="#theming">Theming & BS4 compatibility</a></li>
+          <li><a href="#gulp">Gulp</a></li>
+          <li><a href="#nav">Navigation & Logo</a></li>
+          <!--li><a href="#sticky-menu">Sticky Menu</a></li-->
+          <!--li><a href="#video">Video</a></li-->
+          <li><a href="#payment-method">Payment Methods</a></li>
+          <li><a href="#google_map">Google Map</a></li>
+          <!--li><a href="#rtl">RTL Setup</a></li-->
+          <li><a href="#json_data">Changing Images</a></li>
+          <li><a href="#Credit">Credit</a></li>
+        </ul>
+        <div class="docs-content">
+
+          <div id="welcome" class="section-block">
+            <p class="theme-info">
+              Theme Name: <span>Direo - React Directory & Listing Template</span><br>
+              Author:     <span>AazzTech</span> <br>
+              Author URI: <a href="">http://aazztech.com</a> <br>
+              Created:    <span>20-sep-2019</span> <br>
+              Version:    <span>1.0.0</span> <br>
+              License:    <span>&copy; AazzTech</span></p>
+
+            <h3> Welcome</h3>
+            <p>
+              <strong>Thank You</strong> for purchasing this template, your support is truly appreciated! This document
+              covers the installation and use of this template and often reveals answers to common problems and issues -
+              read this document thoroughly if you are experiencing any difficulties. If you have any questions that are
+              beyond the scope of this document, <strong>Please</strong> feel free to contact with our dedicated Support
+              team via <strong>contact@aazztech.com</strong>
+            </p>
+          </div> <!--  END section-block -->
+
+          <div class="section-block">
+            <h3>Template Features</h3>
+            <p>Direo is a Directory & Listing React template built with Bootstrap 4, React and React redux. The template heavily inspired by the Wordpress Directorist Plugin by Aazztech. We've developed it using latest trend-tools and best practices to leverage the development time and complexity also to ease customization process. We've used configurable SCSS for more control over templates style and layout. We structured it such a way that user can easily compose a new page using our component and customize it without too much hassle.</p>
+            <ul>
+              <li>Beautiful Design</li>
+              <li>Clean Code</li>
+              <li>HTML5 & CSS3</li>
+              <li>Extensive Documentation</li>
+              <li>Made With SASS</li>
+              <li>RTL Script Supported</li>
+              <li>Task automation with gulp</li>
+              <li>Bootstrap 4 compatible.</li>
+              <li>Configurable SCSS</li>
+              <li>Dynamic Dashboard</li>
+              <li>React Redux</li>
+              <li>React Owl Carousel</li>
+              <li>Listing Details</li>
+              <li>Stripe and Paypal Payment Method</li>
+              <li>W3C validated code</li>
+              <li>Easy to customize</li>
+              <li>Beautiful Line awesome icons</li>
+              <li>Free google fonts</li>
+              <li>Huge number of shortcode elements</li>
+              <li>Fully Responsive Design</li>
+              <li>All files are well commented</li>
+              <li>Crossbrowser Compatible with IE10+, Firefox, Safari, Opera, Chrome</li>
+              <li>And lot more...</li>
+            </ul>
+          </div> <!-- END features-->
+          <hr>
+
+          <div class="section-block" id="filesAndDirecotries">
+            <h3>Folder Structure</h3>
+            <pre>
+    ├── public
+    │   │   ├── assets
+    |   |   |   |______img/
+    |   |   |   |______vendor_assets (third party plugins ans assets)
+    |   |   │   │       ├── css
+    |   |   │   │       │  ├── bootstrap
+    |   |   |   │       |  │   ├── <strong>config.bs.scss (This file controls the style configuration of the entire theme)</strong>
+    |   |   |   │    │     ├── js
+    |   |   |   │    │     ├── Fonts
+    |   |   |   │    ├──theme_assets (Themes own assets)
+    |   |   |   │    │     ├── sass (This directry contains all the styles of this theme)
+    |   |   |   │    │     ├── js (Custom script and initialization)
+    |   |   |   │    │__style.css
+    |   |   |
+    |   |   |___index.html
+    |   |   |___manifst.json
+    ├── src
+    |   |___component (All the section file and content here)
+    |   |___container (All component state manage here, You can change all data in here, use props)
+    |   |___pages (All pages of the theme)
+    |   |___app.js
+    |   |___index.js
+    |   |___data.json (there are all data which use in state)
+    ├── gulpfile.js
+    ├── package.json
+    ├── package-lock.json
+    </pre>
+          </div>
+          <hr>
+
+          <div class="section-block" id="html">
+            <h3>HTML Structure</h3>
+            <p>
+              This Template has a Responsive layout and is based on the Bootstrap Framework. For more information about
+              this visit Bootstrap Scaffolding.
+            </p>
+            <p>
+              All the files and folders are organized appropriately. These files are essential for proper working of the
+              template. You can make changes in the files as shown below in this document but please don't alter the
+              file structure, that is, don't remove or move any files from css, js and images folder unless instructed
+              in this document.
+            </p>
+            <img src="img/1.png" alt="">
+            <p>
+              please change mata tag content name description, author, summary, Classification to improve your SEO :)
+            </p>
+          </div> <!--  END filesAndDirecotries -->
+          <hr>
+
+          <div class="section-block" id="install">
+            <h3>Installing Template</h3>
+            <p>
+              After unzip the download pack, you'll find a Template Folder ( Tejarat ) with all the files. You
+              can view this Template in any browser, you can display or edit the Template without an internet
+              connection. Please follow the <a href="#node">Install Node</a> guide for more information.
+            </p>
+          </div> <!--  END section-block -->
+
+          <div class="section-block" id="node">
+            <h3>Installing Node</h3>
+
+            <p>This template requires node to run on localhost. And it usages gulp, npm packages to perform different
+              task,
+              So install node and npm first. Please follow the guide.
+            </p>
+
+            <strong>1. Installing node</strong>
+            <p>> Go to <a href="https://nodejs.org/en/">https://nodejs.org/en/</a> and download the appropriate version
+              for you OS.</p>
+
+            <strong> 2. Installing Gulp</strong>
+            <p>> go to command and run <code><strong>npm install -g gulp</strong></code> it will install gulp globally
+            </p>
+
+            <strong> 3. Getting started</strong>
+            <p>> Now navigate to the Tejarat folder and run <code><strong>npm install</strong></code>, it will install
+              all the dependecies</p>
+
+            <p>This project was bootstrapped with <b>Create React App</b>. To learn more please follow their <b><a
+                  href="https://github.com/facebook/create-react-app">docs here</a></b>. Now, In the project directory,
+              you can run:</p>
+            <strong>4. Available Commands</strong> <br>
+            <strong>npm start</strong>
+            <p>> Runs the app in the development mode. Open http://localhost:3000 to view it in the browser. The page
+              will reload if you make edits. You will also see any lint errors in the console.</p>
+
+            <strong>npm test</strong>
+            <p>> Launches the test runner in the interactive watch mode. See the section about running tests for more
+              information.</p>
+
+            <strong>npm run build</strong>
+            <p>> Builds the app for production to the build folder. It correctly bundles React in production mode and
+              optimizes the build for the best performance. The build is minified and the filenames include the
+              hashes. Your app is ready to be deployed! See the section about <a
+                href="https://facebook.github.io/create-react-app/docs/deployment">deployment</a> for more
+              information.</p>
+
+
+          </div>
+          <hr>
+          <div class="section-block" id="server-setup">
+            <h3>Upload to Server</h3>
+            <p>
+              First of all, Unzip the download pack and find the <b>package.json</b> file in the root of the folder.
+              Then open it in any text editor and change the <b>"homepage"</b> url to your site url.
+              <br><br>
+              <img src="img/ph.png" alt="">
+              <br>
+              Now go to command and run <b>npm run build</b>. Now a ready to upload build version of this template will
+              be generate in the <b>build</b> folder. Upload the files of that folder to your web server via ftp or
+              whatever you prefer.
+              We developed our template with Creat React App js, for more info please follow their documentation here
+              <a href="https://github.com/facebook/create-react-app">https://github.com/facebook/create-react-app</a>
+            </p>
+          </div> <!--  END section-block -->
+          <hr>
+
+          <div class="section-block" id="theming">
+            <h3>Configuring style & Bootstrap compatibility</h3>
+
+            <p>Instead of overriding Bootstraps components. We have made it compatible with theme using
+              Bootstraps native scss varibles.
+              and it's recommended by Bootstrap. This way we are able to manage leveraging decent ammount of
+              css , as there is no overriding.
+              And we made it centrally configurable with <strong><code>config.bs.scss</code></strong> file in
+              <strong><code>public/assets/vendor_assets/css/bootstrap/</code> directory</strong>
+            </p>
+
+            <strong>1. config.bs.scss</strong>
+            <p>This file contains and controls all the Bootstraps default components.It also contains the color
+              scheme, font, spacing and other common staff.If you want customize anything of Bootstrap, you
+              can literally do it here by overriding bootstrap varibles.</p>
+
+            <strong>2. Where and to find and how to customize Bootstraps SCSS variables</strong>
+            <p>Go to <code>public/assets/vendor_assets/css/bootstrap/scss/_variables.scss</code> and search for the
+              variable
+              or component name.
+              Evey components configurable property will be avaible in this file. You can just copy the
+              variable form there and paste it in config.bs.scss removing the default flag and assigning a new
+              value. For Example, here I've redefined color scheme for this theme: </p>
+            <img src="img/16.png" />
+          </div>
+          <hr>
+
+          <div class="section-block" id="gulp">
+            <h3>Gulp tasks</h3>
+            <p>Gulp is amazing tools for task automation. It automates time-consuming tiresome task for you. It helps
+              keep the concentration on actual work by
+              taking care of many redundant and boring task such as sass compilation, css compression, js/css injection
+              etc. Different version generation. IE (build, dist etc)
+            </p>
+
+            <p><code><strong>> gulp</strong></code></p>
+            <p><code>Gulp</code> command is equivlent to <code>gulp default</code> it runs the default task that has
+              been assigned to it.
+              In this particular project <code>Gulp</code> serves the project in the browser, watches for
+              sass,css,js,html changes and synchronizes
+              and excutes task associated with it.</p>
+
+            <p><code><strong>> gulp rtl</strong></code></p>
+            <p>gulp rtl command generate an rtl version of sytle.css and bootstarp.css files. Use this command after
+              adding or editing codes to regenerate those file again if necessary.</p>
+          </div>
+          <hr>
+
+
+          <div class="section-block" id="nav">
+            <h3>Update Logo</h3>
+            <p>How to change logo. go to <b>src/softdata.json</b> Opne file and change the logo image
+              link.
+            </p>
+            <img src="img/4.png" alt="">
+            you can see a class logo inside it put your own image path. you can use text also.
+
+             <h3>Update Navigation</h3>
+            <p>To change Navigation, go to <b>src/components/page/</b>  your page and change the nav class "menu--light / menu--dark" from Header Tag.
+            </p>
+            <img src="img/nav_change.png" alt="">
+            you can see a class logo inside it put your own image path. you can use text also.
+
+            <h3>Navigation structure</h3>
+            <p>Path: <b>src/components/layout/navbar/navItem</b></p>
+            <img src="img/5.png" alt=""><br>
+            Change the navigation according to your content, also you can add or remove according to your needs.
+            Smoothscroll will work automatically. make sure you keep the class scrolling and specific section id<br>
+          </div> <!--  END nav -->
+          <hr>
+
+          <div class="section-block" id="payment-method">
+            <h3>Configure Paypal and Stripe</h3>
+            <p>Follow the below steps to configure the Paypal and Stripe API</p>
+            <strong>> Paypal</strong>
+            <p>Go to <b>src/components/content/element/transection</b> and change the API key as shown below.</p>
+            <img src="img/paypal.png" alt="">
+            <br>
+            <strong>> Stripe</strong>
+            <p>Go to <b>src/components/content/element/transection</b> and change the API key as shown below.</p>
+            <img src="img/stripe.png" alt="">
+
+          </div>
+          <hr>
+
+          <div class="section-block" id="google_map">
+            <h3>Update Your map location</h3>
+            <p>
+              To update your map location and API please change your location Longitude, Longitude and API key as shown
+              in the image below. to do that go to
+              <strong><code>src/content/element/map</code></strong>
+              and change the lat lang of with your desired location lat-lang.
+            </p>
+            <img src="img/14.png">
+            <p>
+              and update
+            </p>
+          </div> <!--  END google_map -->
+          <hr>
+
+
+          <div class="section-block" id="json_data">
+            <h3>Change Images and Texts</h3>
+            Go to <b>"src"</b> folder, you will find folders like components, container and pages, containing all the
+            code blocks. You can easily change anything of your need from the desired files and folders.
+            <p>
+              To Change your data for any section follow this instruction...... or you can use data.json file
+              to change data.
+            </p>
+            <p><b>To change images</b> find the <b>data.json</b> file located in the <b>src</b> folder and there change
+              the url of the respective image.</p>
+          </div> <!--  END json data -->
+          <br>
+
+          <div class="section-block" id="Credit">
+            <h3>Credits</h3>
+            <strong>Fonts</strong>
+            <ul>
+              <li><a href="https://fonts.google.com/specimen/Poppins">Poppins</a></li>
+            </ul>
+            <strong>Icons</strong>
+            <ul>
+              <li><a href="http://fontawesome.io/icons/">fontawesome</a></li>
+              <li><a href="https://icons8.com/line-awesome">Line Awesome</a></li>
+            </ul>
+            <strong>Framework</strong>
+            <ul>
+              <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+            </ul>
+
+            <strong>Tools</strong>
+            <ul>
+              <li><a href="https://gulpjs.com/">Gulp</a></li>
+              <li><a href="https://www.npmjs.com/">NPM</a></li>
+            </ul>
+          </div> <!--  END contact -->
+          <br>
+          <h3>
+            Still Have Question <i style="color:#3e6edf" class="fa fa-smile-o" aria-hidden="true"></i> Don't worry. Tell
+            our dedicated <a href="http://aazztech.com/support/">Support</a> team
+          </h3>
+          <br>
+          <footer>
+            <p> &copy; Copyright AazzTech. All Rights Reserved.</p>
+          </footer>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- SCROLL TO TOP-->
+  <div class="scroll-top">
+    <i class="fa fa-angle-up" aria-hidden="true"></i>
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/prism.js"></script>
+  <script src="js/layout.js"></script>
+</body>
+
+</html>

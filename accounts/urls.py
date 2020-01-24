@@ -16,6 +16,4 @@ urlpatterns = [
     # path("profiles",UserProfileListCreateView.as_view(),name="profiles"),
     # # GETs single LOGGED user profile and his NESTED objects 
     # path("profile/<int:pk>",UserProfileDetailCreateView.as_view(),name="profile"),
-
-
 ]

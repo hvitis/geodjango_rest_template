@@ -8,14 +8,14 @@ class UserProfileDetailedListView(ListAPIView):
     queryset=userProfile.objects.all()
     serializer_class=UserProfileDetailedSerializer
     # permission_classes=[IsAuthenticated]
-    permission_classes=[IsAdminUser]
+    permission_classes=[]
 
 
 
 class UserProfileDetailedDetailView(ListAPIView):
     queryset=userProfile.objects.all()
     serializer_class=UserProfileDetailedSerializer
-    permission_classes=[IsAdminUser]
+    permission_classes=[]
     # permission_classes=[IsAuthenticated]
     def get_queryset(self):
         queryset = userProfile.objects.filter(user_id=self.kwargs["pk"])
@@ -27,13 +27,13 @@ class PrinterListView(ListCreateAPIView):
     queryset=printer.objects.all()
     serializer_class=PrinterSerializer
     # permission_classes=[IsOwnerProfileOrReadOnly,IsAuthenticated]
-    permission_classes=[IsOwnerProfileOrReadOnly,IsAuthenticated]
+    permission_classes=[]
 
 class PrinterDetailView(ListCreateAPIView):
     queryset=printer.objects.all()
     serializer_class=PrinterSerializer
     # permission_classes=[IsOwnerProfileOrReadOnly,IsAuthenticated]
-    permission_classes=[IsOwnerProfileOrReadOnly,IsAuthenticated]
+    permission_classes=[]
     # This is how we indicate how we want to create the serializer. In this case, we wanted to 
     # populate the read_only user field with the requesting user then populate the serializer with this value.
     def perform_create(self, serializer):
