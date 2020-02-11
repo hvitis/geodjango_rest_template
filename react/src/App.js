@@ -5,24 +5,33 @@ import BaseRouter from './routes';
 import * as actions from './Store/action/auth';
 import { connect } from 'react-redux';
 
-import Index from './components/page/Index'
+import Index from './components/page/Home'
 import Header from './components/layout/Header'
+import Login from './components/page/Login'
+import Signup from './components/page/Signup'
+
+import { Footer } from './components/layout/Footer'
+import Layout from './components/layout/Layout'
 
 class App extends Component {
   componentDidMount() {
     this.props.onTryAutoSignup();
   }
   render() {
-    console.log("Rendering props on INDEX", this.props)
+    console.log("Rendering props on MAIN", this.props)
 
     return (
       <Router basename={process.env.PUBLIC_URL} >
-        <Header {...this.props}>
+        <div {...this.props}>
         <BaseRouter />
-       </Header>
-         {/* <Login />
+        </div>
 
-        <Footer /> */}
+       {/* <Layout {...this.props}>
+        <BaseRouter />
+       </Layout> */}
+         {/* <Login /> */}
+         {/* <Signup /> */}
+        {/* <Footer />  */}
       </Router>
     );
   }

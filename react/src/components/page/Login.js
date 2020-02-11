@@ -31,7 +31,7 @@ class NormalLoginForm extends React.Component {
 
     const { getFieldDecorator } = this.props.form;
     return (
-
+<Fragment>
         <section className="contact-area section-bg p-top-100 p-bottom-70">
           <div className="container">
             <div className="row">
@@ -86,7 +86,7 @@ class NormalLoginForm extends React.Component {
             </div>
           </div>
         </section>
-
+        </Fragment>
     );
   }
 }

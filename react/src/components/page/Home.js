@@ -12,14 +12,12 @@ import { withRouter } from 'react-router-dom';
 import * as actions from '../../Store/action/auth';
 
 const noAction = e => e.preventDefault();
-class Index extends Component {
+class Home extends Component {
     
     render() {
-
+        console.log("Props on HOME", this.props)
         return (
             <Fragment>
-            
-
                 {/* Header section start */}
                 <section className="intro-wrapper bgimage overlay overlay--dark">
                     <div className="bg_image_holder"><img src="./assets/img/intro.jpg" alt="" /></div>
@@ -30,13 +28,6 @@ class Index extends Component {
                     <AdvSearch />
                 </section>
                 {/* Header section end */}
-
-             
-                
-
-
-         
-    
                 <Subscribe />
                 <Footer />
             </Fragment>
@@ -50,5 +41,5 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(Index));
+export default withRouter(connect(null, mapDispatchToProps)(Home));
 
