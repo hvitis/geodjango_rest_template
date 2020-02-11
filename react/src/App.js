@@ -8,10 +8,10 @@ import Home from './components/page/Home';
 // import BaseRouter from './routes';
 // import Index from './components/page/Home'
 import Header from './components/layout/Header'
-// import Signup from './components/page/Signup'
+import Signup from './components/page/Signup'
 import { Footer } from './components/layout/Footer'
 // import Layout from './components/layout/Layout'
-
+import  AddListing  from './components/page/AddListing'
 import {
   BrowserRouter,
   HashRouter,
@@ -36,6 +36,9 @@ class App extends Component {
       <Switch>
           <Route path = '/' exact render={(props) => <Home {...this.props} title={`Props through render`} />} />
           <Route path= '/login/' exact component = { Login } />
+          <Route path= '/signup/' exact component = { Signup } />
+          <Route path = '/add-listing' component = { AddListing } />
+          <Redirect to="/" />
         </Switch>
       <Footer />
       </Router>  

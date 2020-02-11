@@ -58,16 +58,7 @@ class RegistrationForm extends React.Component {
 
     return (
       <Fragment>
-        {/* Header section start */}
-        <section className="header-breadcrumb bgimage overlay overlay--dark">
-          <div className="bg_image_holder"><img src="./assets/img/breadcrumb1.jpg" alt="" /></div>
-          <div className="mainmenu-wrapper">
-            <Header class="menu--light" />
-          </div>
-          {/* <!-- ends: .mainmenu-wrapper --> */}
-          <BreadcrumbWraper title="Sign Up" />
-        </section>
-        {/* Header section end */}
+
         <section className="contact-area section-bg p-top-100 p-bottom-70">
           <div className="container">
             <div className="row">

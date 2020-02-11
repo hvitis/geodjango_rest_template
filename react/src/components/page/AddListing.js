@@ -7,19 +7,8 @@ import Map1 from '../content/element/map';
 class AddListing extends Component {
     
     render () {
-        const light = this.props.logo[0].light;
         return (
             <Fragment>
-                {/* Header section start */}
-                <section className="header-breadcrumb bgimage overlay overlay--dark">
-                    <div className="bg_image_holder"><img src="./assets/img/breadcrumb1.jpg" alt="" /></div>
-                    <div className="mainmenu-wrapper">
-                        <Header logo={light} class="menu--light" />                    
-                    </div>
-                    {/* <!-- ends: .mainmenu-wrapper --> */}
-                    <BreadcrumbWraper title="Add Listing" />
-                </section>
-                {/* Header section end */}
 
                     <section className="add-listing-wrapper border-bottom section-bg section-padding-strict">
                         <div className="container">
