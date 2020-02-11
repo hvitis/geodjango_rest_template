@@ -1,21 +1,17 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { NavItem } from '../navbar/navItem';
+import { NavItem } from './Navbar';
 import { connect } from 'react-redux';
-import { LogOut } from '../../../Store/action/logoutAction';
+import * as actions from '../../Store/action/auth';
+import {  withRouter } from 'react-router-dom';
+
 const noAction = e => e.preventDefault();
 class Header extends Component {    
     render() {
-                      
-        const logdIn = () => {
-            return this.props.login
-        }
-       const logOut = (e) => {
-            e.preventDefault();
-            this.props.logOutdata(null);
-       }
+        console.log("Rendering props on HEADER", this.props)
+
         return (
-            <Fragment>
+  
             
                 <div className={"menu-area menu1 "+this.props.class}>
                     <div className="top-menu-area">
@@ -69,7 +65,7 @@ class Header extends Component {
                                             <div className="author-area">
                                                 <div className="author__access_area">
                                                 {
-                                                    logdIn() == null ? (
+                                                    !this.props.isAuthenticated ? (
                                                         <ul className="d-flex list-unstyled align-items-center">
                                                             <li>
                                                                 <NavLink to="/add-listing" className="btn btn-xs btn-gradient btn-gradient-two">
@@ -100,7 +96,7 @@ class Header extends Component {
                                                                         <li><NavLink to="/author-profile">My Profile</NavLink></li>
                                                                         <li><NavLink to="/dashboard-listings">Deshboard</NavLink></li>
                                                                         <li><NavLink to="/at_demo">Favorite Listing</NavLink></li>
-                                                                        <li><NavLink to="/at_demo" onClick={logOut}>Logout</NavLink></li>
+                                                                        <li><a href=" " onClick={this.props.logout}><span className="la la-bank bg-warning"></span>Logout</a></li>
                                                                     </ul>
                                                                 </div>
                                                             </li>
@@ -111,31 +107,7 @@ class Header extends Component {
                                                 </div>
                                             </div>
                                             
-                                            {/*<!-- end .author-area -->*/}
-                                            <div className={"offcanvas-menu d-none"}>
-                                                <a href=" " className="offcanvas-menu__user"><i className="la la-user"></i></a>
-                                                <div className="offcanvas-menu__contents">
-                                                    <a href=" " className="offcanvas-menu__close"><i className="la la-times-circle"></i></a>
-                                                    <div className="author-avatar">
-                                                        <img src="./assets/img/author-avatar.png" alt="" className="rounded-circle" />
-                                                    </div>
-                                                    <ul className="list-unstyled">
-                                                        <li><a href="dashboard-listings.html">My Profile</a></li>
-                                                        <li><a href="dashboard-listings.html">My Listing</a></li>
-                                                        <li><a href="dashboard-listings.html">Favorite Listing</a></li>
-                                                        <li><a href="add-listing.html">Add Listing</a></li>                                                        
-                                                        <li><a href=" ">Logout</a></li>
-                                                    </ul>
-                                                    <div className="search_area">
-                                                        <form action="/">
-                                                            <div className="input-group input-group-light">
-                                                                <input type="text" className="form-control search_field" placeholder="Search here..." autoComplete="off" />
-                                                            </div>
-                                                            <button type="submit" className="btn btn-sm btn-secondary">Search</button>
-                                                        </form>
-                                                    </div>{/*<!-- ends: .search_area -->*/}
-                                                </div>{/*<!-- ends: .author-info -->*/}
-                                            </div>{/*<!-- ends: .offcanvas-menu -->*/}
+                                            
                                         </div>{/*<!-- ends: .menu-right -->*/}
                                     </div>
                                 </div>
@@ -146,7 +118,7 @@ class Header extends Component {
                     </div>
                     {/* <!-- end  --> */}
                 </div>
-            </Fragment>
+          
         )
     }
 }
@@ -155,9 +127,9 @@ const mapStateToProps = state => {
         login : state.login
     }
 }
-const mapDispatchToProp = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
-        logOutdata : (login) => dispatch(LogOut(login))
+        logout: () => dispatch(actions.logout()) 
     }
 }
-export default connect(mapStateToProps, mapDispatchToProp)(Header)
+export default withRouter(connect(null, mapDispatchToProps)(Header));

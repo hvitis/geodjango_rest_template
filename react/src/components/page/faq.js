@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/header';
-import { Footer } from '../layout/footer';
+import Header from '../layout/Header';
+import { Footer } from '../layout/Footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { SectionTitle } from '../content/element/section-title';
 import { Accordion2 } from '../content/element/accordion';

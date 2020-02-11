@@ -2,12 +2,11 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as actions from '../../Store/action/auth';
-import Header from '../layout/header';
-import { Footer } from '../layout/footer';
+import Header from '../layout/Header';
+import { Footer } from '../layout/Footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { Form, Input, Icon, Button } from 'antd';
 const FormItem = Form.Item;
-const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 
 class NormalLoginForm extends React.Component {
@@ -22,6 +21,7 @@ class NormalLoginForm extends React.Component {
   }
 
   render() {
+    console.log("props on login", this.props)
     let errorMessage = null;
     if (this.props.error) {
         errorMessage = (
@@ -31,17 +31,7 @@ class NormalLoginForm extends React.Component {
 
     const { getFieldDecorator } = this.props.form;
     return (
-        <Fragment>
-        {/* Header section start */}
-        <section className="header-breadcrumb bgimage overlay overlay--dark">
-          <div className="bg_image_holder"><img src="./assets/img/breadcrumb1.jpg" alt="" /></div>
-          <div className="mainmenu-wrapper">
-            <Header class="menu--light" />
-          </div>
-          {/* <!-- ends: .mainmenu-wrapper --> */}
-          <BreadcrumbWraper title="Login" />
-        </section>
-        {/* Header section end */}
+
         <section className="contact-area section-bg p-top-100 p-bottom-70">
           <div className="container">
             <div className="row">
@@ -96,8 +86,7 @@ class NormalLoginForm extends React.Component {
             </div>
           </div>
         </section>
-        <Footer />
-      </Fragment>
+
     );
   }
 }

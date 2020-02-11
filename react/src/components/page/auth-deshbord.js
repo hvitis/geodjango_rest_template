@@ -1,11 +1,11 @@
 import React, {Fragment, Component} from 'react';
-import Header from '../layout/header';
-import { Footer } from '../layout/footer';
+import Header from '../layout/Header';
+import { Footer } from '../layout/Footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CardListingGrid4 from '../content/element/card/card-listing-grid-4';
-import { LogOut } from '../../Store/action/logoutAction';
+// import { LogOut } from '../../Store/action/logoutAction';
 
 const noAction = e => e.preventDefault();
 
@@ -285,7 +285,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProp = dispatch => {
     return {
-        logOutdata : (login) => dispatch(LogOut(login))
+        logOutdata : (login) => dispatch()
     }
 }
 export default connect(mapStateToProps, mapDispatchToProp)(AuthDeshbord);

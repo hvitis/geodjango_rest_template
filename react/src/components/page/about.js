@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/header';
-import { Footer } from '../layout/footer';
+import Header from '../layout/Header';
+import { Footer } from '../layout/Footer';
 import { BreadcrumbAbout } from '../content/element/breadcrumb';
 import { ContentBlockAbout } from '../content/element/content-block';
 import { Counter } from '../content/element/counter';

@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/header';
-import { Footer } from '../layout/footer';
+import Header from '../layout/Header';
+import { Footer } from '../layout/Footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import {connect} from 'react-redux';
 import BlogSingle from '../content/element/card/card-blog-single-grid';

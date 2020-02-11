@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { SignUp } from '../../../../Store/action/userActions';
 import SimpleReactValidator from 'simple-react-validator';
 import $ from 'jquery';
 
@@ -99,7 +98,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProp = dispatch => {
     return {
-        userAdd : (user) => dispatch(SignUp(user))
+        userAdd : (user) => dispatch()
     }
 }
 export default connect(mapStateToProps, mapDispatchToProp)(Register);

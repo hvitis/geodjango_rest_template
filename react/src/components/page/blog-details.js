@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/header';
-import { Footer } from '../layout/footer';
+import Header from '../layout/Header';
+import { Footer } from '../layout/Footer';
 import { connect } from "react-redux";
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { Category, PopularPost, RecentPost, PopularTags, StayUpdate, ConnentFollow } from '../content/element/widget';

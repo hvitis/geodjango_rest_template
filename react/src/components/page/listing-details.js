@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/header';
-import { Footer } from '../layout/footer';
+import Header from '../layout/Header';
+import { Footer } from '../layout/Footer';
 import { connect } from "react-redux";
 import { BreadcrumbSingle } from '../content/element/breadcrumb';
 import { ContentStory } from '../content/element/listing-details-story';

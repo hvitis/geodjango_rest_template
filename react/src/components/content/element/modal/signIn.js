@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { LogInAc } from '../../../../Store/action/loginAction';
 import $ from 'jquery';
 
 const noAction = e => e.preventDefault();
@@ -113,9 +112,9 @@ const mapStateToProps = state => {
         users: state.users
     }
 }
-const mapDispatchToProp = dispatch => {
-    return {
-        logindata : (login) => dispatch(LogInAc(login))
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProp)(Login);
+// const mapDispatchToProp = dispatch => {
+//     return {
+//         logindata : (login) => dispatch(LogInAc(login))
+//     }
+// }
+export default connect(null, null)(Login);
