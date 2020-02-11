@@ -40,17 +40,19 @@ export const checkAuthTimeout = expirationTime => {
 export const authLogin = (username, password) => {
     return dispatch => {
         dispatch(authStart());
-        axios.post('http://127.0.0.1:8000/rest-auth/login/', {
+        axios.post('http://localhost:8000/auth/jwt/create', {
             username: username,
             password: password
         })
         .then(res => {
-            const token = res.data.key;
+            // console.log('Whole response', res)
+            const token = res.data.access;
             const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
             localStorage.setItem('token', token);
             localStorage.setItem('expirationDate', expirationDate);
             dispatch(authSuccess(token));
             dispatch(checkAuthTimeout(3600));
+            console.log('On Loggin in got : ', token, expirationDate)
         })
         .catch(err => {
             dispatch(authFail(err))
@@ -58,24 +60,23 @@ export const authLogin = (username, password) => {
     }
 }
 
-export const authSignup = (username, password) => {
+export const authSignup = (username, email, password) => {
     console.log('username and password', username, password)
     return dispatch => {
         dispatch(authStart());
-        axios.post('http://127.0.0.1:8000/auth/users/', {
+        axios.post('http://localhost:8000/auth/users/', {
             username: username,
-            // email: email,
-            // password1: password1,
+            email: email,
             password: password
         })
         .then(res => {
             console.log('Response from Django:, ', res)
-            const token = res.data.key;
-            const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
-            localStorage.setItem('token', token);
-            localStorage.setItem('expirationDate', expirationDate);
-            dispatch(authSuccess(token));
-            dispatch(checkAuthTimeout(3600));
+            // const token = res.data.key;
+            // const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
+            // localStorage.setItem('token', token);
+            // localStorage.setItem('expirationDate', expirationDate);
+            // dispatch(authSuccess(token));
+            // dispatch(checkAuthTimeout(3600));
         })
         .catch(err => {
             dispatch(authFail(err))

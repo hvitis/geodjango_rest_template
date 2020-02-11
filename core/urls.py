@@ -10,7 +10,7 @@ schema_view = get_swagger_view(title='Accounts API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-	
+
 	#path to djoser end points
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),

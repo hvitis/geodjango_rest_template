@@ -77,9 +77,13 @@ class Header extends Component {
                                                                 </NavLink>
                                                             </li>
                                                             <li>
-                                                                <a href=" " className="access-link" data-toggle="modal" data-target="#login_modal">Login</a>
+                                                                <NavLink to="/signup/" className="btn btn-xs btn-gradient btn-gradient-three">
+                                                                    <span className="la la-user"></span> SignUp
+                                                                </NavLink>
                                                                 <span>or</span>
-                                                                <a href=" " className="access-link" data-toggle="modal" data-target="#signup_modal">Register</a>
+                                                                <NavLink to="/login/" className="btn btn-xs btn-gradient btn-gradient-one">
+                                                                    <span className="la la-user"></span> Login
+                                                                </NavLink>
                                                             </li>
                                                         </ul>
                                                     ) : (
