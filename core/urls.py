@@ -23,18 +23,18 @@ urlpatterns = [
 
 ### DJOSER URLS
 
-# /users/
-# /users/me/
-# /users/confirm/
-# /users/resend_activation/
-# /users/set_password/
-# /users/reset_password/
-# /users/reset_password_confirm/
-# /users/set_username/
-# /users/reset_username/
-# /users/reset_username_confirm/
-# /token/login/ (Token Based Authentication)
-# /token/logout/ (Token Based Authentication)
-# /jwt/create/ (JSON Web Token Authentication)
-# /jwt/refresh/ (JSON Web Token Authentication)
-# /jwt/verify/ (JSON Web Token Authentication)
+# auth/users/
+# auth/users/me/
+# auth/users/confirm/
+# auth/users/resend_activation/
+# auth/users/set_password/
+# auth/users/reset_password/
+# auth/users/reset_password_confirm/
+# auth/users/set_username/
+# auth/users/reset_username/
+# auth/users/reset_username_confirm/
+# auth/token/login/ (Token Based Authentication)
+# auth/token/logout/ (Token Based Authentication)
+# auth/jwt/create/ (JSON Web Token Authentication)
+# auth/jwt/refresh/ (JSON Web Token Authentication)
+# auth/jwt/verify/ (JSON Web Token Authentication)

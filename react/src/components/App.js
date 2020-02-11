@@ -22,6 +22,8 @@ import CheckoutAdvanced from './page/advanced';
 import Enterprise from './page/enterprise';
 import Invoice from './page/invoice';
 import AddListing from './page/add-listing';
+import Login from './container/Login';
+import Signup from './container/Signup';
  
 
 function App(props) {  
@@ -50,7 +52,9 @@ function App(props) {
           <Route path = '/enterprise' component = { Enterprise } />
           <Route path = '/invoice' component = { Invoice } />
           <Route path = '/add-listing' component = { AddListing } />
-                   
+          <Route path = '/login/' component = { Login } />
+          <Route path = '/signup/' component = { Signup } />
+
         </Switch>
     </Router>    
   );
