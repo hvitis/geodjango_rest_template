@@ -27,11 +27,11 @@ class Header extends Component {
                                         <div className="menu-container order-lg-1 order-sm-0">
                                             <div className="d_menu">
                                                 <nav className="navbar navbar-expand-lg mainmenu__menu">
-                                                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#direo-navbar-collapse" aria-controls="direo-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                                                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#ToBePrint3D-navbar-collapse" aria-controls="ToBePrint3D-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                                                         <span className="navbar-toggler-icon icon-menu"><i className="la la-reorder"></i></span>
                                                     </button>
                                                     {/*<!-- Collect the nav links, forms, and other content for toggling -->*/}
-                                                    <div className="collapse navbar-collapse" id="direo-navbar-collapse">
+                                                    <div className="collapse navbar-collapse" id="ToBePrint3D-navbar-collapse">
                                                         <NavItem />
                                                     </div>
                                                     {/*<!-- /.navbar-collapse -->*/}
@@ -45,12 +45,12 @@ class Header extends Component {
                                                     <div className="search_area">
                                                         <form action="/">
                                                             <div className="input-group input-group-light">
-                                                                <input type="text" className="form-control search_field top-search-field" placeholder="What are you looking for?" autoComplete="off" />
+                                                                <input type="text" className="form-control search_field top-search-field" placeholder="Where are you located at?" autoComplete="off" />
                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
-                                                <div className="search-categories">
+                                                {/* <div className="search-categories">
                                                     <ul className="list-unstyled">
                                                         <li><a href=" " onClick={noAction}><span className="la la-glass bg-danger"></span> Food & Drinks</a></li>
                                                         <li><a href=" " onClick={noAction}><span className="la la-cutlery bg-primary"></span> Restaurants</a></li>
@@ -59,7 +59,7 @@ class Header extends Component {
                                                         <li><a href=" " onClick={noAction}><span className="la la-bed bg-info"></span> Hotels</a></li>
                                                         <li><a href=" " onClick={noAction}><span className="la la-bank bg-warning"></span> Art & History</a></li>
                                                     </ul>
-                                                </div>
+                                                </div> */}
                                             </div>{/*<!-- ends: .search-wrapper -->*/}
                                             {/*<!-- start .author-area -->*/}
                                             <div className="author-area">

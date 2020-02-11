@@ -11,7 +11,7 @@ export class ContentBlockHome extends Component {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="section-title">
-                                    <h2>Why <span>Direo</span> for your Business?</h2>
+                                    <h2>Why <span>ToBePrint3D</span> for your Business?</h2>
                                     <p>Explore the popular listings around the world</p>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@ export class ContentBlockAbout extends Component {
                                 <div className="contents">
                                     <div className="row align-items-center">
                                         <div className="col-lg-5 col-sm-6">
-                                            <h1>Why List on <span>Direo</span></h1>
+                                            <h1>Why List on <span>ToBePrint3D</span></h1>
                                             <ul className="list-unstyled list-features p-top-15">
                                                 <li>
                                                     <div className="list-count"><span>1</span></div>

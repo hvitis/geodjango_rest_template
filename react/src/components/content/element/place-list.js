@@ -10,7 +10,7 @@ export class PlaceList extends Component {
                     <div className="place-list-wrapper">
                         <ul className="list-unstyled">
                             <li><NavLink onClick={noAction} to="/at_demo" onClick={noAction} >Dubai (45)</NavLink></li>
-                            <li><NavLink onClick={noAction} to="/at_demo" onClick={noAction} >Melbourne (95)</NavLink></li>
+                            {/* <li><NavLink onClick={noAction} to="/at_demo" onClick={noAction} >Melbourne (95)</NavLink></li>
                             <li><NavLink onClick={noAction} to="/at_demo" onClick={noAction} >Sydney (90)</NavLink></li>
                             <li><NavLink onClick={noAction} to="/at_demo" onClick={noAction} >Brisbane (73)</NavLink></li>
                             <li><NavLink onClick={noAction} to="/at_demo" onClick={noAction} >Perth (97)</NavLink></li>
@@ -48,7 +48,7 @@ export class PlaceList extends Component {
                             <li><NavLink onClick={noAction} to="/at_demo" onClick={noAction} >Edinburgh (923)</NavLink></li>
                             <li><NavLink onClick={noAction} to="/at_demo" onClick={noAction} >Kent (80)</NavLink></li>
                             <li><NavLink onClick={noAction} to="/at_demo" onClick={noAction} >Manchester (60)</NavLink></li>
-                            <li><NavLink onClick={noAction} to="/at_demo" onClick={noAction} >Glasgow (52)</NavLink></li>
+                            <li><NavLink onClick={noAction} to="/at_demo" onClick={noAction} >Glasgow (52)</NavLink></li> */}
                         </ul>
                     </div>
                 </div>

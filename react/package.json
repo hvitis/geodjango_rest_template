@@ -1,5 +1,5 @@
 {
-  "name": "direo",
+  "name": "ToBePrint3D",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -76,7 +76,7 @@
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "4.2.0"
   },
-  "homepage": "https://aazztech.com/demos/themes/html/direo-react",
+  "homepage": "https://aazztech.com/demos/themes/html/ToBePrint3D-react",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",

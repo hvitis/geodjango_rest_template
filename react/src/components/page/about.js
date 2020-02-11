@@ -31,7 +31,7 @@ const About = (props) => {
                 <div className="container">
                     <SectionTitle 
                         title="Trusted By Over 4000+ Users" 
-                        content="Here is what people say about Direo"
+                        content="Here is what people say about ToBePrint3D"
                     />                    
                     <div className="row">
                         <Testimonial />

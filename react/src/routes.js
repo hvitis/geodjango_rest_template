@@ -13,9 +13,9 @@ import Signup from './components/page/Signup';
 
 const BaseRouter = (props) => (
    
-    <BrowserRouter>
+ 
         <Switch>
-          <Route path = '/' exact render={props => <Home {...props} />}/>  
+          <Route path = '/' exact component = { Home }/>
           <Route path= '/login/' exact component = { Login } />
           {/* <Route path = '/login/' component = { Login } /> */}
           <Route path = '/signup/' component = { Signup } />
@@ -42,7 +42,7 @@ const BaseRouter = (props) => (
           <Route path = '/add-listing' component = { AddListing } /> */}
           <Redirect to="/" />
         </Switch>
-    </BrowserRouter>
+
    
 
 );

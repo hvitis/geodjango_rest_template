@@ -45,11 +45,11 @@ export class Footer extends Component {
                                     <div className="widget widget_pages">
                                         <h2 className="widget-title">Helpful Links</h2>
                                         <ul className="list-unstyled">
-                                            <li className="page-item"><NavLink to="/about" onClick={noAction}>Join Direo</NavLink></li>
+                                            <li className="page-item"><NavLink to="/about" onClick={noAction}>Join ToBePrint3D</NavLink></li>
                                             <li className="page-item"><NavLink to="/about" onClick={noAction}>Sign In</NavLink></li>
                                             <li className="page-item"><NavLink to="/about" onClick={noAction}>How it Work</NavLink></li>
                                             <li className="page-item"><NavLink to="/about" onClick={noAction}>Advantages</NavLink></li>
-                                            <li className="page-item"><NavLink to="/about" onClick={noAction}>Direo App</NavLink></li>
+                                            <li className="page-item"><NavLink to="/about" onClick={noAction}>ToBePrint3D App</NavLink></li>
                                             <li className="page-item"><NavLink to="/about" onClick={noAction}>Packages</NavLink></li>
                                         </ul>
                                     </div>
@@ -68,9 +68,9 @@ export class Footer extends Component {
                                 </div>{/* ends: .col-lg-3 */}
                                 <div className="col-lg-4 col-sm-6">
                                     <div className="widget widget_text">
-                                        <h2 className="widget-title">Direo on Mobile</h2>
+                                        <h2 className="widget-title">ToBePrint3D on Mobile</h2>
                                         <div className="textwidget">
-                                            <p>Download the Direo app today so you can find your events anytime, anywhere.</p>
+                                            <p>Download the ToBePrint3D app today so you can find your events anytime, anywhere.</p>
                                             <ul className="list-unstyled store-btns">
                                             <li><NavLink onClick={noAction} to="/app-store" className="btn-gradient btn-gradient-two btn btn-md btn-icon icon-left"><span className="fab fa-apple" /> App Store</NavLink></li>
                                             <li><NavLink onClick={noAction} to="/google-play" className="btn btn-dark btn-md btn-icon btn-icon"><span className="fab fa-android" /> Google Play</NavLink></li>
@@ -87,7 +87,7 @@ export class Footer extends Component {
                                 <div className="col-lg-12">
                                     <div className="footer-bottom--content">
                                         <NavLink to="/" className="footer-logo"><img src="./assets/img/logo.png" alt="" /></NavLink>
-                                        <p className="m-0 copy-text">©2019 Direo. Made with <span className="la la-heart-o" /> by <NavLink onClick={noAction} to="www.aazztech.com">Aazztech</NavLink></p>
+                                        <p className="m-0 copy-text">©2019 ToBePrint3D. Made with <span className="la la-heart-o" /> by <NavLink onClick={noAction} to="www.aazztech.com">Aazztech</NavLink></p>
                                         <ul className="list-unstyled lng-list">
                                             <li><NavLink onClick={noAction} to="/english">English</NavLink></li>
                                         </ul>

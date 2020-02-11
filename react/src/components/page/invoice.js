@@ -36,7 +36,7 @@ class CheckoutBasic extends Component {
                                                 below.</p>
                                             <h4>Account details:</h4>
                                             <ul className="list-unstyled">
-                                                <li>Account Name: <span>Direo Inc.</span></li>
+                                                <li>Account Name: <span>ToBePrint3D Inc.</span></li>
                                                 <li>Account Number: <span>000-123-4567890</span></li>
                                                 <li>Bank Name: <span>State Bank, Neverland</span></li>
                                             </ul>

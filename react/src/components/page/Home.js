@@ -21,15 +21,12 @@ class Home extends Component {
                 {/* Header section start */}
                 <section className="intro-wrapper bgimage overlay overlay--dark">
                     <div className="bg_image_holder"><img src="./assets/img/intro.jpg" alt="" /></div>
-                    <div className="mainmenu-wrapper">
-                        <Header  class="menu--light" {...this.props}/>                    
-                    </div>
                     {/* <!-- ends: .mainmenu-wrapper --> */}
                     <AdvSearch />
                 </section>
                 {/* Header section end */}
                 <Subscribe />
-                <Footer />
+               
             </Fragment>
         )
     }

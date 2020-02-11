@@ -6136,6 +6136,20 @@ p {
   background: linear-gradient(to right, #fa8b0c, #f5548e);
 }
 
+.btn-gradient.btn-gradient-three {
+  background: -webkit-gradient(linear, left top, right top, from(#4099ff), to(#3b5998));
+  background: -webkit-linear-gradient(left, #4099ff, #3b5998);
+  background: -o-linear-gradient(left, #4099ff, #3b5998);
+  background: linear-gradient(to right, #4099ff, #3b5998);
+}
+
+.btn-gradient.btn-gradient-three:before {
+  background: -webkit-gradient(linear, left top, right top, from(#3b5998), to(#4099ff));
+  background: -webkit-linear-gradient(left, #3b5998, #4099ff);
+  background: -o-linear-gradient(left, #3b5998, #4099ff);
+  background: linear-gradient(to right, #3b5998, #4099ff);
+}
+
 .btn-gradient.btn-xs {
   line-height: 2.53333rem;
 }

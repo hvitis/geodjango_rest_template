@@ -11,15 +11,15 @@ export class AdvSearch extends Component {
                         <div className="row">
                             <div className="col-lg-10 offset-lg-1">
                                 <div className="search_title_area">
-                                    <h2 className="title">Find the Best Places to Be</h2>
-                                    <p className="sub_title">All the top locations – from restaurants and clubs, to galleries, famous places and more..</p>
+                                    <h2 className="title">Find the Best 3D Printers</h2>
+                                    <p className="sub_title">All the top people – from around the world..</p>
                                 </div>{/* ends: .search_title_area */}
                                 <form action="/" className="search_form">
                                     <div className="atbd_seach_fields_wrapper">
                                         <div className="single_search_field search_query">
-                                            <input className="form-control search_fields" type="text" placeholder="What are you looking for?" />
+                                            <input className="form-control search_fields" type="text" placeholder="What are you located at?" />
                                         </div>
-                                        <div className="single_search_field search_category">
+                                        {/* <div className="single_search_field search_category">
                                             <select className="search_fields" id="at_biz_dir-category">
                                             <option value>Select a category</option>
                                             <option value="automobile">Automobile</option>
@@ -34,13 +34,13 @@ export class AdvSearch extends Component {
                                             <option value="australia">Australia</option>
                                             <option value="australia-australia">Australia</option>
                                             </select>
-                                        </div>
+                                        </div> */}
                                         <div className="atbd_submit_btn">
                                             <button type="submit" onClick={noAction} className="btn btn-block btn-gradient btn-gradient-one btn-md btn_search">Search</button>
                                         </div>
                                     </div>
                                 </form>{/* ends: .search_form */}
-                                <div className="directory_home_category_area">
+                                {/* <div className="directory_home_category_area">
                                     <ul className="categories">
                                         <li>
                                             <NavLink onClick={noAction} to="/at_demo">
@@ -67,7 +67,8 @@ export class AdvSearch extends Component {
                                             </NavLink>
                                         </li>
                                     </ul>
-                                </div>{/* ends: .directory_home_category_area */}
+                                </div> */}
+                                {/* ends: .directory_home_category_area */}
                             </div>{/* ends: .col-lg-10 */}
                         </div>
                     </div>

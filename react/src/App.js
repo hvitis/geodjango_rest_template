@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
+import Login from './components/page/Login'
 
-import BaseRouter from './routes';
 import * as actions from './Store/action/auth';
 import { connect } from 'react-redux';
-
-import Index from './components/page/Home'
+import Home from './components/page/Home';
+// import BaseRouter from './routes';
+// import Index from './components/page/Home'
 import Header from './components/layout/Header'
-import Login from './components/page/Login'
-import Signup from './components/page/Signup'
-
+// import Signup from './components/page/Signup'
 import { Footer } from './components/layout/Footer'
-import Layout from './components/layout/Layout'
+// import Layout from './components/layout/Layout'
+
+import {
+  BrowserRouter,
+  HashRouter,
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom';
+
 
 class App extends Component {
   componentDidMount() {
@@ -21,18 +29,17 @@ class App extends Component {
     console.log("Rendering props on MAIN", this.props)
 
     return (
+      <div>
+        
       <Router basename={process.env.PUBLIC_URL} >
-        <div {...this.props}>
-        <BaseRouter />
-        </div>
-
-       {/* <Layout {...this.props}>
-        <BaseRouter />
-       </Layout> */}
-         {/* <Login /> */}
-         {/* <Signup /> */}
-        {/* <Footer />  */}
-      </Router>
+      <Header { ...this.props } />
+      <Switch>
+          <Route path = '/' exact render={(props) => <Home {...this.props} title={`Props through render`} />} />
+          <Route path= '/login/' exact component = { Login } />
+        </Switch>
+      <Footer />
+      </Router>  
+      </div>
     );
   }
 }
