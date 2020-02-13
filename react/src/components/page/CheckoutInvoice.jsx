@@ -5,7 +5,7 @@ import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-class CheckoutBasic extends Component {
+class CheckoutInvoice extends Component {
     state = {
         price : 45
     }
@@ -141,4 +141,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(CheckoutBasic);
+export default connect(mapStateToProps)(CheckoutInvoice);

@@ -7,9 +7,9 @@ import { connect } from 'react-redux';
 import { Transection } from '../content/element/transection';
 const noAction = e => e.preventDefault();
 
-class CheckoutBasic extends Component {
+class CheckoutEnterprise extends Component {
     state = {
-        price : 99
+        price : 199
     }
     render () {
         const light = this.props.logo[0].light;
@@ -51,7 +51,7 @@ class CheckoutBasic extends Component {
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <h4>Advanced Plan</h4>
+                                                            <h4>Enterprise Plan</h4>
                                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo,
                                                                 labore.</p>
                                                         </td>
@@ -92,4 +92,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(CheckoutBasic);
+export default connect(mapStateToProps)(CheckoutEnterprise);

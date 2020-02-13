@@ -5,7 +5,7 @@ import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import ListingList from '../container/all-listing-list';
 import { connect } from 'react-redux';
 
-const AllListingGrid = (props) => {
+const AllListingList = (props) => {
     const light = props.logo[0].light;
     return (
         <Fragment>
@@ -31,4 +31,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(AllListingGrid);
+export default connect(mapStateToProps)(AllListingList);
