@@ -4,8 +4,16 @@ import { Footer } from '../layout/Footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { connect } from 'react-redux';
 import Map1 from '../content/element/map';
+import GoogleMapReact from 'google-map-react';
+
 class AddListing extends Component {
-    
+    static defaultProps = {
+        center: {
+          lat: 59.95,
+          lng: 30.33
+        },
+        zoom: 11
+      };
     render () {
         return (
             <Fragment>
@@ -411,7 +419,7 @@ class AddListing extends Component {
                                             <div className="atbd_area_title">
                                                 <h4><span className="la la-calendar-check-o"></span> Location (Map)</h4>
                                             </div>
-                                        </div>
+                                        </div> 
                                         <div className="atbdb_content_module_contents">
                                             <label className="not_empty form-label">Set the Marker by clicking anywhere on the Map</label>
                                             <div className="map" id="map-one" style={{position: 'relative'}}>

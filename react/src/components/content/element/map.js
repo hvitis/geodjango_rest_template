@@ -198,7 +198,7 @@ const Map1 = (props) => {
                 style={!props.styles ? mapStyles : mapStyles2}
                 initialCenter={{ lat: 50.797897, lng: -1.077641 }}
             >
-                <Marker position={{ lat: 50.797897, lng: -1.077641}} icon= './assets/img/marker.png' />
+                <Marker position={{ lat: 50.797897, lng: -1.077641}} />
             </Map>                
         </Fragment>
     )
