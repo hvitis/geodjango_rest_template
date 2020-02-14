@@ -33,7 +33,7 @@ class App extends Component {
 
     return (
       <div>
-        
+        {/* TODO: protected Routes */}
       <Router basename={process.env.PUBLIC_URL} >
       <Header { ...this.props } />
       <Switch>

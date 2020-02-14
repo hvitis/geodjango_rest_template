@@ -4,7 +4,7 @@ from .models import userProfile, printer
 from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import UserProfileDetailedSerializer, UserProfileListCreateSerializer, PrinterSerializer
 
-class UserProfileDetailedListView(ListAPIView):
+class UserProfileFullListView(ListAPIView):
     queryset=userProfile.objects.all()
     serializer_class=UserProfileDetailedSerializer
     # permission_classes=[IsAuthenticated]
@@ -12,7 +12,7 @@ class UserProfileDetailedListView(ListAPIView):
 
 
 
-class UserProfileDetailedDetailView(ListAPIView):
+class UserProfileFullDetailView(ListAPIView):
     queryset=userProfile.objects.all()
     serializer_class=UserProfileDetailedSerializer
     permission_classes=[]
