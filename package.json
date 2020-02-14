@@ -77,12 +77,11 @@
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "4.2.0"
   },
-  "homepage": "https://tobeprint3d.herokuapp.com/",
+  "homepage": "https://aazztech.com/demos/themes/html/ToBePrint3D-react",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "postinstall": "npm run build"
+    "test": "node scripts/test.js"
   },
   "eslintConfig": {
     "extends": "react-app"
