@@ -68,8 +68,8 @@ class Header extends Component {
                                                     !this.props.isAuthenticated ? (
                                                         <ul className="d-flex list-unstyled align-items-center">
                                                             <li>
-                                                                <NavLink to="/add-listing" className="btn btn-xs btn-gradient btn-gradient-two">
-                                                                    <span className="la la-plus"></span> Add Listing
+                                                                <NavLink to="/add-printer" className="btn btn-xs btn-gradient btn-gradient-two">
+                                                                    <span className="la la-plus"></span> Add Print3r
                                                                 </NavLink>
                                                             </li>
                                                             <li>
@@ -85,17 +85,17 @@ class Header extends Component {
                                                     ) : (
                                                         <ul className="d-flex list-unstyled align-items-center">
                                                             <li>
-                                                                <NavLink to="/add-listing" className="btn btn-xs btn-gradient btn-gradient-two">
-                                                                    <span className="la la-plus"></span> Add Listing
+                                                                <NavLink to="/add-printer" className="btn btn-xs btn-gradient btn-gradient-two">
+                                                                    <span className="la la-plus"></span> Add Print3r
                                                                 </NavLink>
                                                             </li>
                                                             <li>					
                                                                 <div className="author-info">
                                                                     <a href=" " className="author-avatar"><img src="./assets/img/author-avatar.png" alt="" className="rounded-circle" /></a>
                                                                     <ul className="list-unstyled">
-                                                                        <li><NavLink to="/author-profile">My Profile</NavLink></li>
-                                                                        <li><NavLink to="/dashboard-listings">Deshboard</NavLink></li>
-                                                                        <li><NavLink to="/at_demo">Favorite Listing</NavLink></li>
+                                                                        {/* <li><NavLink to="/author-profile">My Profile</NavLink></li> */}
+                                                                        <li><NavLink to="/dashboard-listings">My Profile</NavLink></li>
+                                                                        {/* <li><NavLink to="/at_demo">Favourite Listing</NavLink></li> */}
                                                                         <li><a href=" " onClick={this.props.logout}><span className="la la-bank bg-warning"></span>Logout</a></li>
                                                                     </ul>
                                                                 </div>

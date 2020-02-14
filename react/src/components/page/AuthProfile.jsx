@@ -10,23 +10,10 @@ const noAction = e => e.preventDefault();
 
 class AuthProfile extends Component {
     render () {
-        const light = this.props.logo[0].light;
-        const logdIn = () => {
-            return this.props.login
-        }
+       
         return (
             <Fragment>
-                {/* Header section start */}
-                <section className="header-breadcrumb bgimage overlay overlay--dark">
-                    <div className="bg_image_holder"><img src="./assets/img/breadcrumb1.jpg" alt="" /></div>
-                    <div className="mainmenu-wrapper">
-                        <Header logo={light} class="menu--light" />                    
-                    </div>
-                    {/* <!-- ends: .mainmenu-wrapper --> */}
-                    <BreadcrumbWraper title="Author Profile" />
-                </section>
-                {/* Header section end */}
-    
+             
                 <section className="author-info-area section-padding-strict section-bg">
                     <div className="container">
                         <div className="row">
@@ -125,13 +112,13 @@ class AuthProfile extends Component {
                                 </div>{/*<!-- ends: .atbd_author_listings_area -->*/}
                                 
                                 <div className="row">
-                                    <CardListingGrid4 logdIn={logdIn()} />
+                                    {/* <CardListingGrid4  /> */}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>                
-               <Footer />
+               
             </Fragment>
         )
     }

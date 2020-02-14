@@ -4,7 +4,7 @@ import { Footer } from '../layout/Footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { connect } from 'react-redux';
 import Map1 from '../content/element/map';
-import GoogleMapReact from 'google-map-react';
+// import GoogleMapReact from 'google-map-react';
 
 class AddListing extends Component {
     static defaultProps = {

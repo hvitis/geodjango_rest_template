@@ -14,7 +14,7 @@ export class NavItem extends Component {
                             <li><NavLink to="/all-listings-grid">Listing Grid</NavLink></li>
                             <li><NavLink to="/all-listings-list">Listing List</NavLink></li>
                             <li><NavLink to="/listing-details1">Listing Details</NavLink></li>
-                            <li><NavLink to="/add-listing">Add Listing</NavLink></li>
+                            <li><NavLink to="/add-printer">Add Print3r</NavLink></li>
                         </ul>
                     </li>
                     <li className="dropdown has_dropdown">

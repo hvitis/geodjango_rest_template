@@ -39,7 +39,7 @@ const BaseRouter = (props) => (
           <Route path = '/advanced' component = { CheckoutAdvanced } />
           <Route path = '/enterprise' component = { Enterprise } />
           <Route path = '/invoice' component = { Invoice } />
-          <Route path = '/add-listing' component = { AddListing } /> */}
+          <Route path = '/add-printer' component = { AddListing } /> */}
           <Redirect to="/" />
         </Switch>
 
