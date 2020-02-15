@@ -13,14 +13,15 @@ import * as actions from '../../Store/action/auth';
 
 const noAction = e => e.preventDefault();
 class Home extends Component {
-    
+
     render() {
+
         console.log("Props on HOME", this.props)
         return (
             <Fragment>
                 {/* Header section start */}
                 <section className="intro-wrapper bgimage overlay overlay--dark">
-                    <div className="bg_image_holder"><img src="./assets/img/intro.jpg" alt="" /></div>
+                    <div className="bg_image_holder"><img src='' alt="" /></div>
                     {/* <!-- ends: .mainmenu-wrapper --> */}
                     <AdvSearch />
                 </section>

@@ -36,7 +36,6 @@ import './assets/style.css';
 // import './assets/vendor_assets/js/select2.full.min.js'
 // import './assets/vendor_assets/js/slick.min.js'
 // import './assets/theme_assets/js/locator.js'
-// import './assets/theme_assets/js/main.js'   
 // import jquery from 'jquery';
 
 import reducer from './Store/Reducers/auth';
@@ -49,7 +48,7 @@ const store = createStore(reducer, composeEnhances(
 console.log('public url: ', process.env.PUBLIC_URL)
 
 // const jQuery = jquery;
-// window.jQuery = jquery;
+
 const app = (
     <Provider store={store}>
         <App />

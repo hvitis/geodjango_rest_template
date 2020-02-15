@@ -4,6 +4,7 @@ import { NavItem } from './Navbar';
 import { connect } from 'react-redux';
 import * as actions from '../../Store/action/auth';
 import {  withRouter } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const noAction = e => e.preventDefault();
 class Header extends Component {    
@@ -13,7 +14,7 @@ class Header extends Component {
         return (
   
             
-                <div className={"menu-area menu1 "+this.props.class}>
+                <div className="menu-area menu1">
                     <div className="top-menu-area">
                         <div className="container-fluid">
                             <div className="row">
@@ -21,7 +22,8 @@ class Header extends Component {
                                     <div className="menu-fullwidth">
                                         <div className="logo-wrapper order-lg-0 order-sm-1">
                                             <div className="logo logo-top">
-                                                <NavLink to="/"><img src={this.props.logo} alt="logoImage" className="img-fluid" /></NavLink>
+                                                {/* <NavLink to="/"><img alt="logoImage" className="img-fluid" /></NavLink> */}
+                                                <NavLink to="/"><Button variant="primary">TOBEPRINT3D</Button></NavLink>
                                             </div>
                                         </div>{/*<!-- ends: .logo-wrapper -->*/}
                                         <div className="menu-container order-lg-1 order-sm-0">
@@ -91,7 +93,7 @@ class Header extends Component {
                                                             </li>
                                                             <li>					
                                                                 <div className="author-info">
-                                                                    <a href=" " className="author-avatar"><img src="./assets/img/author-avatar.png" alt="" className="rounded-circle" /></a>
+                                                                    <Button variant="primary">PROFILE</Button>
                                                                     <ul className="list-unstyled">
                                                                         {/* <li><NavLink to="/author-profile">My Profile</NavLink></li> */}
                                                                         <li><NavLink to="/dashboard-listings">My Profile</NavLink></li>
@@ -106,8 +108,31 @@ class Header extends Component {
 
                                                 </div>
                                             </div>
-                                            
-                                            
+                                            {/*<!-- emd .author-area -->*/}
+                                            <div className={"offcanvas-menu d-none"}>
+                                                <a href=" " className="offcanvas-menu__user"><i className="la la-user"></i></a>
+                                                <div className="offcanvas-menu__contents active">
+                                                    <a href=" " className="offcanvas-menu__close"><i className="la la-times-circle"></i></a>
+                                                    <div className="author-avatar">
+                                                        O
+                                                    </div>
+                                                    <ul className="list-unstyled">
+                                                        <li><a href="#">My Profile</a></li>
+                                                        <li><a href="#">My Listing</a></li>
+                                                        <li><a href="#">Favorite Listing</a></li>
+                                                        <li><a href="#">Add Listing</a></li>                                                        
+                                                        <li><a href="#">Logout</a></li>
+                                                    </ul>
+                                                    <div className="search_area">
+                                                        <form action="/">
+                                                            <div className="input-group input-group-light">
+                                                                <input type="text" className="form-control search_field" placeholder="Search here..." autoComplete="off" />
+                                                            </div>
+                                                            <button type="submit" className="btn btn-sm btn-secondary">Search</button>
+                                                        </form>
+                                                    </div>{/*<!-- ends: .search_area -->*/}
+                                                </div>{/*<!-- ends: .author-info -->*/}
+                                            </div>{/*<!-- ends: .offcanvas-menu -->*/}
                                         </div>{/*<!-- ends: .menu-right -->*/}
                                     </div>
                                 </div>

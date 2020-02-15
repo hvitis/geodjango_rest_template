@@ -40,7 +40,7 @@ export const checkAuthTimeout = expirationTime => {
 export const authLogin = (username, password) => {
     return dispatch => {
         dispatch(authStart());
-        axios.post('https://tobeprint3d.herokuapp.com/auth/jwt/create', {
+        axios.post('http://localhost:8000/auth/jwt/create', {
             username: username,
             password: password
         })
@@ -64,7 +64,7 @@ export const authSignup = (username, email, password) => {
     console.log('username and password', username, password)
     return dispatch => {
         dispatch(authStart());
-        axios.post('https://tobeprint3d.herokuapp.com/auth/users/', {
+        axios.post('http://localhost:8000/auth/users/', {
             username: username,
             email: email,
             password: password

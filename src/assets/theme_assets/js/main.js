@@ -113,29 +113,6 @@
         var imgID = $img.attr("id");
         var imgClass = $img.attr("class");
         var imgURL = $img.attr("src");
-
-        $.get(imgURL, function (data) {
-            //get the svg tag, ignore the rest
-            var $svg = jQuery(data).find("svg");
-
-            //Add replaced image's ID to the new SVG
-            if(typeof imgID !== "undefined"){
-                $svg = $svg.attr("id", imgID);
-            }
-
-            //Add replaced image's classes to the new SVG
-            if(typeof imgClass !== "undefined"){
-                $svg = $svg.attr('class', imgClass + " replaced-svg");
-            }
-
-            // remove any invalid XML tags as per http://validator.w3.org
-            $svg = $svg.removeAttr('xmlns:a');
-
-            //replace image width new SVG
-            $img.replaceWith($svg);
-
-        }, 'xml');
-        });
     
         // listing details gallery
         $(".gallery-images").slick({
@@ -324,4 +301,4 @@
         /* END OF ON LOAD FUNCTION */        
     }, 100);
 
-})(jQuery);
+})(JQuery);
