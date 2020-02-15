@@ -20,7 +20,7 @@ urlpatterns = [
     path("docs/", schema_view),
     # path('service-worker.js', TemplateView.as_view(template_name="service-worker.js",
                                                 #    content_type='application/javascript',), name='service-worker.js'),
-    re_path(".*", TemplateView.as_view(template_name="index.html")),
+    re_path(r'^.*', TemplateView.as_view(template_name="index.html")),
     # re_path(".*", TemplateView.as_view(template_name="service-worker.js",
     #                                    content_type='application/javascript')),
     

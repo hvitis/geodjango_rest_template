@@ -4,10 +4,12 @@ chardet==3.0.4
 colorama==0.4.3
 coreapi==2.3.3
 coreschema==0.0.4
+coverage
 Django==2.1.5
 django-cors-headers==3.2.1
 django-countries==5.5
 django_heroku
+django-webpack-loader
 django-rest-swagger==2.2.0
 django-templated-mail==1.1.1
 djangorestframework==3.11.0
