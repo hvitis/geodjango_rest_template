@@ -95,7 +95,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:8080",
@@ -195,11 +195,9 @@ STATICFILES_DIRS = [
     # ('build', os.path.join(BASE_DIR, 'build')),
     os.path.join(BASE_DIR, 'build/static'),
     os.path.join(BASE_DIR, 'build/assets'),
-
-
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # WHITENOISE_ROOT = os.path.join(FRONTEND_DIR, 'build', 'root')
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())

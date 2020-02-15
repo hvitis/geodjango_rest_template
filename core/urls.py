@@ -5,7 +5,8 @@ from django.views.generic import TemplateView
 from rest_framework_swagger.views import get_swagger_view
 from django.views.decorators.cache import cache_control
 from django.http import HttpResponse
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 schema_view = get_swagger_view(title='Accounts API')
 
@@ -26,7 +27,7 @@ urlpatterns = [
     # re_path(".*", TemplateView.as_view(template_name="service-worker.js",
     #                                    content_type='application/javascript')),
     
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # DJOSER URLS
 
