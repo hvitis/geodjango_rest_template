@@ -29,7 +29,7 @@ DEBUG = True
 mimetypes.add_type("text/css", ".css", True)
 mimetypes.add_type("application/javascript", ".js", True)
 
-ALLOWED_HOSTS = ['*', 'tobeprint3d.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     # before django.contrib.staticfiles
-    'whitenoise.runserver_nostatic',
+    # 'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     # 'django.contrib.sites',
     # our first django app
@@ -95,7 +95,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:8080",
@@ -190,12 +190,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
+    # os.path.join(BASE_DIR, 'static'),
+    # os.path.join(BASE_DIR, 'build'), When this is off the CSS is being loaded
+    # ('build', os.path.join(BASE_DIR, 'build')),
     os.path.join(BASE_DIR, 'build/static'),
+    os.path.join(BASE_DIR, 'build/assets'),
 
 
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # WHITENOISE_ROOT = os.path.join(FRONTEND_DIR, 'build', 'root')
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())

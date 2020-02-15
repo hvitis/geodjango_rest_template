@@ -4,6 +4,9 @@ from django.conf.urls import url
 from django.views.generic import TemplateView
 from rest_framework_swagger.views import get_swagger_view
 from django.views.decorators.cache import cache_control
+from django.http import HttpResponse
+
+
 schema_view = get_swagger_view(title='Accounts API')
 
 
@@ -19,8 +22,7 @@ urlpatterns = [
 
     path("docs/", schema_view),
     # path('service-worker.js', TemplateView.as_view(template_name="service-worker.js",
-                                                #    content_type='application/javascript',), name='service-worker.js'),
-    re_path(r'^.*', TemplateView.as_view(template_name="index.html")),
+    re_path('.*', TemplateView.as_view(template_name="index.html")),
     # re_path(".*", TemplateView.as_view(template_name="service-worker.js",
     #                                    content_type='application/javascript')),
     
