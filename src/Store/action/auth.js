@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
+import config from '../../config'
 
 export const authStart = () => {
     return {
@@ -40,7 +41,7 @@ export const checkAuthTimeout = expirationTime => {
 export const authLogin = (username, password) => {
     return dispatch => {
         dispatch(authStart());
-        axios.post('http://localhost:8000/auth/jwt/create', {
+        axios.post(config.API_URL + 'auth/jwt/create', {
             username: username,
             password: password
         })
@@ -64,7 +65,7 @@ export const authSignup = (username, email, password) => {
     console.log('username and password', username, password)
     return dispatch => {
         dispatch(authStart());
-        axios.post('http://localhost:8000/auth/users/', {
+        axios.post(config.API_URL + 'auth/users/', {
             username: username,
             email: email,
             password: password
