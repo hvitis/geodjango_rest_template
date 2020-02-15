@@ -8,6 +8,14 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import * as serviceWorker from './serviceWorker';
+import './assets/style.css';
+import './assets/vendor_assets/css/brands.css'
+import './assets/vendor_assets/css/fontawesome.min.css'
+import './assets/vendor_assets/css/jquery-ui.css'
+import './assets/vendor_assets/css/jquery.mCustomScrollbar.css'
+import './assets/vendor_assets/css/line-awesome.min.css'
+import './assets/vendor_assets/css/magnific-popup.css'
+
 
 import reducer from './Store/Reducers/auth';
 

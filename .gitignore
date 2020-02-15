@@ -8,7 +8,8 @@
 logs
 **/*.backup.*
 **/*.back.*
-build
+build/
+/build
 staticfiles
 build
 node_modules

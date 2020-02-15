@@ -34,7 +34,8 @@ class App extends Component {
     return (
       <div>
         {/* TODO: protected Routes */}
-      <Router basename={process.env.PUBLIC_URL} >
+      {/* <Router basename={process.env.PUBLIC_URL} > */}
+      <Router >
       <Header { ...this.props } />
       <Switch>
           <Route path = '/' exact render={(props) => <Home {...this.props} title={`Props through render`} />} />
