@@ -22,6 +22,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
+import { ProtectedRoute } from './protected.route';
 
 
 class App extends Component {
@@ -41,7 +42,8 @@ class App extends Component {
           <Route path = '/' exact render={(props) => <Home {...this.props} title={`Props through render`} />} />
           <Route path = '/login/' exact component = { Login } />
           <Route path = '/signup/' exact component = { Signup } />
-          <Route path = '/add-printer' render={(props) => <AddPrinter {...this.props} title={`Props through render`} />} />
+          <ProtectedRoute { ...this.props } path ='/add-printer' redirect='/login' component={(props) => <AddPrinter {...this.props} />}  />
+          {/* <Route path = '/add-printer' render={(props) => <AddPrinter {...this.props} title={`Props through render`} />} /> */}
           <Route path = '/author-profile' component = { AuthProfile } />
           <Route path = '/dashboard-listings' render={(props) => <AuthDeshbord {...this.props} title={`Props through render`} />} />
           <Redirect to="/" />

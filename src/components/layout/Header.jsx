@@ -111,7 +111,8 @@ class Header extends Component {
                                             {/*<!-- emd .author-area -->*/}
                                             <div className={"offcanvas-menu d-none"}>
                                                 <a href=" " className="offcanvas-menu__user"><i className="la la-user"></i></a>
-                                                <div className="offcanvas-menu__contents active">
+                                                {/* <div className="offcanvas-menu__contents active"> */}
+                                                <div className="offcanvas-menu__contents">
                                                     <a href=" " className="offcanvas-menu__close"><i className="la la-times-circle"></i></a>
                                                     <div className="author-avatar">
                                                         O

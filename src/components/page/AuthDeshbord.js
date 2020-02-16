@@ -1,4 +1,4 @@
-import React, {Fragment, Component} from 'react';
+import React, { Fragment, Component } from 'react';
 import Header from '../layout/Header';
 import { Footer } from '../layout/Footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
@@ -6,12 +6,43 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CardListingGrid4 from '../content/element/card/card-listing-grid-4';
 // import { LogOut } from '../../Store/action/logoutAction';
-import Map1 from '../content/element/map';
+import MapLocationPicker from '../content/element/map';
+import { GetPosition } from '../content/element/getPosition'
+
 const noAction = e => e.preventDefault();
 
 class AuthDeshbord extends Component {
-    render () { 
-        console.log("Props loaded on Dashboard",this.props)
+
+    componentWillMount(){
+        let mapIsLoaded = false
+        this.setState({
+           
+            mapIsLoaded: false,
+        });
+        console.log("Dashboard state will mount", this.state)
+
+    }
+    componentDidMount() {
+        let mapIsLoaded = false
+        const geo = navigator.geolocation;
+        if (!geo) {
+            console.log('Geolocation is not supported');
+            return;
+        }
+        const onChange = ({ coords }) => {
+            this.setState({
+                latitude: coords.latitude,
+                longitude: coords.longitude,
+                mapIsLoaded: true,
+            });
+            console.log("Dashboard state did mount", this.state)
+        };
+        geo.watchPosition(onChange);
+        
+    }
+    render() {
+       
+        // console.log("Props loaded on Dashboard", this.props)
 
         return (
             <Fragment>
@@ -34,19 +65,19 @@ class AuthDeshbord extends Component {
                                                         <a className="nav-link" id="prints-tab" data-toggle="tab" href="#prints" role="tab" aria-controls="prints" aria-selected="false">My Prints</a>
                                                     </li>
                                                 </ul>
-                                              
+
                                             </div>
                                         </div>{/*<!-- ends: .col-lg-12 -->*/}
                                     </div>
                                 </div>
                             </div>{/*<!-- ends: .dashboard-nav -->*/}
                             <div className="tab-content p-top-100" id="dashboard-tabs-content">
-                            <div className="tab-pane fade" id="prints" role="tabpanel" aria-labelledby="prints-tab">
+                                <div className="tab-pane fade" id="prints" role="tabpanel" aria-labelledby="prints-tab">
                                     <div className="container">
                                         <div className="row">
                                             <div className="alert alert-success" role="alert">
-                                                     Prints
-                                            </div>          
+                                                Prints
+                                            </div>
                                         </div>
                                     </div>
                                 </div>{/*<!-- ends: .tab-pane -->*/}
@@ -54,8 +85,8 @@ class AuthDeshbord extends Component {
                                     <div className="container">
                                         <div className="row">
                                             <div className="alert alert-success" role="alert">
-                                                     all-listings
-                                            </div>          
+                                                all-listings
+                                            </div>
                                         </div>
                                     </div>
                                 </div>{/*<!-- ends: .tab-pane -->*/}
@@ -79,7 +110,7 @@ class AuthDeshbord extends Component {
                                             <div className="col-lg-9 col-md-8">
                                                 <div className="atbd_author_module">
                                                     <div className="atbd_content_module">
-                                                        
+
                                                         <div className="atbd_content_module__tittle_area">
                                                             <div className="atbd_area_title">
                                                                 <h4><span className="la la-user"></span>My Profile</h4>
@@ -88,54 +119,61 @@ class AuthDeshbord extends Component {
                                                         <div className="atbdb_content_module_contents">
 
                                                             {/* MAP PICKER LOCATION */}
-                                    <div className="atbd_content_module">
-                                        <div className="atbd_content_module__tittle_area">
-                                            <div className="atbd_area_title">
-                                                <h4><span className="la la-calendar-check-o"></span> Location (Map)</h4>
-                                            </div>
-                                        </div> 
-                                        <div className="atbdb_content_module_contents">
-                                            <label className="not_empty form-label">Set the Marker by clicking anywhere on the Map</label>
-                                            <div className="map" id="map-one" style={{position: 'relative'}}>
-                                                <Map1 />
-                                            </div>
-                                                    
-                                            <div className="cor-wrap form-group">
-                                                <div className="atbd_mark_as_closed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
-                                                    <input type="checkbox" className="custom-control-input" name="manual_coordinate" value="1" id="manual_coordinate" />
-                                                    <label htmlFor="manual_coordinate" className="not_empty custom-control-label">Or Enter Coordinates (latitude and longitude) Manually. </label>
-                                                </div>
-                                            </div>
-                                            <div className="cor-form">
-                                                <div id="hide_if_no_manual_cor" className="clearfix row m-bottom-30">
-                                                    <div className="col-sm-6">
-                                                        <div className="form-group">
-                                                            <label htmlFor="manual_lat" className="not_empty"> Latitude </label>
-                                                            <input type="text" name="manual_lat" id="manual_lat" className="form-control directory_field" placeholder="Enter Latitude eg. 24.89904" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-sm-6 mt-3 mt-sm-0">
-                                                        <div className="form-group">
-                                                            <label htmlFor="manual_lng" className="not_empty"> Longitude </label>
-                                                            <input type="text" name="manual_lng" id="manual_lng" className="form-control directory_field" placeholder="Enter Longitude eg. 91.87198" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-md-12 col-sm-12">
-                                                        <div className="form-group lat_btn_wrap m-top-15">
-                                                            <button className="btn btn-primary" id="generate_admin_map">Generate on Map
+                                                            <div className="atbd_content_module">
+                                                                <div className="atbd_content_module__tittle_area">
+                                                                    <div className="atbd_area_title">
+                                                                        <h4><span className="la la-calendar-check-o"></span> Location (Map)</h4>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="atbdb_content_module_contents">
+                                                                    <label className="not_empty form-label">Set the Marker by clicking anywhere on the Map</label>
+                                                                    <div className="map" id="map-one" style={{ position: 'relative' }}>
+                                                                      { this.state.mapIsLoaded ? <MapLocationPicker {...this.state} /> : <div className="alert">Loading....</div>}  
+                                                                    </div>
+
+                                                                    <div className="cor-wrap form-group">
+                                                                        <div className="atbd_mark_as_closed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
+                                                                            <input type="checkbox" className="custom-control-input" name="manual_coordinate" value="1" id="manual_coordinate" />
+                                                                            <label htmlFor="manual_coordinate" className="not_empty custom-control-label">Or Enter Coordinates (latitude and longitude) Manually. </label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div className="cor-form">
+                                                                        <div id="hide_if_no_manual_cor" className="clearfix row m-bottom-30">
+                                                                            <div className="col-md-12">
+                                                                                <div className="form-group">
+                                                                                    <label htmlFor="address" className="not_empty">Address</label>
+                                                                                    <input className="form-control" id="address" type="text" placeholder="Address" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className="col-sm-6 mt-3 mt-1">
+                                                                                <div className="form-group">
+                                                                                    <label htmlFor="manual_lat" className="not_empty"> Latitude </label>
+                                                                                    <input type="text" name="manual_lat" id="manual_lat" className="form-control directory_field" placeholder="Enter Latitude eg. 24.89904" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className="col-sm-6 mt-3 mt-1">
+                                                                                <div className="form-group">
+                                                                                    <label htmlFor="manual_lng" className="not_empty"> Longitude </label>
+                                                                                    <input type="text" name="manual_lng" id="manual_lng" className="form-control directory_field" placeholder="Enter Longitude eg. 91.87198" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className="col-md-12 col-sm-12">
+                                                                                <div className="form-group lat_btn_wrap m-top-15">
+                                                                                    <button className="btn btn-primary" id="generate_admin_map">Save Location
                                                             </button>
-                                                        </div>
-                                                    </div> {/*<!-- ends #hide_if_no_manual_cor-->*/}
-                                                </div>
-                                                <div className="form-group">
-                                                    <div className="atbd_mark_as_closed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
-                                                        <input type="checkbox" className="custom-control-input" name="hide_map" value="1" id="hide_map" />
-                                                        <label htmlFor="hide_map" className="not_empty custom-control-label">Hide map for this listing.</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>{/*<!-- ends: .atbdb_content_module_contents -->*/}
-                                    </div>{/*<!-- ends: .atbd_content_module -->*/}
+                                                                                </div>
+                                                                            </div> {/*<!-- ends #hide_if_no_manual_cor-->*/}
+                                                                        </div>
+                                                                        {/* <div className="form-group">
+                                                                            <div className="atbd_mark_as_closed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
+                                                                                <input type="checkbox" className="custom-control-input" name="hide_map" value="1" id="hide_map" />
+                                                                                <label htmlFor="hide_map" className="not_empty custom-control-label">Hide map for this listing.</label>
+                                                                            </div>
+                                                                        </div> */}
+                                                                    </div>
+                                                                </div>{/*<!-- ends: .atbdb_content_module_contents -->*/}
+                                                            </div>{/*<!-- ends: .atbd_content_module -->*/}
                                                             <div className="user_info_wrap">
                                                                 {/*<!--Full name-->*/}
                                                                 <div className="row">
@@ -176,18 +214,9 @@ class AuthDeshbord extends Component {
                                                                             <input className="form-control" type="tel" placeholder="Phone number" id="phone" />
                                                                         </div>
                                                                     </div>
-                                                                    <div className="col-md-6">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="website" className="not_empty">Website</label>
-                                                                            <input className="form-control" id="website" type="text" placeholder="Website" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="col-md-6">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="address" className="not_empty">Address</label>
-                                                                            <input className="form-control" id="address" type="text" placeholder="Address" />
-                                                                        </div>
-                                                                    </div>
+
+
+                                                                    <hr />
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
                                                                             <label htmlFor="new_pass" className="not_empty">New Password</label>
@@ -198,6 +227,13 @@ class AuthDeshbord extends Component {
                                                                         <div className="form-group">
                                                                             <label htmlFor="confirm_pass" className="not_empty">Confirm New Password</label>
                                                                             <input id="confirm_pass" className="form-control" type="password" placeholder="Re-enter Password" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr />
+                                                                    <div className="col-md-6">
+                                                                        <div className="form-group">
+                                                                            <label htmlFor="website" className="not_empty">Website</label>
+                                                                            <input className="form-control" id="website" type="text" placeholder="Website" />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6">
@@ -242,91 +278,91 @@ class AuthDeshbord extends Component {
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                    {/* CONTACT INFO */}
-                                                            
-                                    <div className="atbd_content_module">
-                                        <div className="atbd_content_module__tittle_area">
-                                            <div className="atbd_area_title">
-                                                <h4><span className="la la-user"></span>Contact Information</h4>
-                                            </div>
-                                        </div>
-                                        <div className="atbdb_content_module_contents">
-                                            <form action="/">
-                                                <div className="custom-control custom-checkbox checkbox-outline checkbox-outline-primary m-bottom-20">
-                                                    <input type="checkbox" className="custom-control-input" id="hide_contace_info" />
-                                                    <label className="custom-control-label" htmlFor="hide_contace_info">Check it to hide contact
-                                                        information for this listing</label>
-                                                </div>
-                                                <div className="form-group">
-                                                    <label htmlFor="address" className="form-label">Address</label>
-                                                    <input type="text" placeholder="Listing Address eg. Houghton Street London WC2A 2AE UK" id="address" className="form-control" required />
-                                                </div>
-                                                <div className="form-group">
-                                                    <label htmlFor="phone_number" className="form-label">Phone Number</label>
-                                                    <input type="text" placeholder="Phone Number" id="phone_number" className="form-control" required />
-                                                </div>
-                                                <div className="form-group">
-                                                    <label htmlFor="contact_email" className="form-label">Email</label>
-                                                    <input type="email" id="contact_email" className="form-control" placeholder="Enter Email" required />
-                                                </div>
-                                                <div className="form-group">
-                                                    <label htmlFor="website_address" className="form-label">Website</label>
-                                                    <input type="text" id="website_address" className="form-control" placeholder="Listing Website eg. http://example.com" />
-                                                </div>
-                                                <div className="form-group">
-                                                    <label className="form-label">Social Information</label>
-                                                    <div id="social_info_sortable_container">
-                                                        <div className="directorist atbdp_social_field_wrapper">
-                                                            <div className="row m-bottom-20" id="social-form-fields">
-                                                                <div className="col-sm-4">
-                                                                    <div className="form-group">
-                                                                        <div className="select-basic">
-                                                                            <select className="form-control">
-                                                                                <option value="behance"> Behance</option>
-                                                                                <option value="dribbble"> Dribbble</option>
-                                                                                <option value="facebook"> Facebook</option>
-                                                                                <option value="flickr"> Flickr</option>
-                                                                                <option value="github"> Github</option>
-                                                                                <option value="google-plus"> Google+</option>
-                                                                                <option value="instagram"> Instagram</option>
-                                                                                <option value="linkedin"> LinkedIn</option>
-                                                                                <option value="pinterest"> Pinterest</option>
-                                                                                <option value="reddit"> Reddit</option>
-                                                                                <option value="snapchat-ghost"> Snapchat</option>
-                                                                                <option value="soundcloud"> SoundCloud</option>
-                                                                                <option value="stack-overflow"> StackOverFLow</option>
-                                                                                <option value="tumblr"> Tumblr</option>
-                                                                                <option value="twitter"> Twitter</option>
-                                                                                <option value="vimeo"> Vimeo</option>
-                                                                                <option value="vine"> Vine</option>
-                                                                                <option value="youtube"> Youtube</option>
-                                                                            </select>
+                                                                {/* CONTACT INFO */}
+
+                                                                <div className="atbd_content_module">
+                                                                    <div className="atbd_content_module__tittle_area">
+                                                                        <div className="atbd_area_title">
+                                                                            <h4><span className="la la-user"></span>Contact Information</h4>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div className="col-sm-6">
-                                                                    <div className="form-group">
-                                                                        <input type="url" className="form-control directory_field atbdp_social_input" placeholder="eg. http://example.com" required="" />
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-sm-2 d-flex align-items-center">
-                                                                    <span className="removeSocialField btn-danger" id="removeSocial" title="Remove this item"><i className="la la-times"></i></span>
-                                                                    <span className="adl-move-icon btn-secondary"><i className="la la-arrows"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <button className="copy-btn btn btn-sm btn-secondary"><i className="la la-plus"></i> Add New</button>
-                                                </div>
-                                            </form>
-                                        </div>{/*<!-- ends: .atbdb_content_module_contents -->*/}
-                                    </div>{/*<!-- ends: .atbd_content_module -->*/}
-                              
-                               
+                                                                    <div className="atbdb_content_module_contents">
+                                                                        <form action="/">
+                                                                            <div className="custom-control custom-checkbox checkbox-outline checkbox-outline-primary m-bottom-20">
+                                                                                <input type="checkbox" className="custom-control-input" id="hide_contace_info" />
+                                                                                <label className="custom-control-label" htmlFor="hide_contace_info">Check it to hide contact
+                                                        information for this listing</label>
+                                                                            </div>
+                                                                            <div className="form-group">
+                                                                                <label htmlFor="address" className="form-label">Address</label>
+                                                                                <input type="text" placeholder="Listing Address eg. Houghton Street London WC2A 2AE UK" id="address" className="form-control" required />
+                                                                            </div>
+                                                                            <div className="form-group">
+                                                                                <label htmlFor="phone_number" className="form-label">Phone Number</label>
+                                                                                <input type="text" placeholder="Phone Number" id="phone_number" className="form-control" required />
+                                                                            </div>
+                                                                            <div className="form-group">
+                                                                                <label htmlFor="contact_email" className="form-label">Email</label>
+                                                                                <input type="email" id="contact_email" className="form-control" placeholder="Enter Email" required />
+                                                                            </div>
+                                                                            <div className="form-group">
+                                                                                <label htmlFor="website_address" className="form-label">Website</label>
+                                                                                <input type="text" id="website_address" className="form-control" placeholder="Listing Website eg. http://example.com" />
+                                                                            </div>
+                                                                            <div className="form-group">
+                                                                                <label className="form-label">Social Information</label>
+                                                                                <div id="social_info_sortable_container">
+                                                                                    <div className="directorist atbdp_social_field_wrapper">
+                                                                                        <div className="row m-bottom-20" id="social-form-fields">
+                                                                                            <div className="col-sm-4">
+                                                                                                <div className="form-group">
+                                                                                                    <div className="select-basic">
+                                                                                                        <select className="form-control">
+                                                                                                            <option value="behance"> Behance</option>
+                                                                                                            <option value="dribbble"> Dribbble</option>
+                                                                                                            <option value="facebook"> Facebook</option>
+                                                                                                            <option value="flickr"> Flickr</option>
+                                                                                                            <option value="github"> Github</option>
+                                                                                                            <option value="google-plus"> Google+</option>
+                                                                                                            <option value="instagram"> Instagram</option>
+                                                                                                            <option value="linkedin"> LinkedIn</option>
+                                                                                                            <option value="pinterest"> Pinterest</option>
+                                                                                                            <option value="reddit"> Reddit</option>
+                                                                                                            <option value="snapchat-ghost"> Snapchat</option>
+                                                                                                            <option value="soundcloud"> SoundCloud</option>
+                                                                                                            <option value="stack-overflow"> StackOverFLow</option>
+                                                                                                            <option value="tumblr"> Tumblr</option>
+                                                                                                            <option value="twitter"> Twitter</option>
+                                                                                                            <option value="vimeo"> Vimeo</option>
+                                                                                                            <option value="vine"> Vine</option>
+                                                                                                            <option value="youtube"> Youtube</option>
+                                                                                                        </select>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div className="col-sm-6">
+                                                                                                <div className="form-group">
+                                                                                                    <input type="url" className="form-control directory_field atbdp_social_input" placeholder="eg. http://example.com" required="" />
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div className="col-sm-2 d-flex align-items-center">
+                                                                                                <span className="removeSocialField btn-danger" id="removeSocial" title="Remove this item"><i className="la la-times"></i></span>
+                                                                                                <span className="adl-move-icon btn-secondary"><i className="la la-arrows"></i></span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <button className="copy-btn btn btn-sm btn-secondary"><i className="la la-plus"></i> Add New</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>{/*<!-- ends: .atbdb_content_module_contents -->*/}
+                                                                </div>{/*<!-- ends: .atbd_content_module -->*/}
 
 
-                                
-                                                               
+
+
+
+
 
                                                                 {/*<!--ends social info .row-->*/}
                                                                 <button type="submit" className="btn btn-primary" id="update_user_profile">Save Changes</button>
@@ -338,21 +374,21 @@ class AuthDeshbord extends Component {
                                         </div>
                                     </div>
                                 </div>{/*<!-- ends: .tab-pane -->*/}
-                                
-                            </div>        
+
+                            </div>
                         </section>
-                  ) : (
-                        <section className="dashboard-wrapper section-bg p-bottom-70 p-top-70">
-                            <div className="container">
-                                <div className="alert alert-danger" role="alert">
-                                    Please login First!
-                                </div>                                
-                            </div>                        
-                        </section>
+                    ) : (
+                            <section className="dashboard-wrapper section-bg p-bottom-70 p-top-70">
+                                <div className="container">
+                                    <div className="alert alert-danger" role="alert">
+                                        Please login First!
+                                </div>
+                                </div>
+                            </section>
                         )
                 }
 
-               <Footer />
+                <Footer />
             </Fragment>
         )
     }

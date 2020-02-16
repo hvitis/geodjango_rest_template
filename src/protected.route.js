@@ -3,19 +3,22 @@ import { Route, Redirect } from "react-router-dom";
 
 export const ProtectedRoute = ({
   component: Component,
-  ...rest
+  redirect: redirect,
+  ...props 
 }) => {
+  let isAuthenticated = props.isAuthenticated;
+  let path = props.path;
   return (
     <Route
-      {...rest}
-      render={props => {
-        if (this.props.isAuthenticated) {
-          return <Component {...props} />;
+      path={ path }
+      render={ props => {
+        if (isAuthenticated) {
+          return <Component { ...props } />;
         } else {
           return (
             <Redirect
               to={{
-                pathname: "/login",
+                pathname: redirect,
               }}
             />
           );
