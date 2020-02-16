@@ -12,18 +12,28 @@ import { GetPosition } from '../content/element/getPosition'
 const noAction = e => e.preventDefault();
 
 class AuthDeshbord extends Component {
-
+    constructor(props) {
+        super(props);
+        this.state = {  
+            latitude: undefined,
+            longitude: undefined,
+            mapIsLoaded: false,};
+    
+        // this.handleChange = this.handleChange.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
+      }
     componentWillMount(){
-        let mapIsLoaded = false
+    
         this.setState({
-           
+            latitude: undefined,
+            longitude: undefined,
             mapIsLoaded: false,
         });
         console.log("Dashboard state will mount", this.state)
 
     }
     componentDidMount() {
-        let mapIsLoaded = false
+
         const geo = navigator.geolocation;
         if (!geo) {
             console.log('Geolocation is not supported');
@@ -131,31 +141,31 @@ class AuthDeshbord extends Component {
                                                                       { this.state.mapIsLoaded ? <MapLocationPicker {...this.state} /> : <div className="alert">Loading....</div>}  
                                                                     </div>
 
-                                                                    <div className="cor-wrap form-group">
+                                                                    {/* <div className="cor-wrap form-group">
                                                                         <div className="atbd_mark_as_closed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
                                                                             <input type="checkbox" className="custom-control-input" name="manual_coordinate" value="1" id="manual_coordinate" />
                                                                             <label htmlFor="manual_coordinate" className="not_empty custom-control-label">Or Enter Coordinates (latitude and longitude) Manually. </label>
                                                                         </div>
-                                                                    </div>
-
+                                                                    </div> */}
+                                                                    <p >Or Enter Coordinates (latitude and longitude) manually. </p>
                                                                     <div className="cor-form">
                                                                         <div id="hide_if_no_manual_cor" className="clearfix row m-bottom-30">
-                                                                            <div className="col-md-12">
+                                                                            {/* <div className="col-md-12">
                                                                                 <div className="form-group">
                                                                                     <label htmlFor="address" className="not_empty">Address</label>
                                                                                     <input className="form-control" id="address" type="text" placeholder="Address" />
                                                                                 </div>
-                                                                            </div>
+                                                                            </div> */}
                                                                             <div className="col-sm-6 mt-3 mt-1">
                                                                                 <div className="form-group">
                                                                                     <label htmlFor="manual_lat" className="not_empty"> Latitude </label>
-                                                                                    <input type="text" name="manual_lat" id="manual_lat" className="form-control directory_field" placeholder="Enter Latitude eg. 24.89904" />
+                                                                                    <input type="text" name="manual_lat" id="manual_lat" value={ this.state.latitude } onChange={ (e) => this.setState({latitude: e.target.value}) } className="form-control directory_field" placeholder={this.state.latitude ? this.state.latitude : "Enter Latitude eg. 24.89904"}  />
                                                                                 </div>
                                                                             </div>
                                                                             <div className="col-sm-6 mt-3 mt-1">
                                                                                 <div className="form-group">
                                                                                     <label htmlFor="manual_lng" className="not_empty"> Longitude </label>
-                                                                                    <input type="text" name="manual_lng" id="manual_lng" className="form-control directory_field" placeholder="Enter Longitude eg. 91.87198" />
+                                                                                    <input type="text" name="manual_lng" id="manual_lng" value={ this.state.longitude } onChange={ (e) => this.setState({longitude: e.target.value}) } className="form-control directory_field" placeholder={this.state.longitude ? this.state.longitude : "Enter Longitude eg. 91.87198"} />
                                                                                 </div>
                                                                             </div>
                                                                             <div className="col-md-12 col-sm-12">

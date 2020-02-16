@@ -18,6 +18,8 @@ const MapLocationPicker = (props) => {
                 zoom={13}  
                 style={mapStyle}
                 initialCenter={{ lat: parseFloat(props.latitude) , lng: parseFloat(props.longitude) }}
+                // TODO: Change Marker when clicking on map and update location
+                onClick={ (t, map, c) => {console.log(t, map, c, c.latLng.lat, c.latLng.lng )} }
             >
                 <Marker position={{ lat: parseFloat(props.latitude), lng: parseFloat(props.longitude)}} />
             </Map>                
