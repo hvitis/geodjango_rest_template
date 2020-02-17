@@ -295,14 +295,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{LH_URL}}api/accounts/detailed-profiles/8",
+					"raw": "{{LH_URL}}api/accounts/detailed-profiles",
 					"host": [
 						"{{LH_URL}}api"
 					],
 					"path": [
 						"accounts",
-						"detailed-profiles",
-						"8"
+						"detailed-profiles"
 					]
 				}
 			},
@@ -311,10 +310,28 @@
 		{
 			"name": "Get User",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "{{LH_URL}}api/accounts/detailed-profiles/{{user_id}}",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"accounts",
+						"detailed-profiles",
+						"{{user_id}}"
+					]
 				}
 			},
 			"response": []
@@ -374,6 +391,52 @@
 						"detailed-profiles",
 						"{{user_id}}",
 						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Pic",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "jSdh6c3VAHgLShLEyTjH2N957qCILqmb",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/ADPI/Downloads/Screenshot-2020-02-13T14-11-49.934Z.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/accounts/profile-image/{{user_id}}",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"accounts",
+						"profile-image",
+						"{{user_id}}"
 					]
 				}
 			},
