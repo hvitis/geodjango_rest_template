@@ -22,10 +22,12 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 class UserProfileListCreateSerializer(serializers.ModelSerializer):
     user=serializers.StringRelatedField(read_only=True)
+    location=LocationSerialiazer()
+    socialMedia=SocialMediaSerializer()
     class Meta:
         model=UserProfile
         # TODO: On List serializer show location, make PUT serializer for updating user without location
-        fields=['user', 'nickname', 'firstName', 'lastName', 'description', 'owns_printer']
+        fields=['user', 'nickname', 'firstName', 'lastName', 'description', 'owns_printer', 'location', 'socialMedia']
 class UserProfileListSerializer(serializers.ModelSerializer):
     class Meta:
         model=UserProfile
