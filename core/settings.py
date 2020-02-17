@@ -116,7 +116,9 @@ CORS_ORIGIN_WHITELIST = [
     # "127.0.0.1:3000",
     # "localhost:3000"
 ]
-
+CORS_ORIGIN_REGEX_WHITELIST = [
+    r".*",
+]
 # This is default
 CORS_ALLOW_METHODS = [
     'DELETE',

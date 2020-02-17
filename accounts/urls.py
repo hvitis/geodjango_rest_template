@@ -1,6 +1,6 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
-from .views import UserProfileFullListView, UserProfileFullDetailView, UsersLocation
+from .views import UserProfileFullListView, UserProfileFullDetailView, UsersLocation, SocialMediaView
 # UserProfileListCreateView, UserProfileDetailCreateView
 
 urlpatterns = [
@@ -10,7 +10,9 @@ urlpatterns = [
     path("detailed-profiles/<int:pk>",UserProfileFullDetailView.as_view(),name="detailed-profile"),
 
     # TODO: Make post and update endpoint
-    path("detailed-profiles/<int:pk>/location",UsersLocation.as_view(),name="location"),
+    path("detailed-profiles/<int:pk>/location", UsersLocation.as_view(), name="location"),
+    path("detailed-profiles/<int:pk>/social-media", SocialMediaView.as_view(), name="social-media"),
+
     # path("printers",PrinterListView.as_view(),name="printers"),
     # path("printers/<int:pk>",PrinterDetailView.as_view(),name="printer"),
 

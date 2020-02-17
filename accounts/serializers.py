@@ -1,5 +1,9 @@
 from rest_framework import serializers
-from .models import UserProfile, Location
+from .models import UserProfile, Location , SocialMedia
+class SocialMediaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=SocialMedia
+        fields=['websiteUrl', 'facebookUrl', 'twitterUrl', 'telegramUrl', 'linkedinUrl', 'youtubeUrl']
 class LocationSerialiazer(serializers.ModelSerializer):
     class Meta:
         model = Location
@@ -8,9 +12,10 @@ class LocationSerialiazer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     # printers=PrinterDetailedSerializer(many=True)
     location=LocationSerialiazer()
+    socialMedia=SocialMediaSerializer()
     class Meta:
         model=UserProfile
-        fields=['id', 'description', 'location']
+        fields=['id', 'description', 'location', 'socialMedia']
 
 
 
