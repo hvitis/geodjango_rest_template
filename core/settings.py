@@ -47,15 +47,15 @@ INSTALLED_APPS = [
     # 'django.contrib.sites',
     # our first django app
     'accounts',
-    # third party package for user registration and authentication endpoints
-    'djoser',
+
 
     # rest API implementation library for django
     'rest_framework',
 
     # JWT authentication backend library
     'rest_framework_simplejwt',
-
+    # third party package for user registration and authentication endpoints
+    'djoser',
     # Documenting the API
     'rest_framework_swagger',
 
@@ -73,17 +73,25 @@ REST_FRAMEWORK = {
     # 'DEFAULT_PERMISSION_CLASSES': [
     # 'rest_framework.permissions.AllowAny',
     # ],
-    # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'rest_framework_simplejwt.authentication.JWTAuthentication',
-    # ),
+    #     'DEFAULT_AUTHENTICATION_CLASSES': (
+    #        'rest_framework.authentication.TokenAuthentication',
+    #    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated'
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework.authentication.JSONWebTokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+    ),
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
     # When you enable API versioning, the request.version attribute will contain a string
     # that corresponds to the version requested in the incoming client request.
-    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
+    # 'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
 }
-# SIMPLE_JWT = {
-#    'AUTH_HEADER_TYPES': ('JWT',),
-# }
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('JWT', 'Bearer'),
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

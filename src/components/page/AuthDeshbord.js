@@ -203,7 +203,7 @@ class AuthDeshbord extends Component {
                                                                     </div>
                                                                     <div className="col-md-12">
                                                                         <div className="form-group">
-                                                                            <label htmlFor="bio" className="not_empty">About Author</label>
+                                                                            <label htmlFor="bio" className="not_empty">Description</label>
                                                                             <textarea className="wp-editor-area form-control" rows="6" autoComplete="off" id="bio" placeholder="Describe yourself"></textarea>
                                                                         </div>
                                                                     </div>
@@ -224,14 +224,14 @@ class AuthDeshbord extends Component {
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
                                                                             <label htmlFor="twitter" className="not_empty">Twitter</label>
-                                                                            <input id="twitter" className="form-control" type="url" placeholder="Twitter ID" />
+                                                                            <input id="twitter" className="form-control" type="url" placeholder="Twitter URL" />
 
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
-                                                                            <label htmlFor="google" className="not_empty">Telegram ID</label>
-                                                                            <input id="google" className="form-control" type="url" placeholder="Telegram ID" />
+                                                                            <label htmlFor="google" className="not_empty">Telegram</label>
+                                                                            <input id="google" className="form-control" type="url" placeholder="Telegram URL" />
 
                                                                         </div>
                                                                     </div>

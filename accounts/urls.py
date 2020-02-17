@@ -1,6 +1,6 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
-from .views import UserProfileFullDetailView, UserProfileFullListView, PrinterListView, PrinterDetailView, SetLocationView
+from .views import UserProfileFullListView, UserProfileFullDetailView, UsersLocation
 # UserProfileListCreateView, UserProfileDetailCreateView
 
 urlpatterns = [
@@ -9,10 +9,12 @@ urlpatterns = [
     # GETs single LOGGED user profile and his NESTED objects 
     path("detailed-profiles/<int:pk>",UserProfileFullDetailView.as_view(),name="detailed-profile"),
 
-    path("printers",PrinterListView.as_view(),name="printers"),
-    path("printers/<int:pk>",PrinterDetailView.as_view(),name="printer"),
+    # TODO: Make post and update endpoint
+    path("detailed-profiles/<int:pk>/location",UsersLocation.as_view(),name="location"),
+    # path("printers",PrinterListView.as_view(),name="printers"),
+    # path("printers/<int:pk>",PrinterDetailView.as_view(),name="printer"),
 
-    path("locations/<int:pk>",SetLocationView.as_view(),name="locations")
+    # path("locations/<int:pk>",SetLocationView.as_view(),name="locations")
     # # GETs all user profiles and their NESTED objects
     # path("profiles",UserProfileListCreateView.as_view(),name="profiles"),
     # # GETs single LOGGED user profile and his NESTED objects 
