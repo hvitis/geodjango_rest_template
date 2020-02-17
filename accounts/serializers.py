@@ -17,12 +17,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
     # printers=PrinterDetailedSerializer(many=True)
     location=LocationSerialiazer()
     socialMedia=SocialMediaSerializer()
+    profileImage=ProfileImageSerializer()
     class Meta:
         model=UserProfile
-        fields=['id', 'description', 'location', 'socialMedia']
-
-
-
+        fields=['id', 'description', 'location', 'socialMedia', 'profileImage']
 
 class UserProfileListCreateSerializer(serializers.ModelSerializer):
     user=serializers.StringRelatedField(read_only=True)

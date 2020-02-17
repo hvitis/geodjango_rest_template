@@ -51,6 +51,7 @@ class SocialMedia(models.Model):
         return 'Profile: %d' % (self.profile)
 
 class ProfileImage(models.Model):
+    profile = models.OneToOneField(UserProfile,on_delete=models.CASCADE,related_name="profileImage")
     file = models.ImageField(blank=True, null=True)
     def __str__(self):
         return self.file.name

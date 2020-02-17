@@ -120,6 +120,10 @@ CORS_ORIGIN_WHITELIST = [
 CORS_ORIGIN_REGEX_WHITELIST = [
     r".*",
 ]
+# CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_HTTPONLY = True
+# SESSION_COOKIE_SECURE = True
+
 # This is default
 CORS_ALLOW_METHODS = [
     'DELETE',
@@ -210,6 +214,6 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # WHITENOISE_ROOT = os.path.join(FRONTEND_DIR, 'build', 'root')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/media/'
 django_heroku.settings(locals())

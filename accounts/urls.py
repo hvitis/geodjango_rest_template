@@ -13,7 +13,7 @@ urlpatterns = [
     path("detailed-profiles/<int:pk>/location", UsersLocation.as_view(), name="location"),
     path("detailed-profiles/<int:pk>/social-media", SocialMediaView.as_view(), name="social-media"),
 
-    path("detailed-profiles/<int:pk>/profile-image", ProfileImageUploadView.as_view(), name="profile-image"),
+    path("profile-image/<int:pk>", ProfileImageUploadView.as_view(), name="profile-image"),
 
     # path("printers",PrinterListView.as_view(),name="printers"),
     # path("printers/<int:pk>",PrinterDetailView.as_view(),name="printer"),

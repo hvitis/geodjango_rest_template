@@ -7,6 +7,9 @@ from rest_framework.parsers import FileUploadParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
+from rest_framework.decorators import action
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import MultiPartParser
 
 from .serializers import ProfileImageSerializer
 class SocialMediaView(ListCreateAPIView):
@@ -64,23 +67,16 @@ class UserProfileFullDetailView(ListCreateAPIView):
 
 
 class ProfileImageUploadView(APIView):
-    serializer_class = SocialMediaSerializer    
-    parser_class = (FileUploadParser,)
+    parser_classes = (MultiPartParser,)
     permission_classes=[]
 
-    def perform_create(self, serializer):
-        # user=self.request.user
-        profile_id = self.kwargs["pk"]
-        # serializer.save(user=user)
-        serializer.save(profile_id=profile_id)
-
-  
-    def post(self, request, *args, **kwargs):
-
-      file_serializer = ProfileImageSerializer(data=request.data)
-
-      if file_serializer.is_valid():
-          file_serializer.save()
-          return Response(file_serializer.data, status=status.HTTP_201_CREATED)
-      else:
-          return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def put(self, request, pk, format=None):
+        file_obj = request.data['file']
+        print(self.kwargs['pk'], pk, file_obj)
+        new_picture = ProfileImage.objects.get(profile_id=pk)
+        new_picture.file = file_obj
+        new_picture.save()
+        # print(file)
+        # do some stuff with uploaded file
+        # ...
+        return Response(status=204)

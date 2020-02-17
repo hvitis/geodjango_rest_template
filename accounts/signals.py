@@ -3,7 +3,7 @@ from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from djoser.signals import user_activated, user_registered
 
-from .models import UserProfile, Location, SocialMedia
+from .models import UserProfile, Location, SocialMedia, ProfileImage
 
 
 
@@ -26,3 +26,4 @@ def create_user_profile(user, request, **kwargs):
     UserProfile.objects.create(user=user)
     Location.objects.create(profile_id=user.id)
     SocialMedia.objects.create(profile_id=user.id)
+    ProfileImage.objects.create(profile_id=user.id)
