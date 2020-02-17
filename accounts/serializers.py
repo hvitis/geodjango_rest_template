@@ -1,5 +1,9 @@
 from rest_framework import serializers
-from .models import UserProfile, Location , SocialMedia
+from .models import UserProfile, Location , SocialMedia, ProfileImage
+class ProfileImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProfileImage
+        fields = "__all__"
 class SocialMediaSerializer(serializers.ModelSerializer):
     class Meta:
         model=SocialMedia

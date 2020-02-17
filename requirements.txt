@@ -35,3 +35,4 @@ urllib3==1.25.8
 wrapt==1.11.2
 gunicorn==19.7.1
 whitenoise==3.3.1
+Pillow

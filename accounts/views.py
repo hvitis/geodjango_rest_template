@@ -1,9 +1,14 @@
 from rest_framework.generics import (ListCreateAPIView,RetrieveUpdateDestroyAPIView, ListAPIView, CreateAPIView, UpdateAPIView)
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
-from .models import UserProfile, Location, SocialMedia
+from .models import UserProfile, Location, SocialMedia, ProfileImage
 from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import UserProfileSerializer, LocationSerialiazer, UserProfileListCreateSerializer, UserProfileListSerializer, SocialMediaSerializer
+from rest_framework.parsers import FileUploadParser
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework import status
 
+from .serializers import ProfileImageSerializer
 class SocialMediaView(ListCreateAPIView):
     serializer_class = SocialMediaSerializer    
     permission_classes=[]
@@ -56,3 +61,26 @@ class UserProfileFullDetailView(ListCreateAPIView):
         queryset = UserProfile.objects.filter(user_id=self.kwargs["pk"])
         return queryset
         serializer_class = UserProfileListCreateSerializer
+
+
+class ProfileImageUploadView(APIView):
+    serializer_class = SocialMediaSerializer    
+    parser_class = (FileUploadParser,)
+    permission_classes=[]
+
+    def perform_create(self, serializer):
+        # user=self.request.user
+        profile_id = self.kwargs["pk"]
+        # serializer.save(user=user)
+        serializer.save(profile_id=profile_id)
+
+  
+    def post(self, request, *args, **kwargs):
+
+      file_serializer = ProfileImageSerializer(data=request.data)
+
+      if file_serializer.is_valid():
+          file_serializer.save()
+          return Response(file_serializer.data, status=status.HTTP_201_CREATED)
+      else:
+          return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
