@@ -47,6 +47,9 @@ export const authLogin = (username, password) => {
             password: password
         })
         .then(res => {
+            console.log("Auth response : ", res)
+            console.log("config.API_URL  : ", config.API_URL )
+
             const token = res.data.access;
             const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
             let decodedToken = jwt_decode(token);
@@ -75,7 +78,8 @@ export const authSignup = (username, email, password) => {
             password: password
         })
         .then(res => {
-            console.log('Response from Django:, ', res)
+            console.log("Auth response : ", res)
+            console.log("config.API_URL  : ", config.API_URL )
             // const token = res.data.key;
             // const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
             // localStorage.setItem('token', token);

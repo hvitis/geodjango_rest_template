@@ -28,7 +28,7 @@ class UpdateProfilePicture extends Component {
             }
         })
             .then((response) => {
-                this.setState({profilePicture: 'http://localhost:8000/media/' + response.data.profilePicture})
+                this.setState({profilePicture: `${config.API_URL}${response.data.profilePicture}` })
                 //handle success
                 console.log('Whole success response', response)
             }).catch((error) => {
