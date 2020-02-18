@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 import config from '../../config'
+import jwt_decode from 'jwt-decode'
 
 export const authStart = () => {
     return {
@@ -46,18 +47,21 @@ export const authLogin = (username, password) => {
             password: password
         })
         .then(res => {
-            // console.log('Whole response', res)
             const token = res.data.access;
             const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
+            let decodedToken = jwt_decode(token);
+            const user_id = decodedToken.user_id;
+            localStorage.setItem('user_id', user_id);
             localStorage.setItem('token', token);
             localStorage.setItem('expirationDate', expirationDate);
             dispatch(authSuccess(token));
             dispatch(checkAuthTimeout(3600));
-            console.log('On Loggin in got : ', token, expirationDate)
         })
         .catch(err => {
             dispatch(authFail(err))
         })
+
+
     }
 }
 

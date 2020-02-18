@@ -7,11 +7,13 @@ from django.views.decorators.cache import cache_control
 from django.http import HttpResponse
 from django.conf import settings
 from django.conf.urls.static import static
-
+from .custom_jwt_tokens import CustomTokenObtainPairView
 schema_view = get_swagger_view(title='Accounts API')
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    # Custom Djoser endpoint with extended claims
+    # path('api/auth/jwt/create', CustomTokenObtainPairView),
     # path to djoser end points
     path('api/auth/', include('djoser.urls')),
     path('api/auth/', include('djoser.urls.jwt')),

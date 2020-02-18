@@ -76,4 +76,5 @@ class ProfileImageUploadView(APIView):
         new_picture = ProfileImage.objects.get(profile_id=pk)
         new_picture.file = file_obj
         new_picture.save()
-        return Response(status=204)
+        new_picture = ProfileImage.objects.get(profile_id=pk)
+        return Response(status=200, data={ "profilePicture" : new_picture.file.name })

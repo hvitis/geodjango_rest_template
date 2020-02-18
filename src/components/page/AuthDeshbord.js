@@ -10,8 +10,9 @@ import MapLocationPicker from '../content/element/MapLocationPicker';
 import { GetPosition } from '../content/element/getPosition'
 import UpdateProfilePicture from '../content/element/UpdateProfilePicture'
 import config from '../../config'
-import axios from 'axios';
 import { Spinner } from 'react-bootstrap'
+import FormData from 'form-data'
+
 const noAction = e => e.preventDefault();
 
 class AuthDeshbord extends Component {
@@ -28,34 +29,38 @@ class AuthDeshbord extends Component {
         // this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentWillMount() {
-
+        
         this.setState({
             latitude: undefined,
             longitude: undefined,
             mapIsLoaded: false,
             showConfidential: false
         });
-        // axios.get(config.API_URL + 'auth/jwt/create', {
-        //     username: username,
-        //     password: password
-        // })
-        // .then(res => {
-        //     // console.log('Whole response', res)
-        //     const token = res.data.access;
-        //     const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
-        //     localStorage.setItem('token', token);
-        //     localStorage.setItem('expirationDate', expirationDate);
-        //     dispatch(authSuccess(token));
-        //     dispatch(checkAuthTimeout(3600));
-        //     console.log('On Loggin in got : ', token, expirationDate)
-        // })
-        // .catch(err => {
-        //     dispatch(authFail(err))
-        // })
-        fetch(`${config.API_URL}accounts/detailed-profiles/5`)
+
+        
+    }
+    componentDidMount() {
+        let user_id = localStorage.getItem('user_id')
+
+        const geo = navigator.geolocation;
+        if (!geo) {
+            console.log('Geolocation is not supported');
+            return;
+        }
+        const onChange = ({ coords }) => {
+            this.setState({
+                latitude: coords.latitude,
+                longitude: coords.longitude,
+                mapIsLoaded: true,
+            });
+            console.log("Dashboard state did mount", this.state)
+        };
+        geo.watchPosition(onChange);
+        fetch(`${config.API_URL}accounts/detailed-profiles/${user_id}`)
         .then(response => response.json())
         .then(
             (result) => {
+                console.log('result afetr call update', result)
                 this.setState({
                   imgIsLoaded: true,
                   img: result[0].profileImage.file
@@ -73,24 +78,8 @@ class AuthDeshbord extends Component {
               }
         );
     }
-    componentDidMount() {
 
-        const geo = navigator.geolocation;
-        if (!geo) {
-            console.log('Geolocation is not supported');
-            return;
-        }
-        const onChange = ({ coords }) => {
-            this.setState({
-                latitude: coords.latitude,
-                longitude: coords.longitude,
-                mapIsLoaded: true,
-            });
-            console.log("Dashboard state did mount", this.state)
-        };
-        geo.watchPosition(onChange);
-
-    }
+  
 
     showConfidential() {
         this.setState({ showConfidential: !this.state.showConfidential })
