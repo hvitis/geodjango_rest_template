@@ -26,10 +26,11 @@ class UserProfileListCreateSerializer(serializers.ModelSerializer):
     user=serializers.StringRelatedField(read_only=True)
     location=LocationSerialiazer()
     socialMedia=SocialMediaSerializer()
+    profileImage=ProfileImageSerializer()
     class Meta:
         model=UserProfile
         # TODO: On List serializer show location, make PUT serializer for updating user without location
-        fields=['user', 'nickname', 'firstName', 'lastName', 'description', 'owns_printer', 'location', 'socialMedia']
+        fields=['user', 'nickname', 'firstName', 'lastName', 'description', 'owns_printer', 'location', 'socialMedia', 'profileImage']
 class UserProfileListSerializer(serializers.ModelSerializer):
     class Meta:
         model=UserProfile

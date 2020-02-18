@@ -9,13 +9,16 @@ import CardListingGrid4 from '../content/element/card/card-listing-grid-4';
 import MapLocationPicker from '../content/element/MapLocationPicker';
 import { GetPosition } from '../content/element/getPosition'
 import UpdateProfilePicture from '../content/element/UpdateProfilePicture'
-
+import config from '../../config'
+import axios from 'axios';
+import { Spinner } from 'react-bootstrap'
 const noAction = e => e.preventDefault();
 
 class AuthDeshbord extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            imgIsLoaded: false,
             latitude: undefined,
             longitude: undefined,
             mapIsLoaded: false,
@@ -32,8 +35,43 @@ class AuthDeshbord extends Component {
             mapIsLoaded: false,
             showConfidential: false
         });
-        console.log("Dashboard state will mount", this.state)
-
+        // axios.get(config.API_URL + 'auth/jwt/create', {
+        //     username: username,
+        //     password: password
+        // })
+        // .then(res => {
+        //     // console.log('Whole response', res)
+        //     const token = res.data.access;
+        //     const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
+        //     localStorage.setItem('token', token);
+        //     localStorage.setItem('expirationDate', expirationDate);
+        //     dispatch(authSuccess(token));
+        //     dispatch(checkAuthTimeout(3600));
+        //     console.log('On Loggin in got : ', token, expirationDate)
+        // })
+        // .catch(err => {
+        //     dispatch(authFail(err))
+        // })
+        fetch(`${config.API_URL}accounts/detailed-profiles/5`)
+        .then(response => response.json())
+        .then(
+            (result) => {
+                this.setState({
+                  imgIsLoaded: true,
+                  img: result[0].profileImage.file
+                });
+                console.log('state afetr call update', this.state)
+              },
+              // Note: it's important to handle errors here
+              // instead of a catch() block so that we don't swallow
+              // exceptions from actual bugs in components.
+              (error) => {
+                this.setState({
+                  imgIsLoaded: true,
+                  error
+                });
+              }
+        );
     }
     componentDidMount() {
 
@@ -112,7 +150,7 @@ class AuthDeshbord extends Component {
                                         <div className="row">
 
                                             {/* // Update profile  */}
-                                            <UpdateProfilePicture />
+                                            {this.state.imgIsLoaded ? (<UpdateProfilePicture profilePicture={this.state.img} />) : (<Spinner />) } 
                                             <div className="col-lg-9 col-md-8">
                                                 <div className="atbd_author_module">
                                                     <div className="atbd_content_module">
@@ -179,7 +217,7 @@ class AuthDeshbord extends Component {
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
                                                                             <label htmlFor="user_name" className="not_empty">Nickname</label>
-                                                                            <input className="form-control" id="" type="text" value="Ziomek" />
+                                                                            <input className="form-control" id="" type="text" />
                                                                             <p>(Nickname will appear if no Name/Last name)</p>
                                                                         </div>
                                                                     </div>
@@ -192,7 +230,7 @@ class AuthDeshbord extends Component {
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
                                                                             <label htmlFor="first_name" className="not_empty">First Name</label>
-                                                                            <input className="form-control" id="first_name" type="text" name="user[first_name]" placeholder="First Name" />
+                                                                            <input className="form-control" id="first_name" type="text" placeholder="First Name" />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6">
@@ -266,14 +304,14 @@ class AuthDeshbord extends Component {
                                                                             <div className="col-md-6">
                                                                                 <div className="form-group">
                                                                                     <label htmlFor="req_email" className="not_empty">Email</label>
-                                                                                    <input className="form-control" id="user_name" type="text" disabled="disabled" value="mail@example.com" />
+                                                                                    <input className="form-control" id="user_name" type="text" readOnly disabled="disabled" value="mail@example.com" />
                                                                                     <p>(Email can not be changed)</p>
                                                                                 </div>
                                                                             </div>
                                                                             <div className="col-md-6">
                                                                                 <div className="form-group">
                                                                                     <label htmlFor="user_name" className="not_empty">Username</label>
-                                                                                    <input className="form-control" id="user_name" type="text" disabled="disabled" value="admin" />
+                                                                                    <input className="form-control" id="user_name" type="text" readOnly disabled="disabled" value="admin" />
                                                                                     <p>(Username can not be changed)</p>
                                                                                 </div>
                                                                             </div>

@@ -9,8 +9,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 schema_view = get_swagger_view(title='Accounts API')
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -23,14 +21,18 @@ urlpatterns = [
 
     path("docs/", schema_view),
     # path('service-worker.js', TemplateView.as_view(template_name="service-worker.js",
-    re_path('.*', TemplateView.as_view(template_name="index.html")),
+   
     # re_path(".*", TemplateView.as_view(template_name="service-worker.js",
     #                                    content_type='application/javascript')),
     
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
 
 if settings.DEBUG:
-  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+      urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += [re_path('.*', TemplateView.as_view(template_name="index.html"))]
+
+
 # DJOSER URLS
 
 # auth/users/

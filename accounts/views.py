@@ -54,7 +54,7 @@ class UserProfileFullListView(ListAPIView):
 class UserProfileFullDetailView(ListCreateAPIView):
     queryset=UserProfile.objects.all()
     serializer_class=UserProfileListCreateSerializer
-    permission_classes=[IsAuthenticated]
+    permission_classes=[]
     def perform_create(self, serializer):
         user=self.request.user
         print("User", self.request.user)
@@ -76,7 +76,4 @@ class ProfileImageUploadView(APIView):
         new_picture = ProfileImage.objects.get(profile_id=pk)
         new_picture.file = file_obj
         new_picture.save()
-        # print(file)
-        # do some stuff with uploaded file
-        # ...
         return Response(status=204)

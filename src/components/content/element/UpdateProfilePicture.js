@@ -7,7 +7,7 @@ const UpdateProfilePicture = props => {
         <Fragment>
             <div className="col-lg-3 col-md-4 mb-5 mb-lg-0">
                 <div className="user_pro_img_area">
-                    <img src="./assets/img/author-profile.jpg" alt="" />
+                    <img src={props.profilePicture} alt="Profile Picture" height="200"  />
                     <div className="image-info">
                         <h6>Profile Image</h6>
                         <span>JPG or PNG 120x120 px</span>
