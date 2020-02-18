@@ -8,11 +8,12 @@ const dev = {
     API_KEY_GMAPS : "AIzaSyA1umOS6BOBvTNLReOage940S6VDqLskkk"
 
   };
-  
+
+  const config = prod;
   // Default to dev if not set
-  const config = process.env.ENVIRONMENT === 'prod'
-    ? prod
-    : dev;
+  // const config = process.env.ENVIRONMENT === 'prod'
+  //   ? prod
+  //   : dev;
   
   export default {
     // Add common config values here
