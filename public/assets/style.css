@@ -1161,34 +1161,34 @@
 }
 
 .color-primary, .atbd_listing_info .atbd_listing_title a:hover, .atbd_listing_data_list ul p span, .atbd_listing_bottom_content .atbd_content_right .atbd_save:hover, .post--card .card-body h6 a:hover, .post--card .card-body .post-meta li a:hover, .post--card2 .card-body .post-meta li a:hover, .testimonial-carousel .owl-nav button:hover, .widget.widget_pages .page-item a:hover, .atbd_author_info_widget .atbd_widget_contact_info ul li span:first-child, .atbdp-widget-categories .atbdp_parent_category li > .cat-trigger:hover, .atbdp-widget-categories .atbdp_parent_category li a:hover, .atbd_categorized_listings .listings > li .listing_value span, .atbd_categorized_listings .listings > li .directory_tag span .atbd_cat_popup .atbd_cat_popup_wrapper span a:hover, .category-widget ul li a:hover, .footer-three .footer-bottom .footer-bottom--content .copy-text span, .listing-info .atbd_listing_action_area .atbd_action .action_button > a:hover, .listing-info .atbd_listing_action_area .atbd_share .atbd_director_social_wrap a:hover, .menu-area .mainmenu__menu .navbar-nav > li:hover > a, .menu-area .mainmenu__menu .navbar-nav > li.has_dropdown .dropdown-menu li:hover a, .menu-area .mainmenu__menu .navbar-nav > li.has_dropdown .dropdown-menu .dropdown-menu--inner > ul li a:hover, .menu-area.menu--light .mainmenu__menu .navbar-nav > li.has_dropdown .dropdown-menu .dropdown-menu--inner > ul li a:hover, .author__access_area ul li .access-link:hover, .mainmenu__menu .navbar-nav > li:hover > a, .place-list-wrapper ul li a:hover, .social-list li a:hover, .pagination .nav-links .page-numbers:hover, .price-range.rs-primary .amount, .price-range.rs-primary .amount-four, .range-slider.rs-primary .amount, .range-slider.rs-primary .amount-four, .contents-wrapper .contents h1 span, .contents-wrapper .contents .list-features li .list-count span, .section-title h2 span, .atbd_location_grid_wrap .atbd_location_grid:hover, .dashboard-nav .dashboard-nav-area .nav .nav-link.active, .atbd_saved_items_wrapper .atbdb_content_module_contents .table tr td a:hover, .atbd_saved_items_wrapper .atbdb_content_module_contents .table tr td > span, .atbd_saved_items_wrapper .atbdb_content_module_contents .table tr td .remove-favorite, .post-author .author-info h5 span, .post-pagination .prev-post .title:hover, .post-pagination .next-post .title:hover {
-  color: #f5548e;
+  color: #78b4f8;
 }
 
 .bg-primary, .atbd_listing_meta .atbd_listing_price, .atbdp-widget-categories .atbdp_parent_category li a:hover span, .atbdp-widget-tags ul li a:hover, .sort-rating .custom-control-label span, .tags-widget ul li a:hover, .listing-info .listing-info--meta .atbd_listing_category a span, .atbd_listing_gallery .gallery-images .slick-arrow:hover, .atbd_review_module .review_pagination .pagination .page-item .page-link:hover, .atbd_review_module .review_pagination .pagination .page-item.active .page-link, .social.social--small ul li a:hover, .select2-container--default .select2-results__option--highlighted[aria-selected], .select2-container--default .select2-selection--multiple .select2-selection__choice, .pagination .nav-links .page-numbers.current, .price-range.rs-primary .ui-slider-horizontal .ui-slider-range, .range-slider.rs-primary .ui-slider-horizontal .ui-slider-range, .all-listing-wrapper .atbd_listing_action_btn .view-mode .action-btn.active, .dashboard-nav .dashboard-nav-area .nav .nav-link.active:before, .atbd_saved_items_wrapper .atbdb_content_module_contents .table tr td .remove-favorite:hover, .post-bottom .tags ul li a:hover, .post-bottom .social-share ul li a:hover, .comments-area .comment-lists ul .depth-1 .media .media-body .media_top .reply:hover {
-  background: #f5548e;
+  background: #78b4f8;
 }
 
 .iborder-primary {
-  color: #f5548e;
+  color: #78b4f8;
 }
 
 .outline-primary {
-  border: 1px solid #f5548e;
-  color: #f5548e;
+  border: 1px solid #78b4f8;
+  color: #78b4f8;
 }
 
 .active-color-primary label input:checked + span {
-  background: #f5548e;
-  border-color: #f5548e;
+  background: #78b4f8;
+  border-color: #78b4f8;
 }
 
 .circle-primary {
-  color: #f5548e;
+  color: #78b4f8;
   background: rgba(245, 84, 142, 0.1);
 }
 
 .border-primary, .atbdp-widget-tags ul li a:hover, .listing-info .atbd_listing_action_area .atbd_action:hover, .atbd_review_module .review_pagination .pagination .page-item .page-link:hover, .atbd_review_module .review_pagination .pagination .page-item.active .page-link, .select2-container--default .select2-selection--multiple .select2-selection__choice, .pagination .nav-links .page-numbers:hover, .pagination .nav-links .page-numbers.current, .all-listing-wrapper .atbd_listing_action_btn .view-mode .action-btn.active {
-  border: 1px solid #f5548e;
+  border: 1px solid #78b4f8;
 }
 
 .color-secondary, .atbd_listing_bottom_content .atbd_content_left .atbd_listing_category a span, .post--card .card-body .post-meta li a, .post--card2 .card-body h3 a:hover, .atbd_widget .atbd_widget_title a, .atbd_categorized_listings .listings > li .cate_title h4 a:hover, .atbd_categorized_listings .listings > li .directory_tag span a:hover, .atbd_contact_information_module .atbd_contact_info ul .atbd_info_title span, .atbd_review_module #client_review_list .atbd_single_review .review_content .reply, .atbd_review_form .atbd_give_review_area .atbd_notice a, .atbd_review_form #atbdp_review_form .atbd_upload_btn_wrap .atbd_upload_btn span, .default-ad-search .filter-checklist .show-link:hover, .price-range .amount, .price-range .amount-four {
@@ -1285,34 +1285,34 @@
 }
 
 .color-warning, .atbd_categorized_listings .listings > li .atbd_rated_stars ul li span.rate_active:before, .atbd_review_module #client_review_list .atbd_single_review .atbd_review_top .atbd_rated_stars ul li {
-  color: #fa8b0c;
+  color: #3267aa;
 }
 
 .bg-warning, .atbd_listing_thumbnail_area .atbd_upper_badge .atbd_badge.atbd_badge_featured, .listing-info .listing-info--badges .atbd_badge.atbd_badge_featured {
-  background: #fa8b0c;
+  background: #3267aa;
 }
 
 .iborder-warning {
-  color: #fa8b0c;
+  color: #3267aa;
 }
 
 .outline-warning {
-  border: 1px solid #fa8b0c;
-  color: #fa8b0c;
+  border: 1px solid #3267aa;
+  color: #3267aa;
 }
 
 .active-color-warning label input:checked + span {
-  background: #fa8b0c;
-  border-color: #fa8b0c;
+  background: #3267aa;
+  border-color: #3267aa;
 }
 
 .circle-warning {
-  color: #fa8b0c;
+  color: #3267aa;
   background: rgba(250, 139, 12, 0.1);
 }
 
 .border-warning {
-  border: 1px solid #fa8b0c;
+  border: 1px solid #3267aa;
 }
 
 .color-danger, .atbd_listing_meta .atbd_badge_close, .directory_open_hours ul li.atbd_closed span, .pricing .pricing__features ul li > span.unavailable:first-child {
@@ -1485,9 +1485,9 @@
 }
 
 .outline-lg-primary {
-  border: 2px solid #f5548e;
+  border: 2px solid #78b4f8;
   background: none;
-  color: #f5548e;
+  color: #78b4f8;
 }
 
 .outline-lg-secondary {
@@ -1509,9 +1509,9 @@
 }
 
 .outline-lg-warning {
-  border: 2px solid #fa8b0c;
+  border: 2px solid #3267aa;
   background: none;
-  color: #fa8b0c;
+  color: #3267aa;
 }
 
 .outline-lg-danger {
@@ -1533,12 +1533,12 @@
 }
 
 .checkbox-primary .custom-control-label::before {
-  background: #f5548e;
+  background: #78b4f8;
 }
 
 .checkbox-primary .custom-control-input:checked ~ .custom-control-label::before {
-  background: #f5548e;
-  border: 1px solid #f5548e;
+  background: #78b4f8;
+  border: 1px solid #78b4f8;
 }
 
 .checkbox-primary .custom-control-input:checked ~ .custom-control-label::after {
@@ -1585,12 +1585,12 @@
 }
 
 .checkbox-warning .custom-control-label::before {
-  background: #fa8b0c;
+  background: #3267aa;
 }
 
 .checkbox-warning .custom-control-input:checked ~ .custom-control-label::before {
-  background: #fa8b0c;
-  border: 1px solid #fa8b0c;
+  background: #3267aa;
+  border: 1px solid #3267aa;
 }
 
 .checkbox-warning .custom-control-input:checked ~ .custom-control-label::after {
@@ -1641,8 +1641,8 @@
 }
 
 .checkbox-outline-primary .custom-control-input:checked ~ .custom-control-label::before {
-  border: 1px solid #f5548e;
-  background: #f5548e;
+  border: 1px solid #78b4f8;
+  background: #78b4f8;
 }
 
 .checkbox-outline-primary .custom-control-input:checked ~ .custom-control-label::after {
@@ -1693,8 +1693,8 @@
 }
 
 .checkbox-outline-warning .custom-control-input:checked ~ .custom-control-label::before {
-  border: 1px solid #fa8b0c;
-  background: #fa8b0c;
+  border: 1px solid #3267aa;
+  background: #3267aa;
 }
 
 .checkbox-outline-warning .custom-control-input:checked ~ .custom-control-label::after {
@@ -1792,24 +1792,24 @@ p {
 /* Gradient BG */
 .bg-gradient-ps {
   background: #903af9;
-  background: -webkit-linear-gradient(to right, #903af9, #f5548e);
-  background: -o-linear-gradient(to right, #903af9, #f5548e);
-  background: -webkit-gradient(linear, left top, right top, from(#903af9), to(#f5548e));
-  background: -webkit-linear-gradient(left, #903af9, #f5548e);
-  background: -o-linear-gradient(left, #903af9, #f5548e);
-  background: linear-gradient(to right, #903af9, #f5548e);
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#903af9, endColorstr=#f5548e);
+  background: -webkit-linear-gradient(to right, #903af9, #78b4f8);
+  background: -o-linear-gradient(to right, #903af9, #78b4f8);
+  background: -webkit-gradient(linear, left top, right top, from(#903af9), to(#78b4f8));
+  background: -webkit-linear-gradient(left, #903af9, #78b4f8);
+  background: -o-linear-gradient(left, #903af9, #78b4f8);
+  background: linear-gradient(to right, #903af9, #78b4f8);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#903af9, endColorstr=#78b4f8);
 }
 
 .bg-gradient-pw, .pricing.atbd_pricing_special .atbd_popular_badge {
-  background: #f5548e;
-  background: -webkit-linear-gradient(to right, #f5548e, #fa8b0c);
-  background: -o-linear-gradient(to right, #f5548e, #fa8b0c);
-  background: -webkit-gradient(linear, left top, right top, from(#f5548e), to(#fa8b0c));
-  background: -webkit-linear-gradient(left, #f5548e, #fa8b0c);
-  background: -o-linear-gradient(left, #f5548e, #fa8b0c);
-  background: linear-gradient(to right, #f5548e, #fa8b0c);
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f5548e, endColorstr=#fa8b0c);
+  background: #78b4f8;
+  background: -webkit-linear-gradient(to right, #78b4f8, #3267aa);
+  background: -o-linear-gradient(to right, #78b4f8, #3267aa);
+  background: -webkit-gradient(linear, left top, right top, from(#78b4f8), to(#3267aa));
+  background: -webkit-linear-gradient(left, #78b4f8, #3267aa);
+  background: -o-linear-gradient(left, #78b4f8, #3267aa);
+  background: linear-gradient(to right, #78b4f8, #3267aa);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#78b4f8, endColorstr=#3267aa);
 }
 
 /* Background Image */
@@ -1817,7 +1817,7 @@ p {
   position: relative;
 }
 
-.bgimage:before {
+.bgimage {
   z-index: 1;
 }
 
@@ -1844,9 +1844,7 @@ p {
   opacity: 0;
 }
 
-.bg_image_holder img {
-  display: none;
-}
+
 
 /* overlays */
 .overlay {
@@ -4036,7 +4034,7 @@ p {
 }
 
 .tags-widget ul li a:hover {
-  border-color: #f5548e;
+  border-color: #78b4f8;
 }
 
 /* footer three */
@@ -6109,31 +6107,31 @@ p {
 }
 
 .btn-gradient.btn-gradient-one {
-  background: -webkit-gradient(linear, left top, right top, from(#f5548e), to(#903af9));
-  background: -webkit-linear-gradient(left, #f5548e, #903af9);
-  background: -o-linear-gradient(left, #f5548e, #903af9);
-  background: linear-gradient(to right, #f5548e, #903af9);
+  background: -webkit-gradient(linear, left top, right top, from(#78b4f8), to(#903af9));
+  background: -webkit-linear-gradient(left, #78b4f8, #903af9);
+  background: -o-linear-gradient(left, #78b4f8, #903af9);
+  background: linear-gradient(to right, #78b4f8, #903af9);
 }
 
 .btn-gradient.btn-gradient-one:before {
-  background: -webkit-gradient(linear, left top, right top, from(#903af9), to(#f5548e));
-  background: -webkit-linear-gradient(left, #903af9, #f5548e);
-  background: -o-linear-gradient(left, #903af9, #f5548e);
-  background: linear-gradient(to right, #903af9, #f5548e);
+  background: -webkit-gradient(linear, left top, right top, from(#903af9), to(#78b4f8));
+  background: -webkit-linear-gradient(left, #903af9, #78b4f8);
+  background: -o-linear-gradient(left, #903af9, #78b4f8);
+  background: linear-gradient(to right, #903af9, #78b4f8);
 }
 
 .btn-gradient.btn-gradient-two {
-  background: -webkit-gradient(linear, left top, right top, from(#f5548e), to(#fa8b0c));
-  background: -webkit-linear-gradient(left, #f5548e, #fa8b0c);
-  background: -o-linear-gradient(left, #f5548e, #fa8b0c);
-  background: linear-gradient(to right, #f5548e, #fa8b0c);
+  background: -webkit-gradient(linear, left top, right top, from(#78b4f8), to(#3267aa));
+  background: -webkit-linear-gradient(left, #78b4f8, #3267aa);
+  background: -o-linear-gradient(left, #78b4f8, #3267aa);
+  background: linear-gradient(to right, #78b4f8, #3267aa);
 }
 
 .btn-gradient.btn-gradient-two:before {
-  background: -webkit-gradient(linear, left top, right top, from(#fa8b0c), to(#f5548e));
-  background: -webkit-linear-gradient(left, #fa8b0c, #f5548e);
-  background: -o-linear-gradient(left, #fa8b0c, #f5548e);
-  background: linear-gradient(to right, #fa8b0c, #f5548e);
+  background: -webkit-gradient(linear, left top, right top, from(#3267aa), to(#78b4f8));
+  background: -webkit-linear-gradient(left, #3267aa, #78b4f8);
+  background: -o-linear-gradient(left, #3267aa, #78b4f8);
+  background: linear-gradient(to right, #3267aa, #78b4f8);
 }
 
 .btn-gradient.btn-gradient-three {
@@ -6442,7 +6440,7 @@ p {
 
 .social-list li span.mail i {
   background: rgba(245, 84, 142, 0.1);
-  color: #f5548e;
+  color: #78b4f8;
 }
 
 .social-list li span.twitter i {
@@ -6941,7 +6939,7 @@ p {
 
 /* range slider */
 .price-range.rs-primary .ui-slider-horizontal .ui-slider-handle, .range-slider.rs-primary .ui-slider-horizontal .ui-slider-handle {
-  border-color: #f5548e;
+  border-color: #78b4f8;
 }
 
 .blockquote {
@@ -6993,10 +6991,10 @@ p {
   border: 0 none;
   -webkit-border-radius: 0;
           border-radius: 0;
-  background: -webkit-gradient(linear, left top, right top, from(#f5548e), to(#903af9));
-  background: -webkit-linear-gradient(left, #f5548e, #903af9);
-  background: -o-linear-gradient(left, #f5548e, #903af9);
-  background: linear-gradient(to right, #f5548e, #903af9);
+  background: -webkit-gradient(linear, left top, right top, from(#78b4f8), to(#903af9));
+  background: -webkit-linear-gradient(left, #78b4f8, #903af9);
+  background: -o-linear-gradient(left, #78b4f8, #903af9);
+  background: linear-gradient(to right, #78b4f8, #903af9);
 }
 
 .blockquote.blockquote1 p {
@@ -8040,7 +8038,7 @@ p {
 }
 
 .post-bottom .tags ul li a:hover {
-  border-color: #f5548e;
+  border-color: #78b4f8;
 }
 
 .post-bottom .social-share {
@@ -8289,7 +8287,7 @@ p {
 }
 
 .comments-area .comment-lists ul .depth-1 .media .media-body .media_top .reply:hover {
-  border-color: #f5548e;
+  border-color: #78b4f8;
 }
 
 .comments-area .comment-lists ul .depth-1 .media p {

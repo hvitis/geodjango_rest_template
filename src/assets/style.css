@@ -1863,7 +1863,7 @@ p {
 }
 
 .overlay.overlay--dark:before {
-  background: rgba(47, 38, 57, 0.8);
+  background: url('./img/pics/3dprinter_004.jpg')
 }
 
 /* product card */
@@ -6109,31 +6109,30 @@ p {
 }
 
 .btn-gradient.btn-gradient-one {
-  background: -webkit-gradient(linear, left top, right top, from(#f5548e), to(#903af9));
-  background: -webkit-linear-gradient(left, #f5548e, #903af9);
-  background: -o-linear-gradient(left, #f5548e, #903af9);
-  background: linear-gradient(to right, #f5548e, #903af9);
+  background: -webkit-gradient(linear, left top, right top, from(#48ebd5ea), to(#247392ee));
+  background: -webkit-linear-gradient(left, #48ebd5ea, #247392ee);
+  background: -o-linear-gradient(left, #48ebd5ea, #247392ee);
+  background: linear-gradient(to right, #48ebd5ea, #247392ee);
 }
 
 .btn-gradient.btn-gradient-one:before {
-  background: -webkit-gradient(linear, left top, right top, from(#903af9), to(#f5548e));
-  background: -webkit-linear-gradient(left, #903af9, #f5548e);
-  background: -o-linear-gradient(left, #903af9, #f5548e);
-  background: linear-gradient(to right, #903af9, #f5548e);
+  background: -webkit-gradient(linear, left top, right top, from(#247392ee), to(#48ebd5ea));
+  background: -webkit-linear-gradient(left, #247392ee, #48ebd5ea);
+  background: -o-linear-gradient(left, #247392ee, #48ebd5ea);
+  background: linear-gradient(to right, #247392ee, #48ebd5ea);
 }
-
 .btn-gradient.btn-gradient-two {
-  background: -webkit-gradient(linear, left top, right top, from(#f5548e), to(#fa8b0c));
-  background: -webkit-linear-gradient(left, #f5548e, #fa8b0c);
-  background: -o-linear-gradient(left, #f5548e, #fa8b0c);
-  background: linear-gradient(to right, #f5548e, #fa8b0c);
+  background: -webkit-gradient(linear, left top, right top, from(#4894ebea), to(#2e4b9cee));
+  background: -webkit-linear-gradient(left, #4894ebea, #2e4b9cee);
+  background: -o-linear-gradient(left, #4894ebea, #2e4b9cee);
+  background: linear-gradient(to right, #4894ebea, #2e4b9cee);
 }
 
 .btn-gradient.btn-gradient-two:before {
-  background: -webkit-gradient(linear, left top, right top, from(#fa8b0c), to(#f5548e));
-  background: -webkit-linear-gradient(left, #fa8b0c, #f5548e);
-  background: -o-linear-gradient(left, #fa8b0c, #f5548e);
-  background: linear-gradient(to right, #fa8b0c, #f5548e);
+  background: -webkit-gradient(linear, left top, right top, from(#2e4b9cee), to(#4894ebea));
+  background: -webkit-linear-gradient(left, #2e4b9cee, #4894ebea);
+  background: -o-linear-gradient(left, #2e4b9cee, #4894ebea);
+  background: linear-gradient(to right, #2e4b9cee, #4894ebea);
 }
 
 .btn-gradient.btn-gradient-three {

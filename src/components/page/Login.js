@@ -21,7 +21,6 @@ class NormalLoginForm extends React.Component {
   }
 
   render() {
-    console.log("props on login", this.props)
     let errorMessage = null;
     if (this.props.error) {
         errorMessage = (

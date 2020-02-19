@@ -56,7 +56,7 @@ class AuthDeshbord extends Component {
             console.log("Dashboard state did mount", this.state)
         };
         geo.watchPosition(onChange);
-        fetch(`${config.API_URL}accounts/detailed-profiles/${user_id}`)
+        fetch(`${config.API_URL}/accounts/detailed-profiles/${user_id}`)
         .then(response => response.json())
         .then(
             (result) => {

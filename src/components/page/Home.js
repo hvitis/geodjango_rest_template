@@ -10,18 +10,17 @@ import { Subscribe } from '../content/element/subscribe';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../Store/action/auth';
-
+import intro from '../../assets/img/intro.jpg'
 const noAction = e => e.preventDefault();
 class Home extends Component {
 
     render() {
 
-        console.log("Props on HOME", this.props)
         return (
             <Fragment>
                 {/* Header section start */}
                 <section className="intro-wrapper bgimage overlay overlay--dark">
-                    <div className="bg_image_holder"><img src='' alt="" /></div>
+                    <div className="bg_image_holder"><img src='https://images.unsplash.com/photo-1563520239648-a24e51d4b570?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80' alt="" /></div>
                     {/* <!-- ends: .mainmenu-wrapper --> */}
                     <AdvSearch />
                 </section>

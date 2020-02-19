@@ -1,9 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 const noAction = e => e.preventDefault();
+// import intro from '../../assets/img/intro.jpg'
+// import config from '../../config'
+
+
 export class AdvSearch extends Component {
 
     render() {
+        // let img = require('../../assets/img/intro.jpg');
+        // console.log("Props on HOME", config.API_URL + intro)
         return (
             <Fragment>
                 <div className="directory_content_area">

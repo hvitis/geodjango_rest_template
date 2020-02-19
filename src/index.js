@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -8,7 +7,6 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import * as serviceWorker from './serviceWorker';
-
 
 import './assets/vendor_assets/css/bootstrap/bootstrap.css'
 import './assets/vendor_assets/css/brands.css'
@@ -36,9 +34,13 @@ import './assets/style.css';
 // import './assets/vendor_assets/js/select2.full.min.js'
 // import './assets/vendor_assets/js/slick.min.js'
 // import './assets/theme_assets/js/locator.js'
+// window.jquery = jquery
+// import './assets/theme_assets/js/main.js'
+import reducer from './Store/Reducers/auth';
+
+
 // import jquery from 'jquery';
 
-import reducer from './Store/Reducers/auth';
 
 const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 

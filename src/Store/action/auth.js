@@ -42,7 +42,7 @@ export const checkAuthTimeout = expirationTime => {
 export const authLogin = (username, password) => {
     return dispatch => {
         dispatch(authStart());
-        axios.post(config.API_URL + 'auth/jwt/create', {
+        axios.post(config.API_URL + '/auth/jwt/create', {
             username: username,
             password: password
         })
@@ -72,7 +72,7 @@ export const authSignup = (username, email, password) => {
     console.log('username and password', username, password)
     return dispatch => {
         dispatch(authStart());
-        axios.post(config.API_URL + 'auth/users/', {
+        axios.post(config.API_URL + '/auth/users/', {
             username: username,
             email: email,
             password: password
