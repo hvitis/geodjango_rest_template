@@ -27,7 +27,7 @@ class SocialMediaView(ListCreateAPIView):
         return queryset
         serializer_class = SocialMediaSerializer  
 # TODO: Make post and update endpoint
-class UsersLocation(ListCreateAPIView):
+class UsersLocation(UpdateAPIView, ListAPIView):
     serializer_class = LocationSerialiazer    
     permission_classes=[]
     def perform_create(self, serializer):

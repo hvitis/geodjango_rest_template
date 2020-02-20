@@ -55,35 +55,3 @@ class ProfileImage(models.Model):
     file = models.ImageField(default="/profile_pictures/default.png", upload_to="profile_pictures/")
     def __str__(self):
         return self.file.name
-
-# class Printer(models.Model):
-#     profile=models.ForeignKey( UserProfile, on_delete=models.CASCADE ,related_name="printers")
-#     name = models.CharField(max_length=255, unique=False)
-#     picture = models.URLField()
-#     # TODO: Make a selectable Model list with optional name of the printer
-#     # model
-
-#     class Meta:
-#         # This means that I cant have 2 printers called the same with the same owner
-#         unique_together = ['profile', 'name']
-#         ordering = ['name']
-#     def __str__(self):
-#         return self.name
-
-
-# class PrintedObject(models.Model):
-#     printer = models.ForeignKey(Printer, on_delete=models.CASCADE,related_name="PrintedObjects")
-#     name = models.CharField(max_length=255)
-#     class Meta:
-#         unique_together = ['printer', 'name']
-#         ordering = ['name']
-#     def __str__(self):
-#         return self.name
-
-# class Address(models.Model):
-#     profile = models.OneToOneField(UserProfile,on_delete=models.CASCADE,related_name="addresses")
-#     street = models.CharField(max_length=255, blank=True)
-#     city = models.CharField(max_length=255, blank=True)
-#     country_code = CountryField(blank=True)
-  
-

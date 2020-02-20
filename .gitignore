@@ -1,3 +1,4 @@
+**/**/.pyc
 */*.pyc
 .DS_*
 *.log
@@ -43,4 +44,13 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+*.pyc
+accounts/__pycache__/models.cpython-38.pyc
+accounts/__pycache__/serializers.cpython-38.pyc
+accounts/__pycache__/models.cpython-38.pyc
+accounts/__pycache__/serializers.cpython-38.pyc
+accounts/__pycache__/urls.cpython-38.pyc
+accounts/__pycache__/views.cpython-38.pyc
+core/__pycache__/settings.cpython-38.pyc
+core/__pycache__/urls.cpython-38.pyc
 *.pyc

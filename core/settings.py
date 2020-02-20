@@ -66,7 +66,8 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'webpack_loader',
-
+    'printers',
+    'prints'
 
 ]
 REST_FRAMEWORK = {
