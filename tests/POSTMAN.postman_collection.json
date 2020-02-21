@@ -80,35 +80,6 @@
 			"response": []
 		},
 		{
-			"name": "Get Accs",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{jwt_token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{LH_URL}}api/auth/users/",
-					"host": [
-						"{{LH_URL}}api"
-					],
-					"path": [
-						"auth",
-						"users",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Get Token",
 			"event": [
 				{
@@ -173,6 +144,35 @@
 						"auth",
 						"jwt",
 						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Accs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LH_URL}}api/auth/users/",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"auth",
+						"users",
+						""
 					]
 				}
 			},
@@ -367,7 +367,7 @@
 			"response": []
 		},
 		{
-			"name": "Post Location",
+			"name": "Update Location",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -379,7 +379,53 @@
 						}
 					]
 				},
-				"method": "POST",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"latitude\": \"33\",\r\n    \"longitude\": \"44\",\r\n    \"coordinates\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/accounts/detailed-profiles/{{user_id}}/location",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"accounts",
+						"detailed-profiles",
+						"{{user_id}}",
+						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get location",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
 				"header": [],
 				"url": {
 					"raw": "{{LH_URL}}api/accounts/detailed-profiles/{{user_id}}/location",
@@ -437,6 +483,230 @@
 						"accounts",
 						"profile-image",
 						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Printer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c4126e27-1858-4f49-8faa-e1265215a58a",
+						"exec": [
+							"",
+							"let userName = pm.globals.get(\"userName\");",
+							"pm.test(\"Printed created for user  \" + pm.globals.get(\"userName\"), function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.globals.set(\"printer_id\", jsonData.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"type": "text",
+						"value": "jSdh6c3VAHgLShLEyTjH2N957qCILqmb",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"model\" : \"Ender\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/printers/{{user_id}}",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"printers",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPrinter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"type": "text",
+						"value": "jSdh6c3VAHgLShLEyTjH2N957qCILqmb",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"model\" : \"Ender\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/printers/{{user_id}}",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"printers",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPrints",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"type": "text",
+						"value": "jSdh6c3VAHgLShLEyTjH2N957qCILqmb",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"model\" : \"Ender\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/prints/{{user_id}}",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"prints",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostPrints",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"type": "text",
+						"value": "jSdh6c3VAHgLShLEyTjH2N957qCILqmb",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\" : \"My beautiful print\",\n\"picture\" : \"www.somelink.local\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/prints/{{printer_id}}",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"prints",
+						"{{printer_id}}"
 					]
 				}
 			},
