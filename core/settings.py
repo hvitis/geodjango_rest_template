@@ -67,7 +67,8 @@ INSTALLED_APPS = [
 
     'webpack_loader',
     'printers',
-    'prints'
+    'prints',
+    'phonenumber_field'
 
 ]
 REST_FRAMEWORK = {

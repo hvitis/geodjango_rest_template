@@ -39,12 +39,12 @@ class App extends Component {
       <Header { ...this.props } />
       <Switch>
           <Route path = '/' exact render={(props) => <Home {...this.props} title={`Props through render`} />} />
-          <Route path = '/login/' exact component = { Login } />
-          <Route path = '/signup/' exact component = { Signup } />
+          <Route path = '/login/' exact component={(props) => <Login {...this.props} />} />
+          <Route path = '/signup/' exact component={(props) => <Signup {...this.props} />} />
           <ProtectedRoute { ...this.props } path ='/add-printer' redirect='/login' component={(props) => <AddPrinter {...this.props} />}  />
           {/* <Route path = '/add-printer' render={(props) => <AddPrinter {...this.props} title={`Props through render`} />} /> */}
           <Route path = '/author-profile' component = { AuthProfile } />
-          <Route path = '/dashboard-listings' render={(props) => <AuthDeshbord {...this.props} title={`Props through render`} />} />
+          <Route path = '/dashboard' render={(props) => <AuthDeshbord {...this.props} title={`Props through render`} />} />
           <Redirect to="/" />
         </Switch>
       <Footer />

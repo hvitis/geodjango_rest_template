@@ -19,7 +19,7 @@ urlpatterns = [
     path('api/auth/', include('djoser.urls.jwt')),
 
     # path to our account's app endpoints
-    path("api/accounts/", include("accounts.urls")),
+    path("api/", include("accounts.urls")),
     path("api/", include("printers.urls")),
     path("api/", include("prints.urls")),
     path("docs/", schema_view),

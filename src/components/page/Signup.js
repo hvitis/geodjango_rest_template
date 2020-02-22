@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Form, Input, Icon, Button } from 'antd';
 import { NavLink } from 'react-router-dom';
 import * as actions from '../../Store/action/auth';
+import { Redirect } from 'react-router-dom'
 
 const FormItem = Form.Item;
 
@@ -24,7 +25,6 @@ class RegistrationForm extends React.Component {
           values.password,
           values.email,
         );
-
         this.props.history.push('/login/');
       }
     });
@@ -54,9 +54,13 @@ class RegistrationForm extends React.Component {
 
 
   render() {
+    if (this.props.isAuthenticated) {
+      return <Redirect to='/dashboard' />
+    }
     const { getFieldDecorator } = this.props.form;
 
     return (
+
       <Fragment>
 
         <section className="contact-area section-bg p-top-100 p-bottom-70">

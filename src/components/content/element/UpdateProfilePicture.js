@@ -45,10 +45,10 @@ class UpdateProfilePicture extends Component {
             <Fragment>
                 <div className="col-lg-3 col-md-4 mb-5 mb-lg-0">
                     <div className="user_pro_img_area">
-                        <img src={this.state.profilePicture} alt="Profile Picture" height="200" />
+                        <img src={this.state.profilePicture} alt="Profile Picture" height="200" width="200"/>
                         <div className="image-info">
                             <h6>Profile Image</h6>
-                            <span>JPG or PNG 120x120 px</span>
+                            <span>JPG or PNG 1:1 scale</span>
                         </div>
                         <div className="custom-file-upload">
                             <input type="file" id="customFile" onChange={(e) => { this.updateProfilePicture(e.target.files[0]) }} />
@@ -56,7 +56,7 @@ class UpdateProfilePicture extends Component {
                                 Upload New Image
             </label>
                         </div>
-                        <button className="btn btn-sm btn-danger">Delete Image</button>
+                        {/* <button className="btn btn-sm btn-danger">Delete Image</button> */}
                     </div>
                 </div>
             </Fragment>

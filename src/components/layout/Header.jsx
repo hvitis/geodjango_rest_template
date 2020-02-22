@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 
 const noAction = e => e.preventDefault();
 class Header extends Component {    
+
     render() {
         console.log("Rendering props on HEADER", this.props)
 

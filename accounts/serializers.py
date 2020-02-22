@@ -1,9 +1,6 @@
 from rest_framework import serializers
 from .models import UserProfile, Location , SocialMedia, ProfileImage
-class ProfileImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ProfileImage
-        fields = "__all__"
+
 class SocialMediaSerializer(serializers.ModelSerializer):
     class Meta:
         model=SocialMedia
@@ -13,16 +10,18 @@ class LocationSerialiazer(serializers.ModelSerializer):
         model = Location
         fields=['latitude', 'longitude', 'coordinates']
 
-class UserProfileSerializer(serializers.ModelSerializer):
-    # printers=PrinterDetailedSerializer(many=True)
-    location=LocationSerialiazer()
-    socialMedia=SocialMediaSerializer()
-    profileImage=ProfileImageSerializer()
+class ProfileImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProfileImage
+        fields = "__all__"
+
+class BasicInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model=UserProfile
-        fields=['id', 'description', 'location', 'socialMedia', 'profileImage']
+        fields=['nickname', 'firstName', 'lastName', 'description','phone_number', 'owns_printer']
 
-class UserProfileListCreateSerializer(serializers.ModelSerializer):
+
+class UserProfileSerializer(serializers.ModelSerializer):
     user=serializers.StringRelatedField(read_only=True)
     location=LocationSerialiazer()
     socialMedia=SocialMediaSerializer()
@@ -31,16 +30,3 @@ class UserProfileListCreateSerializer(serializers.ModelSerializer):
         model=UserProfile
         # TODO: On List serializer show location, make PUT serializer for updating user without location
         fields=['user', 'nickname', 'firstName', 'lastName', 'description', 'owns_printer', 'location', 'socialMedia', 'profileImage']
-class UserProfileListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=UserProfile
-        fields=['id', 'user', 'lastName']
-# nickname=models.CharField(max_length=300, blank=True,null=True)
-#     firstName=models.CharField(max_length=300, blank=True,null=True)
-#     lastName=models.CharField(max_length=300, blank=True,null=True)
-#     description=models.TextField(blank=True,null=True)
-
-#     date_joined=models.DateTimeField(auto_now_add=True)
-#     updated_on=models.DateTimeField(auto_now=True)
-
-#     owns_printer=models.BooleanField(defaul

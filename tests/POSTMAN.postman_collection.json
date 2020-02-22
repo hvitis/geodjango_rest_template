@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b9227192-4ee0-45a6-8130-f9cc0c5e562b",
+		"_postman_id": "4a61cb16-d029-47c8-8648-9c6af56ec483",
 		"name": "POSTMAN",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -184,13 +184,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{LH_URL}}api/accounts/detailed-profiles/{{user_id}}/social-media",
+					"raw": "{{LH_URL}}api/accounts/{{user_id}}/social-media",
 					"host": [
 						"{{LH_URL}}api"
 					],
 					"path": [
 						"accounts",
-						"detailed-profiles",
 						"{{user_id}}",
 						"social-media"
 					]
@@ -201,7 +200,7 @@
 		{
 			"name": "SocialMedia",
 			"request": {
-				"method": "POST",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -220,60 +219,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{LH_URL}}api/accounts/detailed-profiles/{{user_id}}/social-media",
+					"raw": "{{LH_URL}}api/accounts/{{user_id}}/social-media",
 					"host": [
 						"{{LH_URL}}api"
 					],
 					"path": [
 						"accounts",
-						"detailed-profiles",
 						"{{user_id}}",
 						"social-media"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Profile",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{jwt_token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"firstName\": \"John\",\n\t\"lastName\" : \"Markowsky\",\n\t\"nickname\": \"Brown\",\n\t\"description\": \"Random phrasess\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{LH_URL}}api/accounts/detailed-profiles/{{user_id}}",
-					"host": [
-						"{{LH_URL}}api"
-					],
-					"path": [
-						"accounts",
-						"detailed-profiles",
-						"{{user_id}}"
 					]
 				}
 			},
@@ -295,13 +248,57 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{LH_URL}}api/accounts/detailed-profiles",
+					"raw": "{{LH_URL}}api/accounts",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"John\",\n\t\"lastName\" : \"Markowsky\",\n\t\"nickname\": \"Brown\",\n    \"description\": \"I am great !!!\",\n    \"phone_number\": \"+34666777888\",\n    \"owns_printer\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/accounts/{{user_id}}/basic-info",
 					"host": [
 						"{{LH_URL}}api"
 					],
 					"path": [
 						"accounts",
-						"detailed-profiles"
+						"{{user_id}}",
+						"basic-info"
 					]
 				}
 			},
@@ -309,6 +306,9 @@
 		},
 		{
 			"name": "Get User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -321,15 +321,30 @@
 					]
 				},
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"description\" : \"I am great\",\n\"phone_number\" : \"+34666777888\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "{{LH_URL}}api/accounts/detailed-profiles/{{user_id}}",
+					"raw": "{{LH_URL}}api/accounts/{{user_id}}",
 					"host": [
 						"{{LH_URL}}api"
 					],
 					"path": [
 						"accounts",
-						"detailed-profiles",
 						"{{user_id}}"
 					]
 				}
@@ -352,13 +367,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{LH_URL}}api/accounts/detailed-profiles/{{user_id}}/location",
+					"raw": "{{LH_URL}}api/accounts/{{user_id}}/location",
 					"host": [
 						"{{LH_URL}}api"
 					],
 					"path": [
 						"accounts",
-						"detailed-profiles",
 						"{{user_id}}",
 						"location"
 					]
@@ -398,13 +412,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{LH_URL}}api/accounts/detailed-profiles/{{user_id}}/location",
+					"raw": "{{LH_URL}}api/accounts/{{user_id}}/location",
 					"host": [
 						"{{LH_URL}}api"
 					],
 					"path": [
 						"accounts",
-						"detailed-profiles",
 						"{{user_id}}",
 						"location"
 					]
@@ -428,13 +441,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{LH_URL}}api/accounts/detailed-profiles/{{user_id}}/location",
+					"raw": "{{LH_URL}}api/accounts/{{user_id}}/location",
 					"host": [
 						"{{LH_URL}}api"
 					],
 					"path": [
 						"accounts",
-						"detailed-profiles",
 						"{{user_id}}",
 						"location"
 					]
@@ -470,19 +482,19 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "/C:/Users/ADPI/Downloads/Screenshot-2020-02-13T14-11-49.934Z.png"
+							"src": "/C:/Users/m8pi4/Downloads/Painting of Elon Musk on Mars by Conor Walton.jpg"
 						}
 					]
 				},
 				"url": {
-					"raw": "{{LH_URL}}api/accounts/profile-image/{{user_id}}",
+					"raw": "{{LH_URL}}api/accounts/{{user_id}}/profile-image",
 					"host": [
 						"{{LH_URL}}api"
 					],
 					"path": [
 						"accounts",
-						"profile-image",
-						"{{user_id}}"
+						"{{user_id}}",
+						"profile-image"
 					]
 				}
 			},

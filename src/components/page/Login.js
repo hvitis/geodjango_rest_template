@@ -6,31 +6,38 @@ import Header from '../layout/Header';
 import { Footer } from '../layout/Footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { Form, Input, Icon, Button } from 'antd';
+import { Redirect } from 'react-router-dom'
 const FormItem = Form.Item;
 
 
 class NormalLoginForm extends React.Component {
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         this.props.onAuth(values.userName, values.password);
-        this.props.history.push('/');
+        if (this.props.isAuthenticated) {
+          // return <Redirect to='/dashboard' />
+        }
       }
     });
   }
 
   render() {
+    if (this.props.isAuthenticated) {
+      return <Redirect to='/dashboard' />
+    }
     let errorMessage = null;
     if (this.props.error) {
-        errorMessage = (
-            <p>{this.props.error.message}</p>
-        );
+      errorMessage = (
+        <p>{this.props.error.message}</p>
+      );
     }
 
     const { getFieldDecorator } = this.props.form;
     return (
-<Fragment>
+      <Fragment>
         <section className="contact-area section-bg p-top-100 p-bottom-70">
           <div className="container">
             <div className="row">
@@ -66,7 +73,7 @@ class NormalLoginForm extends React.Component {
                         </FormItem>
                       </div>
 
-                      
+
                       <FormItem>
                         <Button className="btn btn-outline-secondary btn-block" type="primary" htmlType="submit" style={{ marginRight: '10px' }}>
                           Log In
@@ -85,7 +92,7 @@ class NormalLoginForm extends React.Component {
             </div>
           </div>
         </section>
-        </Fragment>
+      </Fragment>
     );
   }
 }
@@ -93,16 +100,16 @@ class NormalLoginForm extends React.Component {
 const WrappedNormalLoginForm = Form.create()(NormalLoginForm);
 
 const mapStateToProps = (state) => {
-    return {
-        loading: state.loading,
-        error: state.error
-    }
+  return {
+    loading: state.loading,
+    error: state.error
+  }
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-        onAuth: (username, password) => dispatch(actions.authLogin(username, password)) 
-    }
+  return {
+    onAuth: (username, password) => dispatch(actions.authLogin(username, password))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WrappedNormalLoginForm);
