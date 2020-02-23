@@ -37,10 +37,18 @@ import './assets/style.css';
 // window.jquery = jquery
 // import './assets/theme_assets/js/main.js'
 import reducer from './Store/Reducers/auth';
-
+import { Provider as AlertProvider } from 'react-alert'
+// import AlertTemplate from './components/layout/AlertTemplate'
+import AlertTemplate from 'react-alert-template-basic'
 
 // import jquery from 'jquery';
-
+// optional cofiguration
+const options = {
+    position: 'bottom center',
+    timeout: 5000,
+    offset: '30px',
+    transition: 'scale'
+}
 
 const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -52,9 +60,12 @@ console.log('public url: ', process.env.PUBLIC_URL)
 // const jQuery = jquery;
 
 const app = (
-    <Provider store={store}>
-        <App />
-    </Provider>
+
+    <AlertProvider template={AlertTemplate} {...options}>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </AlertProvider>
 )
 
 ReactDOM.render(app, document.getElementById('root'));

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
-import Login from './components/page/Login'
+import Login from './components/page/Auth/Login'
+import Signup from './components/page/Auth/Signup'
 
 import * as actions from './Store/action/auth';
 import { connect } from 'react-redux';
@@ -8,13 +9,12 @@ import Home from './components/page/Home';
 // import BaseRouter from './routes';
 // import Index from './components/page/Home'
 import Header from './components/layout/Header'
-import Signup from './components/page/Signup'
-import AuthProfile from './components/page/AuthProfile'
-import AuthDeshbord from './components/page/AuthDeshbord'
+import AuthProfile from './components/page/Profile/AuthProfile'
+import AuthDeshbord from './components/page/Profile/AuthDeshbord'
 
 import { Footer } from './components/layout/Footer'
 // import Layout from './components/layout/Layout'
-import  AddPrinter  from './components/page/AddPrinter'
+import  AddPrinter  from './components/page/Printer/AddPrinter'
 import {
   BrowserRouter,
   HashRouter,

@@ -1,11 +1,11 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
-import {connect} from 'react-redux';
-import BlogGrid4 from '../content/element/card/card-blog-grid4';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
+import { BreadcrumbWraper } from '../../content/element/breadcrumb';
+import CardCategoryGrid4 from '../../content/element/card/card-category-grid-4';
+import { connect } from 'react-redux';
 
-const BlogGrid = (props) => {
+const AllCategoris = (props) => {
     const light = props.logo[0].light;
     return (
         <Fragment>
@@ -16,26 +16,24 @@ const BlogGrid = (props) => {
                     <Header logo={light} class="menu--light" />                    
                 </div>
                 {/* <!-- ends: .mainmenu-wrapper --> */}
-                <BreadcrumbWraper title="Blog Grid" />
+                <BreadcrumbWraper title="All Categoris" />
             </section>
             {/* Header section end */}
-            <section className="blog-area blog-grid section-padding-strict section-bg">
+            <section className="section-padding-1_7 border-bottom">
                 <div className="container">
                     <div className="row">
-                        <BlogGrid4 blog={props.blog} />                        
+                        <CardCategoryGrid4 /> 
                     </div>
-                </div>
+                </div>      
             </section>
            <Footer />
         </Fragment>
     )
 }
-
-const mapStateToProps = (state, ownProps) => {
-
-    return {
-        blog : state.blog,
+const mapStateToProps = state => {
+    return {        
         logo: state.logo
     }
 }
-export default connect(mapStateToProps)(BlogGrid);
+
+export default connect(mapStateToProps)(AllCategoris);

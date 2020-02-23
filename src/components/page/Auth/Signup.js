@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
+import { BreadcrumbWraper } from '../../content/element/breadcrumb';
 import { connect } from 'react-redux';
 import { Form, Input, Icon, Button } from 'antd';
 import { NavLink } from 'react-router-dom';
-import * as actions from '../../Store/action/auth';
+import * as actions from '../../../Store/action/auth';
 import { Redirect } from 'react-router-dom'
 
 const FormItem = Form.Item;

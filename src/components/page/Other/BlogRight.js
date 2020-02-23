@@ -1,10 +1,10 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
+import { BreadcrumbWraper } from '../../content/element/breadcrumb';
 import {connect} from 'react-redux';
-import BlogSingle from '../content/element/card/card-blog-single-grid';
-import { Category, PopularPost, RecentPost, PopularTags, StayUpdate, ConnentFollow } from '../content/element/widget';
+import BlogSingle from '../../content/element/card/card-blog-single-grid';
+import { Category, PopularPost, RecentPost, PopularTags, StayUpdate, ConnentFollow } from '../../content/element/widget';
 
 const BlogRight = (props) => {
     const light = props.logo[0].light;

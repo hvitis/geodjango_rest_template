@@ -1,22 +1,22 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
 import { connect } from "react-redux";
-import { BreadcrumbSingle } from '../content/element/breadcrumb';
-import { ContentStory } from '../content/element/listing-details-story';
-import Gallery from '../content/element/carousel/gallery';
-import { ListingFetures } from '../content/element/listing-fetures';
-import { Video, Video2 } from '../content/element/video';
+import { BreadcrumbSingle } from '../../content/element/breadcrumb';
+import { ContentStory } from '../../content/element/listing-details-story';
+import Gallery from '../../content/element/carousel/gallery';
+import { ListingFetures } from '../../content/element/listing-fetures';
+import { Video, Video2 } from '../../content/element/video';
 import Map1 from '../content/element/map';
-import { ContactInfo } from '../content/element/contact-info';
-import { Accordion } from '../content/element/accordion';
-import { Review, AddReview } from '../content/element/review';
-import { SellerInfo, BusinessInfo, CategoryWithIcon, TagStyle, SimilarListing, PopularListing } from '../content/element/widget';
+import { ContactInfo } from '../../content/element/contact-info';
+import { Accordion } from '../../content/element/accordion';
+import { Review, AddReview } from '../../content/element/review';
+import { SellerInfo, BusinessInfo, CategoryWithIcon, TagStyle, SimilarListing, PopularListing } from '../../content/element/widget';
 
 import { NavLink } from 'react-router-dom';
-import { ContactForm } from '../content/element/contact-form';
-import Report from '../content/element/modal/report';
-import Clime from '../content/element/modal/clime-list';
+import { ContactForm } from '../../content/element/contact-form';
+import Report from '../../content/element/modal/report';
+import Clime from '../../content/element/modal/clime-list';
 const noAction = e => e.preventDefault();
 
 const ListingDetails = (props) => {

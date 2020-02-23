@@ -1,10 +1,10 @@
 import React, {Fragment, Component} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
+import { BreadcrumbWraper } from '../../content/element/breadcrumb';
 
 import { connect } from 'react-redux';
-import { Transection } from '../content/element/transection';
+import { Transection } from '../../content/element/transection';
 const noAction = e => e.preventDefault();
 
 class CheckoutAdvanced extends Component {

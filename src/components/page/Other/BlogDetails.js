@@ -1,10 +1,10 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
 import { connect } from "react-redux";
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
-import { Category, PopularPost, RecentPost, PopularTags, StayUpdate, ConnentFollow } from '../content/element/widget';
-import DetailsContent from '../container/blog-details';
+import { BreadcrumbWraper } from '../../content/element/breadcrumb';
+import { Category, PopularPost, RecentPost, PopularTags, StayUpdate, ConnentFollow } from '../../content/element/widget';
+import DetailsContent from '../../container/blog-details';
 
 const BlogDetails = (props) => {
     const id = props.match.params.id;

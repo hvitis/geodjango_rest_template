@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
-import { ContactForm2 } from '../content/element/contact-form';
-import { WidgetContactInfo } from '../content/element/widget';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
+import { BreadcrumbWraper } from '../../content/element/breadcrumb';
+import { ContactForm2 } from '../../content/element/contact-form';
+import { WidgetContactInfo } from '../../content/element/widget';
 import { connect } from 'react-redux';
 const Contact = (props) => {
     const light = props.logo[0].light;

@@ -1,10 +1,11 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
-import { LocationList } from '../content/element/place-list';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
+import { BreadcrumbWraper } from '../../content/element/breadcrumb';
+import ListingList from '../../container/all-listing-list';
 import { connect } from 'react-redux';
-const AllLocation = (props) => {
+
+const AllListingList = (props) => {
     const light = props.logo[0].light;
     return (
         <Fragment>
@@ -15,12 +16,11 @@ const AllLocation = (props) => {
                     <Header logo={light} class="menu--light" />                    
                 </div>
                 {/* <!-- ends: .mainmenu-wrapper --> */}
-                <BreadcrumbWraper title="All Locations" />
+                <BreadcrumbWraper title="All Listing" />
             </section>
             {/* Header section end */}
-            <section className="section-padding-strict section-bg">
-                <LocationList />                    
-            </section>
+
+            <ListingList />           
            <Footer />
         </Fragment>
     )
@@ -31,4 +31,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(AllLocation);
+export default connect(mapStateToProps)(AllListingList);

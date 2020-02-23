@@ -8,19 +8,16 @@ class UpdateProfilePicture extends Component {
         this.state = {
             profilePicture : props.profilePicture
         };
-
         this.updateProfilePicture = this.updateProfilePicture.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
     }
-    componentDidMount() { }
-
     updateProfilePicture(file) {
         console.log(file)
         let data = new FormData();
         data.append('file', file, file.fileName);
         let user_id = localStorage.getItem('user_id')
 
-        axios.put(`${config.API_URL}/accounts/profile-image/${user_id}`, data, {
+        axios.put(`${config.API_URL}/accounts/${user_id}/profile-image`, data, {
             headers: {
                 'accept': '*/*',
                 'Accept-Language': 'en-US,en;q=0.8',
@@ -35,11 +32,7 @@ class UpdateProfilePicture extends Component {
                 //handle error
                 console.log('Whole error response', error)
             });
-        
     }
-
-
-
     render() {
         return (
             <Fragment>
