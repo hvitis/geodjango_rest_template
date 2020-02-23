@@ -20,8 +20,6 @@ class AuthDeshbord extends Component {
         super(props);
         this.state = {
             imgIsLoaded: false,
-            latitude: undefined,
-            longitude: undefined,
             mapIsLoaded: false,
         };
 
@@ -29,15 +27,13 @@ class AuthDeshbord extends Component {
         // this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentWillMount() {
-        
+
         this.setState({
-            latitude: undefined,
-            longitude: undefined,
             mapIsLoaded: false,
             showConfidential: false
         });
 
-        
+
     }
     componentDidMount() {
         let user_id = localStorage.getItem('user_id')
@@ -55,39 +51,64 @@ class AuthDeshbord extends Component {
             });
             console.log("Dashboard state did mount", this.state)
         };
+
         geo.watchPosition(onChange);
-        fetch(`${config.API_URL}/accounts/detailed-profiles/${user_id}`)
-        .then(response => response.json())
-        .then(
-            (result) => {
-                console.log('result afetr call update', result)
-                this.setState({
-                  imgIsLoaded: true,
-                  img: result[0].profileImage.file
-                });
-                console.log('state afetr call update', this.state)
-              },
-              // Note: it's important to handle errors here
-              // instead of a catch() block so that we don't swallow
-              // exceptions from actual bugs in components.
-              (error) => {
-                this.setState({
-                  imgIsLoaded: true,
-                  error
-                });
-              }
-        );
+        // this.interval = setInterval(() => geo.watchPosition(onChange), 1000);
+
+        fetch(`${config.API_URL}/accounts/${user_id}`)
+            .then(response => response.json())
+            .then(
+                (result) => {
+                    console.log('result afetr call update', result)
+                    this.setState({
+                        imgIsLoaded: true,
+                        img: result[0].profileImage.file
+                    });
+                    console.log('state afetr call update', this.state)
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    this.setState({
+                        imgIsLoaded: true,
+                        error
+                    });
+                }
+            );
+        fetch(`${config.API_URL}/accounts/${user_id}/location`)
+            .then(response => response.json())
+            .then(
+                (result) => {
+                    if (result[0].latitude === null) {
+                       return
+                    }
+                    this.setState({
+                        mapIsLoaded: true,
+                        latitude: result[0].latitude,
+                        longitude: result[0].longitude
+                    });
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    this.setState({
+                        mapIsLoaded: true,
+                        error
+                    });
+                }
+            );
     }
 
-  
+componentWillUnmount() {
+//   clearInterval(this.interval);
+}
 
     showConfidential() {
         this.setState({ showConfidential: !this.state.showConfidential })
     }
     render() {
-
-        // console.log("Props loaded on Dashboard", this.props)
-
         return (
             <Fragment>
                 {
@@ -139,7 +160,7 @@ class AuthDeshbord extends Component {
                                         <div className="row">
 
                                             {/* // Update profile  */}
-                                            {this.state.imgIsLoaded ? (<UpdateProfilePicture profilePicture={this.state.img} />) : (<Spinner />) } 
+                                            {this.state.imgIsLoaded ? (<UpdateProfilePicture profilePicture={this.state.img} />) : (<Spinner />)}
                                             <div className="col-lg-9 col-md-8">
                                                 <div className="atbd_author_module">
                                                     <div className="atbd_content_module">
@@ -151,8 +172,8 @@ class AuthDeshbord extends Component {
                                                         {/* MAP PICKER LOCATION */}
                                                         <div className="atbdb_content_module_contents">
                                                             <label className="not_empty form-label">Set the Marker by clicking anywhere on the Map</label>
-                                                                {this.state.mapIsLoaded ? <MapLocationPicker {...this.state} /> : <div className="alert">Loading....</div>}
-                                                           
+                                                            {this.state.mapIsLoaded ? <MapLocationPicker {...this.state} /> : <div className="alert">Loading....</div>}
+
                                                             {/* <div className="cor-wrap form-group">
                                                                         <div className="atbd_mark_as_closed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
                                                                             <input type="checkbox" className="custom-control-input" name="manual_coordinate" value="1" id="manual_coordinate" />
@@ -431,8 +452,6 @@ class AuthDeshbord extends Component {
                             </section>
                         )
                 }
-
-                <Footer />
             </Fragment>
         )
     }
