@@ -128,10 +128,10 @@ export class BreadcrumbAbout extends Component {
                             
                                 <div className="row d-flex justify-between">
 
-                                <img className="p-2 main-picture" src="https://netrinoimages.s3.eu-west-2.amazonaws.com/2018/03/26/504993/190398/voldemort_wand_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_2018382_o.jpg" alt="" width="270px" />
-                                <img className="p-2 main-picture" src="https://i.pinimg.com/564x/a6/93/b8/a693b831ca3b517248bc46ee8f5a6f68.jpg" alt="" width="270px" />
-                                <img className="p-2 main-picture" src="https://i.insider.com/5e32f2a324306a19834af322?width=1300&format=jpeg&auto=webp" alt="" width="270px" />
-                                <div className="add-button"><MdLibraryAdd className="add-button-icon"/></div>
+                                <img className="m-2 p-2 main-picture" src="https://netrinoimages.s3.eu-west-2.amazonaws.com/2018/03/26/504993/190398/voldemort_wand_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_2018382_o.jpg" alt="" width="270px" />
+                                <img className="m-2 p-2 main-picture" src="https://i.pinimg.com/564x/a6/93/b8/a693b831ca3b517248bc46ee8f5a6f68.jpg" alt="" width="270px" />
+                                <img className="m-2 p-2 main-picture" src="https://i.insider.com/5e32f2a324306a19834af322?width=1300&format=jpeg&auto=webp" alt="" width="270px" />
+                                <div className="m-2 add-button"><MdLibraryAdd className="add-button-icon"/></div>
                                 </div>
                         </div>
                     </div>
