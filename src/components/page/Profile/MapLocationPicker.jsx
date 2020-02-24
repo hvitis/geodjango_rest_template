@@ -48,6 +48,9 @@ class MapLocationPicker extends Component {
 
         return (
             <Fragment>
+                {/* MAP PICKER LOCATION */}
+                <div className="atbdb_content_module_contents">
+                                                                            <label className="not_empty form-label">Set the Marker by clicking anywhere on the Map</label>
                 <div className="map" id="map-one" style={{ position: 'relative' }}>
                     <Map
                         google={this.props.google}
@@ -91,6 +94,8 @@ class MapLocationPicker extends Component {
                     </div>
                 </div>
                 {this.state.alert}
+                </div>
+                                                                        {/* MAP PICKER LOCATION */}
             </Fragment>
         )
     }
