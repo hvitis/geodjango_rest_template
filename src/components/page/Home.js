@@ -10,7 +10,6 @@ import { Subscribe } from '../content/element/subscribe';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../Store/action/auth';
-import intro from '../../assets/img/intro.jpg'
 const noAction = e => e.preventDefault();
 class Home extends Component {
 

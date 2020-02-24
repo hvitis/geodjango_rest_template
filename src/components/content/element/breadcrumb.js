@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
+
+import { MdLibraryAdd } from 'react-icons/md';
+
 const noAction = e => e.preventDefault();
 export class BreadcrumbWraper extends Component {
 
@@ -121,16 +124,15 @@ export class BreadcrumbAbout extends Component {
                 <div className="about-intro content_above">
                     <div className="container">
                         <div className="row align-items-center">
-                            <div className="col-lg-5 col-md-6">
-                                <h1>Place your Businessor Explore Anything what you want</h1>
-                                <a href="https://www.youtube.com/watch?v=0C4fX_x_Vsg" className="video-iframe play-btn-two">
-                                    <span className="icon"><i className="la la-youtube-play"></i></span>
-                                    <span>Play our Video</span>
-                                </a>
-                            </div>
-                            <div className="col-lg-6 offset-lg-1 col-md-6 offset-md-0 col-sm-8 offset-sm-2">
-                                <img src="./assets/img/about-illustration.png" alt="" />
-                            </div>
+                        <h1>Imprime tus figuras favoritas en 3D!</h1>
+                            
+                                <div className="row d-flex justify-between">
+
+                                <img className="p-2 main-picture" src="https://netrinoimages.s3.eu-west-2.amazonaws.com/2018/03/26/504993/190398/voldemort_wand_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_2018382_o.jpg" alt="" width="270px" />
+                                <img className="p-2 main-picture" src="https://i.pinimg.com/564x/a6/93/b8/a693b831ca3b517248bc46ee8f5a6f68.jpg" alt="" width="270px" />
+                                <img className="p-2 main-picture" src="https://i.insider.com/5e32f2a324306a19834af322?width=1300&format=jpeg&auto=webp" alt="" width="270px" />
+                                <div className="add-button"><MdLibraryAdd className="add-button-icon"/></div>
+                                </div>
                         </div>
                     </div>
                 </div>

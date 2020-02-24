@@ -1,3 +1,24 @@
+.main-picture {
+  border-radius: 25%;
+  box-shadow: 1px 2px azure;
+}
+.add-button{
+  width: 270px;
+  height: 270px;
+  background-color: #36c836;
+  border-radius: 25%;
+  box-shadow: 1px 2px white;
+  margin-left: 5px;
+  
+}
+
+.add-button-icon {
+  margin-left: 10px;
+  margin-top: 10px;
+  zoom: 5;
+  color: white;
+}
+
 .m-top-0 {
   margin-top: 0px;
 }
