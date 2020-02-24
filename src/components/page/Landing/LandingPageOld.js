@@ -10,7 +10,7 @@ import ClientLogo from '../../content/element/carousel/client-logo';
 import { Subscribe } from '../../content/element/subscribe';
 import {connect} from 'react-redux';
 
-const AboutPage = (props) => {
+const LandingPage = (props) => {
     const light = props.logo[0].light;
     return (
         <Fragment>
@@ -63,4 +63,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(AboutPage);
+export default connect(mapStateToProps)(LandingPage);
