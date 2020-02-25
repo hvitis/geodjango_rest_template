@@ -9,14 +9,14 @@ export class Subscribe extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-8 offset-md-2">
-                                <h1>Subscribe to Newsletter</h1>
-                                <p>Subscribe to get update and information. Don't worry, we won't send spam!</p>
+                                <h1>Registra y pide con correo</h1>
+                                <p>Te enviaremos el pedido y su estado a tu correo.</p>
                                 <form action="/" className="subscribe-form m-top-40">
                                     <div className="form-group">
                                         <span className="la la-envelope-o"></span>
                                         <input type="text" placeholder="Enter your email" required />
                                     </div>
-                                    <button className="btn btn-gradient btn-gradient-one" onClick={noAction}>Submit</button>
+                                    <button className="btn btn-gradient btn-gradient-one" onClick={noAction}>Pide</button>
                                 </form>
                             </div>
                         </div>

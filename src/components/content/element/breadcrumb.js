@@ -4,21 +4,44 @@ import { AddPhotoFigure } from './addPhotoFigure';
 import { MdLibraryAdd } from 'react-icons/md';
 import { FaPlus } from 'react-icons/fa';
 import Palette from 'react-palette';
-
+import { CheckOut } from './checkout.jsx';
+import { Redirect } from 'react-router-dom';
+import {Subscribe} from './subscribe'
 export class BreadcrumbAbout extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      wand: false,
+      dragon: false,
+      yoda: false
+
+    };
+  }
+  addItem(item) {
+      if(item == 'wand'){
+        this.setState({ wand: !this.state.wand });     
+     }
+     if(item == 'dragon'){
+        this.setState({ dragon: !this.state.dragon });     
+     }
+     if(item == 'yoda'){
+        this.setState({ yoda: !this.state.yoda });     
+     }
+  }
   render(props) {
     const links = {
       1: 'https://netrinoimages.s3.eu-west-2.amazonaws.com/2018/03/26/504993/190398/voldemort_wand_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_2018382_o.jpg',
       2: 'https://i.pinimg.com/564x/a6/93/b8/a693b831ca3b517248bc46ee8f5a6f68.jpg',
-      3: 'https://i.insider.com/5e32f2a324306a19834af322?width=1300&format=jpeg&auto=webp',
-      4: 'https://www.americasfinestlabels.com/includes/work/image_cache/ce0b18b121df13e632a58704a4f53e51.thumb.jpg'
+      3: 'https://cdn.myminifactory.com/assets/object-assets/5dd48df262fb8/images/720X720-fusion-render.jpg'
+      //   4: 'https://www.americasfinestlabels.com/includes/work/image_cache/ce0b18b121df13e632a58704a4f53e51.thumb.jpg'
     };
     const titleStyle = {
-        color: 'cornflowerblue',
-    fontSize: '40px',
-    fontWeight: 'bold',
-    textShadow: '1px 1px aliceblue',
-    }
+      color: 'cornflowerblue',
+      fontSize: '40px',
+      fontWeight: 'bold',
+      textShadow: '1px 1px aliceblue'
+    };
+
     return (
       <Fragment>
         <div className="about-intro content_above">
@@ -27,15 +50,39 @@ export class BreadcrumbAbout extends Component {
               <h1 style={titleStyle}>Imprime tus figuras favoritas en 3D!</h1>
 
               <div className="row d-flex justify-between">
-                <div className="col">
-                
-                  <AddPhotoFigure link={links[1]} />
-                  <AddPhotoFigure link={links[2]} />
-                  <AddPhotoFigure link={links[3]} />
-                  <AddPhotoFigure link={links[4]} />
+                <div
+                  onClick={() => {
+                    this.addItem('wand');
+                  }}
+                >
+                  <AddPhotoFigure
+                    link={links[1]}
+                    ordered={this.state.wand}
+                  />
+                </div>
 
+                <div
+                  onClick={() => {
+                    this.addItem('dragon');
+                  }}
+                >
+                  <AddPhotoFigure
+                    link={links[2]}
+                    ordered={this.state.dragon}
+                  />
+                </div>
+                <div
+                  onClick={() => {
+                    this.addItem('yoda');
+                  }}
+                >
+                  <AddPhotoFigure
+                    link={links[3]}
+                    ordered={this.state.yoda}
+                  />
                 </div>
               </div>
+              <Subscribe></Subscribe>
             </div>
           </div>
         </div>

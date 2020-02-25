@@ -1871,7 +1871,7 @@ p {
   top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bolder;
   color: cornflowerblue;
   border: 3px solid cornflowerblue;
@@ -1881,6 +1881,7 @@ p {
   border-radius: 20px;
   background: ghostwhite;
   box-shadow: 3px 3px;
+  width: fit-content;
 
 }
 .centered:hover {
@@ -1888,6 +1889,26 @@ p {
   box-shadow: 1px 1px;
 
 }
+
+.centered-cart {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  font-weight: bolder;
+  color: cornflowerblue;
+  padding: 2px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 20px;
+  background: ghostwhite;
+  width: fit-content;
+  border: 5px dashed rgb(58, 106, 196);
+  box-shadow: 1px 1px;
+
+}
+
 /* When you mouse over the container, fade in the overlay icon*/
 .container:hover .overlay {
   opacity: 1;
