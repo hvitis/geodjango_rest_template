@@ -1809,17 +1809,132 @@ p {
 .section-padding--bottom {
   padding-bottom: 6.66667rem;
 }
+/* Container needed to position the overlay. Adjust the width as needed */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
 
-/* Gradient BG */
+/* Make the image to responsive */
+.image {
+  width: 100%;
+  height: auto;
+}
+
+/* The overlay effect (full height and width) - lays on top of the container and over the image */
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: red;
+}
+
+/* When you mouse over the container, fade in the overlay icon*/
+.container:hover .overlay {
+  opacity: 1;
+}
+/* Container needed to position the overlay. Adjust the width as needed */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Make the image to responsive */
+.image {
+  width: 100%;
+  height: auto;
+}
+
+/* The overlay effect (full height and width) - lays on top of the container and over the image */
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: red;
+}
+.centered {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  font-weight: bolder;
+  color: cornflowerblue;
+  border: 3px solid cornflowerblue;
+  padding: 2px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 20px;
+  background: ghostwhite;
+  box-shadow: 3px 3px;
+
+}
+.centered:hover {
+  border: 5px dashed rgb(58, 106, 196);
+  box-shadow: 1px 1px;
+
+}
+/* When you mouse over the container, fade in the overlay icon*/
+.container:hover .overlay {
+  opacity: 1;
+}
+
+/* The icon inside the overlay is positioned in the middle vertically and horizontally */
+.icon {
+  color: white;
+  font-size: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* When you move the mouse over the icon, change color */
+.fa-user:hover {
+  color: #eee;
+}
+
+/* The icon inside the overlay is positioned in the middle vertically and horizontally */
+.icon {
+  color: white;
+  font-size: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* When you move the mouse over the icon, change color */
+.fa-user:hover {
+  color: #eee;
+}
 .bg-gradient-ps {
   background: #903af9;
-  background: -webkit-linear-gradient(to right, #903af9, #f5548e);
-  background: -o-linear-gradient(to right, #903af9, #f5548e);
-  background: -webkit-gradient(linear, left top, right top, from(#903af9), to(#f5548e));
-  background: -webkit-linear-gradient(left, #903af9, #f5548e);
-  background: -o-linear-gradient(left, #903af9, #f5548e);
-  background: linear-gradient(to right, #903af9, #f5548e);
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#903af9, endColorstr=#f5548e);
+  background: -webkit-linear-gradient(to right, #e3e3ef, #f7e2e2);
+  background: -o-linear-gradient(to right, #e3e3ef, #f7e2e2);
+  background: -webkit-gradient(linear, left top, right top, from(#e3e3ef), to(#f7e2e2));
+  background: -webkit-linear-gradient(left, #e3e3ef, #f7e2e2);
+  background: -o-linear-gradient(left, #e3e3ef, #f7e2e2);
+  background: linear-gradient(to right, #e3e3ef, #f7e2e2);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#e3e3ef, endColorstr=#f7e2e2);
 }
 
 .bg-gradient-pw, .pricing.atbd_pricing_special .atbd_popular_badge {
@@ -8494,7 +8609,7 @@ p {
     margin-right: auto;
   }
   .about-intro img {
-    width: 100%;
+    width: 80%;
   }
 }
 
@@ -8635,7 +8750,7 @@ p {
   }
   .about-intro img,
   .contents-wrapper .contents img {
-    width: 100%;
+    width: 80%;
   }
   .post-bottom .social-share,
   .post-bottom .tags {

@@ -1789,16 +1789,17 @@ p {
   padding-bottom: 6.66667rem;
 }
 
+
 /* Gradient BG */
 .bg-gradient-ps {
   background: #903af9;
-  background: -webkit-linear-gradient(to right, #903af9, #78b4f8);
-  background: -o-linear-gradient(to right, #903af9, #78b4f8);
-  background: -webkit-gradient(linear, left top, right top, from(#903af9), to(#78b4f8));
-  background: -webkit-linear-gradient(left, #903af9, #78b4f8);
-  background: -o-linear-gradient(left, #903af9, #78b4f8);
-  background: linear-gradient(to right, #903af9, #78b4f8);
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#903af9, endColorstr=#78b4f8);
+  background: -webkit-linear-gradient(to right, #e3e3ef, #f7e2e2);
+  background: -o-linear-gradient(to right, #e3e3ef, #f7e2e2);
+  background: -webkit-gradient(linear, left top, right top, from(#e3e3ef), to(#f7e2e2));
+  background: -webkit-linear-gradient(left, #e3e3ef, #f7e2e2);
+  background: -o-linear-gradient(left, #e3e3ef, #f7e2e2);
+  background: linear-gradient(to right, #e3e3ef, #f7e2e2);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#e3e3ef, endColorstr=#f7e2e2);
 }
 
 .bg-gradient-pw, .pricing.atbd_pricing_special .atbd_popular_badge {
@@ -1811,6 +1812,7 @@ p {
   background: linear-gradient(to right, #78b4f8, #3267aa);
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#78b4f8, endColorstr=#3267aa);
 }
+
 
 /* Background Image */
 .bgimage {
@@ -8472,7 +8474,7 @@ p {
     margin-right: auto;
   }
   .about-intro img {
-    width: 100%;
+    width: 80%;
   }
 }
 
@@ -8613,7 +8615,7 @@ p {
   }
   .about-intro img,
   .contents-wrapper .contents img {
-    width: 100%;
+    width: 80%;
   }
   .post-bottom .social-share,
   .post-bottom .tags {

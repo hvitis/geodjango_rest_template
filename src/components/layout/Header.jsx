@@ -24,21 +24,20 @@ class Header extends Component {
                                         <div className="logo-wrapper order-lg-0 order-sm-1">
                                             <div className="logo logo-top">
                                                 {/* <NavLink to="/"><img alt="logoImage" className="img-fluid" /></NavLink> */}
-                                                <NavLink to="/"><Button variant="primary">TOBEPRINT3D</Button></NavLink>
+                                                {/* <NavLink to="/"><Button variant="primary">TOBEPRINT3D</Button></NavLink> */}
                                             </div>
                                         </div>{/*<!-- ends: .logo-wrapper -->*/}
                                         <div className="menu-container order-lg-1 order-sm-0">
                                             <div className="d_menu">
-                                                <nav className="navbar navbar-expand-lg mainmenu__menu">
+                                                {/* <nav className="navbar navbar-expand-lg mainmenu__menu">
                                                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#ToBePrint3D-navbar-collapse" aria-controls="ToBePrint3D-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                                                         <span className="navbar-toggler-icon icon-menu"><i className="la la-reorder"></i></span>
                                                     </button>
-                                                    {/*<!-- Collect the nav links, forms, and other content for toggling -->*/}
                                                     <div className="collapse navbar-collapse" id="ToBePrint3D-navbar-collapse">
                                                         <NavItem />
                                                     </div>
-                                                    {/*<!-- /.navbar-collapse -->*/}
-                                                </nav>
+                                                    
+                                                </nav> */}
                                             </div>
                                         </div>
                                         <div className="menu-right order-lg-2 order-sm-2">
@@ -109,10 +108,10 @@ class Header extends Component {
 
                                                 </div>
                                             </div>
-                                            {/*<!-- emd .author-area -->*/}
+                                            {/*}
                                             <div className={"offcanvas-menu d-none"}>
                                                 <a href=" " className="offcanvas-menu__user"><i className="la la-user"></i></a>
-                                                {/* <div className="offcanvas-menu__contents active"> */}
+                                                {/* <div className="offcanvas-menu__contents active"> 
                                                 <div className="offcanvas-menu__contents">
                                                     <a href=" " className="offcanvas-menu__close"><i className="la la-times-circle"></i></a>
                                                     <div className="author-avatar">
@@ -132,9 +131,9 @@ class Header extends Component {
                                                             </div>
                                                             <button type="submit" className="btn btn-sm btn-secondary">Search</button>
                                                         </form>
-                                                    </div>{/*<!-- ends: .search_area -->*/}
-                                                </div>{/*<!-- ends: .author-info -->*/}
-                                            </div>{/*<!-- ends: .offcanvas-menu -->*/}
+                                                    </div>
+                                                </div>
+                                            </div><!-- ends: .offcanvas-menu -->*/}
                                         </div>{/*<!-- ends: .menu-right -->*/}
                                     </div>
                                 </div>
