@@ -22,6 +22,8 @@ urlpatterns = [
     path("api/", include("accounts.urls")),
     path("api/", include("printers.urls")),
     path("api/", include("prints.urls")),
+    path("api/", include("orders.urls")),
+
     path("docs/", schema_view),
     # path('service-worker.js', TemplateView.as_view(template_name="service-worker.js",
    

@@ -1,4 +1,7 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios'
+import config from '../../../config'
+
 const noAction = e => e.preventDefault();
 export class Subscribe extends Component {
 constructor(props){
@@ -17,8 +20,22 @@ handleChange(event) {
   }
 
 handleSubmit(event) {
-    alert('Gracias! Enviaremos tu pedido a : ' + this.state.value);
-    this.setState({sentOrder: true});
+    
+    axios.post(config.API_URL + '/orders', {
+        email: this.state.value,
+        order: this.props.order.toString()
+    })
+    .then(res => {
+        console.log("Auth response : ", res)
+        console.log("config.API_URL  : ", config.API_URL )
+        this.setState({sentOrder: true});
+        alert('Gracias! Enviaremos tu pedido a : ' + this.state.value);
+    })
+    .catch(err => {
+        alert('Error : ' + err);
+
+    })
+   
     event.preventDefault();
   }
 
