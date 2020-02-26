@@ -19,7 +19,7 @@ handleChange(event) {
   }
 
 handleSubmit(event) {
-    axios.post(config.API_URL + '/orders', {
+    axios.post('178.128.39.201:8000' + '/orders', {
         email: this.state.value,
         order: JSON.stringify(this.props.order)
     })
@@ -28,6 +28,7 @@ handleSubmit(event) {
         alert('Gracias! Enviaremos tu pedido a : ' + this.state.value);
     })
     .catch(err => {
+        console.log(err)
         alert('Error : ' + err.response.data['email']);
     })
     event.preventDefault();

@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { AddPhotoFigure } from './addPhotoFigure';
 import { MdLibraryAdd } from 'react-icons/md';
 import { FaPlus } from 'react-icons/fa';
-import Palette from 'react-palette';
 import { CheckOut } from './checkout.jsx';
 import { Redirect } from 'react-router-dom';
 import { Subscribe } from './subscribe';
