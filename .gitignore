@@ -54,3 +54,4 @@ accounts/__pycache__/views.cpython-38.pyc
 core/__pycache__/settings.cpython-38.pyc
 core/__pycache__/urls.cpython-38.pyc
 *.pyc
+*.pyc
