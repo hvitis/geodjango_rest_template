@@ -1,10 +1,10 @@
 const dev = {
-    API_URL: "http://localhost:8000/api",
+    API_URL: "http://tobeprinted.es/api",
     API_KEY_GMAPS : "AIzaSyA1umOS6BOBvTNLReOage940S6VDqLskkk"
   };
   
   const prod = {
-    API_URL: "https://tobeprint3d.herokuapp.com/api",
+    API_URL: "ttp://tobeprinted.es/api",
     API_KEY_GMAPS : "AIzaSyA1umOS6BOBvTNLReOage940S6VDqLskkk"
 
   };
