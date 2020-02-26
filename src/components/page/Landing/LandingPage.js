@@ -6,12 +6,15 @@ import { Counter } from '../../content/element/counter';
 import { SectionTitle } from '../../content/element/section-title';
 import { Subscribe } from '../../content/element/subscribe';
 import {connect} from 'react-redux';
+import { BreadcrumbAbout } from '../../content/element/breadcrumb';
+
 
 const LandingPage = (props) => {
     return (
         <Fragment>
-          
-            <ContentBlockAbout />
+            {/* <BreadcrumbAbout /> */}
+
+            {/* <ContentBlockAbout /> */}
             {/* <Counter /> */}
 
            
@@ -26,8 +29,6 @@ const LandingPage = (props) => {
                 </div>
             </section>
             client section end */}
-            <Subscribe />
-           <Footer />
         </Fragment>
     )
 }

@@ -1906,8 +1906,23 @@ p {
   width: fit-content;
   border: 5px dashed rgb(58, 106, 196);
   box-shadow: 1px 1px;
-
 }
+
+.checkout-text{
+  border: 5px solid #32cc6f;
+  color: #34cc6f;
+  font-size: 40px;
+  font-weight: bolder;
+  padding: 2px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 20px;
+  background: ghostwhite;
+  width: fit-content;
+  box-shadow: 1px 1px;
+}
+
+
 
 /* When you mouse over the container, fade in the overlay icon*/
 .container:hover .overlay {
@@ -1949,13 +1964,13 @@ p {
 }
 .bg-gradient-ps {
   background: #903af9;
-  background: -webkit-linear-gradient(to right, #e3e3ef, #f7e2e2);
-  background: -o-linear-gradient(to right, #e3e3ef, #f7e2e2);
-  background: -webkit-gradient(linear, left top, right top, from(#e3e3ef), to(#f7e2e2));
-  background: -webkit-linear-gradient(left, #e3e3ef, #f7e2e2);
-  background: -o-linear-gradient(left, #e3e3ef, #f7e2e2);
-  background: linear-gradient(to right, #e3e3ef, #f7e2e2);
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#e3e3ef, endColorstr=#f7e2e2);
+  background: -webkit-linear-gradient(to right, #ffffff, #ebf3fe);
+  background: -o-linear-gradient(to right, #ffffff, #ebf3fe);
+  background: -webkit-gradient(linear, left top, right top, from(#ffffff), to(#ebf3fe));
+  background: -webkit-linear-gradient(left, #ffffff, #ebf3fe);
+  background: -o-linear-gradient(left, #ffffff, #ebf3fe);
+  background: linear-gradient(to right, #ffffff, #ebf3fe);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#ffffff, endColorstr=#ebf3fe);
 }
 
 .bg-gradient-pw, .pricing.atbd_pricing_special .atbd_popular_badge {

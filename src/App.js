@@ -44,7 +44,7 @@ class App extends Component {
                 </div>
                 {/* <!-- ends: .mainmenu-wrapper --> */}
                 <BreadcrumbAbout />
-            </section>
+      </section>
       <Switch>
           {/*   <Route path = '/' exact render={(props) => <Home {...this.props} title={`Props through render`} />} /> */}
 
@@ -58,7 +58,7 @@ class App extends Component {
           
           <Redirect to="/" />
         </Switch>
-      <Footer />
+        <Footer />
       </Router>  
       </div>
     );
