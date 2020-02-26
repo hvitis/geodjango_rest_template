@@ -10,7 +10,6 @@ constructor(props){
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-console.log(props)
 
 }
 
@@ -20,22 +19,17 @@ handleChange(event) {
   }
 
 handleSubmit(event) {
-    
     axios.post(config.API_URL + '/orders', {
         email: this.state.value,
-        order: this.props.order.toString()
+        order: JSON.stringify(this.props.order)
     })
     .then(res => {
-        console.log("Auth response : ", res)
-        console.log("config.API_URL  : ", config.API_URL )
         this.setState({sentOrder: true});
         alert('Gracias! Enviaremos tu pedido a : ' + this.state.value);
     })
     .catch(err => {
-        alert('Error : ' + err);
-
+        alert('Error : ' + err.response.data['email']);
     })
-   
     event.preventDefault();
   }
 
