@@ -23,7 +23,7 @@ handleSubmit(event) {
     // alert('Gracias! Enviaremos tu pedido a : ' + this.state.value);
 
     // TODO: Unblock after setting up PROD. Waiting for DEPLOY:
-    axios.post('http://tobeprinted.es/api/orders', {
+    axios.post('https://tobeprinted.es/api/orders', {
         email: this.state.value,
         order: JSON.stringify(this.props.order)
     })

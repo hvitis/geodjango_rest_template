@@ -20,11 +20,9 @@ export class BreadcrumbAbout extends Component {
         };
     }
     addItem(item) {
-        console.log('Adding', item)
         this.setState({ [item]: !this.state[item] });
     };
     handleClick(itemName, changedStateFromChild) {
-        console.log('Adding', changedStateFromChild)
         this.setState({ [itemName]: changedStateFromChild });
     };
     render(props) {
