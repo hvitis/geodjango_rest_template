@@ -60,7 +60,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #7a82a6;
+  color: cornflowerblue;
   text-align: left;
   background-color: #fff;
 }
@@ -2799,7 +2799,7 @@ textarea.form-control {
 .btn {
   display: inline-block;
   font-weight: 600;
-  color: #7a82a6;
+  color: cornflowerblue;
   text-align: center;
   vertical-align: middle;
   -webkit-user-select: none;
@@ -2829,7 +2829,7 @@ textarea.form-control {
 }
 
 .btn:hover {
-  color: #7a82a6;
+  color: cornflowerblue;
   text-decoration: none;
 }
 
@@ -11206,7 +11206,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .text-body {
-  color: #7a82a6 !important;
+  color: cornflowerblue !important;
 }
 
 .text-muted {

@@ -54,7 +54,7 @@ handleSubmit(event) {
                              </div>) : (
                                  <div>
                                   <h1 style={this.props.style}>Introduce tu correo</h1>
-                                  <p>Te enviaremos el pedido y su estado a tu correo.</p>
+                                  <p style={this.props.style}>Te enviaremos el pedido y su estado a tu correo.</p>
                                   <form onSubmit={this.handleSubmit} className="subscribe-form m-top-40">
                                   <div className="form-group">
                                       <span className="la la-envelope-o"></span>

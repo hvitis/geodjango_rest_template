@@ -1970,7 +1970,7 @@ p {
   font-size: 0.8rem;
   line-height: normal;
   font-weight: 700;
-  color: #7a82a6;
+  color: cornflowerblue;
 }
 
 .atbd_author.atbd_author--thumb a .custom-tooltip:before {
@@ -2308,7 +2308,7 @@ p {
 }
 
 .atbd_listing_bottom_content .atbd_content_left .atbd_listing_category .atbd_cat_popup .atbd_cat_popup_wrapper span a {
-  color: #7a82a6;
+  color: cornflowerblue;
 }
 
 .atbd_listing_bottom_content .atbd_content_left .atbd_listing_category .atbd_cat_popup .atbd_cat_popup_wrapper span a:hover {
@@ -2405,7 +2405,7 @@ p {
 
 .atbd_listing_bottom_content .listing-meta p {
   margin: 0 0 2px;
-  color: #7a82a6;
+  color: cornflowerblue;
 }
 
 .atbd_listing_bottom_content .listing-meta p span {
@@ -2964,7 +2964,7 @@ p {
 
 .testimonial-carousel .carousel-single .author-info span {
   font-size: 0.93333rem;
-  color: #7a82a6;
+  color: cornflowerblue;
   display: block;
   margin-top: 5px;
 }
@@ -2974,7 +2974,7 @@ p {
   margin: 1.66667rem auto 0;
   font-size: 1.13333rem;
   line-height: 1.93333rem;
-  color: #7a82a6;
+  color: cornflowerblue;
 }
 
 .testimonial-carousel .owl-nav button {
@@ -3146,7 +3146,7 @@ p {
 }
 
 .widget.widget_pages .page-item a {
-  color: #7a82a6;
+  color: cornflowerblue;
 }
 
 .widget.widget_text .store-btns {
@@ -3408,7 +3408,7 @@ p {
 }
 
 .atbd_author_info_widget .atbd_widget_contact_info ul li .atbd_info {
-  color: #7a82a6;
+  color: cornflowerblue;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
@@ -3758,7 +3758,7 @@ p {
 }
 
 .atbd_categorized_listings .listings > li .directory_tag span a {
-  color: #7a82a6;
+  color: cornflowerblue;
 }
 
 .atbd_categorized_listings .listings > li .directory_tag span .atbd_cat_popup {
@@ -4031,7 +4031,7 @@ p {
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  color: #7a82a6;
+  color: cornflowerblue;
   font-size: 0.86667rem;
 }
 
@@ -4073,7 +4073,7 @@ p {
 }
 
 .footer-three .footer-bottom .footer-bottom--content .copy-text {
-  color: #7a82a6;
+  color: cornflowerblue;
   -webkit-box-flex: 2;
   -webkit-flex: 2;
       -ms-flex: 2;
@@ -4097,7 +4097,7 @@ p {
   padding: 0 0.8rem;
   -webkit-border-radius: 2px;
           border-radius: 2px;
-  color: #7a82a6;
+  color: cornflowerblue;
 }
 
 .footer-three.footer-dark .widget_text .store-btns li {
@@ -5300,7 +5300,7 @@ p {
 
 .pricing .pricing__price .pricing_subtitle {
   margin: 0;
-  color: #7a82a6;
+  color: cornflowerblue;
   font-size: 0.93333rem;
   text-align: center;
 }
@@ -5309,7 +5309,7 @@ p {
   margin: 0.66667rem 0 0 0;
   padding: 0 1.66667rem;
   line-height: 1.6rem;
-  color: #7a82a6;
+  color: cornflowerblue;
   font-size: 0.93333rem;
   text-align: center;
 }
@@ -6030,7 +6030,7 @@ p {
   left: 1rem;
   top: 1rem;
   font-size: 1.46667rem;
-  color: #7a82a6;
+  color: cornflowerblue;
 }
 
 .offcanvas-menu .offcanvas-menu__contents .author-avatar {
@@ -6412,7 +6412,7 @@ p {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #7a82a6;
+  color: cornflowerblue;
 }
 
 .social-list li span {
@@ -6492,7 +6492,7 @@ p {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #7a82a6;
+  color: cornflowerblue;
   -webkit-border-radius: 20rem;
           border-radius: 20rem;
   background: #f5f7fc;
@@ -7652,7 +7652,7 @@ p {
 .dashboard-nav .dashboard-nav-area .nav .nav-link {
   padding: 2rem 1.33333rem;
   position: relative;
-  color: #7a82a6;
+  color: cornflowerblue;
   font-weight: 700;
 }
 
@@ -8035,7 +8035,7 @@ p {
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  color: #7a82a6;
+  color: cornflowerblue;
   font-size: 0.93333rem;
 }
 
@@ -8275,7 +8275,7 @@ p {
 
 .comments-area .comment-lists ul .depth-1 .media .media-body .media_top .reply {
   border: 1px solid #e3e6ef;
-  color: #7a82a6;
+  color: cornflowerblue;
   line-height: 2.26667rem;
   -webkit-border-radius: 1.66667rem;
           border-radius: 1.66667rem;
@@ -8474,7 +8474,7 @@ p {
     margin-right: auto;
   }
   .about-intro img {
-    width: 80%;
+    width: 95%;
   }
 }
 
@@ -8615,7 +8615,7 @@ p {
   }
   .about-intro img,
   .contents-wrapper .contents img {
-    width: 80%;
+    width: 95%;
   }
   .post-bottom .social-share,
   .post-bottom .tags {

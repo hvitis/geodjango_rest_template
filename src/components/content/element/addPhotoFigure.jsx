@@ -33,7 +33,7 @@ export class AddPhotoFigure extends Component {
                     </div>
                 ) : (
                         <div class="centered-cart"  style={{ border: '2px dashed cornflowerblue' }} >
-                            Quiero<FaShoppingCart></FaShoppingCart>
+                            {this.props.buttonName}<FaShoppingCart></FaShoppingCart>
                         </div>
                     )}
             </div>
