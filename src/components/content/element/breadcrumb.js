@@ -31,44 +31,62 @@ export class BreadcrumbAbout extends Component {
                 links: {
                     1: 'https://netrinoimages.s3.eu-west-2.amazonaws.com/2018/03/26/504993/190398/voldemort_wand_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_2018382_o.jpg',
                     2: 'https://files.cults3d.com/uploaders/12510347/illustration-file/78178856-1add-4d83-a121-398bdfcd9ffd/Voldemort-bundle_3.982_large.jpg',
-                    3: 'https://www.renderhub.com/ivamargar/voldemorts-wand/voldemorts-wand-01.jpg'
+                    3: 'https://www.renderhub.com/ivamargar/voldemorts-wand/voldemorts-wand-01.jpg',
+                    
+                    5:'https://i.ibb.co/3p205Ph/Whats-App-Image-2020-03-02-at-14-57-23.jpg',
+                    6:'https://i.ibb.co/xXbKzTv/Whats-App-Image-2020-03-02-at-14-57-24-1.jpg',
+                    7:'https://i.ibb.co/bW6Cxz7/Whats-App-Image-2020-03-02-at-14-57-24-2.jpg'
                 },
                 name: 'wand'
 
             },
             dragon: {
                 links: {
-                    1: 'https://i.ibb.co/NVY667p/dragon.jpg',
-                    2: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtlYcrmmw8zaM0XTFEbFEcWfz5S9YwqPhe9lFPlIlPJZ5brprAmA&s',
-                    3: 'https://files.cults3d.com/uploaders/12510347/illustration-file/9dc9ed7e-7b97-4206-af0d-538e1862412c/flame-got-gif_large.gif'
+                    1: 'https://i.ibb.co/mDx2rTs/Whats-App-Image-2020-03-02-at-14-56-18-1.jpg',
+                    2: 'https://i.ibb.co/T1MZGYw/Whats-App-Image-2020-03-02-at-14-56-18-2.jpg',
+                    
+                    4: 'https://i.ibb.co/Tk1Ff9P/Whats-App-Image-2020-03-02-at-14-56-19-1.jpg',
+                    5: 'https://i.ibb.co/F5bh1Lq/Whats-App-Image-2020-03-02-at-14-56-19-2.jpg',
+                    6: 'https://i.ibb.co/QX6p8kp/Whats-App-Image-2020-03-02-at-14-56-19-4.jpg',
+                    7: 'https://i.ibb.co/8rGxfYX/Whats-App-Image-2020-03-02-at-14-56-19-5.jpg',
+                    8: 'https://i.ibb.co/RbCjWb7/Whats-App-Image-2020-03-02-at-14-56-19.jpg'
                 },
                 name: 'dragon'
             },
             yoda: {
                 links: {
-                    1: 'https://cdn.myminifactory.com/assets/object-assets/5dd48df262fb8/images/720X720-fusion-render.jpg',
+                    1: 'https://i.ibb.co/WcJC5Dj/Whats-App-Image-2020-03-02-at-14-58-00-3.jpgg',
+                    2: 'https://i.ibb.co/5TPqHyW/Whats-App-Image-2020-03-02-at-14-58-01.jpg',
+                    3: 'https://i.ibb.co/P41j5B7/Whats-App-Image-2020-03-02-at-14-57-59-1.jpg',
+                    4: 'https://i.ibb.co/QMfJbBb/Whats-App-Image-2020-03-02-at-14-57-59-2.jpg',
+                    5: 'https://i.ibb.co/txcmz41/Whats-App-Image-2020-03-02-at-14-57-59-4.jpg',
                    
-                    2: 'https://cdn.thingiverse.com/assets/93/fb/97/70/c6/featured_preview_babyYoda3.jpg'
+                    8: 'https://i.ibb.co/SJF3gNc/Whats-App-Image-2020-03-02-at-14-58-00-2.jpg',
+                    9: 'https://i.ibb.co/WcJC5Dj/Whats-App-Image-2020-03-02-at-14-58-00-3.jpg',
+                    10: 'https://i.ibb.co/5TPqHyW/Whats-App-Image-2020-03-02-at-14-58-01.jpg',
                 },
                 name: 'yoda'
 
             },
             falcon: {
                 links: {
-                    1: 'https://files.cults3d.com/uploaders/13326265/illustration-file/31225288-177f-4828-bda9-82a272c2d2d2/1_large.jpg',
-                    2: 'https://files.cults3d.com/uploaders/13326265/illustration-file/f6b6a164-4ef2-4d8c-ae02-aee750a72266/5_large.jpg',
-                    3: 'https://files.cults3d.com/uploaders/12510347/illustration-file/1475584572-6651-2551/deathtrooper_3d_printable_helmet_by_makerslab_3D_stl_obj_large.jpg',
-                    4: 'https://files.cults3d.com/uploaders/12510347/illustration-file/1471355003-29067-9190/starkiller_helmet_detail_starwarsmakerslab_large.png'
-                
+                    1: 'https://i.ibb.co/VwZZHB1/Whats-App-Image-2020-03-02-at-14-56-40-2.jpg',
+                    2: 'https://i.ibb.co/s9ZFthq/Whats-App-Image-2020-03-02-at-14-56-40-3.jpg',
+                    3:'https://i.ibb.co/X7VNfW2/Whats-App-Image-2020-03-02-at-14-56-40-10.jpg',
+                    4:'https://i.ibb.co/KqFk8Sn/Whats-App-Image-2020-03-02-at-14-56-40.jpg',
+                    5:'https://i.ibb.co/8NkNtWV/Whats-App-Image-2020-03-02-at-14-56-41-1.jpg',
+                    6:'https://i.ibb.co/4JGGMkJ/Whats-App-Image-2020-03-02-at-14-56-41-3.jpg',
+                    7:'https://i.ibb.co/Tw1BLkB/Whats-App-Image-2020-03-02-at-14-56-41.jpg',
+                   
                 },
                 name: 'falcon'
 
             },
             custom: {
                 links: {
-                    1: 'https://cdn.myminifactory.com/assets/object-assets/5a6a515748cbe/images/720X720-main-shapeways-devil-0001-layer-2.jpg',
-                    2: 'https://i.all3dp.com/cdn-cgi/image/fit=cover,w=360,gravity=0.5x0.5,format=auto/wp-content/uploads/2017/06/27015817/mr-poopy-butthole.jpg',
-                    3: 'https://img1.yeggi.com/images_q/2308813/drunk-tiny-rick---3d-files-by-3d-print-guy'
+                    1: 'https://i.ibb.co/m40DF8D/Screenshot-2020-03-07-at-02-04-31.png',
+                    2:'https://i.ibb.co/gZ8qrrR/Imagen-3-large.jpg'
+               
                 },
                 name: 'custom'
             },
@@ -78,6 +96,12 @@ export class BreadcrumbAbout extends Component {
         const titleStyle = {
             color: 'ghostwhite',
             fontSize: '30px',
+            fontWeight: 'bold',
+            textShadow: '#060103 1px 2px',
+        };
+        const subTitleStyle = {
+            color: 'ghostwhite',
+            fontSize: '20px',
             fontWeight: 'bold',
             textShadow: '#060103 1px 2px',
         };
@@ -103,7 +127,7 @@ export class BreadcrumbAbout extends Component {
                                     <></>
                                 )}
                             {this.state.checkout ? (
-                                <Subscribe order={this.state} style={titleStyle}></Subscribe>
+                                <Subscribe order={this.state} ></Subscribe>
                             ) : (
                                     <div className="row d-flex justify-center align-content-center">
                                         <AddPhotoFigureSlider handleClick={this.handleClick.bind(this)} links={links.dragon} ordered={this.state.dragon} buttonName="Imprime en 3D"></AddPhotoFigureSlider>

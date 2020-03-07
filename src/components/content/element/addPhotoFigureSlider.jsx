@@ -73,7 +73,7 @@ export class AddPhotoFigureSlider extends Component {
                                         style={this.props.ordered ? ({ border: '4px solid #32cc6f' }) : ({ border: '5px dashed cornflowerblue' })}
                                         onClick={() => { this.props.handleClick(this.props.links.name, !this.props.ordered) }}
                                     >
-                                        {this.props.ordered ? <>Añadido <FaCheck /></> : <>Imprime 3D <FaShoppingCart /></>}
+                                        {this.props.ordered ? <>Añadido <FaCheck /></> : <>7€ Imprime 3D <FaShoppingCart /></>}
                                     </div>
                                 </Carousel.Caption>
                             </Carousel.Item>)

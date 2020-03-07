@@ -39,6 +39,18 @@ handleSubmit(event) {
   }
 
     render(props) {
+        const titleStyle = {
+            color: 'ghostwhite',
+            fontSize: '30px',
+            fontWeight: 'bold',
+            textShadow: '#060103 1px 2px',
+        };
+        const subTitleStyle = {
+            color: 'ghostwhite',
+            fontSize: '20px',
+            fontWeight: 'bold',
+            textShadow: '#060103 1px 2px',
+        };
         return (
             <Fragment>
                 <section className="subscribe-wrapper">
@@ -53,8 +65,8 @@ handleSubmit(event) {
                                  Pedido Finalizado
                              </div>) : (
                                  <div>
-                                  <h1 style={this.props.style}>Introduce tu correo</h1>
-                                  <p style={this.props.style}>Te enviaremos el pedido y su estado a tu correo.</p>
+                                  <h1 style={titleStyle}>Introduce tu correo</h1>
+                                  <p style={subTitleStyle}>Recibirás detalles de tu pedido y tu contacto de la impresora 3D más cercana.</p>
                                   <form onSubmit={this.handleSubmit} className="subscribe-form m-top-40">
                                   <div className="form-group">
                                       <span className="la la-envelope-o"></span>
@@ -62,6 +74,9 @@ handleSubmit(event) {
                                   </div>
                                   <button className="btn btn-gradient btn-gradient-one">Pide</button>
                               </form>
+                              <p style={subTitleStyle} className="mt-5">Únete a la comunidad 3D Printing.</p>
+
+                              
                               </div>
                              ) }
 
