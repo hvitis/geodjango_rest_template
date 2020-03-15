@@ -30,7 +30,7 @@ export class NavItem extends Component {
                         </a>
                         <ul className="dropdown-menu" aria-labelledby="drop2">
                             <li><NavLink to="/author-profile">Author Profile</NavLink></li>
-                            <li><NavLink to="/dashboard-listings">Author Dashboard</NavLink></li>
+                            <li><NavLink to="/dashboard">Author Dashboard</NavLink></li>
                             <li><NavLink to="/pricing-plans">Pricing Plans</NavLink></li>
                             <li><NavLink to="/checkout">Checkout</NavLink></li>
                             <li><NavLink to="/invoice">Invoice</NavLink></li>

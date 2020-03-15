@@ -17,8 +17,8 @@ export class AdvSearch extends Component {
                         <div className="row">
                             <div className="col-lg-10 offset-lg-1">
                                 <div className="search_title_area">
-                                    <h2 className="title">Find the Best 3D Printers</h2>
-                                    <p className="sub_title">All the top people – from around the world..</p>
+                                    <h2 className="title">3D Printed Materials</h2>
+                                    <p className="sub_title">Working together during crisis...</p>
                                 </div>{/* ends: .search_title_area */}
                                 <form action="/" className="search_form">
                                     <div className="atbd_seach_fields_wrapper">
