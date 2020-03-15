@@ -12,6 +12,12 @@ import Signup from './components/page/Signup'
 import AuthProfile from './components/page/AuthProfile'
 import AuthDeshbord from './components/page/AuthDeshbord'
 
+// import AllLocations from './components/page/AllLocations'
+// import ListingDetails from './components/page/ListingDetails'
+// import AllListingGrid from './components/page/AllListingGrid'
+// import AllListingList from './components/page/AllListingList'
+
+
 import { Footer } from './components/layout/Footer'
 // import Layout from './components/layout/Layout'
 import  AddPrinter  from './components/page/AddPrinter'
@@ -42,9 +48,29 @@ class App extends Component {
           <Route path = '/login/' exact component={(props) => <Login {...this.props} />} />
           <Route path = '/signup/' exact component={(props) => <Signup {...this.props} />} />
           <ProtectedRoute { ...this.props } path ='/add-printer' redirect='/login' component={(props) => <AddPrinter {...this.props} />}  />
-          {/* <Route path = '/add-printer' render={(props) => <AddPrinter {...this.props} title={`Props through render`} />} /> */}
+          <Route path = '/dashboard' render={(props) => <AuthDeshbord {...this.props}  />} />
           <Route path = '/author-profile' component = { AuthProfile } />
-          <Route path = '/dashboard' render={(props) => <AuthDeshbord {...this.props} title={`Props through render`} />} />
+         
+          {/* <Route path = '/all-listings-grid' component = { AllListingGrid } />          
+          <Route path = '/all-listings-list' component = { AllListingList } />     
+
+          <Route path = '/listing-details:id' component = { ListingDetails } />   
+
+          <Route path = '/all-locations' component = { AllLocations } />          
+         */}
+          {/* <Route path = '/about' component = { About } />          
+          <Route path = '/contact' component = { Contact } />  
+
+          <Route path = '/cards' component = { Cards } />          
+
+          <Route path = '/advanced' component = { CheckoutAdvanced } />
+          <Route path = '/enterprise' component = { Enterprise } />
+          <Route path = '/faqs' component = { Faq } />           */}
+         
+          {/* <Route path = '/blog-right-sidebar' component = { BlogRightSide } />
+          <Route path = '/blog-grid' component = { BlogGrid } />
+          <Route path = '/blog-details:id' component = { BlogDetails } /> */}
+         
           <Redirect to="/" />
         </Switch>
       <Footer />

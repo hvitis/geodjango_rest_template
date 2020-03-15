@@ -4,15 +4,14 @@ import { Footer } from '../layout/Footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { LocationList } from '../content/element/place-list';
 import { connect } from 'react-redux';
-const AllLocation = (props) => {
-    const light = props.logo[0].light;
+const AllLocations = (props) => {
     return (
         <Fragment>
             {/* Header section start */}
             <section className="header-breadcrumb bgimage overlay overlay--dark">
                 <div className="bg_image_holder"><img src="./assets/img/breadcrumb1.jpg" alt="" /></div>
                 <div className="mainmenu-wrapper">
-                    <Header logo={light} class="menu--light" />                    
+                    <Header class="menu--light" />                    
                 </div>
                 {/* <!-- ends: .mainmenu-wrapper --> */}
                 <BreadcrumbWraper title="All Locations" />
@@ -31,4 +30,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(AllLocation);
+export default connect(mapStateToProps)(AllLocations);

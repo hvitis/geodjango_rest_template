@@ -6,20 +6,18 @@ import ListingList from '../container/all-listing-list';
 import { connect } from 'react-redux';
 
 const AllListingList = (props) => {
-    const light = props.logo[0].light;
     return (
         <Fragment>
             {/* Header section start */}
             <section className="header-breadcrumb bgimage overlay overlay--dark">
                 <div className="bg_image_holder"><img src="./assets/img/breadcrumb1.jpg" alt="" /></div>
                 <div className="mainmenu-wrapper">
-                    <Header logo={light} class="menu--light" />                    
+                    <Header  class="menu--light" />                    
                 </div>
                 {/* <!-- ends: .mainmenu-wrapper --> */}
                 <BreadcrumbWraper title="All Listing" />
             </section>
             {/* Header section end */}
-
             <ListingList />           
            <Footer />
         </Fragment>

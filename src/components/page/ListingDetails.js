@@ -7,7 +7,6 @@ import { ContentStory } from '../content/element/listing-details-story';
 import Gallery from '../content/element/carousel/gallery';
 import { ListingFetures } from '../content/element/listing-fetures';
 import { Video, Video2 } from '../content/element/video';
-import Map1 from '../content/element/map';
 import { ContactInfo } from '../content/element/contact-info';
 import { Accordion } from '../content/element/accordion';
 import { Review, AddReview } from '../content/element/review';
@@ -83,7 +82,7 @@ const ListingDetails = (props) => {
                                 </div>
                                 <div className="atbdb_content_module_contents">
                                     <div className="map" id="map-one" style={{position: 'relative'}}>
-                                        <Map1 />
+                                        {/* <Map1 /> */}
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +133,7 @@ const ListingDetails = (props) => {
                                 </div>{/*<!-- ends: .atbd_widget_title -->*/}
                                 <div className="widget-body atbdb_content_module_contents">
                                     <div className="map" id="map-two" style={{position: 'relative'}}>
-                                        <Map1 styles="true" />
+                                        {/* <Map1 styles="true" /> */}
                                     </div>
                                 </div>{/*<!-- ends: .atbdb_content_module_contents -->*/}
                             </div>{/*<!-- ends: widget -->*/}
