@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios'
-import config from '../../../config'
+import config from '../../config'
 
 const noAction = e => e.preventDefault();
 export class Subscribe extends Component {

@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import config from '../../../config';
+import config from '../../config';
 import axios from 'axios';
 
 class UpdateProfilePicture extends Component {

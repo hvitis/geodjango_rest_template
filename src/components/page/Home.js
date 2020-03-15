@@ -1,12 +1,12 @@
 import React, {Fragment, Component} from 'react';
 import Header from '../layout/Header';
 import { Footer } from '../layout/Footer';
-import { AdvSearch } from '../content/element/advance-search';
-import { SectionTitle } from '../content/element/section-title';
+import { AdvSearch } from '../content/advance-search';
+import { SectionTitle } from '../content/section-title';
 import { NavLink } from 'react-router-dom';
-import { ContentBlockHome } from '../content/element/content-block';
-import { PlaceList } from '../content/element/place-list';
-import { Subscribe } from '../content/element/subscribe';
+import { ContentBlockHome } from '../content/content-block';
+import { PlaceList } from '../content/place-list';
+import { Subscribe } from '../content/subscribe';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../Store/action/auth';
@@ -24,7 +24,7 @@ class Home extends Component {
                     <AdvSearch />
                 </section>
                 {/* Header section end */}
-                <Subscribe />
+                {/* <Subscribe /> */}
                
             </Fragment>
         )

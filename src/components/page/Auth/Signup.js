@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Header from '../../layout/Header';
 import { Footer } from '../../layout/Footer';
-import { BreadcrumbWraper } from '../../content/element/breadcrumb';
+import { BreadcrumbWraper } from '../../content/breadcrumb';
 import { connect } from 'react-redux';
 import { Form, Input, Icon, Button } from 'antd';
 import { NavLink } from 'react-router-dom';

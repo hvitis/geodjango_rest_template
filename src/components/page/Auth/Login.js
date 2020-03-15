@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import * as actions from '../../../Store/action/auth';
 import Header from '../../layout/Header';
 import { Footer } from '../../layout/Footer';
-import { BreadcrumbWraper } from '../../content/element/breadcrumb';
+import { BreadcrumbWraper } from '../../content/breadcrumb';
 import { Form, Input, Icon, Button } from 'antd';
 import { Redirect } from 'react-router-dom'
 const FormItem = Form.Item;

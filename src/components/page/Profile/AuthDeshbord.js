@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import config from '../../../config'
 
 import { Spinner, Accordion, Card, Button } from 'react-bootstrap'
-import UpdateProfilePicture from '../../content/element/UpdateProfilePicture'
+import UpdateProfilePicture from '../../content/UpdateProfilePicture'
 import MapLocationPicker from './MapLocationPicker.jsx';
 import UpdateProfileGeneralInformations from './UpdateProfileGeneralInformations.jsx'
 import UpdateProfileSocialMedia from './UpdateProfileSocialMedia'
@@ -14,8 +14,8 @@ import TabBar from './TabBar'
 import MainTabBar from './MainTabBar'
 
 import FormData from 'form-data'
-import ShowAlert from '../../layout/ShowAlert'
-import { GetPosition } from '../../content/element/getPosition'
+import ShowAlert from '../../layout/Alerts/ShowAlert'
+import { GetPosition } from '../../content/getPosition'
 // import { LogOut } from '../../Store/action/logoutAction';
 const noAction = e => e.preventDefault();
 

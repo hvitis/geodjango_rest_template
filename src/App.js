@@ -24,7 +24,7 @@ import {
   Redirect
 } from 'react-router-dom';
 import { ProtectedRoute } from './protected.route';
-import { BreadcrumbAbout } from './components/content/element/breadcrumb';
+import { BreadcrumbAbout } from './components/content/breadcrumb';
 
 
 class App extends Component {
@@ -38,24 +38,13 @@ class App extends Component {
       <div>
       {/* <Router basename={process.env.PUBLIC_URL} > */}
       <Router >
-      <section className="about-wrapper bg-gradient-ps">                
-                <div className="mainmenu-wrapper">
-                <Header { ...this.props } class="menu--light"/>
-                </div>
-                {/* <!-- ends: .mainmenu-wrapper --> */}
-                <BreadcrumbAbout />
-      </section>
       <Switch>
-          {/*   <Route path = '/' exact render={(props) => <Home {...this.props} title={`Props through render`} />} /> */}
-
-          <Route path = '/' exact render={(props) => <LandingPage {...this.props} />} />
+          <Route path = '/' exact render={(props) => <LandingPage {...this.props} title={`Props through render`} />} />
           <Route path = '/login/' exact component={(props) => <Login {...this.props} />} />
           <Route path = '/signup/' exact component={(props) => <Signup {...this.props} />} />
           <ProtectedRoute { ...this.props } path ='/add-printer' redirect='/login' component={(props) => <AddPrinter {...this.props} />}  />
-          {/* <Route path = '/add-printer' render={(props) => <AddPrinter {...this.props} title={`Props through render`} />} /> */}
           <Route path = '/author-profile' component = { AuthProfile } />
           <Route path = '/dashboard' render={(props) => <AuthDeshbord {...this.props} title={`Props through render`} />} />
-          
           <Redirect to="/" />
         </Switch>
         {/* <Footer /> */}

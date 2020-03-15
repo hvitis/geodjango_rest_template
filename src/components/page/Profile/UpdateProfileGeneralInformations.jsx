@@ -2,7 +2,7 @@ import React, { Fragment, Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import config from '../../../config'
 import axios from 'axios';
-import CustomAlert from '../../layout/CustomAlert'
+import CustomAlert from '../../layout/Alerts/CustomAlert'
 
 class UpdateProfileGeneralInformation extends Component {
     constructor(props) {
