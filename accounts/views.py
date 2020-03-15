@@ -15,7 +15,9 @@ from rest_framework import status
 from rest_framework.decorators import action
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import MultiPartParser
-
+from rest_framework.exceptions import APIException, ValidationError
+from rest_framework import status
+from rest_framework.response import Response
 
 class UserProfileListView(ListAPIView):
     queryset = UserProfile.objects.all()
@@ -103,15 +105,27 @@ class ProfileImageUploadView(APIView):
         new_picture = ProfileImage.objects.get(profile_id=pk)
         return Response(status=200, data={"profilePicture": new_picture.file.name})
 
-class NearbyUsersListView(ListAPIView):
+class NearbyUsersListView(ListAPIView, APIException):
     model = Location
     serializer_class = NearbyUsersSerialiazer
     pagination_class = GeoJsonPagination
-
+    permission_classes = [AllowAny]
+    
     def get_queryset(self):
-        radius=float(self.request.query_params['radius'])
-        latitude=float(self.request.query_params['lat'])
-        longitude=float(self.request.query_params['lng'])
+        print(self.request.query_params)
+        try:
+            dict_sort = sorted(self.request.query_params.items())
+            latitude, longitude, radius = [v[1] for v in dict_sort]
+            print(latitude, longitude, radius)
+        except ValueError:
+            raise ValidationError(['Something wrong with amount of argumetns'], code=None)
+        try:
+            radius=float(radius)
+            latitude=float(latitude)
+            longitude=float(longitude)
+        except ValueError:
+            raise ValidationError(['Somethin g wrond with data types'], code=None)
         point=Point(longitude, latitude)
         queryset = Location.objects.filter(coordinates__distance_lt=(point, Distance(km=radius))).order_by('profile')[0:20]
         return queryset
+    
