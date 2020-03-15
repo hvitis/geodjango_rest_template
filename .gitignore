@@ -55,3 +55,6 @@ core/__pycache__/settings.cpython-38.pyc
 core/__pycache__/urls.cpython-38.pyc
 *.pyc
 *.pyc
+accounts/migrations/__pycache__/__init__.cpython-37.pyc
+core/__pycache__/__init__.cpython-37.pyc
+core/__pycache__/urls.cpython-37.pyc

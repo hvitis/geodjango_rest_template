@@ -1,22 +1,26 @@
-from django.db import models
+from django.contrib.gis.db import models
+from django.contrib.gis.geos import Point
+
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 import uuid
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # from django.contrib.gis.geos import Point
 # Create your models here.
-class User(AbstractUser):
-    is_printer = models.BooleanField('printer status', default=True)
-    is_searcher = models.BooleanField('searcher status', default=False)
-    is_customer = models.BooleanField('customer status', default=False)
+# class User(AbstractUser):
+#     is_printer = models.BooleanField('printer status', default=True)
+#     is_searcher = models.BooleanField('searcher status', default=False)
+#     is_customer = models.BooleanField('customer status', default=False)
 
 
 class UserProfile(models.Model):
     user = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name="profiles")
+        User, on_delete=models.CASCADE, related_name="profile")
     # TODO: Delete nickname if user can be updated, check in djoser if user can be updated
     nickname = models.CharField(max_length=300, blank=True)
     firstName = models.CharField(max_length=300, blank=True)
@@ -39,18 +43,29 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    print(sender, instance, created, kwargs)
+    if created:
+        UserProfile.objects.create(user=instance)
+        Location.objects.create(profile_id=instance.id)
+        SocialMedia.objects.create(profile_id=instance.id)
+        ProfileImage.objects.create(profile_id=instance.id)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    print(sender, instance.username, kwargs)
+    instance.profile.save()
+
 
 class Location(models.Model):
     profile = models.OneToOneField(
         UserProfile, on_delete=models.CASCADE, related_name="location")
-    latitude = models.FloatField(blank=True, null=True)
-    longitude = models.FloatField(blank=True, null=True)
-    # coordinates = Point()
-    coordinates = models.FloatField(blank=True, null=True)
+    coordinates = models.PointField(blank=True, null=True, srid=4326)
+    # coordinates = models.FloatField(blank=True, null=True)
 
     def __str__(self):
-        return 'Lat: %d, Lng: %d' % (self.latitude, self.longitude)
-
+        return self.profile.user.username
 
 class SocialMedia(models.Model):
     profile = models.OneToOneField(
@@ -73,4 +88,4 @@ class ProfileImage(models.Model):
         default="/profile_pictures/default.png", upload_to="profile_pictures/")
 
     def __str__(self):
-        return self.file.name
+        return self.profile.user.username

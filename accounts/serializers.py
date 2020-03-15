@@ -1,14 +1,29 @@
 from rest_framework import serializers
 from .models import UserProfile, Location , SocialMedia, ProfileImage
+from django.contrib.gis.geos import Point
+from rest_framework_gis.serializers import GeoFeatureModelSerializer, GeometrySerializerMethodField
+
 
 class SocialMediaSerializer(serializers.ModelSerializer):
     class Meta:
         model=SocialMedia
         fields=['websiteUrl', 'facebookUrl', 'twitterUrl', 'telegramUrl', 'linkedinUrl', 'youtubeUrl']
-class LocationSerialiazer(serializers.ModelSerializer):
+
+class LocationSerialiazer(GeoFeatureModelSerializer):
+    """ A class to serialize locations as GeoJSON compatible data """
     class Meta:
         model = Location
-        fields=['latitude', 'longitude', 'coordinates']
+        geo_field = "coordinates"
+        id_field = False
+        fields = ['coordinates']
+
+class NearbyUsersSerialiazer(GeoFeatureModelSerializer):
+    """ A class to serialize locations as GeoJSON compatible data """
+    class Meta:
+        model = Location
+        geo_field = "coordinates"
+        id_field = False
+        fields = '__all__'
 
 class ProfileImageSerializer(serializers.ModelSerializer):
     class Meta:

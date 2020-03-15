@@ -23,7 +23,7 @@ from .models import UserProfile, Location, SocialMedia, ProfileImage
 @receiver(user_registered)
 def create_user_profile(user, request, **kwargs):
     print("Djoser Creating UserProfile", kwargs, user, request)
-    UserProfile.objects.create(user=user)
-    Location.objects.create(profile_id=user.id)
-    SocialMedia.objects.create(profile_id=user.id)
-    ProfileImage.objects.create(profile_id=user.id)
+    # # UserProfile.objects.create(user=user)
+    # Location.objects.create(profile_id=user.id)
+    # SocialMedia.objects.create(profile_id=user.id)
+    # ProfileImage.objects.create(profile_id=user.id)

@@ -3,7 +3,10 @@ from rest_framework.generics import (
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 from .models import UserProfile, Location, SocialMedia, ProfileImage
 from .permissions import IsOwnerProfileOrReadOnly
-from .serializers import UserProfileSerializer, BasicInfoSerializer,  LocationSerialiazer, SocialMediaSerializer, ProfileImageSerializer
+from .serializers import UserProfileSerializer, BasicInfoSerializer,  LocationSerialiazer, SocialMediaSerializer, ProfileImageSerializer, NearbyUsersSerialiazer
+from django.contrib.gis.geos import Point
+from django.contrib.gis.measure import Distance  
+from rest_framework_gis.pagination import GeoJsonPagination
 
 from rest_framework.parsers import FileUploadParser
 from rest_framework.response import Response
@@ -74,6 +77,7 @@ class UsersLocationView(UpdateAPIView, ListAPIView):
     permission_classes = []
 
     def perform_create(self, serializer):
+        print(self)
         # user=self.request.user
         profile_id = self.kwargs["pk"]
         # serializer.save(user=user)
@@ -98,3 +102,16 @@ class ProfileImageUploadView(APIView):
         new_picture.save()
         new_picture = ProfileImage.objects.get(profile_id=pk)
         return Response(status=200, data={"profilePicture": new_picture.file.name})
+
+class NearbyUsersListView(ListAPIView):
+    model = Location
+    serializer_class = NearbyUsersSerialiazer
+    pagination_class = GeoJsonPagination
+
+    def get_queryset(self):
+        radius=float(self.request.query_params['radius'])
+        latitude=float(self.request.query_params['lat'])
+        longitude=float(self.request.query_params['lng'])
+        point=Point(longitude, latitude)
+        queryset = Location.objects.filter(coordinates__distance_lt=(point, Distance(km=radius))).order_by('profile')[0:20]
+        return queryset
