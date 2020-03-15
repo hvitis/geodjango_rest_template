@@ -10,18 +10,9 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-# from django.contrib.gis.geos import Point
-# Create your models here.
-# class User(AbstractUser):
-#     is_printer = models.BooleanField('printer status', default=True)
-#     is_searcher = models.BooleanField('searcher status', default=False)
-#     is_customer = models.BooleanField('customer status', default=False)
-
-
 class UserProfile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name="profile")
-    # TODO: Delete nickname if user can be updated, check in djoser if user can be updated
     nickname = models.CharField(max_length=300, blank=True)
     firstName = models.CharField(max_length=300, blank=True)
     lastName = models.CharField(max_length=300, blank=True)
@@ -38,10 +29,11 @@ class UserProfile(models.Model):
     date_joined = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
-    owns_printer = models.BooleanField(default=False)
-
     def __str__(self):
-        return self.user.username
+        try:
+            return self.user.username
+        except:
+            pass
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -62,10 +54,13 @@ class Location(models.Model):
     profile = models.OneToOneField(
         UserProfile, on_delete=models.CASCADE, related_name="location")
     coordinates = models.PointField(blank=True, null=True, srid=4326)
-    # coordinates = models.FloatField(blank=True, null=True)
+    is_printing = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.profile.user.username
+        try:
+            return self.profile.user.username
+        except:
+            pass
 
 class SocialMedia(models.Model):
     profile = models.OneToOneField(
@@ -78,9 +73,11 @@ class SocialMedia(models.Model):
     youtubeUrl = models.URLField(blank=True)
 
     def __str__(self):
-        return 'Profile: %d' % (self.profile)
-
-
+        try:
+            return self.profile.user.username
+        except:
+            pass
+        
 class ProfileImage(models.Model):
     profile = models.OneToOneField(
         UserProfile, on_delete=models.CASCADE, related_name="profileImage")
@@ -88,4 +85,7 @@ class ProfileImage(models.Model):
         default="/profile_pictures/default.png", upload_to="profile_pictures/")
 
     def __str__(self):
-        return self.profile.user.username
+        try:
+            return self.profile.user.username
+        except:
+            pass

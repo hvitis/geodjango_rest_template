@@ -1,6 +1,6 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
-from .views import UserProfileListView, UserProfileDetailView, UserBasicInfoView, UsersLocationView, SocialMediaView, ProfileImageUploadView, NearbyUsersListView
+from .views import UserProfileListView, UserProfileDetailView, UserBasicInfoView, UsersLocationView, SocialMediaView, ProfileImageUploadView, ClosestUserView, NearbyUsersListView
 # from .custom_jwt_tokens import CustomTokenObtainPairView
 # UserProfileListCreateView, UserProfileDetailCreateView
 
@@ -19,6 +19,8 @@ urlpatterns = [
     path("accounts/<int:pk>/profile-image", ProfileImageUploadView.as_view(), name="profile-image"),
     # Show nearby accounts
     path("nearby-accounts", NearbyUsersListView.as_view(), name="nearby-accounts"),
+    # Show nearby user
+    path("closest-user", ClosestUserView.as_view(), name="closest-accounts"),
 
     # path("jwt/create", CustomTokenObtainPairView.as_view(), name="jwt"),
     # path("printers",PrinterListView.as_view(),name="printers"),

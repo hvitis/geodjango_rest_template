@@ -18,7 +18,7 @@ from rest_framework.parsers import MultiPartParser
 from rest_framework.exceptions import APIException, ValidationError
 from rest_framework import status
 from rest_framework.response import Response
-
+from django.contrib.gis.db.models.functions import Distance as ClosestDistance
 class UserProfileListView(ListAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
@@ -118,14 +118,50 @@ class NearbyUsersListView(ListAPIView, APIException):
             latitude, longitude, radius = [v[1] for v in dict_sort]
             print(latitude, longitude, radius)
         except ValueError:
-            raise ValidationError(['Something wrong with amount of argumetns'], code=None)
+            raise ValidationError(['Something wrong with amount of argumetns!'], code=400)
         try:
             radius=float(radius)
             latitude=float(latitude)
             longitude=float(longitude)
         except ValueError:
-            raise ValidationError(['Somethin g wrond with data types'], code=None)
+            raise ValidationError(['Somethin wrong with data types!'], code=400)
         point=Point(longitude, latitude)
         queryset = Location.objects.filter(coordinates__distance_lt=(point, Distance(km=radius))).order_by('profile')[0:20]
         return queryset
+
+class ClosestUserView(ListAPIView, APIException):
+    model = Location
+    serializer_class = NearbyUsersSerialiazer
+    pagination_class = GeoJsonPagination
+    permission_classes = [AllowAny]
     
+    def get_queryset(self):
+        queryset = []
+        try:
+            dict_sort = sorted(self.request.query_params.items())
+            latitude, longitude = [v[1] for v in dict_sort]
+        except ValueError:
+            raise ValidationError(['Something wrong with amount of argumetns'], code=400)
+        try:
+            latitude=float(latitude)
+            longitude=float(longitude)
+        except ValueError:
+            raise ValidationError(['Somethin wrong with data types'], code=400)
+        point=Point(longitude, latitude, srid=4326)
+        closest_user = Location.objects.annotate(distance=ClosestDistance('coordinates', point)).order_by('distance').first()
+        queryset.append(closest_user)
+        print(closest_user)
+        return queryset
+
+class ProfileImageUploadView(APIView):
+    parser_classes = (MultiPartParser,)
+    permission_classes = []
+
+    def put(self, request, pk, format=None):
+        file_obj = request.data['file']
+        print(self.kwargs['pk'], pk, file_obj)
+        new_picture = ProfileImage.objects.get(profile_id=pk)
+        new_picture.file = file_obj
+        new_picture.save()
+        new_picture = ProfileImage.objects.get(profile_id=pk)
+        return Response(status=200, data={"profilePicture": new_picture.file.name})
