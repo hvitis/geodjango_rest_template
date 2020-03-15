@@ -130,7 +130,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -152,7 +152,7 @@ CORS_ORIGIN_REGEX_WHITELIST = [
 ]
 # CSRF_COOKIE_SECURE = True
 # CSRF_COOKIE_HTTPONLY = True
-# SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 # This is default
 CORS_ALLOW_METHODS = [

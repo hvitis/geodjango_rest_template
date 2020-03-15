@@ -80,13 +80,17 @@ class AuthDeshbord extends Component {
             .then(response => response.json())
             .then(
                 (result) => {
-                    if (result[0].latitude === null) {
-                       return
-                    }
+                    if (result.features[0].geometry === null) {
+                        return
+                     }
+                    let lat = result.features[0].geometry.coordinates[0]
+                    let lng = result.features[0].geometry.coordinates[1]
+                    console.log(lat, lng)
+                    
                     this.setState({
                         mapIsLoaded: true,
-                        latitude: result[0].latitude,
-                        longitude: result[0].longitude
+                        latitude: lat,
+                        longitude: lng,
                     });
                 },
                 // Note: it's important to handle errors here

@@ -25,7 +25,7 @@ class RegistrationForm extends React.Component {
           values.password,
           values.email,
         );
-        this.props.history.push('/login/');
+        // this.props.history.push('/login/');
       }
     });
   }
