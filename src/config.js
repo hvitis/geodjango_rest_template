@@ -4,14 +4,14 @@ const dev = {
   };
   
   const prod = {
-    API_URL: "https://tobeprint3d.herokuapp.com/api",
+    API_URL: "https://tobeprinted.es/api",
     API_KEY_GMAPS : "AIzaSyA1umOS6BOBvTNLReOage940S6VDqLskkk"
 
   };
 
   // const config = prod;
   // Default to dev if not set
-  const config = process.env.ENVIRONMENT === 'prod'
+  const config = process.env.ENV === 'prod'
     ? prod
     : dev;
   
