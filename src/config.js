@@ -9,10 +9,11 @@ const dev = {
 
   };
 
-  // const config = prod;
+  const config = prod;
   // Default to dev if not set
-  const config = dev;
-  process.env.ENV === 'prod' ? (config = prod) : ( config = dev ) ;
+  // const config = process.env.ENV === 'prod'
+  //   ? prod
+  //   : dev;
   
   export default {
     // Add common config values here
