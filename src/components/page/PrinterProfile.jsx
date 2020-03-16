@@ -1,48 +1,83 @@
-import React, {Fragment, Component} from 'react';
+import React, { Fragment, Component } from 'react';
 import Header from '../layout/Header';
 import { Footer } from '../layout/Footer';
 import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CardListingGrid4 from '../content/element/card/card-listing-grid-4';
+import axios from 'axios';
+import config from '../../config'
 
 const noAction = e => e.preventDefault();
 
-class AuthProfile extends Component {
+class PrinterProfile extends Component {
     constructor(props) {
         super(props);
-        let UUID = this.props.match.params.UUID
-        console.log(UUID)
-        
-        // this.handleChange = this.handleChange.bind(this);
+        this.state = {
+            userProfile: {
+                user: "",
+                unique_id: "",
+                nickname: "",
+                firstName: "",
+                lastName: "",
+                description: "",
+                socialMedia: { websiteUrl: "", facebookUrl: "", twitterUrl: "", telegramUrl: "", linkedinUrl: "", youtubeUrl: "" },
+                profileImage: { id: null, file: "", profile: null },
+                date_joined: "",
+                phone_number: "",
+            }
+        }
     }
 
-    componentDidMount(){
-     
+    componentDidMount() {
+        let UUID = this.props.match.params.userUUID
+        console.log('UUID on entering profile', UUID)
+        // this.handleChange = this.handleChange.bind(this);
+        axios.get(`${config.API_URL}/accounts/${UUID}`, {
+            headers: {
+                'accept': '*/*',
+                'Accept-Language': 'en-US,en;q=0.8',
+                'Content-Type': `application/json`,
+                'Authorization': `${localStorage.getItem('token')}`
+            }
+        })
+            .then((response) => {
+                if (response.status == 200) {
+                    this.setState({ userProfile: response.data[0] })
+                }
+                //handle success
+                console.log('Whole success profile', this.state.userProfile)
+            }).catch((error) => {
+                //handle error
+                console.log('Whole error response', error)
+            });
+
     }
-    render () {
-        let UUID = this.props.match.params.UUID
+    render() {
+        console.log('Whole success profile', this.state.userProfile)
+
+        const { user, unique_id, nickname, firstName, lastName, description, socialMedia, profileImage, phone_number, date_joined } = this.state.userProfile;
         return (
             <Fragment>
-             
+
                 <section className="author-info-area section-padding-strict section-bg">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="atbd_auhor_profile_area">
                                     <div className="atbd_author_avatar">
-                                        <img src="./assets/img/author-profile.jpg" alt="AuthorImage" />
+                                        <img src={`${profileImage.file}`} alt="AuthorImage" width={80}/>
                                         <div className="atbd_auth_nd">
-                                            <h2>Kenneth Frazier {UUID}</h2>
-                                            <p>Joined in March 2019</p>
+                                            <h2>{firstName + ' ' + lastName}</h2>
+                                            <p>Joined on {`${date_joined}`}</p>
                                         </div>
                                     </div>{/*<!-- ends: .atbd_author_avatar -->*/}
                                     <div className="atbd_author_meta">
-                                        <div className="atbd_listing_meta">
+                                        {/* <div className="atbd_listing_meta">
                                             <span className="atbd_meta atbd_listing_rating">4.5 <i className="la la-star"></i></span>
                                             <p className="meta-info"><span>22</span>Reviews</p>
                                         </div>
-                                        <p className="meta-info"><span>15</span>Listings</p>
+                                        <p className="meta-info"><span>15</span>Listings</p> */}
                                     </div>{/*<!-- ends: .atbd_author_meta -->*/}
                                 </div>{/*<!-- ends: .atbd_auhor_profile_area -->*/}
                             </div>
@@ -57,12 +92,10 @@ class AuthProfile extends Component {
                                             </div>
                                         </div>
                                         <div className="atbdb_content_module_contents">
-                                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa kequi officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan tium doloremque laudantium, totam rem aperiam the eaque ipsa quae abillo was inventore veritatis keret quasi aperiam architecto beatae vitae dicta sunt explicabo. Nemo ucxqui officia voluptatem accusantium doloremque laudan tium, totam rem ape dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.
-                                                <br /> <br />
-                                                Nemo enim ipsam voluptatem quia voluptas cupidatat non proident, sunt culpa qui officia dese runt mollit anim id est laborum. Sedu perspi sunt explicabo. Nemo ucxqui officia voluptatem hscia unde omnis proident.</p>
+                                            {description}
                                         </div>
                                     </div>
-                                </div>{/*<!-- ends: .atbd_author_module -->*/}                                
+                                </div>{/*<!-- ends: .atbd_author_module -->*/}
                             </div>{/*<!-- ends: .col-md-8 -->*/}
                             <div className="col-lg-4 col-md-5 m-bottom-30">
                                 <div className="widget atbd_widget widget-card">
@@ -72,30 +105,29 @@ class AuthProfile extends Component {
                                     <div className="widget-body atbd_author_info_widget">
                                         <div className="atbd_widget_contact_info">
                                             <ul>
-                                                <li>
+                                                {/* <li>
                                                     <span className="la la-map-marker"></span>
                                                     <span className="atbd_info">25 East Valley Road, Michigan</span>
-                                                </li>
+                                                </li> */}
                                                 <li>
                                                     <span className="la la-phone"></span>
-                                                    <span className="atbd_info">(213) 995-7799</span>
+                                                    <span className="atbd_info">{phone_number}</span>
                                                 </li>
                                                 <li>
                                                     <span className="la la-envelope"></span>
-                                                    <span className="atbd_info">support@aazztech.com</span>
+                                                    <span className="atbd_info">{socialMedia.websiteUrl}</span>
                                                 </li>
                                                 <li>
                                                     <span className="la la-globe"></span>
-                                                    <NavLink to="/at_demo" onClick={noAction} className="atbd_info">www.aazztech.com</NavLink>
+                                                    <NavLink to={`/${socialMedia.websiteUrl}`} onClick={noAction} className="atbd_info">{socialMedia.websiteUrl}</NavLink>
                                                 </li>
                                             </ul>
                                         </div>{/*<!-- ends: .atbd_widget_contact_info -->*/}
                                         <div className="atbd_social_wrap">
-                                            <p><NavLink to="/at_demo" onClick={noAction}><span className="fab fa-facebook-f"></span></NavLink></p>
-                                            <p><NavLink to="/at_demo" onClick={noAction}><span className="fab fa-twitter"></span></NavLink></p>
-                                            <p><NavLink to="/at_demo" onClick={noAction}><span className="fab fa-google-plus-g"></span></NavLink></p>
-                                            <p><NavLink to="/at_demo" onClick={noAction}><span className="fab fa-linkedin-in"></span></NavLink></p>
-                                            <p><NavLink to="/at_demo" onClick={noAction}><span className="fab fa-dribbble"></span></NavLink></p>
+                                            <p><NavLink to={`/${socialMedia.facebookUrl}`} onClick={noAction}><span className="fab fa-facebook-f"></span></NavLink></p>
+                                            <p><NavLink to={`/${socialMedia.twitterUrl}`} onClick={noAction}><span className="fab fa-twitter"></span></NavLink></p>
+                                            <p><NavLink to={`/${socialMedia.linkedinUrl}`} onClick={noAction}><span className="fab fa-linkedin-in"></span></NavLink></p>
+                                            <p><NavLink to={`/${socialMedia.telegramUrl}`} onClick={noAction}><span className="fab fa-telegram"></span></NavLink></p>
                                         </div>{/*<!-- ends: .atbd_social_wrap -->*/}
                                     </div>{/*<!-- ends: .widget-body -->*/}
                                 </div>{/*<!-- ends: .widget -->*/}
@@ -104,7 +136,7 @@ class AuthProfile extends Component {
                             <div className="col-lg-12">
                                 <div className="atbd_author_listings_area m-bottom-30">
                                     <h1>Author Listings</h1>
-                                    <div className="atbd_author_filter_area">
+                                    {/* <div className="atbd_author_filter_area">
                                         <div className="dropdown">
                                             <a className="btn btn-outline-primary dropdown-toggle" href="# " role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Filter by Category <span className="caret"></span>
@@ -119,17 +151,17 @@ class AuthProfile extends Component {
                                                 <a className="dropdown-item" href=" ">Others</a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>{/*<!-- ends: .atbd_author_listings_area -->*/}
-                                
+
                                 <div className="row">
                                     {/* <CardListingGrid4  /> */}
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>                
-               
+                </section>
+
             </Fragment>
         )
     }
@@ -137,8 +169,8 @@ class AuthProfile extends Component {
 const mapStateToProps = state => {
     return {
         list: state.list,
-        login : state.login,
+        login: state.login,
         logo: state.logo
     }
 }
-export default connect(mapStateToProps)(AuthProfile);
+export default connect(mapStateToProps)(PrinterProfile);

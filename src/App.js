@@ -9,7 +9,7 @@ import Home from './components/page/Home';
 // import Index from './components/page/Home'
 import Header from './components/layout/Header'
 import Signup from './components/page/Signup'
-import AuthProfile from './components/page/AuthProfile'
+import PrinterProfile from './components/page/PrinterProfile.jsx'
 import AuthDeshbord from './components/page/AuthDeshbord'
 
 // import AllLocations from './components/page/AllLocations'
@@ -50,7 +50,7 @@ class App extends Component {
           <Route path = '/signup/' exact component={(props) => <Signup {...this.props} />} />
           <ProtectedRoute { ...this.props } path ='/add-printer' redirect='/login' component={(props) => <AddPrinter {...this.props} />}  />
           <Route path = '/dashboard' render={(props) => <AuthDeshbord {...this.props}  />} />
-          <Route path = '/printer-profile/:userUUID' component = { AuthProfile } />
+          <Route path = '/printer-profile/:userUUID' component = { PrinterProfile } />
           <Route path = '/nearby-printers' component = { MapListing } />
 
           {/* <Route path = '/all-listings-grid' component = { AllListingGrid } />          

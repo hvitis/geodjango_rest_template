@@ -43,6 +43,16 @@ class UserProfileDetailView(ListAPIView):
         return queryset
         serializer_class = UserProfileSerializer
 
+    def perform_create(self, serializer):
+        unique_id = generateUUID.UUID(str(self.kwargs["uuid"]))
+        serializer.save(unique_id=unique_id)
+
+    def get_object(self):
+        unique_id = generateUUID.UUID(str(self.kwargs["uuid"]))
+        queryset = UserProfile.objects.get(unique_id=unique_id)
+        return queryset
+        serializer_class = UserProfileSerializer
+
 
 class UserBasicInfoView(ListAPIView, UpdateAPIView):
     queryset = UserProfile.objects.all()
@@ -58,6 +68,11 @@ class UserBasicInfoView(ListAPIView, UpdateAPIView):
         return queryset
         serializer_class = BasicInfoSerializer
 
+    def get_object(self):
+        unique_id = generateUUID.UUID(str(self.kwargs["uuid"]))
+        queryset = UserProfile.objects.get(unique_id=unique_id)
+        return queryset
+        serializer_class = BasicInfoSerializer
 
 class SocialMediaView(ListAPIView, UpdateAPIView):
     serializer_class = SocialMediaSerializer

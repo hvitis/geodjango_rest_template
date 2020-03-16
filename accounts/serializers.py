@@ -33,7 +33,7 @@ class ProfileImageSerializer(serializers.ModelSerializer):
 class BasicInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model=UserProfile
-        fields=['nickname', 'firstName', 'lastName', 'description', 'phone_number']
+        fields=['nickname', 'firstName', 'lastName', 'description', 'phone_number', 'is_printing', ]
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
@@ -44,4 +44,4 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model=UserProfile
         # TODO: On List serializer show location, make PUT serializer for updating user without location
-        fields=['user', 'unique_id', 'nickname', 'firstName', 'lastName', 'description', 'socialMedia', 'profileImage']
+        fields=['user', 'unique_id', 'nickname', 'firstName', 'lastName', 'description', 'socialMedia', 'profileImage', 'date_joined', 'phone_number']

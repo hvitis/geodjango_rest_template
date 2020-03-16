@@ -24,8 +24,9 @@ class MapListing extends Component {
             // lng: location.lng().toFixed(6)
         });
     };
+    // onMarkerClick = (props) => { console.log(props) }
 
-    onMarkerClick = (props) => { this.nextPath(`printer-profile/${props.uuid}`) }
+    onMarkerClick = (props) => { this.nextPath(`printer-profile/${props.unique_uuid}`) }
     nextPath(path) {
         this.props.history.push(path);
       }
@@ -62,8 +63,8 @@ class MapListing extends Component {
                     if (result.features[0].geometry === null) {
                         return
                     }
-                    let lat = result.features[0].geometry.coordinates[1]
-                    let lng = result.features[0].geometry.coordinates[0]
+                    let lat = result.features[0].geometry.coordinates[0]
+                    let lng = result.features[0].geometry.coordinates[1]
                     console.log('Yes getting coords, ', lat, lng)
 
                     this.setState({
@@ -89,8 +90,8 @@ class MapListing extends Component {
     }
 
 
-    getNearbyPrinters(radius = 150) {
-        console.log('Searching using this coords, ', this.state.lng, this.state.lat)
+    getNearbyPrinters(radius = 450) {
+        console.log('Searching using this coords, ', this.state.lat, this.state.lng)
         fetch(`${config.API_URL}/nearby-accounts?lat=${this.state.lat}&lng=${this.state.lng}&radius=${radius}`)
             .then(response => response.json())
             .then(
@@ -139,7 +140,8 @@ class MapListing extends Component {
                                         
                                         // name={'Current location'}
                                         // title={'Current location'}
-                                        uuid={link.properties.uuid}
+                                        key={link.properties.unique_id}
+                                        unique_uuid={link.properties.unique_id}
                                         onClick={this.onMarkerClick}
                                     // icon={{
                                     //     //TODO: Change marker color
