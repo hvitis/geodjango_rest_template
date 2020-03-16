@@ -3,7 +3,7 @@ from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from djoser.signals import user_activated, user_registered
 
-from .models import UserProfile, SocialMedia, ProfileImage
+# from .models import UserProfile, SocialMedia, ProfileImage
 
 
 
@@ -20,9 +20,9 @@ from .models import UserProfile, SocialMedia, ProfileImage
 
 
 # TODO: Initialize location and social media on User Creation
-@receiver(user_registered)
-def create_user_profile(user, request, **kwargs):
-    print("Djoser Creating UserProfile", kwargs, user, request)
+# @receiver(user_registered)
+# def create_user_profile(user, request, **kwargs):
+#     print("Djoser Creating UserProfile", kwargs, user, request)
     # # UserProfile.objects.create(user=user)
     # Location.objects.create(profile_id=user.id)
     # SocialMedia.objects.create(profile_id=user.id)
