@@ -52,7 +52,7 @@ class MapListing extends Component {
             });
             console.log("Dashboard state did mount", this.state)
         };
-
+ 
         geo.watchPosition(onChange);
 
         fetch(`${config.API_URL}/accounts/${user_uuid}/location`)
