@@ -69,7 +69,7 @@ class Header extends Component {
                                             <div className="author__access_area">
                                                 <ul className="d-flex list-unstyled align-items-center">
                                                     <li>
-                                                        <NavLink to="/find-printer" className="btn btn-xs btn-gradient btn-gradient-one">
+                                                        <NavLink to="/nearby-printers" className="btn btn-xs btn-gradient btn-gradient-one">
                                                             <span className="la la-plus"></span> Find Print3r
                                                                 </NavLink>
                                                     </li>

@@ -29,6 +29,7 @@ import {
   Redirect
 } from 'react-router-dom';
 import { ProtectedRoute } from './protected.route';
+import MapListing from './components/page/MapListing';
 
 
 class App extends Component {
@@ -50,7 +51,8 @@ class App extends Component {
           <ProtectedRoute { ...this.props } path ='/add-printer' redirect='/login' component={(props) => <AddPrinter {...this.props} />}  />
           <Route path = '/dashboard' render={(props) => <AuthDeshbord {...this.props}  />} />
           <Route path = '/author-profile' component = { AuthProfile } />
-         
+          <Route path = '/nearby-printers' component = { MapListing } />
+
           {/* <Route path = '/all-listings-grid' component = { AllListingGrid } />          
           <Route path = '/all-listings-list' component = { AllListingList } />     
 
