@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%=av=qyx^jsn&#)*7mu-#19+!9*o5yq$jbuu)-!&dq20z@ez!n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 mimetypes.add_type("text/css", ".css", True)
 mimetypes.add_type("application/javascript", ".js", True)
 
@@ -254,7 +254,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'build/static'),
     os.path.join(BASE_DIR, 'build/assets'),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # WHITENOISE_ROOT = os.path.join(FRONTEND_DIR, 'build', 'root')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
