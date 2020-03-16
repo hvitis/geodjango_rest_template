@@ -110,10 +110,10 @@ class ProfileImageUploadView(APIView):
     def put(self, request, uuid, format=None):
         file_obj = request.data['file']
         print(self.kwargs['uuid'], uuid, file_obj)
-        new_picture = ProfileImage.objects.get(unique_id=uuid)
+        new_picture = ProfileImage.objects.get(profile__unique_id=uuid)
         new_picture.file = file_obj
         new_picture.save()
-        new_picture = ProfileImage.objects.get(unique_id=uuid)
+        new_picture = ProfileImage.objects.get(profile__unique_id=uuid)
         return Response(status=200, data={"profilePicture": new_picture.file.name})
 
 class NearbyUsersListView(ListAPIView, APIException):
