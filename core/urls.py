@@ -13,7 +13,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Custom Djoser endpoint with extended claims
-    # path('api/auth/jwt/create', CustomTokenObtainPairView),
+    path('api/auth/jwt/create', CustomTokenObtainPairView.as_view()),
     # path to djoser end points
     path('api/auth/', include('djoser.urls')),
     path('api/auth/', include('djoser.urls.jwt')),

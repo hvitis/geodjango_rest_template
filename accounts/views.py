@@ -19,7 +19,7 @@ from rest_framework.exceptions import APIException, ValidationError
 from rest_framework import status
 from rest_framework.response import Response
 from django.contrib.gis.db.models.functions import Distance as ClosestDistance
-
+import uuid
 
 class UserProfileListView(ListAPIView):
     queryset = UserProfile.objects.all()
@@ -37,10 +37,11 @@ class UserProfileDetailView(ListAPIView):
     serializer_class = UserProfileSerializer
     permission_classes = []
 
-    # def get_queryset(self):
-    #     queryset = UserProfile.objects.get(unique_id=self.kwargs["uuid"])
-    #     return queryset
-    #     serializer_class = UserProfileSerializer
+    def get_queryset(self):
+        queryset = []
+        queryset.append(UserProfile.objects.get(unique_id=self.kwargs["uuid"])) 
+        return queryset
+        serializer_class = UserProfileSerializer
 
 
 class UserBasicInfoView(ListAPIView, UpdateAPIView):
@@ -53,7 +54,7 @@ class UserBasicInfoView(ListAPIView, UpdateAPIView):
         serializer.save(user=user)
 
     def get_queryset(self):
-        queryset = UserProfile.objects.filter(user_id=self.kwargs["pk"])
+        queryset = UserProfile.objects.filter(unique_id=self.kwargs["uuid"])
         return queryset
         serializer_class = BasicInfoSerializer
 
@@ -64,13 +65,13 @@ class SocialMediaView(ListAPIView, UpdateAPIView):
 
     def perform_create(self, serializer):
         # user=self.request.user
-        profile_id = self.kwargs["pk"]
+        unique_id = self.kwargs["uuid"]
         # serializer.save(user=user)
-        serializer.save(profile_id=profile_id)
+        serializer.save(unique_id=unique_id)
 
     def get_queryset(self):
         print("Getting location")
-        queryset = SocialMedia.objects.filter(profile_id=self.kwargs["pk"])
+        queryset = SocialMedia.objects.filter(unique_id=self.kwargs["uuid"])
         return queryset
         serializer_class = SocialMediaSerializer
 # TODO: Make post and update endpoint
@@ -80,16 +81,16 @@ class UsersLocationView(UpdateAPIView, ListAPIView):
     serializer_class = LocationSerialiazer
     permission_classes = []
 
+    # TODO: Update location gives error
+    # ValueError: invalid literal for int() with base 10: '8ae53f6e-fbca-4f6f-afd2-26aa08201f92'
     def perform_create(self, serializer):
-        print(self)
-        # user=self.request.user
-        profile_id = self.kwargs["pk"]
-        # serializer.save(user=user)
-        serializer.save(id=profile_id)
+        unique_id = uuid.UUID(self.kwargs["uuid"])
+        user_profile= UserProfile.objects.get(unique_id=unique_id)
+        serializer.save(id=user_profile.id)
 
     def get_queryset(self):
         print("Getting location")
-        queryset = UserProfile.objects.filter(id=self.kwargs["pk"])
+        queryset = UserProfile.objects.filter(id=self.kwargs["uuid"])
         return queryset
         serializer_class = LocationSerialiazer
 
@@ -98,13 +99,13 @@ class ProfileImageUploadView(APIView):
     parser_classes = (MultiPartParser,)
     permission_classes = []
 
-    def put(self, request, pk, format=None):
+    def put(self, request, uuid, format=None):
         file_obj = request.data['file']
-        print(self.kwargs['pk'], pk, file_obj)
-        new_picture = ProfileImage.objects.get(profile_id=pk)
+        print(self.kwargs['uuid'], uuid, file_obj)
+        new_picture = ProfileImage.objects.get(unique_id=uuid)
         new_picture.file = file_obj
         new_picture.save()
-        new_picture = ProfileImage.objects.get(profile_id=pk)
+        new_picture = ProfileImage.objects.get(unique_id=uuid)
         return Response(status=200, data={"profilePicture": new_picture.file.name})
 
 class NearbyUsersListView(ListAPIView, APIException):
@@ -155,15 +156,15 @@ class ClosestUserView(ListAPIView, APIException):
         print(closest_user)
         return queryset
 
-class ProfileImageUploadView(APIView):
-    parser_classes = (MultiPartParser,)
-    permission_classes = []
+# class ProfileImageUploadView(APIView):
+#     parser_classes = (MultiPartParser,)
+#     permission_classes = []
 
-    def put(self, request, pk, format=None):
-        file_obj = request.data['file']
-        print(self.kwargs['pk'], pk, file_obj)
-        new_picture = ProfileImage.objects.get(profile_id=pk)
-        new_picture.file = file_obj
-        new_picture.save()
-        new_picture = ProfileImage.objects.get(profile_id=pk)
-        return Response(status=200, data={"profilePicture": new_picture.file.name})
+#     def put(self, request, uuid, format=None):
+#         file_obj = request.data['file']
+#         print(self.kwargs['uuid'], uuid, file_obj)
+#         new_picture = ProfileImage.objects.get(unique_id=uuid)
+#         new_picture.file = file_obj
+#         new_picture.save()
+#         new_picture = ProfileImage.objects.get(unique_id=uuid)
+#         return Response(status=200, data={"profilePicture": new_picture.file.name})

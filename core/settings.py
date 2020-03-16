@@ -110,11 +110,15 @@ SIMPLE_JWT = {
 
     'AUTH_HEADER_TYPES': ('Bearer',),
     'USER_ID_FIELD': 'id',
-    'USER_ID_CLAIM': 'uuid',
+    # This CLAIM by being called uuid is the same as custom Token maker field, that's why ID is hidden.
+    'USER_ID_CLAIM': 'user_id',
 
     # Place to add extra token claims
-    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
-    # 'core.custom_jwt_tokens.CustomTokenObtainPairView',
+    # Custom Token maker
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken', 'core.custom_jwt_tokens.CustomTokenObtainPairView'),
+    # 'AUTH_TOKEN_CLASSES': ('core.custom_jwt_tokens.CustomTokenObtainPairView',),
+    # 'rest_framework_simplejwt.tokens.AccessToken',
+    
     'TOKEN_TYPE_CLAIM': 'token_type',
 
     'JTI_CLAIM': 'jti',
