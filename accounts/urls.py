@@ -12,7 +12,7 @@ urlpatterns = [
     # Update and show one accounts name phone descrptions etc
     path("accounts/<uuid:uuid>/basic-info", UserBasicInfoView.as_view(), name="basic-info"),
     # Update and show one accounts location
-    path("accounts/<str:uuid>/location", UsersLocationView.as_view(), name="location"),
+    path("accounts/<uuid:uuid>/location", UsersLocationView.as_view(), name="location"),
     # Update and show one accounts socialmedia
     path("accounts/<uuid:uuid>/social-media", SocialMediaView.as_view(), name="social-media"),
     # Update and show one accounts profile image

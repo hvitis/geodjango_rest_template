@@ -19,7 +19,7 @@ from rest_framework.exceptions import APIException, ValidationError
 from rest_framework import status
 from rest_framework.response import Response
 from django.contrib.gis.db.models.functions import Distance as ClosestDistance
-import uuid
+import uuid as generateUUID
 
 class UserProfileListView(ListAPIView):
     queryset = UserProfile.objects.all()
@@ -84,13 +84,21 @@ class UsersLocationView(UpdateAPIView, ListAPIView):
     # TODO: Update location gives error
     # ValueError: invalid literal for int() with base 10: '8ae53f6e-fbca-4f6f-afd2-26aa08201f92'
     def perform_create(self, serializer):
-        unique_id = uuid.UUID(self.kwargs["uuid"])
+        unique_id = generateUUID.UUID(str(self.kwargs["uuid"]))
+        print(unique_id)
         user_profile= UserProfile.objects.get(unique_id=unique_id)
         serializer.save(id=user_profile.id)
 
+    def get_object(self):
+        unique_id = generateUUID.UUID(str(self.kwargs["uuid"]))
+        queryset = UserProfile.objects.get(unique_id=unique_id)
+        return queryset
+        serializer_class = LocationSerialiazer
+    
     def get_queryset(self):
-        print("Getting location")
-        queryset = UserProfile.objects.filter(id=self.kwargs["uuid"])
+        queryset = []
+        unique_id = generateUUID.UUID(str(self.kwargs["uuid"]))
+        queryset.append(UserProfile.objects.get(unique_id=unique_id)) 
         return queryset
         serializer_class = LocationSerialiazer
 

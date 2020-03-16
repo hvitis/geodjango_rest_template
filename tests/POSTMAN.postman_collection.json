@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4a61cb16-d029-47c8-8648-9c6af56ec483",
+		"_postman_id": "3b5e9c01-b114-42d2-a54f-631bb34fea65",
 		"name": "POSTMAN",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -97,14 +97,16 @@
 					"script": {
 						"id": "24e6fe0c-6529-48b7-8103-0875cf0153fc",
 						"exec": [
-							"",
+							"var jsonData = pm.response.json();",
 							"let userName = pm.globals.get(\"userName\");",
 							"pm.test(\"Token obtained for user \" + pm.globals.get(\"userName\"), function () {",
-							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.access.length).to.be.above(50);",
 							"    pm.globals.set(\"jwt_token\", jsonData.access);",
 							"});",
-							""
+							"const splited = jsonData.access.split('.')[1];",
+							"const parsed = JSON.parse(atob(splited)).uuid.toString();",
+							"console.log(parsed)",
+							"pm.globals.set(\"user_uuid\", parsed);"
 						],
 						"type": "text/javascript"
 					}
@@ -184,13 +186,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{LH_URL}}api/accounts/{{user_id}}/social-media",
+					"raw": "{{LH_URL}}api/accounts/{{user_uuid}}/social-media",
 					"host": [
 						"{{LH_URL}}api"
 					],
 					"path": [
 						"accounts",
-						"{{user_id}}",
+						"{{user_uuid}}",
 						"social-media"
 					]
 				}
@@ -291,13 +293,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{LH_URL}}api/accounts/{{user_id}}/basic-info",
+					"raw": "{{LH_URL}}api/accounts/{{user_uuid}}/basic-info",
 					"host": [
 						"{{LH_URL}}api"
 					],
 					"path": [
 						"accounts",
-						"{{user_id}}",
+						"{{user_uuid}}",
 						"basic-info"
 					]
 				}
@@ -339,13 +341,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{LH_URL}}api/accounts/{{user_id}}",
+					"raw": "{{LH_URL}}api/accounts/{{user_uuid}}",
 					"host": [
 						"{{LH_URL}}api"
 					],
 					"path": [
 						"accounts",
-						"{{user_id}}"
+						"{{user_uuid}}"
 					]
 				}
 			},
@@ -367,13 +369,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{LH_URL}}api/accounts/{{user_id}}/location",
+					"raw": "{{LH_URL}}api/accounts/{{user_uuid}}/location",
 					"host": [
 						"{{LH_URL}}api"
 					],
 					"path": [
 						"accounts",
-						"{{user_id}}",
+						"{{user_uuid}}",
 						"location"
 					]
 				}
@@ -383,16 +385,6 @@
 		{
 			"name": "Update Location",
 			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{jwt_token}}",
-							"type": "string"
-						}
-					]
-				},
 				"method": "PUT",
 				"header": [
 					{
@@ -400,11 +392,16 @@
 						"name": "Content-Type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt_token}}",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"latitude\": \"33\",\r\n    \"longitude\": \"44\",\r\n    \"coordinates\": null\r\n}",
+					"raw": "{\r\n    \"coordinates\": \"POINT (-4.494766 36.890268)\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -412,42 +409,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{LH_URL}}api/accounts/{{user_id}}/location",
+					"raw": "{{LH_URL}}api/accounts/{{user_uuid}}/location",
 					"host": [
 						"{{LH_URL}}api"
 					],
 					"path": [
 						"accounts",
-						"{{user_id}}",
-						"location"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get location",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{jwt_token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{LH_URL}}api/accounts/{{user_id}}/location",
-					"host": [
-						"{{LH_URL}}api"
-					],
-					"path": [
-						"accounts",
-						"{{user_id}}",
+						"{{user_uuid}}",
 						"location"
 					]
 				}
@@ -482,18 +450,18 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "/C:/Users/m8pi4/Downloads/Painting of Elon Musk on Mars by Conor Walton.jpg"
+							"src": "/Users/hvitis/Downloads/my_pic.png"
 						}
 					]
 				},
 				"url": {
-					"raw": "{{LH_URL}}api/accounts/{{user_id}}/profile-image",
+					"raw": "{{LH_URL}}api/accounts/{{user_uuid}}/profile-image",
 					"host": [
 						"{{LH_URL}}api"
 					],
 					"path": [
 						"accounts",
-						"{{user_id}}",
+						"{{user_uuid}}",
 						"profile-image"
 					]
 				}
@@ -719,6 +687,89 @@
 					"path": [
 						"prints",
 						"{{printer_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nearby Printers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LH_URL}}api/nearby-accounts?lat=36.8&lng=-4.4&radius=15000",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"nearby-accounts"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "36.8"
+						},
+						{
+							"key": "lng",
+							"value": "-4.4"
+						},
+						{
+							"key": "radius",
+							"value": "15000"
+						},
+						{
+							"key": "a",
+							"value": "3",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Closest user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LH_URL}}api/closest-user?lat=36.8&lng=-4.4",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"closest-user"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "36.8"
+						},
+						{
+							"key": "lng",
+							"value": "-4.4"
+						}
 					]
 				}
 			},
