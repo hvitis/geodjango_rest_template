@@ -9,8 +9,19 @@ import CardListingGrid4 from '../content/element/card/card-listing-grid-4';
 const noAction = e => e.preventDefault();
 
 class AuthProfile extends Component {
+    constructor(props) {
+        super(props);
+        let UUID = this.props.match.params.UUID
+        console.log(UUID)
+        
+        // this.handleChange = this.handleChange.bind(this);
+    }
+
+    componentDidMount(){
+     
+    }
     render () {
-       
+        let UUID = this.props.match.params.UUID
         return (
             <Fragment>
              
@@ -22,7 +33,7 @@ class AuthProfile extends Component {
                                     <div className="atbd_author_avatar">
                                         <img src="./assets/img/author-profile.jpg" alt="AuthorImage" />
                                         <div className="atbd_auth_nd">
-                                            <h2>Kenneth Frazier</h2>
+                                            <h2>Kenneth Frazier {UUID}</h2>
                                             <p>Joined in March 2019</p>
                                         </div>
                                     </div>{/*<!-- ends: .atbd_author_avatar -->*/}

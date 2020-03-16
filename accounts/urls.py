@@ -8,7 +8,7 @@ urlpatterns = [
     # Show all accounts
     path("accounts",UserProfileListView.as_view(),name="accounts"),
     # Show one account
-    path("accounts/<int:pk>",UserProfileDetailView.as_view(),name="account"),
+    path("accounts/<str:uuid>",UserProfileDetailView.as_view(),name="account"),
     # Update and show one accounts name phone descrptions etc
     path("accounts/<int:pk>/basic-info", UserBasicInfoView.as_view(), name="basic-info"),
     # Update and show one accounts location

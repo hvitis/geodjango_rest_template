@@ -50,7 +50,7 @@ class App extends Component {
           <Route path = '/signup/' exact component={(props) => <Signup {...this.props} />} />
           <ProtectedRoute { ...this.props } path ='/add-printer' redirect='/login' component={(props) => <AddPrinter {...this.props} />}  />
           <Route path = '/dashboard' render={(props) => <AuthDeshbord {...this.props}  />} />
-          <Route path = '/printer-profile' component = { AuthProfile } />
+          <Route path = '/printer-profile/:userUUID' component = { AuthProfile } />
           <Route path = '/nearby-printers' component = { MapListing } />
 
           {/* <Route path = '/all-listings-grid' component = { AllListingGrid } />          

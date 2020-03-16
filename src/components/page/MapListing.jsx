@@ -25,7 +25,7 @@ class MapListing extends Component {
         });
     };
 
-    onMarkerClick = (props) => { this.nextPath(`printer-profile/${props.userId}`) }
+    onMarkerClick = (props) => { this.nextPath(`printer-profile/${props.uuid}`) }
     nextPath(path) {
         this.props.history.push(path);
       }
@@ -135,7 +135,7 @@ class MapListing extends Component {
                                         }}
                                         name={'Current location'}
                                         title={'Current location'}
-                                        userId={link.properties.id}
+                                        uuid={link.properties.uuid}
                                         onClick={this.onMarkerClick}
                                     // icon={{
                                     //     //TODO: Change marker color

@@ -1,7 +1,7 @@
 from rest_framework.generics import (
     ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView, CreateAPIView, UpdateAPIView)
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
-from .models import UserProfile, Location, SocialMedia, ProfileImage
+from .models import UserProfile, SocialMedia, ProfileImage
 from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import UserProfileSerializer, BasicInfoSerializer,  LocationSerialiazer, SocialMediaSerializer, ProfileImageSerializer, NearbyUsersSerialiazer
 from django.contrib.gis.geos import Point
@@ -19,6 +19,8 @@ from rest_framework.exceptions import APIException, ValidationError
 from rest_framework import status
 from rest_framework.response import Response
 from django.contrib.gis.db.models.functions import Distance as ClosestDistance
+
+
 class UserProfileListView(ListAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
@@ -31,12 +33,12 @@ class UserProfileListView(ListAPIView):
 
 
 class UserProfileDetailView(ListAPIView):
-    queryset = UserProfile.objects.all()
+    # queryset = UserProfile.objects.get(uuid=self.kwargs["uuid"])
     serializer_class = UserProfileSerializer
     permission_classes = []
 
     def get_queryset(self):
-        queryset = UserProfile.objects.filter(user_id=self.kwargs["pk"])
+        queryset = UserProfile.objects.get(uuid=self.kwargs["uuid"])
         return queryset
         serializer_class = UserProfileSerializer
 
@@ -83,11 +85,11 @@ class UsersLocationView(UpdateAPIView, ListAPIView):
         # user=self.request.user
         profile_id = self.kwargs["pk"]
         # serializer.save(user=user)
-        serializer.save(profile_id=profile_id)
+        serializer.save(id=profile_id)
 
     def get_queryset(self):
         print("Getting location")
-        queryset = Location.objects.filter(profile_id=self.kwargs["pk"])
+        queryset = UserProfile.objects.filter(id=self.kwargs["pk"])
         return queryset
         serializer_class = LocationSerialiazer
 
@@ -106,7 +108,7 @@ class ProfileImageUploadView(APIView):
         return Response(status=200, data={"profilePicture": new_picture.file.name})
 
 class NearbyUsersListView(ListAPIView, APIException):
-    model = Location
+    model = UserProfile
     serializer_class = NearbyUsersSerialiazer
     pagination_class = GeoJsonPagination
     permission_classes = [AllowAny]
@@ -126,11 +128,11 @@ class NearbyUsersListView(ListAPIView, APIException):
         except ValueError:
             raise ValidationError(['Somethin wrong with data types!'], code=400)
         point=Point(longitude, latitude)
-        queryset = Location.objects.filter(coordinates__distance_lt=(point, Distance(km=radius))).order_by('profile')[0:20]
+        queryset = UserProfile.objects.filter(coordinates__distance_lt=(point, Distance(km=radius))).order_by('profile')[0:20]
         return queryset
 
 class ClosestUserView(ListAPIView, APIException):
-    model = Location
+    model = UserProfile
     serializer_class = NearbyUsersSerialiazer
     pagination_class = GeoJsonPagination
     permission_classes = [AllowAny]
@@ -148,7 +150,7 @@ class ClosestUserView(ListAPIView, APIException):
         except ValueError:
             raise ValidationError(['Somethin wrong with data types'], code=400)
         point=Point(longitude, latitude, srid=4326)
-        closest_user = Location.objects.annotate(distance=ClosestDistance('coordinates', point)).order_by('distance').first()
+        closest_user = UserProfile.objects.annotate(distance=ClosestDistance('coordinates', point)).order_by('distance').first()
         queryset.append(closest_user)
         print(closest_user)
         return queryset

@@ -3,7 +3,7 @@ from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from djoser.signals import user_activated, user_registered
 
-from .models import UserProfile, Location, SocialMedia, ProfileImage
+from .models import UserProfile, SocialMedia, ProfileImage
 
 
 

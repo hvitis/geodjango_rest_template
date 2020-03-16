@@ -3,12 +3,13 @@ from django.contrib.gis.geos import Point
 
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
-import uuid
+import uuid as generateUUID
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(
@@ -17,7 +18,9 @@ class UserProfile(models.Model):
     firstName = models.CharField(max_length=300, blank=True)
     lastName = models.CharField(max_length=300, blank=True)
     description = models.TextField(blank=True)
-
+    coordinates = models.PointField(blank=True, null=True, srid=4326)
+    is_printing = models.BooleanField(default=False)
+    unique_id = models.UUIDField(unique=True, default=generateUUID.uuid4, editable=False)
     # Internally, PhoneNumberField is based upon CharField and by default 
     # represents the number as a string of an international phonenumber 
     # in the database (e.g '+41524204242').
@@ -40,7 +43,7 @@ def create_user_profile(sender, instance, created, **kwargs):
     print(sender, instance, created, kwargs)
     if created:
         UserProfile.objects.create(user=instance)
-        Location.objects.create(profile_id=instance.id)
+        # Location.objects.create(profile_id=instance.id)
         SocialMedia.objects.create(profile_id=instance.id)
         ProfileImage.objects.create(profile_id=instance.id)
 
@@ -50,17 +53,18 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 
-class Location(models.Model):
-    profile = models.OneToOneField(
-        UserProfile, on_delete=models.CASCADE, related_name="location")
-    coordinates = models.PointField(blank=True, null=True, srid=4326)
-    is_printing = models.BooleanField(default=False)
+# class Location(models.Model):
+#     profile = models.OneToOneField(
+#         UserProfile, on_delete=models.CASCADE, related_name="location")
+#     coordinates = models.PointField(blank=True, null=True, srid=4326)
+#     is_printing = models.BooleanField(default=False)
+#     uuid = generateUUID.uuid4()
 
-    def __str__(self):
-        try:
-            return self.profile.user.username
-        except:
-            pass
+#     def __str__(self):
+#         try:
+#             return self.profile.user.username
+#         except:
+#             pass
 
 class SocialMedia(models.Model):
     profile = models.OneToOneField(

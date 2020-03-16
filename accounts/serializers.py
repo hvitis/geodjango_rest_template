@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import UserProfile, Location , SocialMedia, ProfileImage
+from .models import UserProfile , SocialMedia, ProfileImage
 from django.contrib.gis.geos import Point
 from rest_framework_gis.serializers import GeoFeatureModelSerializer, GeometrySerializerMethodField
 
@@ -12,18 +12,18 @@ class SocialMediaSerializer(serializers.ModelSerializer):
 class LocationSerialiazer(GeoFeatureModelSerializer):
     """ A class to serialize locations as GeoJSON compatible data """
     class Meta:
-        model = Location
+        model = UserProfile
         geo_field = "coordinates"
         id_field = False
-        fields = ['coordinates', 'is_printing']
+        fields = ['coordinates', 'is_printing', 'uuid']
 
 class NearbyUsersSerialiazer(GeoFeatureModelSerializer):
     """ A class to serialize locations as GeoJSON compatible data """
     class Meta:
-        model = Location
+        model = UserProfile
         geo_field = "coordinates"
         id_field = False
-        fields = '__all__'
+        fields = ['coordinates', 'is_printing', 'uuid']
 
 class ProfileImageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -44,4 +44,4 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model=UserProfile
         # TODO: On List serializer show location, make PUT serializer for updating user without location
-        fields=['user', 'nickname', 'firstName', 'lastName', 'description', 'location', 'socialMedia', 'profileImage']
+        fields=['user', 'uuid', 'nickname', 'firstName', 'lastName', 'description', 'location', 'socialMedia', 'profileImage']
