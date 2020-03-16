@@ -137,7 +137,7 @@ class NearbyUsersListView(ListAPIView, APIException):
         except ValueError:
             raise ValidationError(['Somethin wrong with data types!'], code=400)
         point=Point(longitude, latitude)
-        queryset = UserProfile.objects.filter(coordinates__distance_lt=(point, Distance(km=radius))).order_by('profile')[0:20]
+        queryset = UserProfile.objects.filter(coordinates__distance_lt=(point, Distance(km=radius))).order_by('coordinates')[0:20]
         return queryset
 
 class ClosestUserView(ListAPIView, APIException):

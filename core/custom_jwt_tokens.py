@@ -25,7 +25,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super(CustomTokenObtainPairSerializer, cls).get_token(user)
-        print(user.id)
+        print(f'User {user.username} with an ID: {user.id} has just obtained TOKEN.')
         user_profile = UserProfile.objects.get(id=user.id)
         # json.dumps(user_profile.unique_id, cls=UUIDEncoder)
 

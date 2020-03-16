@@ -36,7 +36,7 @@ class MapListing extends Component {
         });
     }
     componentDidMount() {
-        let user_id = localStorage.getItem('user_id')
+        let user_uuid = localStorage.getItem('user_uuid')
 
         const geo = navigator.geolocation;
         if (!geo) {
@@ -54,10 +54,11 @@ class MapListing extends Component {
 
         geo.watchPosition(onChange);
 
-        fetch(`${config.API_URL}/accounts/${user_id}/location`)
+        fetch(`${config.API_URL}/accounts/${user_uuid}/location`)
             .then(response => response.json())
             .then(
                 (result) => {
+                    console.log('location', result)
                     if (result.features[0].geometry === null) {
                         return
                     }
@@ -94,9 +95,12 @@ class MapListing extends Component {
             .then(response => response.json())
             .then(
                 (result) => {
+                    console.log('nearbyPrinters', result)
 
-                    if (result.count > 0)
+                    if (result.count > 0) {
+                        
                         console.log('List of nearby users', result.features)
+                    }
                     this.setState({ nearbyPrinters: result.features, mapIsLoaded: true, })
                 },
 
@@ -126,15 +130,15 @@ class MapListing extends Component {
                             center={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}
                         // onClick={(t, map, c) => this.addMarker(c.latLng, map)}
                         >
-                            {console.log('From within the component', this.state.nearbyPrinters),
-                                this.state.nearbyPrinters.map((link) =>
+                                {this.state.nearbyPrinters.map((link, x) =>
                                     <Marker
                                         position={{
                                             lat: parseFloat(link.geometry.coordinates[1]),
                                             lng: parseFloat(link.geometry.coordinates[0])
                                         }}
-                                        name={'Current location'}
-                                        title={'Current location'}
+                                        
+                                        // name={'Current location'}
+                                        // title={'Current location'}
                                         uuid={link.properties.uuid}
                                         onClick={this.onMarkerClick}
                                     // icon={{

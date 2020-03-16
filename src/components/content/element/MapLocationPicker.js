@@ -12,8 +12,8 @@ class MapLocationPicker extends Component {
     constructor(props) {
         super(props);
         this.state = {
-                lat: props.latitude.toFixed(6),
-                lng: props.longitude.toFixed(6)
+                lat: props.latitude,
+                lng: props.longitude
         };
         // this.handleChange = this.handleChange.bind(this);
     }
@@ -27,12 +27,12 @@ class MapLocationPicker extends Component {
 
     updateLocation(){
         // Updates location with API using current data on the map
-        let user_id = localStorage.getItem('user_id')
+        let user_uuid = localStorage.getItem('user_uuid')
         let dataToSend = {
             "coordinates": `POINT (${this.state.lat} ${this.state.lng})`
         }
         console.log('data to send', dataToSend)
-        axios.put(`${config.API_URL}/accounts/${user_id}/location`, dataToSend, {
+        axios.put(`${config.API_URL}/accounts/${user_uuid}/location`, dataToSend, {
             headers: {
                 'accept': '*/*',
                 'Accept-Language': 'en-US,en;q=0.8',

@@ -40,21 +40,29 @@ export const checkAuthTimeout = expirationTime => {
 }
 
 export const authLogin = (username, password) => {
+    console.log(username, password)
     return dispatch => {
         dispatch(authStart());
         axios.post(config.API_URL + '/auth/jwt/create', {
+            // username: 'Adam9999',
+            // password: 'Adam1234!!'
             username: username,
             password: password
         })
         .then(res => {
-            console.log("Auth response : ", res)
-            console.log("config.API_URL  : ", config.API_URL )
+            // console.log("Auth response : ", res)
+            // console.log("config.API_URL  : ", config.API_URL )
+            // console.log('Response',res)
 
             const token = res.data.access;
             const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
             let decodedToken = jwt_decode(token);
-            const user_id = decodedToken.user_id;
-            localStorage.setItem('user_id', user_id);
+            // console.log('Decoded c¡token',decodedToken)
+
+            const user_uuid = decodedToken.uuid;
+            
+            localStorage.setItem('user_uuid', user_uuid);
+            // console.log('User UUID saved',user_uuid)
             localStorage.setItem('token', token);
             localStorage.setItem('expirationDate', expirationDate);
             dispatch(authSuccess(token));
@@ -69,6 +77,7 @@ export const authLogin = (username, password) => {
 }
 
 export const authSignup = (username, email, password) => {
+    
     console.log('username and password', username, password)
     return dispatch => {
         dispatch(authStart());
@@ -80,6 +89,8 @@ export const authSignup = (username, email, password) => {
         .then(res => {
             console.log("Auth response : ", res)
             console.log("config.API_URL  : ", config.API_URL )
+            this.props.history.push('dashboard')
+            
             // const token = res.data.key;
             // const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
             // localStorage.setItem('token', token);

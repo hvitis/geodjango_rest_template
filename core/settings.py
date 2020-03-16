@@ -109,9 +109,9 @@ SIMPLE_JWT = {
     'ISSUER': None,
 
     'AUTH_HEADER_TYPES': ('Bearer',),
-    'USER_ID_FIELD': 'id',
+    'USER_ID_FIELD': 'username',
     # This CLAIM by being called uuid is the same as custom Token maker field, that's why ID is hidden.
-    'USER_ID_CLAIM': 'user_id',
+    'USER_ID_CLAIM': 'username',
 
     # Place to add extra token claims
     # Custom Token maker

@@ -18,9 +18,9 @@ class UpdateProfilePicture extends Component {
         console.log(file)
         let data = new FormData();
         data.append('file', file, file.fileName);
-        let user_id = localStorage.getItem('user_id')
+        let user_uuid = localStorage.getItem('user_uuid')
 
-        axios.put(`${config.API_URL}/accounts/${user_id}/profile-image`, data, {
+        axios.put(`${config.API_URL}/accounts/${user_uuid}/profile-image`, data, {
             headers: {
                 'accept': '*/*',
                 'Accept-Language': 'en-US,en;q=0.8',
@@ -38,8 +38,6 @@ class UpdateProfilePicture extends Component {
             });
         
     }
-
-
 
     render() {
         return (

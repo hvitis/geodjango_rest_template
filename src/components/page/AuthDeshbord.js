@@ -36,7 +36,7 @@ class AuthDeshbord extends Component {
 
     }
     componentDidMount() {
-        let user_id = localStorage.getItem('user_id')
+        let user_uuid = localStorage.getItem('user_uuid')
 
         const geo = navigator.geolocation;
         if (!geo) {
@@ -55,7 +55,7 @@ class AuthDeshbord extends Component {
         geo.watchPosition(onChange);
         // this.interval = setInterval(() => geo.watchPosition(onChange), 1000);
 
-        fetch(`${config.API_URL}/accounts/${user_id}`)
+        fetch(`${config.API_URL}/accounts/${user_uuid}`)
             .then(response => response.json())
             .then(
                 (result) => {
@@ -76,7 +76,7 @@ class AuthDeshbord extends Component {
                     });
                 }
             );
-        fetch(`${config.API_URL}/accounts/${user_id}/location`)
+        fetch(`${config.API_URL}/accounts/${user_uuid}/location`)
             .then(response => response.json())
             .then(
                 (result) => {
