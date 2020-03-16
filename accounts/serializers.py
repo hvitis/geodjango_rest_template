@@ -15,7 +15,7 @@ class LocationSerialiazer(GeoFeatureModelSerializer):
         model = UserProfile
         geo_field = "coordinates"
         id_field = False
-        fields = ['coordinates', 'is_printing', 'uuid']
+        fields = ['coordinates', 'is_printing', 'unique_id']
 
 class NearbyUsersSerialiazer(GeoFeatureModelSerializer):
     """ A class to serialize locations as GeoJSON compatible data """
@@ -23,7 +23,7 @@ class NearbyUsersSerialiazer(GeoFeatureModelSerializer):
         model = UserProfile
         geo_field = "coordinates"
         id_field = False
-        fields = ['coordinates', 'is_printing', 'uuid']
+        fields = ['coordinates', 'is_printing', 'unique_id']
 
 class ProfileImageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -33,15 +33,15 @@ class ProfileImageSerializer(serializers.ModelSerializer):
 class BasicInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model=UserProfile
-        fields=['nickname', 'firstName', 'lastName', 'description','phone_number']
+        fields=['nickname', 'firstName', 'lastName', 'description', 'phone_number']
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    user=serializers.StringRelatedField(read_only=True)
-    location=LocationSerialiazer()
+    user=serializers.StringRelatedField(read_only=True, many=False)
+    # location=LocationSerialiazer()
     socialMedia=SocialMediaSerializer()
     profileImage=ProfileImageSerializer()
     class Meta:
         model=UserProfile
         # TODO: On List serializer show location, make PUT serializer for updating user without location
-        fields=['user', 'uuid', 'nickname', 'firstName', 'lastName', 'description', 'location', 'socialMedia', 'profileImage']
+        fields=['user', 'unique_id', 'nickname', 'firstName', 'lastName', 'description', 'socialMedia', 'profileImage']

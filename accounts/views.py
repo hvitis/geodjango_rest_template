@@ -33,14 +33,14 @@ class UserProfileListView(ListAPIView):
 
 
 class UserProfileDetailView(ListAPIView):
-    # queryset = UserProfile.objects.get(uuid=self.kwargs["uuid"])
+    queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
     permission_classes = []
 
-    def get_queryset(self):
-        queryset = UserProfile.objects.get(uuid=self.kwargs["uuid"])
-        return queryset
-        serializer_class = UserProfileSerializer
+    # def get_queryset(self):
+    #     queryset = UserProfile.objects.get(unique_id=self.kwargs["uuid"])
+    #     return queryset
+    #     serializer_class = UserProfileSerializer
 
 
 class UserBasicInfoView(ListAPIView, UpdateAPIView):

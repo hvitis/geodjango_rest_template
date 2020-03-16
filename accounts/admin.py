@@ -5,7 +5,8 @@ from django.forms.widgets import TextInput
 from django.contrib.gis.db import models
 from django.contrib import admin
 class AccountsAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('unique_id',)
+    search_fields = ('unique_id',)
 
 admin.site.register(UserProfile, AccountsAdmin)
 admin.site.register(ProfileImage)
