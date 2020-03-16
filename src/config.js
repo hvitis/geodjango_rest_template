@@ -11,7 +11,7 @@ const dev = {
 
   // const config = prod;
   // Default to dev if not set
-  const config
+  const config = dev;
   process.env.ENV === 'prod' ? (config = prod) : ( config = dev ) ;
   
   export default {
