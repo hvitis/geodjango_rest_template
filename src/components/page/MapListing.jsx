@@ -24,6 +24,11 @@ class MapListing extends Component {
             // lng: location.lng().toFixed(6)
         });
     };
+
+    onMarkerClick = (props) => { this.nextPath(`printer-profile/${props.userId}`) }
+    nextPath(path) {
+        this.props.history.push(path);
+      }
     componentWillMount() {
         this.setState({
             mapIsLoaded: false,
@@ -89,10 +94,10 @@ class MapListing extends Component {
             .then(response => response.json())
             .then(
                 (result) => {
-                    
+
                     if (result.count > 0)
-                    console.log('List of nearby users', result.features)
-                        this.setState({ nearbyPrinters: result.features, mapIsLoaded: true, })
+                        console.log('List of nearby users', result.features)
+                    this.setState({ nearbyPrinters: result.features, mapIsLoaded: true, })
                 },
 
                 // Note: it's important to handle errors here
@@ -121,20 +126,44 @@ class MapListing extends Component {
                             center={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}
                         // onClick={(t, map, c) => this.addMarker(c.latLng, map)}
                         >
-                            {console.log('From within the component',this.state.nearbyPrinters),
+                            {console.log('From within the component', this.state.nearbyPrinters),
                                 this.state.nearbyPrinters.map((link) =>
-                                    <Marker position={{ lat: parseFloat(link.geometry.coordinates[1]), lng: parseFloat(link.geometry.coordinates[0]) }} />
-                                    )
+                                    <Marker
+                                        position={{
+                                            lat: parseFloat(link.geometry.coordinates[1]),
+                                            lng: parseFloat(link.geometry.coordinates[0])
+                                        }}
+                                        name={'Current location'}
+                                        title={'Current location'}
+                                        userId={link.properties.id}
+                                        onClick={this.onMarkerClick}
+                                    // icon={{
+                                    //     //TODO: Change marker color
+                                    //     url: "/path/to/custom_icon.png",
+                                    //     anchor: new google.maps.Point(32,32),
+                                    //     scaledSize: new google.maps.Size(64,64)
+                                    //   }}
+                                    >
+                                        {/* <InfoWindow
+                                            visible={showInfoWindow}
+                                            style={styles.infoWindow}
+                                        >
+                                            <div className={classes.infoWindow}>
+                                                <p>Click on the map or drag the marker to select location where the incident occurred</p>
+                                            </div>
+                                        </InfoWindow> */}
+                                    </Marker>
+                                )
                             }
-
-
-                        </Map> : <Loader
+                        </Map> :
+                            <Loader
                                 type="Puff"
                                 color="#00BFFF"
                                 height={100}
                                 width={100}
 
-                            />}
+                            />
+                        }
 
                     </div>
                 </div>
