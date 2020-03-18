@@ -2,6 +2,9 @@ import axios from 'axios';
 import * as actionTypes from './actionTypes';
 import config from '../../config'
 import jwt_decode from 'jwt-decode'
+import React, { Fragment } from 'react';
+import { Redirect } from 'react-router-dom'
+
 
 export const authStart = () => {
     return {
@@ -13,6 +16,11 @@ export const authSuccess = token => {
     return {
         type: actionTypes.AUTH_SUCCESS,
         token: token
+    }
+}
+export const registerSuccess = () => {
+    return {
+        type: actionTypes.REGISTER_SUCCESS,
     }
 }
 
@@ -50,6 +58,7 @@ export const authLogin = (username, password) => {
             password: password
         })
         .then(res => {
+
             // console.log("Auth response : ", res)
             // console.log("config.API_URL  : ", config.API_URL )
             // console.log('Response',res)
@@ -87,16 +96,10 @@ export const authSignup = (username, email, password) => {
             password: password
         })
         .then(res => {
-            console.log("Auth response : ", res)
-            console.log("config.API_URL  : ", config.API_URL )
-            this.props.history.push('dashboard')
-            
-            // const token = res.data.key;
-            // const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
-            // localStorage.setItem('token', token);
-            // localStorage.setItem('expirationDate', expirationDate);
-            // dispatch(authSuccess(token));
-            // dispatch(checkAuthTimeout(3600));
+            console.log(res)
+            dispatch(registerSuccess());
+            // return <Redirect to='/login' />
+            // this.props.history.push('login')
         })
         .catch(err => {
             dispatch(authFail(err))

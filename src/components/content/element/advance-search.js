@@ -17,14 +17,22 @@ export class AdvSearch extends Component {
                         <div className="row">
                             <div className="col-lg-10 offset-lg-1">
                                 <div className="search_title_area">
-                                    <h2 className="title">3D Printed Materials</h2>
-                                    <p className="sub_title">Working together during crisis...</p>
+                                    <h2 className="title">Imprime 3D y ayuda</h2>
+                                    <p className="sub_title"></p>
                                 </div>{/* ends: .search_title_area */}
-                                <form action="/" className="search_form">
-                                    <div className="atbd_seach_fields_wrapper">
-                                        <div className="single_search_field search_query">
+                                <div className="search_form">
+                                    <div className="atbd_seach_fields_wrapper d-flex justify-content-around">
+
+                                        <NavLink to="/nearby-printers" className="btn btn-xs btn-gradient btn-gradient-one mr-5">
+                                            <span className="la la-plus"></span> Encuentra impresora
+                                                                </NavLink>
+                                        <NavLink to="/add-printer" className="btn btn-xs btn-gradient btn-gradient-two">
+                                            <span className="la la-plus"></span> Añade impresora
+                                                                </NavLink>
+
+                                        {/* <div className="single_search_field search_query">
                                             <input className="form-control search_fields" type="text" placeholder="What are you located at?" />
-                                        </div>
+                                        </div> */}
                                         {/* <div className="single_search_field search_category">
                                             <select className="search_fields" id="at_biz_dir-category">
                                             <option value>Select a category</option>
@@ -41,12 +49,12 @@ export class AdvSearch extends Component {
                                             <option value="australia-australia">Australia</option>
                                             </select>
                                         </div> */}
-                                        <div className="atbd_submit_btn">
+                                        {/* <div className="atbd_submit_btn">
                                             <button type="submit" onClick={noAction} className="btn btn-block btn-gradient btn-gradient-one btn-md btn_search">Search</button>
-                                        </div>
+                                        </div> */}
                                     </div>
-                                </form>{/* ends: .search_form */}
-                                {/* <div className="directory_home_category_area">
+                                    {/* ends: .search_form */}
+                                    {/* <div className="directory_home_category_area">
                                     <ul className="categories">
                                         <li>
                                             <NavLink onClick={noAction} to="/at_demo">
@@ -74,8 +82,9 @@ export class AdvSearch extends Component {
                                         </li>
                                     </ul>
                                 </div> */}
-                                {/* ends: .directory_home_category_area */}
-                            </div>{/* ends: .col-lg-10 */}
+                                    {/* ends: .directory_home_category_area */}
+                                </div>{/* ends: .col-lg-10 */}
+                            </div>
                         </div>
                     </div>
                 </div>{/* ends: .directory_search_area */}

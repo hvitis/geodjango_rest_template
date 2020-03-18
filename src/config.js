@@ -9,7 +9,7 @@ const dev = {
 
   };
 
-  const config = prod;
+  const config = dev;
   // Default to dev if not set
   // const config = process.env.ENV === 'prod'
   //   ? prod

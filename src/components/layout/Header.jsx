@@ -43,7 +43,7 @@ class Header extends Component {
                                     </div>
                                     <div className="menu-right order-lg-2 order-sm-2">
                                         <div className="search-wrapper">
-                                            <div className="nav_right_module search_module">
+                                            {/* <div className="nav_right_module search_module">
                                                 <span className="icon-left" id="basic-addon9"><i className="la la-search"></i></span>
                                                 <div className="search_area">
                                                     <form action="/">
@@ -52,7 +52,7 @@ class Header extends Component {
                                                         </div>
                                                     </form>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                             {/* <div className="search-categories">
                                                     <ul className="list-unstyled">
                                                         <li><a href=" " onClick={noAction}><span className="la la-glass bg-danger"></span> Food & Drinks</a></li>
@@ -70,12 +70,12 @@ class Header extends Component {
                                                 <ul className="d-flex list-unstyled align-items-center">
                                                     <li>
                                                         <NavLink to="/nearby-printers" className="btn btn-xs btn-gradient btn-gradient-one">
-                                                            <span className="la la-plus"></span> Find Print3r
+                                                            <span className="la la-plus"></span> Encuentra impresora
                                                                 </NavLink>
                                                     </li>
                                                     <li>
                                                         <NavLink to="/add-printer" className="btn btn-xs btn-gradient btn-gradient-two">
-                                                            <span className="la la-plus"></span> Add Print3r
+                                                            <span className="la la-plus"></span> Añade impresora
                                                                 </NavLink>
                                                     </li>
                                                     {
@@ -96,10 +96,10 @@ class Header extends Component {
 
                                                                 <li>
                                                                     <div className="author-info">
-                                                                        <Button variant="primary">PROFILE</Button>
+                                                                        <Button variant="primary">Profile</Button>
                                                                         <ul className="list-unstyled">
                                                                             {/* <li><NavLink to="/author-profile">My Profile</NavLink></li> */}
-                                                                            <li><NavLink to="/dashboard">My Profile</NavLink></li>
+                                                                            <li><NavLink to="/dashboard">Mi Perfil</NavLink></li>
                                                                             {/* <li><NavLink to="/at_demo">Favourite Listing</NavLink></li> */}
                                                                             <li><a href=" " onClick={this.props.logout}><span className="la la-bank bg-warning"></span>Logout</a></li>
                                                                         </ul>

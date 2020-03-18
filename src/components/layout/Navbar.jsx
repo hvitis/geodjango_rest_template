@@ -5,7 +5,7 @@ export class NavItem extends Component {
         return (
             <Fragment>            
                 <ul className="navbar-nav">
-                    <li>
+                    {/* <li>
                         <NavLink to="/">Home</NavLink>
                     </li>
                     <li className="dropdown has_dropdown">
@@ -49,9 +49,8 @@ export class NavItem extends Component {
                             <li><NavLink to="/blog-right-sidebar">Blog Right Sidebar</NavLink></li>
                             <li><NavLink to="/blog-grid">Blog Grid Layout</NavLink></li>
                             <li><NavLink to="/blog-details1">Blog Details</NavLink></li>
-                            {/* <!-- dropdowns example --> */}                            
                         </ul>
-                    </li>
+                    </li> */}
                 </ul>
             </Fragment>
         )

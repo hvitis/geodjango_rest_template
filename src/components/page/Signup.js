@@ -18,14 +18,12 @@ class RegistrationForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
-      console.log("values", values)
       if (!err) {
         this.props.onAuth(
           values.userName,
           values.password,
           values.email,
-        );
-        // this.props.history.push('/login/');
+        );        
       }
     });
   }
@@ -54,6 +52,9 @@ class RegistrationForm extends React.Component {
 
 
   render() {
+    if (this.props.registered) {
+      return <Redirect to='/login' />
+    }
     if (this.props.isAuthenticated) {
       return <Redirect to='/dashboard' />
     }
