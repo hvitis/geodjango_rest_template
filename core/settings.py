@@ -25,7 +25,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%=av=qyx^jsn&#)*7mu-#19+!9*o5yq$jbuu)-!&dq20z@ez!n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = False if os.environ['ENV'] == 'prod' else True
+
 mimetypes.add_type("text/css", ".css", True)
 mimetypes.add_type("application/javascript", ".js", True)
 
@@ -154,9 +155,9 @@ CORS_ORIGIN_WHITELIST = [
 CORS_ORIGIN_REGEX_WHITELIST = [
     r".*",
 ]
-# CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 # CSRF_COOKIE_HTTPONLY = True
-# SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 # This is default
 CORS_ALLOW_METHODS = [
@@ -193,22 +194,29 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'hvitis',
-        'USER': 'hvitis',
-        'PASSWORD': 'powylamywanenogi',
-        'HOST': 'localhost',
-        'PORT': '5432'
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'NAME': 'hvitis',
+            'USER': 'postgres',
+            'PASSWORD': 'postgres',
+            'HOST': 'localhost',
+            'PORT': '5432'
+        }
     }
-}
+    
+if not DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'NAME': 'hvitis',
+            'USER': 'hvitis',
+            'PASSWORD': 'powylamywanenogi',
+            'HOST': 'localhost',
+            'PORT': '5432'
+        }
+    }  
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -247,18 +255,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, 'static'),
-    # os.path.join(BASE_DIR, 'build'), # When this is off the CSS is being loaded
-    # ('build', os.path.join(BASE_DIR, 'build')),
     os.path.join(BASE_DIR, 'build/static'),
     os.path.join(BASE_DIR, 'build/assets'),
     os.path.join(BASE_DIR, 'build/'),
-
 ]
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# WHITENOISE_ROOT = os.path.join(FRONTEND_DIR, 'build', 'root')
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 MEDIA_URL = '/media/'
-# django_heroku.settings(locals())
