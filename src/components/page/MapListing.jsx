@@ -15,10 +15,9 @@ const mapStyle = {
 class MapListing extends Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //         lat: 36,
-        //         lng: -4.8
-        // };
+        this.state = {
+            hasLocation: false
+        };
         // this.handleChange = this.handleChange.bind(this);
     }
     addMarker = (location, map) => {
@@ -71,17 +70,19 @@ class MapListing extends Component {
                 (result) => {
                     console.log('location', result)
                     if (result.features[0].geometry === null) {
-                        return
-                    }
-                    let lat = result.features[0].geometry.coordinates[1]
-                    let lng = result.features[0].geometry.coordinates[0]
-                    console.log('Yes getting coords, ', lat, lng)
+                        this.setState({ hasLocation: false })
 
-                    this.setState({
-                        mapIsLoaded: true,
-                        lat: lat,
-                        lng: lng,
-                    });
+                    }
+                    else {
+                        let lat = result.features[0].geometry.coordinates[1]
+                        let lng = result.features[0].geometry.coordinates[0]
+                        this.setState({
+                            mapIsLoaded: true,
+                            lat: lat,
+                            lng: lng,
+                            hasLocation: true,
+                        });
+                    }
                     this.getNearbyPrinters()
                 },
                 // Note: it's important to handle errors here
@@ -98,6 +99,7 @@ class MapListing extends Component {
 
 
     getNearbyPrinters(radius = 450) {
+        console.log('Find nearby printers state: ', this.state.lat, this.state.lng)
         fetch(`${config.API_URL}/nearby-accounts?lat=${this.state.lat}&lng=${this.state.lng}&radius=${radius}`)
             .then(response => response.json())
             .then(
@@ -177,6 +179,10 @@ class MapListing extends Component {
                 </div>
 
                 <div className="container">
+                    {!this.state.hasLocation ?
+                        <div className="alert alert-info">Guarda tu ubicacion en el perfil en primero!</div>
+                        : <></>
+                    }
                 </div>
 
             </Fragment>
