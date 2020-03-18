@@ -25,7 +25,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%=av=qyx^jsn&#)*7mu-#19+!9*o5yq$jbuu)-!&dq20z@ez!n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False if os.environ['ENV'] == 'prod' else True
+try:
+    DEBUG = False if os.environ['ENV'] == 'prod' else True
+except KeyError:
+    DEBUG = False
 
 mimetypes.add_type("text/css", ".css", True)
 mimetypes.add_type("application/javascript", ".js", True)
