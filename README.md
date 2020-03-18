@@ -1,5 +1,8 @@
 npm run build && python manage.py collectstatic && sudo systemctl daemon-reload && sudo systemctl restart gunicorn && sudo nginx -t && sudo systemctl restart nginx
 
+````
+sudo tail -F /var/log/nginx/error.log
+```
 
 If you update your Django application, you can restart the Gunicorn process to pick up the changes by typing:
 ```
