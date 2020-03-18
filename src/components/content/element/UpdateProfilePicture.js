@@ -29,7 +29,8 @@ class UpdateProfilePicture extends Component {
             }
         })
             .then((response) => {
-                this.setState({profilePicture: `${config.API_URL}/${response.data.profilePicture}` })
+                console.log(response)
+                this.setState({profilePicture: `${config.API_URL.slice(0, -4)}/media/${response.data.profilePicture}` })
                 //handle success
                 console.log('Whole success response', response)
             }).catch((error) => {

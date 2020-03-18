@@ -39,7 +39,10 @@ class UserProfileDetailView(ListAPIView):
 
     def get_queryset(self):
         queryset = []
-        queryset.append(UserProfile.objects.get(unique_id=self.kwargs["uuid"])) 
+        try:
+            queryset.append(UserProfile.objects.get(unique_id=self.kwargs["uuid"])) 
+        except:
+            pass
         return queryset
         serializer_class = UserProfileSerializer
 
@@ -48,10 +51,15 @@ class UserProfileDetailView(ListAPIView):
         serializer.save(unique_id=unique_id)
 
     def get_object(self):
-        unique_id = generateUUID.UUID(str(self.kwargs["uuid"]))
-        queryset = UserProfile.objects.get(unique_id=unique_id)
-        return queryset
-        serializer_class = UserProfileSerializer
+        try:
+            unique_id = generateUUID.UUID(str(self.kwargs["uuid"]))
+            queryset = UserProfile.objects.get(unique_id=unique_id)
+            return queryset
+            serializer_class = UserProfileSerializer
+        except:
+            return []
+            serializer_class = UserProfileSerializer
+        
 
 
 class UserBasicInfoView(ListAPIView, UpdateAPIView):
@@ -105,15 +113,22 @@ class UsersLocationView(UpdateAPIView, ListAPIView):
         serializer.save(id=user_profile.id)
 
     def get_object(self):
-        unique_id = generateUUID.UUID(str(self.kwargs["uuid"]))
-        queryset = UserProfile.objects.get(unique_id=unique_id)
+        queryset = []
+        try:
+            unique_id = generateUUID.UUID(str(self.kwargs["uuid"]))
+            queryset = UserProfile.objects.get(unique_id=unique_id)
+        except:
+            pass
         return queryset
         serializer_class = LocationSerialiazer
     
     def get_queryset(self):
         queryset = []
-        unique_id = generateUUID.UUID(str(self.kwargs["uuid"]))
-        queryset.append(UserProfile.objects.get(unique_id=unique_id)) 
+        try:
+            unique_id = generateUUID.UUID(str(self.kwargs["uuid"]))
+            queryset.append(UserProfile.objects.get(unique_id=unique_id))     
+        except:
+            pass
         return queryset
         serializer_class = LocationSerialiazer
 

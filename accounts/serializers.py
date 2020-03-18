@@ -28,7 +28,7 @@ class NearbyUsersSerialiazer(GeoFeatureModelSerializer):
 class ProfileImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProfileImage
-        fields = "__all__"
+        fields = ['file']
 
 class BasicInfoSerializer(serializers.ModelSerializer):
     class Meta:

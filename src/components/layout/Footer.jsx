@@ -29,7 +29,7 @@ export class Footer extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-2 col-sm-6">
-                                    <div className="widget widget_pages">
+                                    {/* <div className="widget widget_pages">
                                         <h2 className="widget-title">Company Info</h2>
                                         <ul className="list-unstyled">
                                             <li className="page-item"><NavLink to="/about">About Us</NavLink></li>
@@ -39,50 +39,46 @@ export class Footer extends Component {
                                             <li className="page-item"><NavLink onClick={noAction} to="/support">Support</NavLink></li>
                                             <li className="page-item"><NavLink onClick={noAction} to="/policy">Privacy Policy</NavLink></li>
                                         </ul>
-                                    </div>
+                                    </div> */}
                                 </div>{/* ends: .col-lg-3 */}
                                 <div className="col-lg-3 d-flex justify-content-lg-center  col-sm-6">
                                     <div className="widget widget_pages">
-                                        <h2 className="widget-title">Helpful Links</h2>
+                                        <h2 className="widget-title">Enlaces: </h2>
                                         <ul className="list-unstyled">
-                                            <li className="page-item"><NavLink to="/about" onClick={noAction}>Join ToBePrint3D</NavLink></li>
-                                            <li className="page-item"><NavLink to="/about" onClick={noAction}>Sign In</NavLink></li>
-                                            <li className="page-item"><NavLink to="/about" onClick={noAction}>How it Work</NavLink></li>
-                                            <li className="page-item"><NavLink to="/about" onClick={noAction}>Advantages</NavLink></li>
-                                            <li className="page-item"><NavLink to="/about" onClick={noAction}>ToBePrint3D App</NavLink></li>
-                                            <li className="page-item"><NavLink to="/about" onClick={noAction}>Packages</NavLink></li>
+                                            <li className="page-item"><NavLink to="/about" onClick={noAction}>Como funciona?</NavLink></li>
+                                            <li className="page-item"><NavLink to="/contact" onClick={noAction}>Contacta con nosotros.</NavLink></li>
                                         </ul>
                                     </div>
                                 </div>{/* ends: .col-lg-3 */}
                                 <div className="col-lg-3 col-sm-6">
                                     <div className="widget widget_social">
-                                        <h2 className="widget-title">Connect with Us</h2>
+                                        {/* <h2 className="widget-title">Connect with Us</h2>
                                         <ul className="list-unstyled social-list">
                                             <li><NavLink onClick={noAction} to="/mail"><span className="mail"><i className="la la-envelope" /></span> Contact Support</NavLink></li>
                                             <li><NavLink onClick={noAction} to="/twitter"><span className="twitter"><i className="fab fa-twitter" /></span> Twitter</NavLink></li>
                                             <li><NavLink onClick={noAction} to="/facebook"><span className="facebook"><i className="fab fa-facebook-f" /></span> Facebook</NavLink></li>
                                             <li><NavLink onClick={noAction} to="/instagram"><span className="instagram"><i className="fab fa-instagram" /></span> Instagram</NavLink></li>
                                             <li><NavLink onClick={noAction} to="/gplus"><span className="gplus"><i className="fab fa-google-plus-g" /></span> Google+</NavLink></li>
-                                        </ul>
+                                        </ul> */}
                                     </div>{/* ends: .widget */}
                                 </div>{/* ends: .col-lg-3 */}
                                 <div className="col-lg-4 col-sm-6">
                                     <div className="widget widget_text">
-                                        <h2 className="widget-title">ToBePrint3D on Mobile</h2>
+                                        {/* <h2 className="widget-title">ToBePrint3D on Mobile</h2>
                                         <div className="textwidget">
                                             <p>Download the ToBePrint3D app today so you can find your events anytime, anywhere.</p>
                                             <ul className="list-unstyled store-btns">
                                             <li><NavLink onClick={noAction} to="/app-store" className="btn-gradient btn-gradient-two btn btn-md btn-icon icon-left"><span className="fab fa-apple" /> App Store</NavLink></li>
                                             <li><NavLink onClick={noAction} to="/google-play" className="btn btn-dark btn-md btn-icon btn-icon"><span className="fab fa-android" /> Google Play</NavLink></li>
                                             </ul>
-                                        </div>
+                                        </div> */}
                                     </div>{/* ends: .widget */}
                                 </div>{/* ends: .col-lg-3 */}
                             </div>
                         </div>
                     </div>{/* ends: .footer-top */}
                     <div className="footer-bottom">
-                        <div className="container">
+                        {/* <div className="container">
                             <div className="row">
                                 <div className="col-lg-12">
                                     <div className="footer-bottom--content">
@@ -94,7 +90,7 @@ export class Footer extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>{/* ends: .footer-bottom */}
                 </footer>{/* ends: .footer */}
                 <Register />

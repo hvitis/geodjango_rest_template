@@ -8,7 +8,7 @@ urlpatterns = [
     # Show all accounts
     path("accounts",UserProfileListView.as_view(),name="accounts"),
     # Show one account
-    path("accounts/<uuid:uuid>",UserProfileDetailView.as_view(),name="single-account"),
+    path("accounts/<str:uuid>",UserProfileDetailView.as_view(),name="single-account"),
     # Update and show one accounts name phone descrptions etc
     path("accounts/<uuid:uuid>/basic-info", UserBasicInfoView.as_view(), name="basic-info"),
     # Update and show one accounts location
@@ -21,14 +21,5 @@ urlpatterns = [
     path("nearby-accounts", NearbyUsersListView.as_view(), name="nearby-accounts"),
     # Show nearby user
     path("closest-user", ClosestUserView.as_view(), name="closest-accounts"),
-
-    # path("jwt/create", CustomTokenObtainPairView.as_view(), name="jwt"),
-    # path("printers",PrinterListView.as_view(),name="printers"),
-    # path("printers/<int:pk>",PrinterDetailView.as_view(),name="printer"),
-
-    # path("locations/<int:pk>",SetLocationView.as_view(),name="locations")
-    # # GETs all user profiles and their NESTED objects
-    # path("profiles",UserProfileListCreateView.as_view(),name="profiles"),
-    # # GETs single LOGGED user profile and his NESTED objects 
-    # path("profile/<int:pk>",UserProfileDetailCreateView.as_view(),name="profile"),
+    
 ]

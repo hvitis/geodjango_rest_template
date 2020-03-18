@@ -19,7 +19,7 @@ class AuthDeshbord extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            imgIsLoaded: false,
+                IsLoaded: false,
             mapIsLoaded: false,
         };
     }
@@ -54,6 +54,7 @@ class AuthDeshbord extends Component {
             .then(response => response.json())
             .then(
                 (result) => {
+                    console.log('img',result)
                     this.setState({
                         imgIsLoaded: true,
                         img: result[0].profileImage.file
@@ -155,7 +156,7 @@ class AuthDeshbord extends Component {
                                         <div className="row">
 
                                             {/* // Update profile  */}
-                                            {this.state.imgIsLoaded ? (<UpdateProfilePicture profilePicture={this.state.img} />) : (<Spinner />)}
+                                            {this.state.imgIsLoaded ? (<UpdateProfilePicture profilePicture={this.state.img    } />) : (<Spinner />)}
                                             <div className="col-lg-9 col-md-8">
                                                 <div className="atbd_author_module">
                                                     <div className="atbd_content_module">
