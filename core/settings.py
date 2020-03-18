@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%=av=qyx^jsn&#)*7mu-#19+!9*o5yq$jbuu)-!&dq20z@ez!n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 mimetypes.add_type("text/css", ".css", True)
 mimetypes.add_type("application/javascript", ".js", True)
 
@@ -203,8 +203,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'hvitis',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'USER': 'hvitis',
+        'PASSWORD': 'powylamywane',
         'HOST': 'localhost',
         'PORT': '5432'
     }
