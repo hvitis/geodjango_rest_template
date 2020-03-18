@@ -22,19 +22,15 @@ class AuthDeshbord extends Component {
             imgIsLoaded: false,
             mapIsLoaded: false,
         };
-
-        // this.handleChange = this.handleChange.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
     }
-    componentWillMount() {
 
+    componentWillMount() {
         this.setState({
             mapIsLoaded: false,
             showConfidential: false
         });
-
-
     }
+
     componentDidMount() {
         let user_uuid = localStorage.getItem('user_uuid')
 
@@ -49,7 +45,6 @@ class AuthDeshbord extends Component {
                 longitude: coords.longitude,
                 mapIsLoaded: true,
             });
-            console.log("Dashboard state did mount", this.state)
         };
 
         geo.watchPosition(onChange);
@@ -59,12 +54,10 @@ class AuthDeshbord extends Component {
             .then(response => response.json())
             .then(
                 (result) => {
-                    console.log('result afetr call update', result)
                     this.setState({
                         imgIsLoaded: true,
                         img: result[0].profileImage.file
                     });
-                    console.log('state afetr call update', this.state)
                 },
                 // Note: it's important to handle errors here
                 // instead of a catch() block so that we don't swallow
@@ -82,11 +75,9 @@ class AuthDeshbord extends Component {
                 (result) => {
                     if (result.features[0].geometry === null) {
                         return
-                     }
+                    }
                     let lat = result.features[0].geometry.coordinates[1]
                     let lng = result.features[0].geometry.coordinates[0]
-                    console.log(lat, lng)
-                    
                     this.setState({
                         mapIsLoaded: true,
                         latitude: lat,
@@ -105,13 +96,13 @@ class AuthDeshbord extends Component {
             );
     }
 
-componentWillUnmount() {
-//   clearInterval(this.interval);
-}
+    componentWillUnmount() {
+    }
 
     showConfidential() {
         this.setState({ showConfidential: !this.state.showConfidential })
     }
+    
     render() {
         return (
             <Fragment>

@@ -21,7 +21,7 @@ import { withRouter } from 'react-router';
 
 import { Footer } from './components/layout/Footer'
 // import Layout from './components/layout/Layout'
-import  AddPrinter  from './components/page/AddPrinter'
+import AddPrinter from './components/page/AddPrinter'
 import {
   BrowserRouter,
   HashRouter,
@@ -35,25 +35,27 @@ import MapListing from './components/page/MapListing';
 
 
 class App extends Component {
+  
   componentDidMount() {
     this.props.onTryAutoSignup();
   }
+
   render() {
     console.log("Rendering props on MAIN", this.props)
 
     return (
       <div>
-      {/* <Router basename={process.env.PUBLIC_URL} > */}
-      <Header { ...this.props } />
-      <Switch >
-          <Route path = '/' exact render={(props) => <Home {...this.props} title={`Props through render`} />} />
-          <Route path = '/login/' exact component={(props) => <Login {...this.props} />} />
-          <Route path = '/signup/' exact component={(props) => <Signup {...this.props} />} />
+        {/* <Router basename={process.env.PUBLIC_URL} > */}
+        <Header {...this.props} />
+        <Switch >
+          <Route path='/' exact render={(props) => <Home {...this.props} title={`Props through render`} />} />
+          <Route path='/login/' exact component={(props) => <Login {...this.props} />} />
+          <Route path='/signup/' exact component={(props) => <Signup {...this.props} />} />
 
-          <ProtectedRoute { ...this.props } redirect='/login' path ='/add-printer' component={(props) => <AddPrinter {...this.props} {...props}/>}  />
-          <ProtectedRoute { ...this.props } redirect='/login' path = '/dashboard' component={(props) => <AuthDeshbord {...this.props} {...props} />} />
-          <ProtectedRoute { ...this.props } redirect='/login' path = '/printer-profile/:userUUID' component={(props) => <PrinterProfile {...this.props} {...props} />} />
-          <ProtectedRoute { ...this.props } redirect='/login' path = '/nearby-printers' component={(props) => <MapListing {...this.props} {...props}/>} />
+          <ProtectedRoute {...this.props} redirect='/login' path='/add-printer' component={(props) => <AddPrinter {...this.props} {...props} />} />
+          <ProtectedRoute {...this.props} redirect='/login' path='/dashboard' component={(props) => <AuthDeshbord {...this.props} {...props} />} />
+          <ProtectedRoute {...this.props} redirect='/login' path='/printer-profile/:userUUID' component={(props) => <PrinterProfile {...this.props} {...props} />} />
+          <ProtectedRoute {...this.props} redirect='/login' path='/nearby-printers' component={(props) => <MapListing {...this.props} {...props} />} />
 
           {/* <Route path = '/all-listings-grid' component = { AllListingGrid } />          
           <Route path = '/all-listings-list' component = { AllListingList } />     
@@ -70,14 +72,14 @@ class App extends Component {
           <Route path = '/advanced' component = { CheckoutAdvanced } />
           <Route path = '/enterprise' component = { Enterprise } />
           <Route path = '/faqs' component = { Faq } />           */}
-         
+
           {/* <Route path = '/blog-right-sidebar' component = { BlogRightSide } />
           <Route path = '/blog-grid' component = { BlogGrid } />
           <Route path = '/blog-details:id' component = { BlogDetails } /> */}
-         
+
           <Redirect to="/" />
         </Switch>
-      <Footer />
+        <Footer />
       </div>
     );
   }

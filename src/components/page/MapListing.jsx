@@ -27,13 +27,11 @@ class MapListing extends Component {
             // lng: location.lng().toFixed(6)
         });
     };
-    // onMarkerClick = (props) => { console.log(props) }
 
     onMarkerClick = (props) => {
         console.log('Markers proos,', props);
         if (props.unique_uuid) {
-            // return <Redirect to={`printer-profile/${props.unique_uuid}`} />
-            this.nextPath(`/printer-profile/${props.unique_uuid}`) 
+            this.nextPath(`/printer-profile/${props.unique_uuid}`)
         }
     }
 
@@ -41,12 +39,14 @@ class MapListing extends Component {
         console.log('Path to go', path, this.props)
         this.props.history.push(path);
     }
+
     componentWillMount() {
         this.setState({
             mapIsLoaded: false,
             nearbyPrinters: []
         });
     }
+
     componentDidMount() {
         let user_uuid = localStorage.getItem('user_uuid')
 
@@ -61,7 +61,6 @@ class MapListing extends Component {
                 lng: coords.longitude,
                 mapIsLoaded: true,
             });
-            console.log("Dashboard state did mount", this.state)
         };
 
         geo.watchPosition(onChange);
@@ -94,24 +93,18 @@ class MapListing extends Component {
                         error
                     });
                 }
-
             );
-
-
     }
 
 
     getNearbyPrinters(radius = 450) {
-        console.log('Searching using this coords, ', this.state.lat, this.state.lng)
         fetch(`${config.API_URL}/nearby-accounts?lat=${this.state.lat}&lng=${this.state.lng}&radius=${radius}`)
             .then(response => response.json())
             .then(
                 (result) => {
-                    console.log('nearbyPrinters', result)
                     if (result.count > 0) {
-                        console.log('List of nearby users', result.features)
+                        this.setState({ nearbyPrinters: result.features, mapIsLoaded: true, })
                     }
-                    this.setState({ nearbyPrinters: result.features, mapIsLoaded: true, })
                 },
 
                 // Note: it's important to handle errors here

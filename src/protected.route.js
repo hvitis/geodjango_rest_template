@@ -8,7 +8,6 @@ export const ProtectedRoute = ({
 }) => {
   let isAuthenticated = props.isAuthenticated;
   let path = props.path;
-  console.log('Router props: ', props)
   return (
     <Route
       path={ path }
