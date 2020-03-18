@@ -29,7 +29,7 @@ class MapLocationPicker extends Component {
         // Updates location with API using current data on the map
         let user_uuid = localStorage.getItem('user_uuid')
         let dataToSend = {
-            "coordinates": `POINT (${this.state.lat} ${this.state.lng})`
+            "coordinates": `POINT (${this.state.lng} ${this.state.lat})`
         }
         console.log('data to send', dataToSend)
         axios.put(`${config.API_URL}/accounts/${user_uuid}/location`, dataToSend, {

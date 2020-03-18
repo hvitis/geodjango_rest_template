@@ -83,8 +83,8 @@ class AuthDeshbord extends Component {
                     if (result.features[0].geometry === null) {
                         return
                      }
-                    let lat = result.features[0].geometry.coordinates[0]
-                    let lng = result.features[0].geometry.coordinates[1]
+                    let lat = result.features[0].geometry.coordinates[1]
+                    let lng = result.features[0].geometry.coordinates[0]
                     console.log(lat, lng)
                     
                     this.setState({
@@ -127,12 +127,12 @@ componentWillUnmount() {
                                                     <li className="nav-item">
                                                         <a className="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">My Profile</a>
                                                     </li>
-                                                    <li className="nav-item">
+                                                    {/* <li className="nav-item">
                                                         <a className="nav-link" id="all-listings" data-toggle="tab" href="#listings" role="tab" aria-controls="listings" aria-selected="false">My Print3rs</a>
                                                     </li>
                                                     <li className="nav-item">
                                                         <a className="nav-link" id="prints-tab" data-toggle="tab" href="#prints" role="tab" aria-controls="prints" aria-selected="false">My Prints</a>
-                                                    </li>
+                                                    </li> */}
                                                 </ul>
 
                                             </div>

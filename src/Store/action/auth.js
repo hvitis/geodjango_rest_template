@@ -78,6 +78,7 @@ export const authLogin = (username, password) => {
             dispatch(checkAuthTimeout(3600));
         })
         .catch(err => {
+            console.log('Error while Registering', err)
             dispatch(authFail(err))
         })
 

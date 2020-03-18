@@ -3,6 +3,9 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import config from '../../config'
 import axios from 'axios';
 import Loader from 'react-loader-spinner'
+import { Redirect } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
+
 
 const mapStyle = {
     width: '100%',
@@ -26,10 +29,18 @@ class MapListing extends Component {
     };
     // onMarkerClick = (props) => { console.log(props) }
 
-    onMarkerClick = (props) => { this.nextPath(`printer-profile/${props.unique_uuid}`) }
+    onMarkerClick = (props) => {
+        console.log('Markers proos,', props);
+        if (props.unique_uuid) {
+            // return <Redirect to={`printer-profile/${props.unique_uuid}`} />
+            this.nextPath(`/printer-profile/${props.unique_uuid}`) 
+        }
+    }
+
     nextPath(path) {
+        console.log('Path to go', path, this.props)
         this.props.history.push(path);
-      }
+    }
     componentWillMount() {
         this.setState({
             mapIsLoaded: false,
@@ -52,7 +63,7 @@ class MapListing extends Component {
             });
             console.log("Dashboard state did mount", this.state)
         };
- 
+
         geo.watchPosition(onChange);
 
         fetch(`${config.API_URL}/accounts/${user_uuid}/location`)
@@ -63,8 +74,8 @@ class MapListing extends Component {
                     if (result.features[0].geometry === null) {
                         return
                     }
-                    let lat = result.features[0].geometry.coordinates[0]
-                    let lng = result.features[0].geometry.coordinates[1]
+                    let lat = result.features[0].geometry.coordinates[1]
+                    let lng = result.features[0].geometry.coordinates[0]
                     console.log('Yes getting coords, ', lat, lng)
 
                     this.setState({
@@ -97,9 +108,7 @@ class MapListing extends Component {
             .then(
                 (result) => {
                     console.log('nearbyPrinters', result)
-
                     if (result.count > 0) {
-                        
                         console.log('List of nearby users', result.features)
                     }
                     this.setState({ nearbyPrinters: result.features, mapIsLoaded: true, })
@@ -131,26 +140,26 @@ class MapListing extends Component {
                             center={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}
                         // onClick={(t, map, c) => this.addMarker(c.latLng, map)}
                         >
-                                {this.state.nearbyPrinters.map((link, x) =>
-                                    <Marker
-                                        position={{
-                                            lat: parseFloat(link.geometry.coordinates[1]),
-                                            lng: parseFloat(link.geometry.coordinates[0])
-                                        }}
-                                        
-                                        // name={'Current location'}
-                                        // title={'Current location'}
-                                        key={link.properties.unique_id}
-                                        unique_uuid={link.properties.unique_id}
-                                        onClick={this.onMarkerClick}
-                                    // icon={{
-                                    //     //TODO: Change marker color
-                                    //     url: "/path/to/custom_icon.png",
-                                    //     anchor: new google.maps.Point(32,32),
-                                    //     scaledSize: new google.maps.Size(64,64)
-                                    //   }}
-                                    >
-                                        {/* <InfoWindow
+                            {this.state.nearbyPrinters.map((link, x) =>
+                                <Marker
+                                    position={{
+                                        lat: parseFloat(link.geometry.coordinates[1]),
+                                        lng: parseFloat(link.geometry.coordinates[0])
+                                    }}
+
+                                    // name={'Current location'}
+                                    // title={'Current location'}
+                                    key={link.properties.unique_id}
+                                    unique_uuid={link.properties.unique_id}
+                                    onClick={this.onMarkerClick}
+                                // icon={{
+                                //     //TODO: Change marker color
+                                //     url: "/path/to/custom_icon.png",
+                                //     anchor: new google.maps.Point(32,32),
+                                //     scaledSize: new google.maps.Size(64,64)
+                                //   }}
+                                >
+                                    {/* <InfoWindow
                                             visible={showInfoWindow}
                                             style={styles.infoWindow}
                                         >
@@ -158,8 +167,8 @@ class MapListing extends Component {
                                                 <p>Click on the map or drag the marker to select location where the incident occurred</p>
                                             </div>
                                         </InfoWindow> */}
-                                    </Marker>
-                                )
+                                </Marker>
+                            )
                             }
                         </Map> :
                             <Loader

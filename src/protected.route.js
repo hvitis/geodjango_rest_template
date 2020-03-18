@@ -8,10 +8,11 @@ export const ProtectedRoute = ({
 }) => {
   let isAuthenticated = props.isAuthenticated;
   let path = props.path;
+  console.log('Router props: ', props)
   return (
     <Route
       path={ path }
-      render={ props => {
+      component={props => {
         if (isAuthenticated) {
           return <Component { ...props } />;
         } else {

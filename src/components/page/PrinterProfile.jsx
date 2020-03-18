@@ -135,7 +135,7 @@ class PrinterProfile extends Component {
 
                             <div className="col-lg-12">
                                 <div className="atbd_author_listings_area m-bottom-30">
-                                    <h1>Author Listings</h1>
+                                    {/* <h1>Author Listings</h1> */}
                                     {/* <div className="atbd_author_filter_area">
                                         <div className="dropdown">
                                             <a className="btn btn-outline-primary dropdown-toggle" href="# " role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

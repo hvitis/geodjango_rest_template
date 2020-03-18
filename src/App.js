@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
 import Login from './components/page/Login'
 
 import * as actions from './Store/action/auth';
@@ -11,6 +10,8 @@ import Header from './components/layout/Header'
 import Signup from './components/page/Signup'
 import PrinterProfile from './components/page/PrinterProfile.jsx'
 import AuthDeshbord from './components/page/AuthDeshbord'
+
+import { withRouter } from 'react-router';
 
 // import AllLocations from './components/page/AllLocations'
 // import ListingDetails from './components/page/ListingDetails'
@@ -26,7 +27,8 @@ import {
   HashRouter,
   Route,
   Switch,
-  Redirect
+  Redirect,
+  Router
 } from 'react-router-dom';
 import { ProtectedRoute } from './protected.route';
 import MapListing from './components/page/MapListing';
@@ -42,16 +44,16 @@ class App extends Component {
     return (
       <div>
       {/* <Router basename={process.env.PUBLIC_URL} > */}
-      <Router >
       <Header { ...this.props } />
-      <Switch>
+      <Switch >
           <Route path = '/' exact render={(props) => <Home {...this.props} title={`Props through render`} />} />
           <Route path = '/login/' exact component={(props) => <Login {...this.props} />} />
           <Route path = '/signup/' exact component={(props) => <Signup {...this.props} />} />
-          <ProtectedRoute { ...this.props } path ='/add-printer' redirect='/login' component={(props) => <AddPrinter {...this.props} />}  />
-          <Route path = '/dashboard' render={(props) => <AuthDeshbord {...this.props}  />} />
-          <Route path = '/printer-profile/:userUUID' component = { PrinterProfile } />
-          <Route path = '/nearby-printers' component = { MapListing } />
+
+          <ProtectedRoute { ...this.props } redirect='/login' path ='/add-printer' component={(props) => <AddPrinter {...this.props} {...props}/>}  />
+          <ProtectedRoute { ...this.props } redirect='/login' path = '/dashboard' component={(props) => <AuthDeshbord {...this.props} {...props} />} />
+          <ProtectedRoute { ...this.props } redirect='/login' path = '/printer-profile/:userUUID' component={(props) => <PrinterProfile {...this.props} {...props} />} />
+          <ProtectedRoute { ...this.props } redirect='/login' path = '/nearby-printers' component={(props) => <MapListing {...this.props} {...props}/>} />
 
           {/* <Route path = '/all-listings-grid' component = { AllListingGrid } />          
           <Route path = '/all-listings-list' component = { AllListingList } />     
@@ -76,7 +78,6 @@ class App extends Component {
           <Redirect to="/" />
         </Switch>
       <Footer />
-      </Router>  
       </div>
     );
   }

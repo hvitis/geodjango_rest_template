@@ -20,7 +20,13 @@ import './assets/vendor_assets/css/fontawesome.min.css'
 // import './assets/vendor_assets/css/slick.css'
 import './assets/style.css';
 
-
+import {
+    BrowserRouter,
+    HashRouter,
+    Route,
+    Switch,
+    Router
+  } from 'react-router-dom';
 // import './assets/vendor_assets/js/jquery/jquery-1.12.3.js'
 // import './assets/vendor_assets/js/bootstrap/popper.js'
 // import './assets/vendor_assets/js/bootstrap/bootstrap.min.js'
@@ -53,7 +59,11 @@ console.log('public url: ', process.env.PUBLIC_URL)
 
 const app = (
     <Provider store={store}>
-        <App />
+        <BrowserRouter>
+  
+        <App/>
+       
+      </BrowserRouter>  
     </Provider>
 )
 
