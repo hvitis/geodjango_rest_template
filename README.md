@@ -1,6 +1,9 @@
 npm run build && python manage.py collectstatic && sudo systemctl daemon-reload && sudo systemctl restart gunicorn && sudo nginx -t && sudo systemctl restart nginx
 
 ````
+sudo journalctl -f -e -u gunicorn
+
+
 sudo tail -F /var/log/nginx/error.log
 ```
 
