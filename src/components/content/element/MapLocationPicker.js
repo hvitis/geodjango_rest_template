@@ -42,10 +42,14 @@ class MapLocationPicker extends Component {
             .then((response) => {
                 if (response.status == 200) {
                     //TODO: Alert when success saving Location
+                    this.nextPath('nearby-accounts')
                 }
             }).catch((error) => {
                 console.log('Whole error response', error)
             });
+    }
+    nextPath(path) {
+        this.props.history.push(path);
     }
     render() {
         return (

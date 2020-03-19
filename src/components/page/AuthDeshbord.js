@@ -116,9 +116,9 @@ class AuthDeshbord extends Component {
                                         <div className="col-lg-12">
                                             <div className="dashboard-nav-area">
                                                 <ul className="nav" id="dashboard-tabs" role="tablist">
-                                                    <li className="nav-item">
+                                                    {/* <li className="nav-item">
                                                         <a className="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">My Profile</a>
-                                                    </li>
+                                                    </li> */}
                                                     {/* <li className="nav-item">
                                                         <a className="nav-link" id="all-listings" data-toggle="tab" href="#listings" role="tab" aria-controls="listings" aria-selected="false">My Print3rs</a>
                                                     </li>
@@ -156,19 +156,19 @@ class AuthDeshbord extends Component {
                                         <div className="row">
 
                                             {/* // Update profile  */}
-                                            {this.state.imgIsLoaded ? (<UpdateProfilePicture profilePicture={this.state.img    } />) : (<Spinner />)}
+                                            {/* {this.state.imgIsLoaded ? (<UpdateProfilePicture profilePicture={this.state.img    } />) : (<Spinner />)} */}
                                             <div className="col-lg-9 col-md-8">
                                                 <div className="atbd_author_module">
                                                     <div className="atbd_content_module">
                                                         <div className="atbd_content_module__tittle_area">
                                                             <div className="atbd_area_title">
-                                                                <h4><span className="la la-user"></span>My Profile</h4>
+                                                                <h4><span className="la la-user"></span>Mi Perfil</h4>
                                                             </div>
                                                         </div>
                                                         {/* MAP PICKER LOCATION */}
                                                         <div className="atbdb_content_module_contents">
-                                                            <label className="not_empty form-label">Set the Marker by clicking anywhere on the Map</label>
-                                                            {this.state.mapIsLoaded ? <MapLocationPicker {...this.state} /> : <div className="alert">Loading....</div>}
+                                                            <label className="not_empty form-label">Establezca el marcador haciendo clic en cualquier lugar del mapa</label>
+                                                            {this.state.mapIsLoaded ? <MapLocationPicker {...this.state} {...this.props}/> : <div className="alert">Cargando....</div>}
 
                                                             {/* <div className="cor-wrap form-group">
                                                                         <div className="atbd_mark_as_closed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
@@ -220,41 +220,41 @@ class AuthDeshbord extends Component {
                                                                         </div>
                                                                     </div>
                                                                     */}
-                                                                    <div className="col-md-6">
+                                                                    {/* <div className="col-md-6">
                                                                         <div className="form-group">
                                                                             <label htmlFor="user_name" className="not_empty">Nickname</label>
                                                                             <input className="form-control" id="" type="text" />
                                                                             <p>(Nickname will appear if no Name/Last name)</p>
                                                                         </div>
-                                                                    </div>
-                                                                    <div className="col-md-6">
+                                                                    </div> */}
+                                                                    <div className="col-md-12">
                                                                         <div className="form-group">
-                                                                            <label htmlFor="phone" className="not_empty">Cell Number </label>
-                                                                            <input className="form-control" type="tel" placeholder="Phone number e.g. +34 666 999 888" id="phone" />
+                                                                            <label htmlFor="phone" className="not_empty">Telefono</label>
+                                                                            <input className="form-control" type="tel" placeholder="p.ej. +34 666 999 888" id="phone" />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
-                                                                            <label htmlFor="first_name" className="not_empty">First Name</label>
-                                                                            <input className="form-control" id="first_name" type="text" placeholder="First Name" />
+                                                                            <label htmlFor="first_name" className="not_empty">Nombre</label>
+                                                                            <input className="form-control" id="first_name" type="text" placeholder="Nombre" />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
-                                                                            <label htmlFor="last_name" className="not_empty">Last Name</label>
-                                                                            <input className="form-control" id="last_name" type="text" placeholder="Last Name" />
+                                                                            <label htmlFor="last_name" className="not_empty">Apellido</label>
+                                                                            <input className="form-control" id="last_name" type="text" placeholder="Apellido" />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-12">
                                                                         <div className="form-group">
                                                                             <label htmlFor="bio" className="not_empty">Description</label>
-                                                                            <textarea className="wp-editor-area form-control" rows="6" autoComplete="off" id="bio" placeholder="Describe yourself"></textarea>
+                                                                            <textarea className="wp-editor-area form-control" rows="6" autoComplete="off" id="bio" placeholder="Como puedes ayudar etc"></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <hr />
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
-                                                                            <label htmlFor="website" className="not_empty">Website</label>
+                                                                            <label htmlFor="website" className="not_empty">Pagina Web</label>
                                                                             <input className="form-control" id="website" type="text" placeholder="Website" />
                                                                         </div>
                                                                     </div>
@@ -279,7 +279,7 @@ class AuthDeshbord extends Component {
 
                                                                         </div>
                                                                     </div>
-                                                                    <div className="col-md-6">
+                                                                    {/* <div className="col-md-6">
                                                                         <div className="form-group">
                                                                             <label htmlFor="linkedIn" className="not_empty">LinkedIn</label>
                                                                             <input id="linkedIn" className="form-control" type="url" placeholder="Linkedin URL" />
@@ -292,15 +292,15 @@ class AuthDeshbord extends Component {
                                                                             <input id="youtube" className="form-control" type="url" placeholder="Youtube URL" />
 
                                                                         </div>
-                                                                    </div>
-                                                                    <button type="submit" className="btn btn-primary ml-3" id="update_user_profile">Save Profile</button>
+                                                                    </div> */}
+                                                                    <button type="submit" className="btn btn-primary ml-3" id="update_user_profile">Guarda el perfil</button>
 
                                                                     <div className="row"></div>
                                                                     {/* // SHow confidential info */}
                                                                     <div className="col-md-12 cor-wrap form-group">
                                                                         <div className="atbd_mark_as_closed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
                                                                             <input type="checkbox" className="custom-control-input" name="manual_coordinate" onClick={() => { this.setState({ showConfidential: !this.state.showConfidential }) }} value={this.state.showConfidential} id="manual_coordinate" />
-                                                                            <label htmlFor="manual_coordinate" className="not_empty custom-control-label">Show confidential information. </label>
+                                                                            <label htmlFor="manual_coordinate" className="not_empty custom-control-label">Cuenta. </label>
                                                                         </div>
                                                                     </div>
 

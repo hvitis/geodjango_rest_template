@@ -17,18 +17,39 @@ export class AdvSearch extends Component {
                         <div className="row">
                             <div className="col-lg-10 offset-lg-1">
                                 <div className="search_title_area">
-                                    <h2 className="title">Imprime 3D y ayuda</h2>
+                                    <h1 className="title">Ayuda Cerca</h1>
                                     <p className="sub_title"></p>
                                 </div>{/* ends: .search_title_area */}
                                 <div className="search_form">
                                     <div className="atbd_seach_fields_wrapper d-flex justify-content-around">
-
-                                        <NavLink to="/nearby-printers" className="btn btn-xs btn-gradient btn-gradient-one mr-5">
-                                            <span className="la la-plus"></span> Encuentra impresora
-                                                                </NavLink>
-                                        <NavLink to="/add-printer" className="btn btn-xs btn-gradient btn-gradient-two">
-                                            <span className="la la-plus"></span> Añade impresora
-                                                                </NavLink>
+                                        <NavLink to="/nearby-accounts"> <div class="m-2 card shadow-lg btn-gradient btn-gradient-one">
+                                            <div class="card-body ">
+                                                Busca ayuda 
+                                                ( Comida, 
+                                                Entregas, 
+                                                Impresion 3D etc)
+                                            </div>      
+                                        </div>
+                                        </NavLink>
+                            
+                                        <NavLink to="/nearby-accounts"> <div class="m-2 card shadow-lg btn-gradient btn-gradient-two">
+                                            <div class="card-body ">
+                                                Ofreze ayuda 
+                                                ( Comida, 
+                                                Entregas )
+                                            </div>      
+                                        </div>
+                                        </NavLink>
+                               
+                                        <NavLink to="/nearby-accounts"> <div class="m-2 card shadow-lg btn-gradient btn-gradient-three">
+                                            <div class="card-body ">
+                                                Imprime 3D 
+                                                ( Mascarillas, 
+                                                Proteccion, 
+                                                etc)
+                                            </div>      
+                                        </div>
+                                        </NavLink>
 
                                         {/* <div className="single_search_field search_query">
                                             <input className="form-control search_fields" type="text" placeholder="What are you located at?" />

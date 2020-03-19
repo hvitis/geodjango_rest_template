@@ -66,10 +66,10 @@ class PrinterProfile extends Component {
                             <div className="col-lg-12">
                                 <div className="atbd_auhor_profile_area">
                                     <div className="atbd_author_avatar">
-                                        <img src={`${profileImage.file}`} alt="AuthorImage" width={80}/>
+                                        {/* <img src={`${profileImage.file}`} alt="AuthorImage" width={80}/> */}
                                         <div className="atbd_auth_nd">
-                                            <h2>{firstName + ' ' + lastName}</h2>
-                                            <p>Joined on {`${date_joined}`}</p>
+                                            <h2>{user  + firstName + ' ' + lastName}</h2>
+                                            <p>Ha conectado {`${date_joined}`}</p>
                                         </div>
                                     </div>{/*<!-- ends: .atbd_author_avatar -->*/}
                                     <div className="atbd_author_meta">
@@ -88,7 +88,7 @@ class PrinterProfile extends Component {
                                     <div className="atbd_content_module">
                                         <div className="atbd_content_module__tittle_area">
                                             <div className="atbd_area_title">
-                                                <h4><span className="la la-user"></span>About Seller</h4>
+                                                <h4><span className="la la-user"></span>Descripcion</h4>
                                             </div>
                                         </div>
                                         <div className="atbdb_content_module_contents">
@@ -100,7 +100,7 @@ class PrinterProfile extends Component {
                             <div className="col-lg-4 col-md-5 m-bottom-30">
                                 <div className="widget atbd_widget widget-card">
                                     <div className="atbd_widget_title">
-                                        <h4><span className="la la-phone"></span>Contact Info</h4>
+                                        <h4><span className="la la-phone"></span>Contacto</h4>
                                     </div>{/*<!-- ends: .atbd_widget_title -->*/}
                                     <div className="widget-body atbd_author_info_widget">
                                         <div className="atbd_widget_contact_info">
@@ -109,18 +109,15 @@ class PrinterProfile extends Component {
                                                     <span className="la la-map-marker"></span>
                                                     <span className="atbd_info">25 East Valley Road, Michigan</span>
                                                 </li> */}
-                                                <li>
+                                                {phone_number ? <li>
                                                     <span className="la la-phone"></span>
                                                     <span className="atbd_info">{phone_number}</span>
-                                                </li>
-                                                <li>
+                                                </li> : <></>}
+                                                {socialMedia.websiteUrl != '' ?  <li>
                                                     <span className="la la-envelope"></span>
                                                     <span className="atbd_info">{socialMedia.websiteUrl}</span>
-                                                </li>
-                                                <li>
-                                                    <span className="la la-globe"></span>
-                                                    <NavLink to={`/${socialMedia.websiteUrl}`} onClick={noAction} className="atbd_info">{socialMedia.websiteUrl}</NavLink>
-                                                </li>
+                                                </li>: <></>}
+                                               
                                             </ul>
                                         </div>{/*<!-- ends: .atbd_widget_contact_info -->*/}
                                         <div className="atbd_social_wrap">

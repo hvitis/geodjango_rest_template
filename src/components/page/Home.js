@@ -20,12 +20,12 @@ class Home extends Component {
             <Fragment>
                 {/* Header section start */}
                 <section className="intro-wrapper bgimage overlay overlay--dark">
-                    <div className="bg_image_holder"><img src='https://images.unsplash.com/photo-1563520239648-a24e51d4b570?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80' alt="" /></div>
+                    <div className="bg_image_holder"><img src='https://i.ibb.co/3k8FkbL/Screenshot-2020-03-20-at-00-14-39.png' alt="" /></div>
                     {/* <!-- ends: .mainmenu-wrapper --> */}
                     <AdvSearch />
                 </section>
                 {/* Header section end */}
-                <Subscribe />
+                {/* <Subscribe /> */}
                
             </Fragment>
         )

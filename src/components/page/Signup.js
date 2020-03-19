@@ -70,7 +70,7 @@ class RegistrationForm extends React.Component {
               <div className="col-lg-8">
                 <div className="widget atbd_widget widget-card contact-block">
                   <div className="atbd_widget_title">
-                    <h4><span className="la la-envelope"></span> Sign Up Form</h4>
+                    <h4><span className="la la-envelope"></span> Registrar</h4>
                   </div>
                   <div className="atbdp-widget-listing-contact contact-form">
                     <Form onSubmit={this.handleSubmit} id="atbdp-contact-form" className="form-vertical">
@@ -79,7 +79,7 @@ class RegistrationForm extends React.Component {
                           {getFieldDecorator('userName', {
                             rules: [{ required: true, message: 'Please input your username!' }],
                           })(
-                            <Input placeholder="Username" className="form-control" id="atbdp-contact-name" />
+                            <Input placeholder="Usuario (una palabra)" className="form-control" id="atbdp-contact-name" />
 
                           )}
                         </FormItem>
@@ -108,7 +108,7 @@ class RegistrationForm extends React.Component {
                               validator: this.validateToNextPassword,
                             }],
                           })(
-                            <Input type="password" placeholder="Password" className="form-control" id="atbdp-contact-name" />
+                            <Input type="password" placeholder="Contraseña" className="form-control" id="atbdp-contact-name" />
                           )}
                         </FormItem>
                       </div>
@@ -122,18 +122,18 @@ class RegistrationForm extends React.Component {
                               validator: this.compareToFirstPassword,
                             }],
                           })(
-                            <Input type="password" placeholder="Repeat Password" onBlur={this.handleConfirmBlur} className="form-control" id="atbdp-contact-name" />
+                            <Input type="password" placeholder="Repite Contraseña" onBlur={this.handleConfirmBlur} className="form-control" id="atbdp-contact-name" />
                           )}
                         </FormItem>
                       </div>
                       <FormItem>
                         <Button className="btn btn-outline-secondary btn-block" type="primary" htmlType="submit" style={{ marginRight: '10px' }}>
-                          Sign Up
+                          Registrar
                         </Button>
-                        Or
+                        O
                       <NavLink
                           style={{ marginRight: '10px' }}
-                          to='/login/'> login
+                          to='/login/'> Entrar
                       </NavLink>
                       </FormItem>
 
