@@ -158,9 +158,8 @@ CORS_ORIGIN_WHITELIST = [
 CORS_ORIGIN_REGEX_WHITELIST = [
     r".*",
 ]
-# CSRF_COOKIE_SECURE = True
+
 # CSRF_COOKIE_HTTPONLY = True
-# SESSION_COOKIE_SECURE = True
 
 # This is default
 CORS_ALLOW_METHODS = [
@@ -210,6 +209,8 @@ if DEBUG:
     }
     
 if not DEBUG:
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True    
     DATABASES = {
         'default': {
             'ENGINE': 'django.contrib.gis.db.backends.postgis',
