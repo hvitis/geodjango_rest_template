@@ -33,7 +33,7 @@ class ProfileImageSerializer(serializers.ModelSerializer):
 class BasicInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model=UserProfile
-        fields=['nickname', 'firstName', 'lastName', 'description', 'phone_number', 'is_printing', 'help_type',]
+        fields=['nickname', 'firstName', 'lastName', 'description', 'phone_number', 'help_type',]
 
 
 class UserProfileSerializer(serializers.ModelSerializer):

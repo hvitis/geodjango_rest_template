@@ -9,9 +9,9 @@ const dev = {
 
   };
 
-  // const config = prod;
+  // const config = dev;
   // Default to dev if not set
-  const config = process.env.ENV === 'dev'
+  const config = process.env.NODE_ENV === 'development'
     ? dev
     : prod;
   

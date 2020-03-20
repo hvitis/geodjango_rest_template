@@ -52,26 +52,16 @@ export const authLogin = (username, password) => {
     return dispatch => {
         dispatch(authStart());
         axios.post(config.API_URL + '/auth/jwt/create', {
-            // username: 'Adam9999',
-            // password: 'Adam1234!!'
             username: username,
             password: password
         })
         .then(res => {
-
-            // console.log("Auth response : ", res)
-            // console.log("config.API_URL  : ", config.API_URL )
-            // console.log('Response',res)
-
+            console.log("config.API_URL  : ", config.API_URL )
             const token = res.data.access;
             const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
             let decodedToken = jwt_decode(token);
-            // console.log('Decoded c¡token',decodedToken)
-
             const user_uuid = decodedToken.uuid;
-            
             localStorage.setItem('user_uuid', user_uuid);
-            // console.log('User UUID saved',user_uuid)
             localStorage.setItem('token', token);
             localStorage.setItem('expirationDate', expirationDate);
             dispatch(authSuccess(token));

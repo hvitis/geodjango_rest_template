@@ -25,6 +25,7 @@ class NormalLoginForm extends React.Component {
   }
 
   render() {
+    console.log('Env', process.env.NODE_ENV)
     if (this.props.isAuthenticated) {
       return <Redirect to='/dashboard' />
     }

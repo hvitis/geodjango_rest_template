@@ -25,6 +25,8 @@ class AuthDeshbord extends Component {
             offers: false,
             prints: false,
             profileSaved: false,
+            firstName: '',
+
         };
     }
 
@@ -36,6 +38,8 @@ class AuthDeshbord extends Component {
     }
 
     componentDidMount() {
+
+
         let user_uuid = localStorage.getItem('user_uuid')
 
         const geo = navigator.geolocation;
@@ -59,10 +63,19 @@ class AuthDeshbord extends Component {
             .then(
                 (result) => {
                     console.log('img', result)
+                    
                     this.setState({
                         imgIsLoaded: true,
-                        img: result[0].profileImage.file
+                        img: result[0].profileImage.file,
+                        firstName: result[0].firstName,
+                        lastName: result[0].lastName,
+                        phone_number: result[0].phone_number,
+                        description: result[0].description,
+                        help_type: result[0].help_type,
+                       
+
                     });
+                    
                 },
                 // Note: it's important to handle errors here
                 // instead of a catch() block so that we don't swallow
@@ -108,26 +121,23 @@ class AuthDeshbord extends Component {
         this.setState({ showConfidential: !this.state.showConfidential })
     }
 
-    getHelpType() {
-        if (this.state.needs) {
-            return 'NEEDS'
-        }
-        if (this.state.offers) {
-            return 'OFFERS'
-        }
-        if (this.state.prints) {
-            return 'PRINTS'
-        }
-    }
+
+    handleOptionChange (changeEvent) {
+        console.log(changeEvent)
+        this.setState({
+          help_type: changeEvent.target.value
+        });
+      }
 
     updateProfile() {
         let user_uuid = localStorage.getItem('user_uuid')
+        console.log('WHole current state', this.state)
         let dataToSend = {
-            "firstName": this.state.name,
-            "lastName": this.state.surname,
+            "firstName": this.state.firstName,
+            "lastName": this.state.lastName,
             "description": this.state.description,
-            "phone_number": this.state.telephone,
-            "help_type": this.getHelpType()
+            "phone_number": this.state.phone_number,
+            "help_type": this.state.help_type,
         }
         console.log('data to send', dataToSend)
         axios.put(`${config.API_URL}/accounts/${user_uuid}/basic-info`, dataToSend, {
@@ -141,7 +151,7 @@ class AuthDeshbord extends Component {
             .then((response) => {
                 if (response.status == 200) {
                     //TODO: Alert when success saving Location
-                    this.setState({ profileSaved: true })
+                    this.setState({ profileSaved: true, ...dataToSend})
                     // this.nextPath('nearby-accounts')
                 }
             }).catch((error) => {
@@ -227,15 +237,15 @@ class AuthDeshbord extends Component {
                                                                             <label htmlFor="phone" className="not_empty">Tus preferencias:</label>
                                                                             <div className="col-md-12 cor-wrap form-group">
                                                                                 <div className="">
-                                                                                    <input type="radio" className="m-2" name="manual_coordinate" onChange={() => { this.setState({ needs: true, offers: false, prints: false }) }} value={this.state.needs} id="manual_coordinate" />
+                                                                                    <input type="radio" className="m-2" name="manual_coordinate" vid="manual_coordinate" value="NEEDS" checked={this.state.help_type === 'NEEDS'} onChange={(e) => this.handleOptionChange(e)}/>
                                                                                     <label htmlFor="manual_coordinate" className=""> Busco ayuda. </label>
                                                                                 </div>
                                                                                 <div className="">
-                                                                                    <input type="radio" className="m-2" name="manual_coordinate" onChange={() => { this.setState({ needs: false, offers: true, prints: false }) }} value={this.state.offers} id="manual_coordinate" />
+                                                                                    <input type="radio" className="m-2" name="manual_coordinate"  id="manual_coordinate" value="OFFERS" checked={this.state.help_type === 'OFFERS'} onChange={(e) => this.handleOptionChange(e)}/>
                                                                                     <label htmlFor="manual_coordinate" className=""> Ofrezco ayuda. </label>
                                                                                 </div>
                                                                                 <div className="">
-                                                                                    <input type="radio" className="m-2" name="manual_coordinate" onChange={() => { this.setState({ needs: false, offers: false, prints: true }) }} value={this.state.prints} id="manual_coordinate" />
+                                                                                    <input type="radio" className="m-2" name="manual_coordinate"   id="manual_coordinate" value="PRINTS" checked={this.state.help_type === 'PRINTS'} onChange={(e) => this.handleOptionChange(e)}/>
                                                                                     <label htmlFor="manual_coordinate" className=""> Imprimo 3D. </label>
                                                                                 </div>
                                                                             </div>
@@ -247,25 +257,25 @@ class AuthDeshbord extends Component {
                                                                     <div className="col-md-12">
                                                                         <div className="form-group">
                                                                             <label htmlFor="phone" className="not_empty">Telefono</label>
-                                                                            <input className="form-control" type="tel" placeholder="p.ej. +34 666 999 888" onChange={() => { this.setState({ telephone: this.state.telephone }) }} value={this.state.telephone} id="phone" />
+                                                                            <input className="form-control" type="tel" placeholder="p.ej. +34 666 999 888" onChange={(e) => { this.setState({ phone_number: e.target.value }) }} value={this.state.phone_number} id="phone" />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
                                                                             <label htmlFor="first_name" className="not_empty">Nombre</label>
-                                                                            <input className="form-control" id="first_name" type="text" placeholder="Nombre" onChange={() => { this.setState({ name: this.state.name }) }} value={this.state.name} />
+                                                                            <input className="form-control" id="first_name" type="text" placeholder="Nombre" onChange={(e) => { this.setState({ firstName: e.target.value }) }} value={this.state.firstName} />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6">
                                                                         <div className="form-group">
                                                                             <label htmlFor="last_name" className="not_empty">Apellido</label>
-                                                                            <input className="form-control" id="last_name" type="text" placeholder="Apellido" onChange={() => { this.setState({ surname: this.state.surname }) }} value={this.state.surname} />
+                                                                            <input className="form-control" id="last_name" type="text" placeholder="Apellido" onChange={(e) => { this.setState({ lastName: e.target.value }) }} value={this.state.lastName} />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-12">
                                                                         <div className="form-group">
                                                                             <label htmlFor="bio" className="not_empty">Description</label>
-                                                                            <textarea className="wp-editor-area form-control" rows="6" autoComplete="off" id="bio" placeholder="Como puedes ayudar etc" onChange={() => { this.setState({ description: this.state.description }) }} value={this.state.description}></textarea>
+                                                                            <textarea className="wp-editor-area form-control" rows="6" autoComplete="off" id="bio" placeholder="Como puedes ayudar, que necessitas etc" onChange={(e) => { this.setState({ description: e.target.value }) }} value={this.state.description}></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <hr />

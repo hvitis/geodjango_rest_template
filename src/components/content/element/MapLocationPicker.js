@@ -60,7 +60,7 @@ class MapLocationPicker extends Component {
 
                     <Map
                         google={this.props.google}
-                        zoom={13}
+                        zoom={15}
                         style={mapStyle}
                         initialCenter={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}
                         center={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}
