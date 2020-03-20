@@ -108,10 +108,9 @@ class RegistrationForm extends React.Component {
                               validator: this.validateToNextPassword,
                             }],
                           })(
-                            <>
+                            
                             <Input type="password" placeholder="Contraseña" className="form-control" id="atbdp-contact-name" />
-                            <p>Contraseña debe tener al menos 8 caracteres.</p>
-                            </>
+                            
                           )}
                         </FormItem>
                       </div>
@@ -130,6 +129,8 @@ class RegistrationForm extends React.Component {
                         </FormItem>
                       </div>
                       <FormItem>
+                      <p>Contraseña debe tener al menos 8 caracteres.</p>
+
                         <Button className="btn btn-outline-secondary btn-block" type="primary" htmlType="submit" style={{ marginRight: '10px' }}>
                           Registrar
                         </Button>
