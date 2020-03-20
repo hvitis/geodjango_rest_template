@@ -10,7 +10,12 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-
+TYPES_OF_HELP = (
+    ("SELECT", 'SELECT'),
+    ("NEEDS", 'NEEDS'),
+    ("OFFERS", 'OFFERS'),
+    ("PRINTS", 'PRINTS'),
+)
 class UserProfile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name="profile")
@@ -21,6 +26,10 @@ class UserProfile(models.Model):
     coordinates = models.PointField(blank=True, null=True, srid=4326)
     is_printing = models.BooleanField(default=False)
     unique_id = models.UUIDField(unique=True, default=generateUUID.uuid4, editable=False)
+    help_type=models.CharField(
+        choices=TYPES_OF_HELP,
+        default='SELECT',
+        max_length=30)
     # Internally, PhoneNumberField is based upon CharField and by default 
     # represents the number as a string of an international phonenumber 
     # in the database (e.g '+41524204242').

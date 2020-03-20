@@ -113,19 +113,19 @@ class PrinterProfile extends Component {
                                                     <span className="la la-phone"></span>
                                                     <span className="atbd_info">{phone_number}</span>
                                                 </li> : <></>}
-                                                {socialMedia.websiteUrl != '' ?  <li>
+                                                {/* {socialMedia.websiteUrl != '' ?  <li>
                                                     <span className="la la-envelope"></span>
                                                     <span className="atbd_info">{socialMedia.websiteUrl}</span>
-                                                </li>: <></>}
+                                                </li>: <></>} */}
                                                
                                             </ul>
-                                        </div>{/*<!-- ends: .atbd_widget_contact_info -->*/}
-                                        <div className="atbd_social_wrap">
+                                        </div>
+                                        {/* <div className="atbd_social_wrap">
                                             <p><NavLink to={`/${socialMedia.facebookUrl}`} onClick={noAction}><span className="fab fa-facebook-f"></span></NavLink></p>
                                             <p><NavLink to={`/${socialMedia.twitterUrl}`} onClick={noAction}><span className="fab fa-twitter"></span></NavLink></p>
                                             <p><NavLink to={`/${socialMedia.linkedinUrl}`} onClick={noAction}><span className="fab fa-linkedin-in"></span></NavLink></p>
                                             <p><NavLink to={`/${socialMedia.telegramUrl}`} onClick={noAction}><span className="fab fa-telegram"></span></NavLink></p>
-                                        </div>{/*<!-- ends: .atbd_social_wrap -->*/}
+                                        </div> */}
                                     </div>{/*<!-- ends: .widget-body -->*/}
                                 </div>{/*<!-- ends: .widget -->*/}
                             </div>{/*<!-- ends: .col-lg-4 -->*/}
