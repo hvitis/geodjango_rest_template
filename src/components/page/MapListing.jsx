@@ -189,25 +189,21 @@ class MapListing extends Component {
                                 color="#00BFFF"
                                 height={100}
                                 width={100}
-
                             />
                         }
-
                     </div>
                 </div>
 
                 <div className="container">
                     {!this.state.hasLocation ?
-                        <div className="alert alert-info">Guarda tu ubicacion en el perfil en primero!</div>
+                        <div className="alert alert-info">¡Guarda tu ubicación en el perfil primero!</div>
                         : <></>
                     }
-                    <div className="alert alert-info">Cliquea en el marcador de geolocalización para ver el perfil.</div>
+                    <div className="alert alert-info">Haz click en el marcador de geolocalización para ver el perfil.</div>
                     <p><img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png" alt=""/> Persona necessita ayuda</p>
                     <p><img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png" alt=""/> Persona ofrece ayuda</p>
                     <p><img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" alt=""/> Persona imprime 3D</p>
                     <p><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png" alt=""/> Persona no ha rellenado su perfil.</p>
-
-
                 </div>
 
             </Fragment>

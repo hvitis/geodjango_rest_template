@@ -87,18 +87,30 @@ class SocialMediaView(ListAPIView, UpdateAPIView):
     permission_classes = []
 
     def perform_create(self, serializer):
-        # user=self.request.user
-        unique_id = self.kwargs["uuid"]
-        # serializer.save(user=user)
-        serializer.save(unique_id=unique_id)
+        unique_uuid = generateUUID.UUID(str(self.kwargs["uuid"]))
+        user_profile= UserProfile.objects.get(unique_id=unique_uuid)
+        serializer.save(profile=user_profile)
+    
+    def get_object(self):
+        queryset = []
+        try:
+            unique_id = generateUUID.UUID(str(self.kwargs["uuid"]))
+            profile = UserProfile.objects.get(unique_id=unique_id)
+            queryset = SocialMedia.objects.get(profile=profile.id)
+        except:
+            pass
+        return queryset
 
     def get_queryset(self):
-        print("Getting location")
-        queryset = SocialMedia.objects.filter(unique_id=self.kwargs["uuid"])
+        queryset = []
+        try:
+            unique_id = generateUUID.UUID(str(self.kwargs["uuid"]))
+            profile = UserProfile.objects.get(unique_id=unique_id)
+            queryset.append(SocialMedia.objects.get(profile=profile.id))     
+        except:
+            pass
         return queryset
         serializer_class = SocialMediaSerializer
-# TODO: Make post and update endpoint
-
 
 class UsersLocationView(UpdateAPIView, ListAPIView):
     serializer_class = LocationSerialiazer
@@ -108,7 +120,6 @@ class UsersLocationView(UpdateAPIView, ListAPIView):
     # ValueError: invalid literal for int() with base 10: '8ae53f6e-fbca-4f6f-afd2-26aa08201f92'
     def perform_create(self, serializer):
         unique_id = generateUUID.UUID(str(self.kwargs["uuid"]))
-        print(unique_id)
         user_profile= UserProfile.objects.get(unique_id=unique_id)
         serializer.save(id=user_profile.id)
 

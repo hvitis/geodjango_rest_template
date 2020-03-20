@@ -8,7 +8,7 @@ import CardListingGrid4 from '../content/element/card/card-listing-grid-4';
 import axios from 'axios';
 import config from '../../config'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faPhone, faLink } from '@fortawesome/free-solid-svg-icons'
 
 const noAction = e => e.preventDefault();
 
@@ -115,6 +115,10 @@ class PrinterProfile extends Component {
                                                     <FontAwesomeIcon icon={faPhone} />
                                                     <span className="atbd_info"> { phone_number }</span>
                                                 </li> : <></>}
+                                                {phone_number ? <li>
+                                                    <FontAwesomeIcon icon={faPhone} />
+                                                    <span className="atbd_info"> { phone_number }</span>
+                                                </li> : <></>}
                                                 {/* {socialMedia.websiteUrl != '' ?  <li>
                                                     <span className="la la-envelope"></span>
                                                     <span className="atbd_info">{socialMedia.websiteUrl}</span>
@@ -122,12 +126,12 @@ class PrinterProfile extends Component {
                                                
                                             </ul>
                                         </div>
-                                        {/* <div className="atbd_social_wrap">
-                                            <p><NavLink to={`/${socialMedia.facebookUrl}`} onClick={noAction}><span className="fab fa-facebook-f"></span></NavLink></p>
-                                            <p><NavLink to={`/${socialMedia.twitterUrl}`} onClick={noAction}><span className="fab fa-twitter"></span></NavLink></p>
-                                            <p><NavLink to={`/${socialMedia.linkedinUrl}`} onClick={noAction}><span className="fab fa-linkedin-in"></span></NavLink></p>
+                                        <div className="atbd_social_wrap">
+                                         {socialMedia.facebookUrl.length > 1 ? <p><NavLink to={`/${socialMedia.facebookUrl}`} onClick={noAction}><span className="fab fa-facebook-f"></span></NavLink></p> : <></> }   
+                                            {/* <p><NavLink to={`/${socialMedia.twitterUrl}`} onClick={noAction}><span className="fab fa-twitter"></span></NavLink></p> */}
+                                            {/* <p><NavLink to={`/${socialMedia.linkedinUrl}`} onClick={noAction}><span className="fab fa-linkedin-in"></span></NavLink></p> */}
                                             <p><NavLink to={`/${socialMedia.telegramUrl}`} onClick={noAction}><span className="fab fa-telegram"></span></NavLink></p>
-                                        </div> */}
+                                        </div>
                                     </div>{/*<!-- ends: .widget-body -->*/}
                                 </div>{/*<!-- ends: .widget -->*/}
                             </div>{/*<!-- ends: .col-lg-4 -->*/}

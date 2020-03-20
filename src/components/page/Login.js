@@ -2,39 +2,37 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as actions from '../../Store/action/auth';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
-import { Form, Input, Icon, Button } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { Redirect } from 'react-router-dom'
+import { Alert } from 'react-bootstrap'
+
 const FormItem = Form.Item;
 
 
 class NormalLoginForm extends React.Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      wrongPassword: false
+    }
+  }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         this.props.onAuth(values.userName, values.password);
-        if (this.props.isAuthenticated) {
-          // return <Redirect to='/dashboard' />
+        if (this.props.error.detail) {
+          console.log(this.props.error.detail)
         }
       }
     });
   }
 
   render() {
-    console.log('Env', process.env.NODE_ENV)
     if (this.props.isAuthenticated) {
       return <Redirect to='/dashboard' />
     }
-    let errorMessage = null;
-    if (this.props.error) {
-      errorMessage = (
-        <p>{this.props.error.message}</p>
-      );
-    }
+
 
     const { getFieldDecorator } = this.props.form;
     return (
@@ -54,7 +52,7 @@ class NormalLoginForm extends React.Component {
                           {getFieldDecorator('userName', {
                             rules: [{ required: true, message: 'Please input your username!' }],
                           })(
-                            <Input placeholder="Email" className="form-control" id="atbdp-contact-name" />
+                            <Input type="email" placeholder="Email" className="form-control" id="atbdp-contact-name" />
 
                           )}
                         </FormItem>
@@ -73,7 +71,15 @@ class NormalLoginForm extends React.Component {
                           )}
                         </FormItem>
                       </div>
-
+                      {this.props.error !== null ?
+                        [
+                          'primary',
+                        ].map((variant, idx) => (
+                          <Alert key={idx} variant={variant}>
+                            {this.props.error.detail}
+                          </Alert>
+                        )) : <></>
+                      }
 
                       <FormItem>
                         <Button className="btn btn-outline-secondary btn-block" type="primary" htmlType="submit" style={{ marginRight: '10px' }}>

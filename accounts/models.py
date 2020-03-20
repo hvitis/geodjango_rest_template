@@ -81,7 +81,7 @@ class SocialMedia(models.Model):
     websiteUrl = models.URLField(blank=True)
     facebookUrl = models.URLField(blank=True)
     twitterUrl = models.URLField(blank=True)
-    telegramUrl = models.URLField(blank=True)
+    telegramUrl = models.TextField(blank=True)
     linkedinUrl = models.URLField(blank=True)
     youtubeUrl = models.URLField(blank=True)
 

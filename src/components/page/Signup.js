@@ -1,12 +1,10 @@
 import React, { Fragment } from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { connect } from 'react-redux';
-import { Form, Input, Icon, Button } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { NavLink } from 'react-router-dom';
 import * as actions from '../../Store/action/auth';
 import { Redirect } from 'react-router-dom'
+import { Alert } from 'react-bootstrap'
 
 const FormItem = Form.Item;
 
@@ -23,7 +21,7 @@ class RegistrationForm extends React.Component {
           values.email,
           values.password,
           values.email,
-        );        
+        ).then((res)=>{console.log(res)});        
       }
     });
   }
@@ -129,8 +127,12 @@ class RegistrationForm extends React.Component {
                         </FormItem>
                       </div>
                       <FormItem>
-                      <p>Contraseña debe tener al menos 8 caracteres.</p>
-
+                      {[
+                          'info',
+                        ].map((variant, idx) => (
+                          <Alert key={idx} variant={variant}>
+                          Contraseña debe tener al menos 8 caracteres.
+                          </Alert>))}
                         <Button className="btn btn-outline-secondary btn-block" type="primary" htmlType="submit" style={{ marginRight: '10px' }}>
                           Registrar
                         </Button>

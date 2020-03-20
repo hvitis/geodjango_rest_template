@@ -26,11 +26,14 @@ class AuthDeshbord extends Component {
             prints: false,
             profileSaved: false,
             firstName: '',
-
+            websiteUrl: '',
+            facebookUrl: '',
+            telegramUrl: ''
         };
     }
 
     componentWillMount() {
+        console.log(process.env.NODE_ENV)
         this.setState({
             mapIsLoaded: false,
             showConfidential: false
@@ -72,7 +75,9 @@ class AuthDeshbord extends Component {
                         phone_number: result[0].phone_number,
                         description: result[0].description,
                         help_type: result[0].help_type,
-                       
+                        telegramUrl: result[0].socialMedia.telegramUrl,
+                        facebookUrl: result[0].socialMedia.facebookUrl,
+                        websiteUrl: result[0].socialMedia.websiteUrl,
 
                     });
                     
@@ -129,9 +134,37 @@ class AuthDeshbord extends Component {
         });
       }
 
-    updateProfile() {
+      updateSocialMedia() {
         let user_uuid = localStorage.getItem('user_uuid')
-        console.log('WHole current state', this.state)
+        let dataToSend =     {
+            "websiteUrl": this.state.websiteUrl,
+            "facebookUrl": this.state.facebookUrl,
+            "twitterUrl": "",
+            "telegramUrl": this.state.telegramUrl,
+            "linkedinUrl": "",
+            "youtubeUrl": ""
+        }
+        axios.put(`${config.API_URL}/accounts/${user_uuid}/social-media`, dataToSend, {
+            headers: {
+                'accept': '*/*',
+                'Accept-Language': 'en-US,en;q=0.8',
+                'Content-Type': `application/json`,
+                'Authorization': `${localStorage.getItem('token')}`
+            }
+        })
+            .then((response) => {
+                if (response.status == 200) {
+                    //TODO: Alert when success saving Location
+                    this.setState({ socialMediaSaved: true, ...dataToSend})
+                    // this.nextPath('nearby-accounts')
+                }
+            }).catch((error) => {
+                console.log('Whole error response', error)
+            });
+    }
+
+    updateProfile(){
+        let user_uuid = localStorage.getItem('user_uuid')
         let dataToSend = {
             "firstName": this.state.firstName,
             "lastName": this.state.lastName,
@@ -139,7 +172,6 @@ class AuthDeshbord extends Component {
             "phone_number": this.state.phone_number,
             "help_type": this.state.help_type,
         }
-        console.log('data to send', dataToSend)
         axios.put(`${config.API_URL}/accounts/${user_uuid}/basic-info`, dataToSend, {
             headers: {
                 'accept': '*/*',
@@ -256,7 +288,7 @@ class AuthDeshbord extends Component {
 
                                                                     <div className="col-md-12">
                                                                         <div className="form-group">
-                                                                            <label htmlFor="phone" className="not_empty">Telefono</label>
+                                                                            <label htmlFor="phone" className="not_empty">Telefono (opcional)</label>
                                                                             <input className="form-control" type="tel" placeholder="p.ej. +34 666 999 888" onChange={(e) => { this.setState({ phone_number: e.target.value }) }} value={this.state.phone_number} id="phone" />
                                                                         </div>
                                                                     </div>
@@ -278,34 +310,7 @@ class AuthDeshbord extends Component {
                                                                             <textarea className="wp-editor-area form-control" rows="6" autoComplete="off" id="bio" placeholder="Como puedes ayudar, que necessitas etc" onChange={(e) => { this.setState({ description: e.target.value }) }} value={this.state.description}></textarea>
                                                                         </div>
                                                                     </div>
-                                                                    <hr />
-                                                                    {/* <div className="col-md-6">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="website" className="not_empty">Pagina Web</label>
-                                                                            <input className="form-control" id="website" type="text" placeholder="Website" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="col-md-6">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="facebook" className="not_empty">Facebook</label>
-                                                                            <input id="facebook" className="form-control" type="url" placeholder="Facebook URL" />
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="col-md-6">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="twitter" className="not_empty">Twitter</label>
-                                                                            <input id="twitter" className="form-control" type="url" placeholder="Twitter URL" />
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="col-md-6">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="google" className="not_empty">Telegram</label>
-                                                                            <input id="google" className="form-control" type="url" placeholder="Telegram URL" />
-
-                                                                        </div>
-                                                                    </div> */}
+                                                                  
 
 
                                                                     {!this.state.profileSaved ? <button className="btn btn-primary mt-4" id="generate_admin_map" onClick={() => this.updateProfile()}>Guarda Perfil</button> : <button className="btn btn-primary mt-4" id="generate_admin_map" disabled={true} >Perfil Guardado</button>}
@@ -355,6 +360,37 @@ class AuthDeshbord extends Component {
                                                                     ) : (<hr />) 
                                                                     }*/}
                                                                 </div>
+                                                                <hr/>
+                                                                <h4 htmlFor="" className="mb-2">Redes sociales:</h4>
+                                                                    <div className="col-md-12">
+                                                                        <div className="form-group">
+                                                                            <label htmlFor="facebook" className="not_empty">Facebook</label>
+                                                                            <input id="facebook" className="form-control" type="url" placeholder="Facebook URL" onChange={(e) => { this.setState({ facebookUrl: e.target.value }) }} value={this.state.facebookUrl} />
+
+                                                                        </div>
+                                                                    </div>
+                                                                    {/* <div className="col-md-6">
+                                                                        <div className="form-group">
+                                                                            <label htmlFor="twitter" className="not_empty">Twitter</label>
+                                                                            <input id="twitter" className="form-control" type="url" placeholder="Twitter URL" />
+
+                                                                        </div>
+                                                                    </div> */}
+                                                                    <div className="col-md-12">
+                                                                        <div className="form-group">
+                                                                            <label htmlFor="google" className="not_empty">Telegram</label>
+                                                                            <input id="google" className="form-control" type="text" placeholder="Telegram URL" onChange={(e) => { this.setState({ telegramUrl: e.target.value }) }} value={this.state.telegramUrl}/>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="col-md-12">
+                                                                        <div className="form-group">
+                                                                            <label htmlFor="website" className="not_empty">Pagina Web</label>
+                                                                            <input className="form-control" id="website" type="url" placeholder="Pagina Web" onChange={(e) => { this.setState({ websiteUrl: e.target.value }) }} value={this.state.websiteUrl}/>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    {!this.state.socialMediaSaved ? <button className="btn btn-primary mt-4" id="generate_admin_map" onClick={() => this.updateSocialMedia()}>Guarda Enlaces</button> : <button className="btn btn-primary mt-4" id="generate_admin_map" disabled={true} >Guardado</button>}
 
                                                             </div>
                                                         </div>

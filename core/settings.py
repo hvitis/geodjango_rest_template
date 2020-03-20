@@ -28,12 +28,11 @@ SECRET_KEY = '%=av=qyx^jsn&#)*7mu-#19+!9*o5yq$jbuu)-!&dq20z@ez!n'
 try:
     DEBUG = False if os.environ['ENV'] == 'prod' else True
 except KeyError:
-    DEBUG = False
+    DEBUG = True
 
 mimetypes.add_type("text/css", ".css", True)
 mimetypes.add_type("application/javascript", ".js", True)
 
-ALLOWED_HOSTS = ['www.ayudacerca.es', 'ayudacerca.es','https://www.ayudacerca.es','https://ayudacerca.es',]
 
 
 # Application definition
@@ -196,6 +195,8 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 if DEBUG:
+    ALLOWED_HOSTS = ['*']
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.contrib.gis.db.backends.postgis',
@@ -208,6 +209,8 @@ if DEBUG:
     }
     
 if not DEBUG:
+    ALLOWED_HOSTS = ['www.ayudacerca.es', 'ayudacerca.es','https://www.ayudacerca.es','https://ayudacerca.es',]
+
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True    
     DATABASES = {

@@ -48,7 +48,6 @@ export const checkAuthTimeout = expirationTime => {
 }
 
 export const authLogin = (username, password) => {
-    console.log(username, password)
     return dispatch => {
         dispatch(authStart());
         axios.post(config.API_URL + '/auth/jwt/create', {
@@ -56,7 +55,6 @@ export const authLogin = (username, password) => {
             password: password
         })
         .then(res => {
-            console.log("config.API_URL  : ", config.API_URL )
             const token = res.data.access;
             const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
             let decodedToken = jwt_decode(token);
@@ -67,9 +65,12 @@ export const authLogin = (username, password) => {
             dispatch(authSuccess(token));
             dispatch(checkAuthTimeout(3600));
         })
-        .catch(err => {
-            console.log('Error while Registering', err)
-            dispatch(authFail(err))
+        .catch(error => {
+            // console.log(error.response.status);
+            // console.log(error.response.headers);  
+            console.log(error.response.data);
+            dispatch(authFail(error.response.data))
+            // return error.response.data
         })
 
 
