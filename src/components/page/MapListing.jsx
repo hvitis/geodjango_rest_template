@@ -5,6 +5,8 @@ import axios from 'axios';
 import Loader from 'react-loader-spinner'
 import { Redirect } from 'react-router-dom'
 import { useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPhone } from '@fortawesome/free-solid-svg-icons'
 
 
 const mapStyle = {
@@ -122,6 +124,19 @@ class MapListing extends Component {
 
 
     }
+    setMarkerColor(help_type){
+        console.log(help_type, config.API_URL)
+        switch (help_type) {
+            case 'NEEDS':
+                return {url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"};
+            case 'PRINTS':
+                return {url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"};
+            case 'OFFERS':
+                return {url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"};
+            default:
+                return {url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"};
+        }
+    }
     render() {
         return (
             <Fragment>
@@ -135,24 +150,27 @@ class MapListing extends Component {
                             center={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}
                         // onClick={(t, map, c) => this.addMarker(c.latLng, map)}
                         >
-                            {this.state.nearbyPrinters.map((link, x) =>
+                            {this.state.nearbyPrinters.map((marker, x) =>
+                            
                                 <Marker
                                     position={{
-                                        lat: parseFloat(link.geometry.coordinates[1]),
-                                        lng: parseFloat(link.geometry.coordinates[0])
+                                        lat: parseFloat(marker.geometry.coordinates[1]),
+                                        lng: parseFloat(marker.geometry.coordinates[0])
                                     }}
 
                                     // name={'Current location'}
                                     // title={'Current location'}
-                                    key={link.properties.unique_id}
-                                    unique_uuid={link.properties.unique_id}
+                                    key={marker.properties.unique_id}
+                                    unique_uuid={marker.properties.unique_id}
                                     onClick={this.onMarkerClick}
-                                // icon={{
-                                //     //TODO: Change marker color
-                                //     url: "/path/to/custom_icon.png",
-                                //     anchor: new google.maps.Point(32,32),
-                                //     scaledSize: new google.maps.Size(64,64)
-                                //   }}
+                                    icon={
+                                      
+                                        this.setMarkerColor(marker.properties.help_type)
+                                        // anchor: new google.maps.Point(32,32),
+                                        // scaledSize: new google.maps.Size(64,64)
+                                  
+                                
+                                }
                                 >
                                     {/* <InfoWindow
                                             visible={showInfoWindow}
@@ -183,6 +201,13 @@ class MapListing extends Component {
                         <div className="alert alert-info">Guarda tu ubicacion en el perfil en primero!</div>
                         : <></>
                     }
+                    <div className="alert alert-info">Cliquea en el marcador de geolocalización para ver el perfil.</div>
+                    <p><img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png" alt=""/> Persona necessita ayuda</p>
+                    <p><img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png" alt=""/> Persona ofrece ayuda</p>
+                    <p><img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" alt=""/> Persona imprime 3D</p>
+                    <p><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png" alt=""/> Persona no ha rellenado su perfil.</p>
+
+
                 </div>
 
             </Fragment>

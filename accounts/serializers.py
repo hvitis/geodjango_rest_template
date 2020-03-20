@@ -15,7 +15,7 @@ class LocationSerialiazer(GeoFeatureModelSerializer):
         model = UserProfile
         geo_field = "coordinates"
         id_field = False
-        fields = ['coordinates', 'is_printing', 'unique_id']
+        fields = ['coordinates', 'unique_id', 'help_type']
 
 class NearbyUsersSerialiazer(GeoFeatureModelSerializer):
     """ A class to serialize locations as GeoJSON compatible data """
@@ -23,7 +23,7 @@ class NearbyUsersSerialiazer(GeoFeatureModelSerializer):
         model = UserProfile
         geo_field = "coordinates"
         id_field = False
-        fields = ['coordinates', 'is_printing', 'unique_id']
+        fields = ['coordinates', 'help_type', 'unique_id']
 
 class ProfileImageSerializer(serializers.ModelSerializer):
     class Meta:

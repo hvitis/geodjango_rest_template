@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import CardListingGrid4 from '../content/element/card/card-listing-grid-4';
 import axios from 'axios';
 import config from '../../config'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPhone } from '@fortawesome/free-solid-svg-icons'
 
 const noAction = e => e.preventDefault();
 
@@ -69,7 +71,7 @@ class PrinterProfile extends Component {
                                         {/* <img src={`${profileImage.file}`} alt="AuthorImage" width={80}/> */}
                                         <div className="atbd_auth_nd">
                                             <h2>{user  + firstName + ' ' + lastName}</h2>
-                                            <p>Ha conectado {`${date_joined}`}</p>
+                                            {/* <p>Ha conectado {`${date_joined}`}</p> */}
                                         </div>
                                     </div>{/*<!-- ends: .atbd_author_avatar -->*/}
                                     <div className="atbd_author_meta">
@@ -110,8 +112,8 @@ class PrinterProfile extends Component {
                                                     <span className="atbd_info">25 East Valley Road, Michigan</span>
                                                 </li> */}
                                                 {phone_number ? <li>
-                                                    <span className="la la-phone"></span>
-                                                    <span className="atbd_info">{phone_number}</span>
+                                                    <FontAwesomeIcon icon={faPhone} />
+                                                    <span className="atbd_info"> { phone_number }</span>
                                                 </li> : <></>}
                                                 {/* {socialMedia.websiteUrl != '' ?  <li>
                                                     <span className="la la-envelope"></span>
