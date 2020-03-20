@@ -30,10 +30,10 @@ class Header extends Component {
                             <div className="col-lg-12">
                                 <div className="menu-fullwidth">
                                     <div className="logo-wrapper order-lg-0 order-sm-1">
-                                        {/* <div className="logo logo-top">
-                                            <NavLink to="/"><img alt="logoImage" className="img-fluid" /></NavLink>
-                                            <NavLink to="/">ToBePrinted</NavLink>
-                                        </div> */}
+                                        <div className="logo logo-top">
+                                            {/* <NavLink to="/"><img alt="logoImage" className="img-fluid" /></NavLink> */}
+                                            <NavLink to="/"><h2>AyudaCerca</h2></NavLink>
+                                        </div>
                                     </div>{/*<!-- ends: .logo-wrapper -->*/}
                                     <div className="menu-container order-lg-1 order-sm-0">
                                         <div className="d_menu">
@@ -106,25 +106,24 @@ class Header extends Component {
                                                     <ul className="list-unstyled">
                                                         <li>
                                                             <NavLink to="/nearby-accounts" className="">
-                                                                <span className="la la-plus"></span> Encuentra impresora
+                                                                <span className="la la-plus"></span> Encuentra cerca
                                                                 </NavLink>
                                                         </li>
-                                                        <li>
+                                                        {/* <li>
                                                             <NavLink to="/add-printer" className="">
                                                                 <span className="la la-plus"></span> Añade impresora
                                                                 </NavLink>
-                                                        </li>
+                                                        </li> */}
                                                         {
                                                             !this.props.isAuthenticated ? (
 
 
                                                                 <li>
                                                                     <NavLink to="/signup/" className="">
-                                                                        <span className="la la-user"></span> SignUp
+                                                                        <span className="la la-user"></span> Registrar
                                                                 </NavLink>
-                                                                    <span>or</span>
                                                                     <NavLink to="/login/" className="">
-                                                                        <span className="la la-user"></span> Login
+                                                                        <span className="la la-user"></span> Entrar
                                                                 </NavLink>
                                                                 </li>
 

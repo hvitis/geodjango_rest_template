@@ -53,7 +53,7 @@ class NormalLoginForm extends React.Component {
                           {getFieldDecorator('userName', {
                             rules: [{ required: true, message: 'Please input your username!' }],
                           })(
-                            <Input placeholder="Username" className="form-control" id="atbdp-contact-name" />
+                            <Input placeholder="Email" className="form-control" id="atbdp-contact-name" />
 
                           )}
                         </FormItem>
@@ -76,12 +76,12 @@ class NormalLoginForm extends React.Component {
 
                       <FormItem>
                         <Button className="btn btn-outline-secondary btn-block" type="primary" htmlType="submit" style={{ marginRight: '10px' }}>
-                          Log In
+                          Entrar
                         </Button>
-                        Or
+                        O
                       <NavLink
                           style={{ marginRight: '10px' }}
-                          to='/signup/'> Sign Up
+                          to='/signup/'> Registrate
                       </NavLink>
                       </FormItem>
 

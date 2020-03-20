@@ -22,33 +22,40 @@ export class AdvSearch extends Component {
                                 </div>{/* ends: .search_title_area */}
                                 <div className="search_form">
                                     <div className="atbd_seach_fields_wrapper d-flex justify-content-around">
-                                        <NavLink to="/nearby-accounts"> <div class="m-2 card shadow-lg btn-gradient btn-gradient-one">
-                                            <div class="card-body ">
-                                                Busca ayuda 
-                                                ( Comida, 
-                                                Entregas, 
-                                                Impresion 3D etc)
-                                            </div>      
-                                        </div>
+                                        <NavLink to="/nearby-accounts">
+                                            <div class="m-2 card shadow-lg btn-gradient btn-gradient-one">
+                                                <div class="card-body ">
+                                                    <h3 className="text-white">
+                                                        Busca ayuda
+                                                </h3>
+                                                    <div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </NavLink>
-                            
-                                        <NavLink to="/nearby-accounts"> <div class="m-2 card shadow-lg btn-gradient btn-gradient-two">
-                                            <div class="card-body ">
-                                                Ofreze ayuda 
-                                                ( Comida, 
-                                                Entregas )
-                                            </div>      
-                                        </div>
+
+                                        <NavLink to="/nearby-accounts">
+                                            <div class="m-2 card shadow-lg btn-gradient btn-gradient-two">
+                                                <div class="card-body ">
+                                                    <h3 className="text-white">
+                                                        Ofrece ayuda
+                                                </h3>
+                                                    <div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </NavLink>
-                               
-                                        <NavLink to="/nearby-accounts"> <div class="m-2 card shadow-lg btn-gradient btn-gradient-three">
-                                            <div class="card-body ">
-                                                Imprime 3D 
-                                                ( Mascarillas, 
-                                                Proteccion, 
-                                                etc)
-                                            </div>      
-                                        </div>
+
+                                        <NavLink to="/nearby-accounts">
+                                            <div class="m-2 card shadow-lg btn-gradient btn-gradient-three">
+                                                <div class="card-body ">
+                                                    <h3 className="text-white">
+                                                        Imprime 3D
+                                                </h3>
+                                                    <div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </NavLink>
 
                                         {/* <div className="single_search_field search_query">

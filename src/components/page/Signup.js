@@ -20,7 +20,7 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         this.props.onAuth(
-          values.userName,
+          values.email,
           values.password,
           values.email,
         );        
@@ -74,7 +74,7 @@ class RegistrationForm extends React.Component {
                   </div>
                   <div className="atbdp-widget-listing-contact contact-form">
                     <Form onSubmit={this.handleSubmit} id="atbdp-contact-form" className="form-vertical">
-                      <div className="form-group">
+                      {/* <div className="form-group">
                         <FormItem>
                           {getFieldDecorator('userName', {
                             rules: [{ required: true, message: 'Please input your username!' }],
@@ -83,7 +83,7 @@ class RegistrationForm extends React.Component {
 
                           )}
                         </FormItem>
-                      </div>
+                      </div> */}
 
                       <div className="form-group">
                         <FormItem>
