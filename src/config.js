@@ -4,7 +4,7 @@ const dev = {
   };
   
   const prod = {
-    API_URL: "https://tobeprinted.es/api",
+    API_URL: "https://ayudacerca.es/api",
     API_KEY_GMAPS : "AIzaSyA1umOS6BOBvTNLReOage940S6VDqLskkk"
 
   };
