@@ -33,7 +33,7 @@ except KeyError:
 mimetypes.add_type("text/css", ".css", True)
 mimetypes.add_type("application/javascript", ".js", True)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['www.ayudacerca.es', 'ayudacerca.es','https://www.ayudacerca.es','https://ayudacerca.es',]
 
 
 # Application definition
