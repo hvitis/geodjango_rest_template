@@ -70,7 +70,7 @@ class PrinterProfile extends Component {
                                     <div className="atbd_author_avatar">
                                         {/* <img src={`${profileImage.file}`} alt="AuthorImage" width={80}/> */}
                                         <div className="atbd_auth_nd">
-                                            <h2>{user  + firstName + ' ' + lastName}</h2>
+                                            <h2>{ firstName + ' ' + lastName}</h2>
                                             {/* <p>Ha conectado {`${date_joined}`}</p> */}
                                         </div>
                                     </div>{/*<!-- ends: .atbd_author_avatar -->*/}
