@@ -28,7 +28,7 @@ SECRET_KEY = '%=av=qyx^jsn&#)*7mu-#19+!9*o5yq$jbuu)-!&dq20z@ez!n'
 try:
     DEBUG = False if os.environ['ENV'] == 'prod' else True
 except KeyError:
-    DEBUG = True
+    DEBUG = False
 
 mimetypes.add_type("text/css", ".css", True)
 mimetypes.add_type("application/javascript", ".js", True)
