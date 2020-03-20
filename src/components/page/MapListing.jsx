@@ -98,7 +98,7 @@ class MapListing extends Component {
     }
 
 
-    getNearbyPrinters(radius = 450) {
+    getNearbyPrinters(radius = 20) {
         console.log('Find nearby printers state: ', this.state.lat, this.state.lng)
         fetch(`${config.API_URL}/nearby-accounts?lat=${this.state.lat}&lng=${this.state.lng}&radius=${radius}`)
             .then(response => response.json())
@@ -129,7 +129,7 @@ class MapListing extends Component {
                     <div className="map" id="map-one" style={{ position: 'relative' }}>
                         {this.state.mapIsLoaded ? <Map
                             google={this.props.google}
-                            zoom={10}
+                            zoom={15}
                             style={mapStyle}
                             initialCenter={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}
                             center={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}

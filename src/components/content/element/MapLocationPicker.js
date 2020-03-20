@@ -13,7 +13,8 @@ class MapLocationPicker extends Component {
         super(props);
         this.state = {
             lat: props.latitude,
-            lng: props.longitude
+            lng: props.longitude,
+            locationSaved: false
         };
     }
 
@@ -42,7 +43,8 @@ class MapLocationPicker extends Component {
             .then((response) => {
                 if (response.status == 200) {
                     //TODO: Alert when success saving Location
-                    this.nextPath('nearby-accounts')
+                    this.setState({locationSaved: true})
+                    // this.nextPath('nearby-accounts')
                 }
             }).catch((error) => {
                 console.log('Whole error response', error)
@@ -68,7 +70,7 @@ class MapLocationPicker extends Component {
 
                     </Map>
                 </div>
-                <p >Or Enter Coordinates (latitude and longitude) manually. </p>
+                <p >O ingrese las coordenadas (latitud y longitud) manualmente. </p>
                 <div className="row p-2">
                     <div className="col-sm-6 mt-3 mt-1">
                         <div className="form-group">
@@ -82,7 +84,7 @@ class MapLocationPicker extends Component {
                             <input type="text" name="manual_lng" id="manual_lng" value={this.state.lng} onChange={(e) => this.setState({ lng: e.target.value })} className="form-control directory_field" placeholder={this.state.lng ? this.state.lng : "Enter Longitude eg. 91.87198"} />
                         </div>
                     </div>
-                    <button className="btn btn-primary mt-4" id="generate_admin_map" onClick={() => this.updateLocation()}>Save Location</button>
+                    {!this.state.locationSaved ? <button className="btn btn-primary mt-4" id="generate_admin_map" onClick={() => this.updateLocation()}>Guarda Ubicacion</button> :  <button className="btn btn-primary mt-4" id="generate_admin_map" disabled={true} >Ubicacion Guardada</button>}
                 </div>
             </Fragment>
         )
