@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { NavItem } from './Navbar';
 import { connect } from 'react-redux';
-import * as actions from '../../Store/action/auth';
+import * as actions from '../../st/action/auth';
 import { withRouter } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+
 
 class Header extends Component {
     constructor(props) {
