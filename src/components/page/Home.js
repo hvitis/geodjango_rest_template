@@ -2,7 +2,7 @@ import React, {Fragment, Component} from 'react';
 import { AdvSearch } from '../content/advance-search';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import * as actions from '../../Store/action/auth';
+import * as actions from '../../store/action/auth';
 class Home extends Component {
 
     render() {

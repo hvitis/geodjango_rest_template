@@ -15,7 +15,7 @@ import './assets/style.css';
 import {
   BrowserRouter,
 } from 'react-router-dom';
-import reducer from './Store/Reducers/auth';
+import reducer from './store/reducers/auth';
 
 const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 

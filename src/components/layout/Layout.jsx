@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from '../../Store/action/auth';
+import * as actions from '../../store/action/auth';
 import Header from './Header'
 import { Footer } from './Footer'
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Login from './components/page/Login'
-import * as actions from './Store/action/auth';
+import * as actions from './store/action/auth';
 import { connect } from 'react-redux';
 import Home from './components/page/Home';
 import Header from './components/layout/Header'
