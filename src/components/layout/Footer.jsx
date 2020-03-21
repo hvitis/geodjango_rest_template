@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
-import LogIn from '../content/element/modal/signIn';
-import Register from '../content/element/modal/signUp';
 const noAction = e => e.preventDefault();
 
 export class Footer extends Component {
@@ -93,8 +91,6 @@ export class Footer extends Component {
                         </div> */}
                     </div>{/* ends: .footer-bottom */}
                 </footer>{/* ends: .footer */}
-                <Register />
-                <LogIn />
             </Fragment>
         )
     }

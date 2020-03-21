@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react';
 import Header from '../layout/Header';
 import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
-import { SectionTitle } from '../content/element/section-title';
-import { Accordion2 } from '../content/element/accordion';
+import { BreadcrumbWraper } from '../content/breadcrumb';
+import { SectionTitle } from '../content/section-title';
+import { Accordion2 } from '../content/accordion';
 import { connect } from 'react-redux';
 
 const Faqs = (props) => {

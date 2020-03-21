@@ -3,11 +3,11 @@ import { Route, Redirect } from "react-router-dom";
 
 export const ProtectedRoute = ({
   component: Component,
-  redirect: redirect,
   ...props 
 }) => {
   let isAuthenticated = props.isAuthenticated;
   let path = props.path;
+  console.log('Redirect should be here' ,props)
   return (
     <Route
       path={ path }
@@ -18,7 +18,7 @@ export const ProtectedRoute = ({
           return (
             <Redirect
               to={{
-                pathname: redirect,
+                pathname: props.redirect,
               }}
             />
           );

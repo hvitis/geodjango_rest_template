@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import ListingCardGrid12 from '../content/element/card/card-listion-grid-12';
+import ListingCardGrid12 from '../content/card/card-listion-grid-12';
 import $ from 'jquery';
 import 'jquery-ui/themes/base/core.css';
 import 'jquery-ui/themes/base/theme.css';

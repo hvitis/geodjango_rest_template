@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
-import { LocationList } from '../content/element/place-list';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
+import { BreadcrumbWraper } from '../../content/breadcrumb';
+import { LocationList } from '../../content/place-list';
 import { connect } from 'react-redux';
 const AllLocations = (props) => {
     return (

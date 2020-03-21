@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
+import { BreadcrumbWraper } from '../../content/breadcrumb';
 import {connect} from 'react-redux';
-import BlogGrid4 from '../content/element/card/card-blog-grid4';
+import BlogGrid4 from '../../content/card/card-blog-grid4';
 
 const BlogGrid = (props) => {
     const light = props.logo[0].light;

@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-import config from '../../../config'
+import config from '../../config'
 import axios from 'axios';
 
 const mapStyle = {
@@ -41,7 +41,7 @@ class MapLocationPicker extends Component {
             }
         })
             .then((response) => {
-                if (response.status == 200) {
+                if (response.status === 200) {
                     //TODO: Alert when success saving Location
                     this.setState({locationSaved: true})
                     // this.nextPath('nearby-accounts')

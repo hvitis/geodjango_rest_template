@@ -1,15 +1,15 @@
 import React, {Fragment, Component} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
+import { BreadcrumbWraper } from '../../content/breadcrumb';
 
 import { connect } from 'react-redux';
-import { Transection } from '../content/element/transection';
+import { Transection } from '../../content/transection';
 const noAction = e => e.preventDefault();
 
-class CheckoutEnterprise extends Component {
+class CheckoutAdvanced extends Component {
     state = {
-        price : 199
+        price : 99
     }
     render () {
         const light = this.props.logo[0].light;
@@ -51,7 +51,7 @@ class CheckoutEnterprise extends Component {
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <h4>Enterprise Plan</h4>
+                                                            <h4>Advanced Plan</h4>
                                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo,
                                                                 labore.</p>
                                                         </td>
@@ -92,4 +92,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(CheckoutEnterprise);
+export default connect(mapStateToProps)(CheckoutAdvanced);

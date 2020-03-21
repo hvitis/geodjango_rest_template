@@ -1,19 +1,8 @@
 import React, { Fragment, Component } from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
-import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import CardListingGrid4 from '../content/element/card/card-listing-grid-4';
-// import { LogOut } from '../../Store/action/logoutAction';
-import MapLocationPicker from '../content/element/MapLocationPicker';
-import { GetPosition } from '../content/element/getPosition'
-import UpdateProfilePicture from '../content/element/UpdateProfilePicture'
+import MapLocationPicker from '../content/MapLocationPicker';
 import config from '../../config'
-import { Spinner } from 'react-bootstrap'
-import FormData from 'form-data'
 import axios from 'axios'
-const noAction = e => e.preventDefault();
 
 class AuthDeshbord extends Component {
     constructor(props) {
@@ -153,7 +142,7 @@ class AuthDeshbord extends Component {
             }
         })
             .then((response) => {
-                if (response.status == 200) {
+                if (response.status === 200) {
                     //TODO: Alert when success saving Location
                     this.setState({ socialMediaSaved: true, ...dataToSend})
                     // this.nextPath('nearby-accounts')
@@ -181,7 +170,7 @@ class AuthDeshbord extends Component {
             }
         })
             .then((response) => {
-                if (response.status == 200) {
+                if (response.status === 200) {
                     //TODO: Alert when success saving Location
                     this.setState({ profileSaved: true, ...dataToSend})
                     // this.nextPath('nearby-accounts')

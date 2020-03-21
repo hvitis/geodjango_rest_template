@@ -2,8 +2,6 @@ import axios from 'axios';
 import * as actionTypes from './actionTypes';
 import config from '../../config'
 import jwt_decode from 'jwt-decode'
-import React, { Fragment } from 'react';
-import { Redirect } from 'react-router-dom'
 
 
 export const authStart = () => {

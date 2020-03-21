@@ -1,13 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import config from '../../config'
-import axios from 'axios';
 import Loader from 'react-loader-spinner'
-import { Redirect } from 'react-router-dom'
-import { useHistory } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhone } from '@fortawesome/free-solid-svg-icons'
-
 
 const mapStyle = {
     width: '100%',

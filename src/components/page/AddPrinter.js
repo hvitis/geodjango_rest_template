@@ -1,9 +1,6 @@
 import React, {Fragment, Component} from 'react';
-import Header from '../layout/Header';
 import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { connect } from 'react-redux';
-// import GoogleMapReact from 'google-map-react';
 
 class AddPrinter extends Component {
     static defaultProps = {

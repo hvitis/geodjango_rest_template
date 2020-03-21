@@ -1,17 +1,8 @@
 import React, {Fragment, Component} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { AdvSearch } from '../content/element/advance-search';
-import { SectionTitle } from '../content/element/section-title';
-import { NavLink } from 'react-router-dom';
-import { ContentBlockHome } from '../content/element/content-block';
-import { PlaceList } from '../content/element/place-list';
-import { Subscribe } from '../content/element/subscribe';
+import { AdvSearch } from '../content/advance-search';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../Store/action/auth';
-import intro from '../../assets/img/intro.jpg'
-const noAction = e => e.preventDefault();
 class Home extends Component {
 
     render() {

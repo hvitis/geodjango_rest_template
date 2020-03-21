@@ -8,7 +8,6 @@ import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
-const noAction = e => e.preventDefault();
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -165,4 +164,4 @@ const mapDispatchToProps = dispatch => {
         logout: () => dispatch(actions.logout())
     }
 }
-export default withRouter(connect(null, mapDispatchToProps)(Header));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

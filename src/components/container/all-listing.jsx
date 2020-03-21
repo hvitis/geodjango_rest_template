@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import ListingCardGrid6 from '../content/element/card/card-listing-grid-6';
+import ListingCardGrid6 from '../content/card/card-listing-grid-6';
 import $ from 'jquery';
 import 'jquery-ui/themes/base/core.css';
 import 'jquery-ui/themes/base/theme.css';
@@ -9,7 +9,7 @@ import 'jquery-ui/themes/base/slider.css';
 import 'jquery-ui/ui/core';
 import 'jquery-ui/ui/widgets/slider';
 import axios from 'axios';
-// import { Pagination } from '../content/element/pagination';
+// import { Pagination } from '../content/pagination';
 const noAction = e => e.preventDefault();
 class Listing extends Component {
     

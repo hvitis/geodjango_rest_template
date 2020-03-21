@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
-import CardCategoryGrid4 from '../content/element/card/card-category-grid-4';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
+import { BreadcrumbWraper } from '../../content/breadcrumb';
+import CardCategoryGrid4 from '../../content/card/card-category-grid-4';
 import { connect } from 'react-redux';
 
 const AllCategoris = (props) => {

@@ -29,7 +29,11 @@ try:
     DEBUG = False if os.environ['ENV'] == 'prod' else True
 except KeyError:
     DEBUG = False
-
+try:
+    DEBUG = True if os.environ['ENV'] == 'dev' else True
+except KeyError:
+    DEBUG = False
+    
 mimetypes.add_type("text/css", ".css", True)
 mimetypes.add_type("application/javascript", ".js", True)
 

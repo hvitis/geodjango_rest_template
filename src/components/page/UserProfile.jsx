@@ -1,18 +1,14 @@
 import React, { Fragment, Component } from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import CardListingGrid4 from '../content/element/card/card-listing-grid-4';
 import axios from 'axios';
 import config from '../../config'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhone, faLink } from '@fortawesome/free-solid-svg-icons'
+import { faPhone } from '@fortawesome/free-solid-svg-icons'
 
 const noAction = e => e.preventDefault();
 
-class PrinterProfile extends Component {
+class UserProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -44,7 +40,7 @@ class PrinterProfile extends Component {
             }
         })
             .then((response) => {
-                if (response.status == 200) {
+                if (response.status === 200) {
                     this.setState({ userProfile: response.data[0] })
                 }
                 //handle success
@@ -58,7 +54,7 @@ class PrinterProfile extends Component {
     render() {
         console.log('Whole success profile', this.state.userProfile)
 
-        const { user, unique_id, nickname, firstName, lastName, description, socialMedia, profileImage, phone_number, date_joined } = this.state.userProfile;
+        const { firstName, lastName, description, socialMedia, phone_number, date_joined } = this.state.userProfile;
         return (
             <Fragment>
 
@@ -71,7 +67,7 @@ class PrinterProfile extends Component {
                                         {/* <img src={`${profileImage.file}`} alt="AuthorImage" width={80}/> */}
                                         <div className="atbd_auth_nd">
                                             <h2>{ firstName + ' ' + lastName}</h2>
-                                            {/* <p>Ha conectado {`${date_joined}`}</p> */}
+                                            <p>Ha conectado {`${date_joined}`}</p>
                                         </div>
                                     </div>{/*<!-- ends: .atbd_author_avatar -->*/}
                                     <div className="atbd_author_meta">
@@ -176,4 +172,4 @@ const mapStateToProps = state => {
         logo: state.logo
     }
 }
-export default connect(mapStateToProps)(PrinterProfile);
+export default connect(mapStateToProps)(UserProfile);

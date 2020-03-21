@@ -1,18 +1,13 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { connect } from "react-redux";
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
-import { Category, PopularPost, RecentPost, PopularTags, StayUpdate, ConnentFollow } from '../content/element/widget';
-import DetailsContent from '../container/blog-details';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
+import { BreadcrumbWraper } from '../../content/breadcrumb';
+import {connect} from 'react-redux';
+import BlogSingle from '../../content/card/card-blog-single-grid';
+import { Category, PopularPost, RecentPost, PopularTags, StayUpdate, ConnentFollow } from '../../content/widget';
 
-const BlogDetails = (props) => {
-    const id = props.match.params.id;
-    const filter = Object.values(props.blog).filter((value) => {
-        return value.id === id;
-    });
+const BlogRight = (props) => {
     const light = props.logo[0].light;
-
     return (
         <Fragment>
             {/* Header section start */}
@@ -22,16 +17,16 @@ const BlogDetails = (props) => {
                     <Header logo={light} class="menu--light" />                    
                 </div>
                 {/* <!-- ends: .mainmenu-wrapper --> */}
-                <BreadcrumbWraper title={filter[0].title} />
+                <BreadcrumbWraper title="Blog Right Side Bar" />
             </section>
             {/* Header section end */}
-
             <section className="blog-area section-padding-strict border-bottom">
-        
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-8">
-                             <DetailsContent contents={filter[0]} />                          
+                        <div className="col-md-8">
+                            <div className="blog-posts">
+                                <BlogSingle blog={props.blog} />
+                            </div>
                         </div>
                         <div className="col-md-4 mt-5 mt-md-0">
                             <div className="sidebar">
@@ -60,14 +55,15 @@ const BlogDetails = (props) => {
                 </div>
             </section>
            <Footer />
-        </Fragment> 
+        </Fragment>
     )
 }
-const mapStateToProps = (state) => {
+
+const mapStateToProps = (state, ownProps) => {
 
     return {
         blog : state.blog,
         logo: state.logo
     }
 }
-export default connect(mapStateToProps)(BlogDetails);
+export default connect(mapStateToProps)(BlogRight);

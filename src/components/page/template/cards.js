@@ -1,12 +1,12 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/element/breadcrumb';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
+import { BreadcrumbWraper } from '../../content/breadcrumb';
 
 import { connect } from 'react-redux';
-import { SectionTitle } from '../content/element/section-title';
-import CardListingGrid4 from '../content/element/card/card-listing-grid-4';
-import ListingCardGrid12 from '../content/element/card/card-listion-grid-12';
+import { SectionTitle } from '../../content/section-title';
+import CardListingGrid4 from '../../content/card/card-listing-grid-4';
+import ListingCardGrid12 from '../../content/card/card-listion-grid-12';
 
 const Cards = (props) => {
     const light = props.logo[0].light;
