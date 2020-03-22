@@ -66,8 +66,8 @@ class UserProfile extends Component {
                                     <div className="atbd_author_avatar">
                                         {/* <img src={`${profileImage.file}`} alt="AuthorImage" width={80}/> */}
                                         <div className="atbd_auth_nd">
-                                            <h2>{ firstName + ' ' + lastName}</h2>
-                                            <p>Ha conectado {`${date_joined}`}</p>
+                                            <h2>{ (firstName.length == 0 && lastName.length == 0) ? 'Anónimo' : ( firstName + ' ' + lastName )}</h2>
+                                            <p>Se unió {`${date_joined.substring(0, 10)}`}</p>
                                         </div>
                                     </div>{/*<!-- ends: .atbd_author_avatar -->*/}
                                     <div className="atbd_author_meta">
@@ -124,9 +124,9 @@ class UserProfile extends Component {
                                         </div>
                                         <div className="atbd_social_wrap">
                                          {socialMedia.facebookUrl.length > 1 ? <p><NavLink to={`/${socialMedia.facebookUrl}`} onClick={noAction}><span className="fab fa-facebook-f"></span></NavLink></p> : <></> }   
+                                         {socialMedia.telegramUrl.length > 1 ? <p><NavLink to={`/${socialMedia.telegramUrl}`} onClick={noAction}><span className="fab fa-telegram"></span></NavLink></p> : <></> }   
                                             {/* <p><NavLink to={`/${socialMedia.twitterUrl}`} onClick={noAction}><span className="fab fa-twitter"></span></NavLink></p> */}
                                             {/* <p><NavLink to={`/${socialMedia.linkedinUrl}`} onClick={noAction}><span className="fab fa-linkedin-in"></span></NavLink></p> */}
-                                            <p><NavLink to={`/${socialMedia.telegramUrl}`} onClick={noAction}><span className="fab fa-telegram"></span></NavLink></p>
                                         </div>
                                     </div>{/*<!-- ends: .widget-body -->*/}
                                 </div>{/*<!-- ends: .widget -->*/}

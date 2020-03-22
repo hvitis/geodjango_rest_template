@@ -5,6 +5,8 @@ import Loader from 'react-loader-spinner'
 import DiscreteSlider from '../content/DiscreteSlider'
 import Button from '@material-ui/core/Button';
 import { Card } from '@material-ui/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHandPointRight } from '@fortawesome/free-solid-svg-icons'
 
 
 const mapStyle = {
@@ -153,64 +155,75 @@ class MapListing extends Component {
                         <div className="col-4">
                             <Card className="">
                                 <div className="m-2">
+                                    <h4 className="m-2">Leyenda :</h4>
+                                    <div className="p-2">
+                                        <p><img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png" alt="" /> Persona necessita ayuda</p>
+                                        <p><img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png" alt="" /> Persona ofrece ayuda</p>
+                                        <p><img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" alt="" /> Persona imprime 3D</p>
+                                        <p><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png" alt="" /> Persona no ha rellenado su perfil.</p>
+                                    </div>
                                     {!this.state.hasLocation ?
-                                        <div className="alert alert-info">¡Guarda tu ubicación en el perfil primero!</div>
+                                        <div className="alert alert-danger">
+                                            <FontAwesomeIcon className="mr-1" icon={faHandPointRight} />
+                                            ¡Rellena tu perfil y guarda tu ubicación para ver otros usuarios!</div>
                                         : <></>
                                     }
-                                    <div className="alert alert-info">Haz click en el marcador de geolocalización para ver el perfil.</div>
-                                    <p><img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png" alt="" /> Persona necessita ayuda</p>
-                                    <p><img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png" alt="" /> Persona ofrece ayuda</p>
-                                    <p><img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" alt="" /> Persona imprime 3D</p>
-                                    <p><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png" alt="" /> Persona no ha rellenado su perfil.</p>
                                 </div>
                             </Card>
                             <Card className="mt-2 p-2">
                                 <div className="m-2">
-
                                     <div className="row mt-5 ml-2">
                                         <DiscreteSlider onSliderChange={this.handleSliderChange}></DiscreteSlider>
                                         <div className="ml-4 p-1">
-                                            <Button variant="contained" color="primary" onClick={() => { this.searchNearby() }}>Busca</Button>
+                                            <Button variant="contained" color="primary" onClick={() => { this.searchNearby() }} disabled={!this.state.hasLocation}>Busca</Button>
                                         </div>
                                     </div>
                                 </div>
                             </Card>
+                            {this.state.hasLocation ?
+                                <div className="alert alert-info mt-2">
+                                    <FontAwesomeIcon className="mr-1" icon={faHandPointRight} />
+                                Haz click en el marcador de geolocalización para ver el perfil.
+                            </div>
+                                :
+                                <></>
+                            }
                         </div>
                         <div className="col-8">
                             <Card>
 
-                            <div className="map" id="map-one" style={{ position: 'relative' }}>
-                                {this.state.mapIsLoaded ? <Map
-                                    google={this.props.google}
-                                    zoom={15}
-                                    style={mapStyle}
-                                    initialCenter={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}
-                                    center={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}
-                                // onClick={(t, map, c) => this.addMarker(c.latLng, map)}
-                                >
-                                    {this.state.nearbyPrinters.map((marker, x) =>
+                                <div className="map" id="map-one" style={{ position: 'relative' }}>
+                                    {this.state.mapIsLoaded ? <Map
+                                        google={this.props.google}
+                                        zoom={15}
+                                        style={mapStyle}
+                                        initialCenter={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}
+                                        center={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}
+                                    // onClick={(t, map, c) => this.addMarker(c.latLng, map)}
+                                    >
+                                        {this.state.nearbyPrinters.map((marker, x) =>
 
-                                        <Marker
-                                            position={{
-                                                lat: parseFloat(marker.geometry.coordinates[1]),
-                                                lng: parseFloat(marker.geometry.coordinates[0])
-                                            }}
+                                            <Marker
+                                                position={{
+                                                    lat: parseFloat(marker.geometry.coordinates[1]),
+                                                    lng: parseFloat(marker.geometry.coordinates[0])
+                                                }}
 
-                                            // name={'Current location'}
-                                            // title={'Current location'}
-                                            key={marker.properties.unique_id}
-                                            unique_uuid={marker.properties.unique_id}
-                                            onClick={this.onMarkerClick}
-                                            icon={
+                                                // name={'Current location'}
+                                                // title={'Current location'}
+                                                key={marker.properties.unique_id}
+                                                unique_uuid={marker.properties.unique_id}
+                                                onClick={this.onMarkerClick}
+                                                icon={
 
-                                                this.setMarkerColor(marker.properties.help_type)
-                                                // anchor: new google.maps.Point(32,32),
-                                                // scaledSize: new google.maps.Size(64,64)
+                                                    this.setMarkerColor(marker.properties.help_type)
+                                                    // anchor: new google.maps.Point(32,32),
+                                                    // scaledSize: new google.maps.Size(64,64)
 
 
-                                            }
-                                        >
-                                            {/* <InfoWindow
+                                                }
+                                            >
+                                                {/* <InfoWindow
                                             visible={showInfoWindow}
                                             style={styles.infoWindow}
                                         >
@@ -218,24 +231,21 @@ class MapListing extends Component {
                                                 <p>Click on the map or drag the marker to select location where the incident occurred</p>
                                             </div>
                                         </InfoWindow> */}
-                                        </Marker>
-                                    )
+                                            </Marker>
+                                        )
+                                        }
+                                    </Map> :
+                                        <Loader
+                                            type="Puff"
+                                            color="#00BFFF"
+                                            height={100}
+                                            width={100}
+                                        />
                                     }
-                                </Map> :
-                                    <Loader
-                                        type="Puff"
-                                        color="#00BFFF"
-                                        height={100}
-                                        width={100}
-                                    />
-                                }
-                            </div>
+                                </div>
                             </Card>
-
                         </div>
                     </div>
-                    {/* <DiscreteSlider onSliderChange={this.handleSliderChange}></DiscreteSlider> */}
-
                 </>
             </Fragment>
         )

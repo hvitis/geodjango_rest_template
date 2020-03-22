@@ -17,7 +17,8 @@ class Profile extends Component {
             firstName: '',
             websiteUrl: '',
             facebookUrl: '',
-            telegramUrl: ''
+            telegramUrl: '',
+            showSocialMedia: false
         };
     }
 
@@ -55,7 +56,7 @@ class Profile extends Component {
             .then(
                 (result) => {
                     console.log('img', result)
-                    
+
                     this.setState({
                         imgIsLoaded: true,
                         img: result[0].profileImage.file,
@@ -69,7 +70,7 @@ class Profile extends Component {
                         websiteUrl: result[0].socialMedia.websiteUrl,
 
                     });
-                    
+
                 },
                 // Note: it's important to handle errors here
                 // instead of a catch() block so that we don't swallow
@@ -116,16 +117,16 @@ class Profile extends Component {
     }
 
 
-    handleOptionChange (changeEvent) {
+    handleOptionChange(changeEvent) {
         console.log(changeEvent)
         this.setState({
-          help_type: changeEvent.target.value
+            help_type: changeEvent.target.value
         });
-      }
+    }
 
-      updateSocialMedia() {
+    updateSocialMedia() {
         let user_uuid = localStorage.getItem('user_uuid')
-        let dataToSend =     {
+        let dataToSend = {
             "websiteUrl": this.state.websiteUrl,
             "facebookUrl": this.state.facebookUrl,
             "twitterUrl": "",
@@ -144,7 +145,7 @@ class Profile extends Component {
             .then((response) => {
                 if (response.status === 200) {
                     //TODO: Alert when success saving Location
-                    this.setState({ socialMediaSaved: true, ...dataToSend})
+                    this.setState({ socialMediaSaved: true, ...dataToSend })
                     // this.nextPath('nearby-accounts')
                 }
             }).catch((error) => {
@@ -152,7 +153,7 @@ class Profile extends Component {
             });
     }
 
-    updateProfile(){
+    updateProfile() {
         let user_uuid = localStorage.getItem('user_uuid')
         let dataToSend = {
             "firstName": this.state.firstName,
@@ -172,7 +173,7 @@ class Profile extends Component {
             .then((response) => {
                 if (response.status === 200) {
                     //TODO: Alert when success saving Location
-                    this.setState({ profileSaved: true, ...dataToSend})
+                    this.setState({ profileSaved: true, ...dataToSend })
                     // this.nextPath('nearby-accounts')
                 }
             }).catch((error) => {
@@ -243,13 +244,7 @@ class Profile extends Component {
                                                         </div>
                                                         {/* MAP PICKER LOCATION */}
                                                         <div className="atbdb_content_module_contents">
-                                                            <label className="not_empty form-label">Establezca el marcador haciendo clic en cualquier lugar del mapa</label>
-                                                            {this.state.mapIsLoaded ? <MapLocationPicker {...this.state} {...this.props} /> : <div className="alert">Cargando....</div>}
-                                                            <div className="cor-form">
-                                                                <div id="hide_if_no_manual_cor" className="clearfix row m-bottom-30">
 
-                                                                </div>{/*<!-- ends: .atbdb_content_module_contents -->*/}
-                                                            </div>{/*<!-- ends: .atbd_content_module -->*/}
                                                             <div className="user_info_wrap">
                                                                 {/*<!--Full name-->*/}
                                                                 <div className="row">
@@ -258,15 +253,15 @@ class Profile extends Component {
                                                                             <label htmlFor="phone" className="not_empty">Tus preferencias:</label>
                                                                             <div className="col-md-12 cor-wrap form-group">
                                                                                 <div className="">
-                                                                                    <input type="radio" className="m-2" name="manual_coordinate" vid="manual_coordinate" value="NEEDS" checked={this.state.help_type === 'NEEDS'} onChange={(e) => this.handleOptionChange(e)}/>
+                                                                                    <input type="radio" className="m-2" name="manual_coordinate" vid="manual_coordinate" value="NEEDS" checked={this.state.help_type === 'NEEDS'} onChange={(e) => this.handleOptionChange(e)} />
                                                                                     <label htmlFor="manual_coordinate" className=""> Busco ayuda. </label>
                                                                                 </div>
                                                                                 <div className="">
-                                                                                    <input type="radio" className="m-2" name="manual_coordinate"  id="manual_coordinate" value="OFFERS" checked={this.state.help_type === 'OFFERS'} onChange={(e) => this.handleOptionChange(e)}/>
+                                                                                    <input type="radio" className="m-2" name="manual_coordinate" id="manual_coordinate" value="OFFERS" checked={this.state.help_type === 'OFFERS'} onChange={(e) => this.handleOptionChange(e)} />
                                                                                     <label htmlFor="manual_coordinate" className=""> Ofrezco ayuda. </label>
                                                                                 </div>
                                                                                 <div className="">
-                                                                                    <input type="radio" className="m-2" name="manual_coordinate"   id="manual_coordinate" value="PRINTS" checked={this.state.help_type === 'PRINTS'} onChange={(e) => this.handleOptionChange(e)}/>
+                                                                                    <input type="radio" className="m-2" name="manual_coordinate" id="manual_coordinate" value="PRINTS" checked={this.state.help_type === 'PRINTS'} onChange={(e) => this.handleOptionChange(e)} />
                                                                                     <label htmlFor="manual_coordinate" className=""> Imprimo 3D. </label>
                                                                                 </div>
                                                                             </div>
@@ -299,7 +294,7 @@ class Profile extends Component {
                                                                             <textarea className="wp-editor-area form-control" rows="6" autoComplete="off" id="bio" placeholder="Como puedes ayudar, que necessitas etc" onChange={(e) => { this.setState({ description: e.target.value }) }} value={this.state.description}></textarea>
                                                                         </div>
                                                                     </div>
-                                                                  
+
 
 
                                                                     {!this.state.profileSaved ? <button className="btn btn-primary mt-4" id="generate_admin_map" onClick={() => this.updateProfile()}>Guarda Perfil</button> : <button className="btn btn-primary mt-4" id="generate_admin_map" disabled={true} >Perfil Guardado</button>}
@@ -349,42 +344,53 @@ class Profile extends Component {
                                                                     ) : (<hr />) 
                                                                     }*/}
                                                                 </div>
-                                                                <hr/>
-                                                                <h4 htmlFor="" className="mb-2">Redes sociales:</h4>
-                                                                    <div className="col-md-12">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="facebook" className="not_empty">Facebook</label>
-                                                                            <input id="facebook" className="form-control" type="url" placeholder="Facebook URL" onChange={(e) => { this.setState({ facebookUrl: e.target.value }) }} value={this.state.facebookUrl} />
+                                                            </div>
+                                                            <div className="mt-3">
+                                                                <label className="not_empty form-label">Establezca el marcador haciendo clic en cualquier lugar del mapa</label>
+                                                                {this.state.mapIsLoaded ? <MapLocationPicker {...this.state} {...this.props} /> : <div className="alert">Cargando.... (si no aparece en 3 segundos, refresca la pagina.)</div>}
+                                                                <div className="cor-form">
+                                                                    <div id="hide_if_no_manual_cor" className="clearfix row m-bottom-30">
 
-                                                                        </div>
+                                                                    </div>{/*<!-- ends: .atbdb_content_module_contents -->*/}
+                                                                </div>{/*<!-- ends: .atbd_content_module -->*/}
+                                                            </div>
+
+                                                            <div>
+                                                                <h4 htmlFor="" className="mb-2">Redes sociales:</h4>
+                                                                <div className="col-md-12">
+                                                                    <div className="form-group">
+                                                                        <label htmlFor="facebook" className="not_empty">Facebook</label>
+                                                                        <input id="facebook" className="form-control" type="url" placeholder="Facebook URL" onChange={(e) => { this.setState({ facebookUrl: e.target.value }) }} value={this.state.facebookUrl} />
+
                                                                     </div>
-                                                                    {/* <div className="col-md-6">
+                                                                </div>
+                                                                {/* <div className="col-md-6">
                                                                         <div className="form-group">
                                                                             <label htmlFor="twitter" className="not_empty">Twitter</label>
                                                                             <input id="twitter" className="form-control" type="url" placeholder="Twitter URL" />
 
                                                                         </div>
                                                                     </div> */}
-                                                                    <div className="col-md-12">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="google" className="not_empty">Telegram</label>
-                                                                            <input id="google" className="form-control" type="text" placeholder="Telegram URL" onChange={(e) => { this.setState({ telegramUrl: e.target.value }) }} value={this.state.telegramUrl}/>
+                                                                <div className="col-md-12">
+                                                                    <div className="form-group">
+                                                                        <label htmlFor="google" className="not_empty">Telegram</label>
+                                                                        <input id="google" className="form-control" type="text" placeholder="Telegram URL" onChange={(e) => { this.setState({ telegramUrl: e.target.value }) }} value={this.state.telegramUrl} />
 
-                                                                        </div>
                                                                     </div>
-                                                                    <div className="col-md-12">
-                                                                        <div className="form-group">
-                                                                            <label htmlFor="website" className="not_empty">Pagina Web</label>
-                                                                            <input className="form-control" id="website" type="url" placeholder="Pagina Web" onChange={(e) => { this.setState({ websiteUrl: e.target.value }) }} value={this.state.websiteUrl}/>
-                                                                        </div>
+                                                                </div>
+                                                                <div className="col-md-12">
+                                                                    <div className="form-group">
+                                                                        <label htmlFor="website" className="not_empty">Pagina Web</label>
+                                                                        <input className="form-control" id="website" type="url" placeholder="Pagina Web" onChange={(e) => { this.setState({ websiteUrl: e.target.value }) }} value={this.state.websiteUrl} />
                                                                     </div>
-
-                                                                    {!this.state.socialMediaSaved ? <button className="btn btn-primary mt-4" id="generate_admin_map" onClick={() => this.updateSocialMedia()}>Guarda Enlaces</button> : <button className="btn btn-primary mt-4" id="generate_admin_map" disabled={true} >Guardado</button>}
-
+                                                                </div>
+                                                                {!this.state.socialMediaSaved ? <button className="btn btn-primary mt-4" id="generate_admin_map" onClick={() => this.updateSocialMedia()}>Guarda Enlaces</button> : <button className="btn btn-primary mt-4" id="generate_admin_map" disabled={true} >Guardado</button>}
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 </div>{/*<!-- ends: .atbd_author_module -->*/}
+
                                             </div>
                                         </div>
                                     </div>
