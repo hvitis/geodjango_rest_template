@@ -1,5 +1,5 @@
 import React, {Fragment, Component} from 'react';
-import { Footer } from '../layout/Footer';
+import { Footer } from '../../layout/Footer';
 import { connect } from 'react-redux';
 
 class AddPrinter extends Component {

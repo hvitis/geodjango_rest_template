@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/breadcrumb';
-import { ContactForm2 } from '../content/contact-form';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
+import { BreadcrumbWraper } from '../../content/breadcrumb';
+import { ContactForm2 } from '../../content/contact-form';
 import { WidgetContactInfo } from '../content/widget';
 import { connect } from 'react-redux';
 const Contact = (props) => {

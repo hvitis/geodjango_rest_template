@@ -8,8 +8,8 @@ import {
   } from 'react-router-dom';
   
 import Home from './components/page/Home';
-import Login from './components/page/Login';
-import Signup from './components/page/Signup';
+import Login from './components/page/Auth/Login';
+import Signup from './components/page/Auth/Signup';
 
 const BaseRouter = (props) => (
    
@@ -34,7 +34,7 @@ const BaseRouter = (props) => (
           <Route path = '/blog-grid' component = { BlogGrid } />
           <Route path = '/blog-details:id' component = { BlogDetails } />
           <Route path = '/author-profile' component = { AuthProfile } />
-          <Route path = '/dashboard-listings' component = { AuthDeshbord } />
+          <Route path = '/dashboard-listings' component = { Profile } />
           <Route path = '/checkout' component = { CheckoutBasic } />
           <Route path = '/advanced' component = { CheckoutAdvanced } />
           <Route path = '/enterprise' component = { Enterprise } />

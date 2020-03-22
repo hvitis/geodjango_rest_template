@@ -31,7 +31,6 @@ class MapLocationPicker extends Component {
         let dataToSend = {
             "coordinates": `POINT (${this.state.lng} ${this.state.lat})`
         }
-        console.log('data to send', dataToSend)
         axios.put(`${config.API_URL}/accounts/${user_uuid}/location`, dataToSend, {
             headers: {
                 'accept': '*/*',

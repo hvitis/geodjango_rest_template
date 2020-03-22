@@ -1,13 +1,13 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbAbout } from '../content/breadcrumb';
-import { ContentBlockAbout } from '../content/content-block';
-import { Counter } from '../content/counter';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
+import { BreadcrumbAbout } from '../../content/breadcrumb';
+import { ContentBlockAbout } from '../../content/content-block';
+import { Counter } from '../../content/counter';
 import Testimonial from '../content/carousel/testimonial';
-import { SectionTitle } from '../content/section-title';
+import { SectionTitle } from '../../content/section-title';
 import ClientLogo from '../content/carousel/client-logo';
-import { Subscribe } from '../content/subscribe';
+import { Subscribe } from '../../content/subscribe';
 import {connect} from 'react-redux';
 
 const AboutPage = (props) => {

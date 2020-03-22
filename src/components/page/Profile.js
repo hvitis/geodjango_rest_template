@@ -4,7 +4,7 @@ import MapLocationPicker from '../content/MapLocationPicker';
 import config from '../../config'
 import axios from 'axios'
 
-class AuthDeshbord extends Component {
+class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -408,4 +408,4 @@ class AuthDeshbord extends Component {
 }
 
 
-export default connect(null, null)(AuthDeshbord);
+export default connect(null, null)(Profile);

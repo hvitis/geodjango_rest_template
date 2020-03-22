@@ -2,6 +2,10 @@ import React, { Fragment, Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import config from '../../config'
 import Loader from 'react-loader-spinner'
+import DiscreteSlider from '../content/DiscreteSlider'
+import Button from '@material-ui/core/Button';
+import { Card } from '@material-ui/core';
+
 
 const mapStyle = {
     width: '100%',
@@ -12,10 +16,11 @@ class MapListing extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hasLocation: false
+            hasLocation: false,
+            radius: 10
         };
-        // this.handleChange = this.handleChange.bind(this);
     }
+
     addMarker = (location, map) => {
         this.setState({
             // lat: location.lat().toFixed(6),
@@ -24,14 +29,12 @@ class MapListing extends Component {
     };
 
     onMarkerClick = (props) => {
-        console.log('Markers proos,', props);
         if (props.unique_uuid) {
             this.nextPath(`/printer-profile/${props.unique_uuid}`)
         }
     }
 
     nextPath(path) {
-        console.log('Path to go', path, this.props)
         this.props.history.push(path);
     }
 
@@ -64,7 +67,6 @@ class MapListing extends Component {
             .then(response => response.json())
             .then(
                 (result) => {
-                    console.log('location', result)
                     if (result.features[0].geometry === null) {
                         this.setState({ hasLocation: false })
 
@@ -72,6 +74,7 @@ class MapListing extends Component {
                     else {
                         let lat = result.features[0].geometry.coordinates[1]
                         let lng = result.features[0].geometry.coordinates[0]
+                        this.getNearbyPrinters(this.state.radius)
                         this.setState({
                             mapIsLoaded: true,
                             lat: lat,
@@ -79,7 +82,7 @@ class MapListing extends Component {
                             hasLocation: true,
                         });
                     }
-                    this.getNearbyPrinters()
+
                 },
                 // Note: it's important to handle errors here
                 // instead of a catch() block so that we don't swallow
@@ -91,11 +94,16 @@ class MapListing extends Component {
                     });
                 }
             );
+
+
+
     }
 
 
-    getNearbyPrinters(radius = 20) {
-        console.log('Find nearby printers state: ', this.state.lat, this.state.lng)
+    getNearbyPrinters(radius) {
+        if (radius < 5) {
+            radius = 5
+        }
         fetch(`${config.API_URL}/nearby-accounts?lat=${this.state.lat}&lng=${this.state.lng}&radius=${radius}`)
             .then(response => response.json())
             .then(
@@ -104,7 +112,6 @@ class MapListing extends Component {
                         this.setState({ nearbyPrinters: result.features, mapIsLoaded: true, })
                     }
                 },
-
                 // Note: it's important to handle errors here
                 // instead of a catch() block so that we don't swallow
                 // exceptions from actual bugs in components.
@@ -118,55 +125,92 @@ class MapListing extends Component {
 
 
     }
-    setMarkerColor(help_type){
-        console.log(help_type, config.API_URL)
+
+    setMarkerColor(help_type) {
         switch (help_type) {
             case 'NEEDS':
-                return {url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"};
+                return { url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png" };
             case 'PRINTS':
-                return {url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"};
+                return { url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" };
             case 'OFFERS':
-                return {url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"};
+                return { url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" };
             default:
-                return {url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"};
+                return { url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png" };
         }
+    }
+
+    handleSliderChange = (newValue) => {
+        this.state.radius = newValue
+    };
+    searchNearby() {
+        this.getNearbyPrinters(this.state.radius)
     }
     render() {
         return (
             <Fragment>
-                <div className="m-4">
-                    <div className="map" id="map-one" style={{ position: 'relative' }}>
-                        {this.state.mapIsLoaded ? <Map
-                            google={this.props.google}
-                            zoom={15}
-                            style={mapStyle}
-                            initialCenter={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}
-                            center={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}
-                        // onClick={(t, map, c) => this.addMarker(c.latLng, map)}
-                        >
-                            {this.state.nearbyPrinters.map((marker, x) =>
-                            
-                                <Marker
-                                    position={{
-                                        lat: parseFloat(marker.geometry.coordinates[1]),
-                                        lng: parseFloat(marker.geometry.coordinates[0])
-                                    }}
+                <>
+                    <div className="row m-2">
+                        <div className="col-4">
+                            <Card className="">
+                                <div className="m-2">
+                                    {!this.state.hasLocation ?
+                                        <div className="alert alert-info">¡Guarda tu ubicación en el perfil primero!</div>
+                                        : <></>
+                                    }
+                                    <div className="alert alert-info">Haz click en el marcador de geolocalización para ver el perfil.</div>
+                                    <p><img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png" alt="" /> Persona necessita ayuda</p>
+                                    <p><img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png" alt="" /> Persona ofrece ayuda</p>
+                                    <p><img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" alt="" /> Persona imprime 3D</p>
+                                    <p><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png" alt="" /> Persona no ha rellenado su perfil.</p>
+                                </div>
+                            </Card>
+                            <Card className="mt-2 p-2">
+                                <div className="m-2">
 
-                                    // name={'Current location'}
-                                    // title={'Current location'}
-                                    key={marker.properties.unique_id}
-                                    unique_uuid={marker.properties.unique_id}
-                                    onClick={this.onMarkerClick}
-                                    icon={
-                                      
-                                        this.setMarkerColor(marker.properties.help_type)
-                                        // anchor: new google.maps.Point(32,32),
-                                        // scaledSize: new google.maps.Size(64,64)
-                                  
-                                
-                                }
+                                    <div className="row mt-5 ml-2">
+                                        <DiscreteSlider onSliderChange={this.handleSliderChange}></DiscreteSlider>
+                                        <div className="ml-4 p-1">
+                                            <Button variant="contained" color="primary" onClick={() => { this.searchNearby() }}>Busca</Button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Card>
+                        </div>
+                        <div className="col-8">
+                            <Card>
+
+                            <div className="map" id="map-one" style={{ position: 'relative' }}>
+                                {this.state.mapIsLoaded ? <Map
+                                    google={this.props.google}
+                                    zoom={15}
+                                    style={mapStyle}
+                                    initialCenter={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}
+                                    center={{ lat: parseFloat(this.state.lat), lng: parseFloat(this.state.lng) }}
+                                // onClick={(t, map, c) => this.addMarker(c.latLng, map)}
                                 >
-                                    {/* <InfoWindow
+                                    {this.state.nearbyPrinters.map((marker, x) =>
+
+                                        <Marker
+                                            position={{
+                                                lat: parseFloat(marker.geometry.coordinates[1]),
+                                                lng: parseFloat(marker.geometry.coordinates[0])
+                                            }}
+
+                                            // name={'Current location'}
+                                            // title={'Current location'}
+                                            key={marker.properties.unique_id}
+                                            unique_uuid={marker.properties.unique_id}
+                                            onClick={this.onMarkerClick}
+                                            icon={
+
+                                                this.setMarkerColor(marker.properties.help_type)
+                                                // anchor: new google.maps.Point(32,32),
+                                                // scaledSize: new google.maps.Size(64,64)
+
+
+                                            }
+                                        >
+                                            {/* <InfoWindow
                                             visible={showInfoWindow}
                                             style={styles.infoWindow}
                                         >
@@ -174,32 +218,25 @@ class MapListing extends Component {
                                                 <p>Click on the map or drag the marker to select location where the incident occurred</p>
                                             </div>
                                         </InfoWindow> */}
-                                </Marker>
-                            )
-                            }
-                        </Map> :
-                            <Loader
-                                type="Puff"
-                                color="#00BFFF"
-                                height={100}
-                                width={100}
-                            />
-                        }
+                                        </Marker>
+                                    )
+                                    }
+                                </Map> :
+                                    <Loader
+                                        type="Puff"
+                                        color="#00BFFF"
+                                        height={100}
+                                        width={100}
+                                    />
+                                }
+                            </div>
+                            </Card>
+
+                        </div>
                     </div>
-                </div>
+                    {/* <DiscreteSlider onSliderChange={this.handleSliderChange}></DiscreteSlider> */}
 
-                <div className="container">
-                    {!this.state.hasLocation ?
-                        <div className="alert alert-info">¡Guarda tu ubicación en el perfil primero!</div>
-                        : <></>
-                    }
-                    <div className="alert alert-info">Haz click en el marcador de geolocalización para ver el perfil.</div>
-                    <p><img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png" alt=""/> Persona necessita ayuda</p>
-                    <p><img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png" alt=""/> Persona ofrece ayuda</p>
-                    <p><img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" alt=""/> Persona imprime 3D</p>
-                    <p><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png" alt=""/> Persona no ha rellenado su perfil.</p>
-                </div>
-
+                </>
             </Fragment>
         )
     }

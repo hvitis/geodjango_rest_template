@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
-import Header from '../layout/Header';
-import { Footer } from '../layout/Footer';
-import { BreadcrumbWraper } from '../content/breadcrumb';
-import { SectionTitle } from '../content/section-title';
+import Header from '../../layout/Header';
+import { Footer } from '../../layout/Footer';
+import { BreadcrumbWraper } from '../../content/breadcrumb';
+import { SectionTitle } from '../../content/section-title';
 import { connect } from 'react-redux';
 const HeaderStyle = (props) => {
     return (
