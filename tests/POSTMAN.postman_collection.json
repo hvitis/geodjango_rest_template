@@ -1,0 +1,780 @@
+{
+	"info": {
+		"_postman_id": "3b5e9c01-b114-42d2-a54f-631bb34fea65",
+		"name": "POSTMAN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Acc",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0173cd68-263d-40bd-893c-5aba7d6f9a59",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "3758e854-0640-4943-b627-3744c020ebf8",
+						"exec": [
+							"pm.test(\"new user with username created\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.email.length).to.be.above(1);",
+							"    pm.globals.set(\"userName\", jsonData.username);",
+							"    pm.globals.set(\"user_id\", jsonData.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "{{$randomUserName}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Adam1234!!",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "{{$randomUserName}}@email.local",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/auth/users/",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"auth",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Token",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ccbb94dd-2916-41b8-bbff-72170c72c752",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "24e6fe0c-6529-48b7-8103-0875cf0153fc",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"let userName = pm.globals.get(\"userName\");",
+							"pm.test(\"Token obtained for user \" + pm.globals.get(\"userName\"), function () {",
+							"    pm.expect(jsonData.access.length).to.be.above(50);",
+							"    pm.globals.set(\"jwt_token\", jsonData.access);",
+							"});",
+							"const splited = jsonData.access.split('.')[1];",
+							"const parsed = JSON.parse(atob(splited)).uuid.toString();",
+							"console.log(parsed)",
+							"pm.globals.set(\"user_uuid\", parsed);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "password",
+							"value": "Adam1234!!",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "{{userName}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/auth/jwt/create",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"auth",
+						"jwt",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Accs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LH_URL}}api/auth/users/",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"auth",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SocialMedia",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LH_URL}}api/accounts/{{user_uuid}}/social-media",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"accounts",
+						"{{user_uuid}}",
+						"social-media"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SocialMedia",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"facebookUrl\" : \"https://something.com\",\n\"telegramUrl\" : \"https://website.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/accounts/{{user_id}}/social-media",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"accounts",
+						"{{user_id}}",
+						"social-media"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LH_URL}}api/accounts",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"John\",\n\t\"lastName\" : \"Markowsky\",\n\t\"nickname\": \"Brown\",\n    \"description\": \"I am great !!!\",\n    \"phone_number\": \"+34666777888\",\n    \"owns_printer\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/accounts/{{user_uuid}}/basic-info",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"accounts",
+						"{{user_uuid}}",
+						"basic-info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"description\" : \"I am great\",\n\"phone_number\" : \"+34666777888\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/accounts/{{user_uuid}}",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"accounts",
+						"{{user_uuid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Location",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LH_URL}}api/accounts/{{user_uuid}}/location",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"accounts",
+						"{{user_uuid}}",
+						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Location",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"coordinates\": \"POINT (-4.494766 36.890268)\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/accounts/{{user_uuid}}/location",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"accounts",
+						"{{user_uuid}}",
+						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Pic",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "jSdh6c3VAHgLShLEyTjH2N957qCILqmb",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/hvitis/Downloads/my_pic.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/accounts/{{user_uuid}}/profile-image",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"accounts",
+						"{{user_uuid}}",
+						"profile-image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Printer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c4126e27-1858-4f49-8faa-e1265215a58a",
+						"exec": [
+							"",
+							"let userName = pm.globals.get(\"userName\");",
+							"pm.test(\"Printed created for user  \" + pm.globals.get(\"userName\"), function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.globals.set(\"printer_id\", jsonData.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"type": "text",
+						"value": "jSdh6c3VAHgLShLEyTjH2N957qCILqmb",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"model\" : \"Ender\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/printers/{{user_id}}",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"printers",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPrinter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"type": "text",
+						"value": "jSdh6c3VAHgLShLEyTjH2N957qCILqmb",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"model\" : \"Ender\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/printers/{{user_id}}",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"printers",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPrints",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"type": "text",
+						"value": "jSdh6c3VAHgLShLEyTjH2N957qCILqmb",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"model\" : \"Ender\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/prints/{{user_id}}",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"prints",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostPrints",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"type": "text",
+						"value": "jSdh6c3VAHgLShLEyTjH2N957qCILqmb",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\" : \"My beautiful print\",\n\"picture\" : \"www.somelink.local\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LH_URL}}api/prints/{{printer_id}}",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"prints",
+						"{{printer_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nearby Printers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LH_URL}}api/nearby-accounts?lat=36.8&lng=-4.4&radius=15000",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"nearby-accounts"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "36.8"
+						},
+						{
+							"key": "lng",
+							"value": "-4.4"
+						},
+						{
+							"key": "radius",
+							"value": "15000"
+						},
+						{
+							"key": "a",
+							"value": "3",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Closest user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LH_URL}}api/closest-user?lat=36.8&lng=-4.4",
+					"host": [
+						"{{LH_URL}}api"
+					],
+					"path": [
+						"closest-user"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "36.8"
+						},
+						{
+							"key": "lng",
+							"value": "-4.4"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
